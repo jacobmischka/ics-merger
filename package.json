@@ -7,12 +7,16 @@
   "jsnext:main": "dist/ical-merger.js",
   "module": "dist/ical-merger.js",
   "scripts": {
+    "start": "node dist/server.js",
+    "serve": "nodemon dist/server.js",
     "rollup": "run-p rollup:*",
     "rollup:node": "rollup -c",
     "rollup:web": "rollup -c rollup.config.web.js",
+    "rollup:server": "rollup -c rollup.config.server.js",
     "rollup-watch": "run-p rollup-watch:*",
     "rollup-watch:node": "rollup -cw",
-    "rollup-watch:web": "rollup -c rollup.config.web.js -w"
+    "rollup-watch:web": "rollup -c rollup.config.web.js -w",
+    "rollup-watch:server": "rollup -c rollup.config.server.js -w"
   },
   "bin": {
     "ical-merge": "./cli.js"
@@ -27,9 +31,12 @@
   "author": "Jacob Mischka <jacobmischka@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "ical.js": "^1.2.2"
+    "express": "^4.14.0",
+    "ical.js": "^1.2.2",
+    "node-fetch": "^1.6.3"
   },
   "devDependencies": {
+    "nodemon": "^1.11.0",
     "npm-run-all": "^3.1.1",
     "rollup": "^0.36.3",
     "rollup-plugin-buble": "^0.14.0",

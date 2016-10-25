@@ -9,5 +9,8 @@ export default {
 			dest: './dist/ical-merger.cjs.js',
 			format: 'cjs'
 		}
+	],
+	external: [
+		'ical.js'
 	]
 };
