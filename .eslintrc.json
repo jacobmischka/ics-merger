@@ -1,0 +1,21 @@
+{
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module"
+	},
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"extends": "eslint:recommended",
+	"rules": {
+		"no-console": "off",
+		"no-var": "warn",
+		"eqeqeq": "warn",
+		"semi": ["warn", "always"],
+		"no-spaced-func": "warn",
+		"comma-style": "warn",
+		"comma-spacing": "warn",
+		"key-spacing": "warn"
+	}
+}

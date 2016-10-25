@@ -1,0 +1,40 @@
+{
+  "name": "ical-merger",
+  "version": "1.0.0",
+  "description": "Merges multiple ical .ics files into one for importing elsewhere",
+  "main": "dist/ical-merger.umd.js",
+  "web": "dist/ical-merger.bundle.js",
+  "jsnext:main": "dist/ical-merger.js",
+  "module": "dist/ical-merger.js",
+  "scripts": {
+    "rollup": "run-p rollup:*",
+    "rollup:node": "rollup -c",
+    "rollup:web": "rollup -c rollup.config.web.js",
+    "rollup-watch": "run-p rollup-watch:*",
+    "rollup-watch:node": "rollup -cw",
+    "rollup-watch:web": "rollup -c rollup.config.web.js -w"
+  },
+  "bin": {
+    "ical-merge": "./cli.js"
+  },
+  "repository": {
+    "url": "git@github.com:jacobmischka/ics-merger.git",
+    "type": "git"
+  },
+  "engines": {
+    "node": "^6.0.0"
+  },
+  "author": "Jacob Mischka <jacobmischka@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ical.js": "^1.2.2"
+  },
+  "devDependencies": {
+    "npm-run-all": "^3.1.1",
+    "rollup": "^0.36.3",
+    "rollup-plugin-buble": "^0.14.0",
+    "rollup-plugin-commonjs": "^5.0.5",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-watch": "^2.5.0"
+  }
+}
