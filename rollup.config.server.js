@@ -1,3 +1,5 @@
+import json from 'rollup-plugin-json';
+
 export default {
 	entry: './src/server.js',
 	dest: './dist/server.js',
@@ -7,5 +9,8 @@ export default {
 		'express',
 		'node-fetch',
 		'body-parser'
+	],
+	plugins: [
+		json()
 	]
 };

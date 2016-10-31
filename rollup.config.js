@@ -1,3 +1,5 @@
+import json from 'rollup-plugin-json';
+
 export default {
 	entry: './src/index.js',
 	targets: [
@@ -12,5 +14,8 @@ export default {
 	],
 	external: [
 		'ical.js'
+	],
+	plugins: [
+		json()
 	]
 };

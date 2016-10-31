@@ -14,4 +14,13 @@ for(const file of files){
 	}
 }
 
-console.log(merge(inputs));
+let options = {};
+
+if(process.env.CALNAME)
+	options.calname = process.env.CALNAME;
+if(process.env.TIMEZONE)
+	options.timezone = process.env.TIMEZONE;
+if(process.env.CALDESC)
+	options.caldesc = process.env.CALDESC;
+
+console.log(merge(inputs, options));

@@ -9394,9 +9394,12 @@ ICAL.ComponentParser = (function() {
 }());
 });
 
-function merge(inputs){
+var icalMerger = {"prodid":"-//Jacob Mischka//iCal Merger//EN","version":"2.0"};
+
+function merge(inputs, options){
 	var i$2 = arguments.length, argsArray = Array(i$2);
 	while ( i$2-- ) argsArray[i$2] = arguments[i$2];
+	if ( options === void 0 ) options = {};
 
 	if(!Array.isArray(inputs))
 		{ inputs = [].concat( argsArray ); }
@@ -9410,6 +9413,15 @@ function merge(inputs){
 
 		if(!calendar) {
 			calendar = cal;
+			calendar.updatePropertyWithValue('prodid', icalMerger.prodid);
+			calendar.updatePropertyWithValue('version', icalMerger.version);
+
+			if(options.calname)
+				{ calendar.updatePropertyWithValue('x-wr-calname', options.calname); }
+			if(options.timezone)
+				{ calendar.updatePropertyWithValue('x-wr-timezone', options.timezone); }
+			if(options.caldesc)
+				{ calendar.updatePropertyWithValue('x-wr-caldesc', options.caldesc); }
 		}
 		else {
 			for(var i$1 = 0, list$1 = cal.getAllSubcomponents('vevent'); i$1 < list$1.length; i$1 += 1){

@@ -1,6 +1,8 @@
 import ICAL from 'ical.js';
 
-export default function merge(inputs){
+import { icalMerger } from '../package.json';
+
+export default function merge(inputs, options = {}){
 	if(!Array.isArray(inputs))
 		inputs = [...arguments];
 
@@ -11,6 +13,15 @@ export default function merge(inputs){
 
 		if(!calendar) {
 			calendar = cal;
+			calendar.updatePropertyWithValue('prodid', icalMerger.prodid);
+			calendar.updatePropertyWithValue('version', icalMerger.version);
+
+			if(options.calname)
+				calendar.updatePropertyWithValue('x-wr-calname', options.calname);
+			if(options.timezone)
+				calendar.updatePropertyWithValue('x-wr-timezone', options.timezone);
+			if(options.caldesc)
+				calendar.updatePropertyWithValue('x-wr-caldesc', options.caldesc);
 		}
 		else {
 			for(let vevent of cal.getAllSubcomponents('vevent')){

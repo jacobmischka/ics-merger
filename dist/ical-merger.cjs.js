@@ -4,7 +4,9 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var ICAL = _interopDefault(require('ical.js'));
 
-function merge(inputs){
+var icalMerger = {"prodid":"-//Jacob Mischka//iCal Merger//EN","version":"2.0"};
+
+function merge(inputs, options = {}){
 	if(!Array.isArray(inputs))
 		inputs = [...arguments];
 
@@ -15,6 +17,15 @@ function merge(inputs){
 
 		if(!calendar) {
 			calendar = cal;
+			calendar.updatePropertyWithValue('prodid', icalMerger.prodid);
+			calendar.updatePropertyWithValue('version', icalMerger.version);
+
+			if(options.calname)
+				calendar.updatePropertyWithValue('x-wr-calname', options.calname);
+			if(options.timezone)
+				calendar.updatePropertyWithValue('x-wr-timezone', options.timezone);
+			if(options.caldesc)
+				calendar.updatePropertyWithValue('x-wr-caldesc', options.caldesc);
 		}
 		else {
 			for(let vevent of cal.getAllSubcomponents('vevent')){
