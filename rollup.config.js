@@ -1,3 +1,4 @@
+import * as path from 'path';
 import json from 'rollup-plugin-json';
 
 export default {
@@ -12,10 +13,11 @@ export default {
 			format: 'cjs'
 		}
 	],
-	external: [
-		'ical.js'
-	],
 	plugins: [
 		json()
+	],
+	external: [
+		path.resolve('./.env.json'),
+		'ical.js'
 	]
 };

@@ -1,3 +1,4 @@
+import * as path from 'path';
 import buble from 'rollup-plugin-buble';
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
@@ -19,5 +20,8 @@ export default {
 		nodeResolve({
 			jsnext: true
 		})
+	],
+	external: [
+		path.resolve('./.env.json')
 	]
 };

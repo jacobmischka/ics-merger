@@ -7,6 +7,15 @@ import dotenv from '../.env.json';
 
 const app = express();
 
+app.get('/.env.json', (req, res) => {
+	let options = {
+		root: './',
+		dotfiles: 'allow'
+	};
+
+	res.sendFile('.env.json', options);
+});
+
 app.get('/combine.ics', (req, res) => {
 	if(!req.query.urls){
 		res.sendStatus(400);
@@ -27,22 +36,28 @@ app.get('/combine.ics', (req, res) => {
 	});
 });
 
-app.get('/basic.ics', (req, res) => {
-	if(!dotenv || !dotenv.basic || !dotenv.basic.urls || !Array.isArray(dotenv.basic.urls)){
-		res.sendStatus(501);
-		return;
+if(dotenv && dotenv.calendars){
+	for(let calendarName in dotenv.calendars){
+		let calendarConfig = dotenv.calendars[calendarName];
+
+		app.get(`/${calendarName}.ics`, (req, res) => {
+			if(!calendarConfig.urls){
+				res.sendStatus(501);
+				return;
+			}
+
+			let icals = getIcalsFromUrls(calendarConfig.urls);
+
+			setHeaders(res);
+
+			let options = Object.assign({}, calendarConfig);
+
+			icals.then(icals => {
+				res.send(merge(icals, options));
+			});
+		});
 	}
-
-	let icals = getIcalsFromUrls(dotenv.basic.urls);
-
-	setHeaders(res);
-
-	let options = Object.assign({}, dotenv.basic);
-
-	icals.then(icals => {
-		res.send(merge(icals, options));
-	});
-});
+}
 
 function setHeaders(res){
 	res.set('Expires', 'Mon, 01 Jan 1990 00:00:00 GMT');
