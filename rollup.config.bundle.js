@@ -1,12 +1,14 @@
+import * as path from 'path';
 import buble from 'rollup-plugin-buble';
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import json from 'rollup-plugin-json';
 
 export default {
-	entry: './src/web.js',
-	dest: './public/js/bundle.js',
+	entry: './src/index.js',
+	dest: './dist/ical-merger.bundle.js',
 	format: 'umd',
+	moduleName: 'icalMerger',
 	plugins: [
 		json(),
 		commonjs(),
@@ -18,5 +20,8 @@ export default {
 		nodeResolve({
 			jsnext: true
 		})
+	],
+	external: [
+		path.resolve('./.env.json')
 	]
 };

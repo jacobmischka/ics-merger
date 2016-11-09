@@ -7,6 +7,8 @@ import dotenv from '../.env.json';
 
 const app = express();
 
+app.use(express.static('public'));
+
 app.get('/.env.json', (req, res) => {
 	let options = {
 		root: './',
