@@ -1,13 +1,16 @@
 {
 	"parserOptions": {
 		"ecmaVersion": 6,
-		"sourceType": "module"
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
 	},
 	"env": {
 		"browser": true,
 		"es6": true
 	},
-	"extends": "eslint:recommended",
+	"extends": ["eslint:recommended", "plugin:react/recommended"],
 	"rules": {
 		"no-console": "off",
 		"no-var": "warn",
@@ -17,5 +20,6 @@
 		"comma-style": "warn",
 		"comma-spacing": "warn",
 		"key-spacing": "warn"
-	}
+	},
+	"plugins": ["react"]
 }
