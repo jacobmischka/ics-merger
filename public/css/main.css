@@ -3,6 +3,7 @@
  * Docs & License: http://fullcalendar.io/
  * (c) 2016 Adam Shaw
  */
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans");
 .fc {
   direction: ltr;
   text-align: left; }
@@ -1201,3 +1202,26 @@ be a descendant of the grid when it is being dragged.
 .fc-unthemed .fc-list-empty {
   /* theme will provide own background */
   background-color: #eee; }
+
+.fc-event {
+  border-radius: 0; }
+  .fc-event .event {
+    font-family: 'Noto Sans', sans-serif;
+    color: rgba(0, 0, 0, 0.85);
+    padding: 0.5em; }
+    .fc-event .event .event-time {
+      font-size: 1.25em;
+      margin: 0 0.5em 0 0;
+      text-transform: uppercase; }
+    .fc-event .event .event-desc {
+      display: none;
+      font-size: 0.9em; }
+    .fc-event .event.all-day .event-time {
+      background: #bfbfbf;
+      border-radius: 2px;
+      padding: 0.15em 0.5em; }
+  .fc-event.active .event .event-title {
+    display: block;
+    margin: 1em 0; }
+  .fc-event.active .event .event-desc {
+    display: block; }

@@ -58,6 +58,12 @@ export default class FullCalendar extends React.Component {
 				ReactDOM.render(<CalendarEvent event={calEvent} />, element[0]);
 			},
 			eventClick(){
+				$('.fc-event.active').each(element => {
+					if(this !== element)
+						$(element).removeClass('active');
+				});
+				$(this).toggleClass('active');
+
 				return false;
 			}
 		});

@@ -30,10 +30,17 @@ export default class App extends React.Component {
 			let googleCalendarIds = calendar.ids;
 			let eventSources = googleCalendarIds.map((id, index) => {
 				let color = Color(COLORS[index]);
+				let backgroundColor = color.clone().alpha(0.34);
+				let activeColor = color.clone().lighten(0.1);
 				return {
 					googleCalendarId: id,
-					color: color.hexString(),
-					textColor: color.light() ? 'black' : 'white'
+					color: color.rgbString(),
+					backgroundColor: backgroundColor.rgbString(),
+					eventDataTransform(eventData){
+						return Object.assign(eventData, {
+							activeColor: activeColor.rgbString()
+						});
+					}
 				};
 			});
 

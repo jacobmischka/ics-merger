@@ -1,16 +1,51 @@
 @import "imports/fullcalendar";
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
-.event {
+.fc-event {
+	border-radius: 0;
 
-	.event-time {
+	.event {
+		font-family: 'Noto Sans', sans-serif;
+		color: rgba(0, 0, 0, 0.85);
+		padding: 0.5em;
 
+		.event-time {
+			font-size: 1.25em;
+			margin: 0 0.5em 0 0;
+			text-transform: uppercase;
+		}
+
+		.event-title {
+
+		}
+
+		.event-desc {
+			display: none;
+			font-size: 0.9em;
+		}
+
+		&.all-day {
+
+			.event-time {
+				background: #bfbfbf;
+				border-radius: 2px;
+				padding: 0.15em 0.5em;
+			}
+		}
 	}
 
-	.event-title {
+	&.active {
 
-	}
+		.event {
 
-	.event-desc {
+			.event-title {
+				display: block;
+				margin: 1em 0;
+			}
 
+			.event-desc {
+				display: block;
+			}
+		}
 	}
 }
