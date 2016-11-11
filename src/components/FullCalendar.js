@@ -24,6 +24,22 @@ export default class FullCalendar extends React.Component {
 		);
 	}
 
+	shouldComponentUpdate(nextProps){
+		if(this.props.apiKey !== nextProps.apiKey)
+			return true;
+
+		if(this.props.eventSources.length !== nextProps.eventSources.length)
+			return true;
+
+		for(let i = 0; i < this.props.eventSources.length; i++){
+			if(this.props.eventSources[i].googleCalendarId !==
+					nextProps.eventSources[i].googleCalendarId)
+				return true;
+		}
+
+		return false;
+	}
+
 	componentDidMount(){
 		this.createCalendar();
 	}
@@ -45,26 +61,27 @@ export default class FullCalendar extends React.Component {
 	}
 
 	createCalendar(){
+		const setActive = this.props.setActiveEvent;
+
 		$(`#${this.state.calendarId}`).fullCalendar({
 			googleCalendarApiKey: this.props.apiKey,
 			eventSources: this.props.eventSources,
+			height: 'auto',
+			fixedWeekCount: false,
 			header: {
 				left: 'title',
 				center: 'month,agendaWeek,agendaDay',
 				right: 'today prev,next'
 			},
 			navLinks: true,
-			eventRender(calEvent, element){
-				ReactDOM.render(<CalendarEvent event={calEvent} />, element[0]);
-			},
-			eventClick(){
-				$('.fc-event.active').each(element => {
-					if(this !== element)
-						$(element).removeClass('active');
-				});
-				$(this).toggleClass('active');
-
-				return false;
+			eventRender(calEvent, element, view){
+				let div = document.createElement('div');
+				div.className = 'event-container';
+				if(view && view.name && view.name.startsWith('agenda'))
+					div.style.position = 'absolute';
+				ReactDOM.render(<CalendarEvent event={calEvent} view={view}
+					setActive={setActive} />, div);
+				return div;
 			}
 		});
 	}
@@ -72,5 +89,6 @@ export default class FullCalendar extends React.Component {
 
 FullCalendar.propTypes = {
 	apiKey: React.PropTypes.string.isRequired,
-	eventSources: React.PropTypes.array.isRequired
+	eventSources: React.PropTypes.array.isRequired,
+	setActiveEvent: React.PropTypes.func
 };

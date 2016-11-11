@@ -1,6 +1,16 @@
 import React from 'react';
+import Color from 'color';
 
 export default class CalendarEvent extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			active: false
+		};
+
+		this.handleClick = this.handleClick.bind(this);
+	}
+
 	render(){
 		let eventTime;
 		if(this.props.event.allDay){
@@ -21,8 +31,25 @@ export default class CalendarEvent extends React.Component {
 			eventTime = `${startTime} – ${endTime}`;
 		}
 
+		let className = 'event';
+		if(this.props.event.allDay)
+			className += ' all-day';
+		if(this.state.active)
+			className += ' active';
+
+		let color = Color(this.props.event.color);
+
+		let style = {
+			border: `1px solid ${color.rgbString()}`,
+			backgroundColor: color.alpha(0.3).rgbString()
+		};
+
+		style = Object.assign(style, this.props.style);
+
 		return (
-			<div className={`event ${this.props.event.allDay ? 'all-day' : ''}`}>
+			<div className={className} style={style}
+					onClick={this.props.onClick || this.handleClick}
+					ref={div => this.container = div}>
 				<span className="event-time">
 					{eventTime}
 				</span>
@@ -33,8 +60,39 @@ export default class CalendarEvent extends React.Component {
 			</div>
 		);
 	}
+
+	handleClick(){
+		// Work around ClientRect not resolving immediately
+		const {
+			top,
+			right,
+			bottom,
+			left,
+			width,
+			height
+		} = this.container.getBoundingClientRect();
+		const size = {
+			top,
+			right,
+			bottom,
+			left,
+			width,
+			height
+		};
+
+		this.props.setActive(this.props.event, size);
+		this.setState(state => {
+			return {
+				active: !state.active
+			};
+		});
+	}
 }
 
 CalendarEvent.propTypes = {
-	event: React.PropTypes.object
+	event: React.PropTypes.object.isRequired,
+	view: React.PropTypes.object,
+	setActive: React.PropTypes.func,
+	onClick: React.PropTypes.func,
+	style: React.PropTypes.object
 };

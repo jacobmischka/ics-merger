@@ -1203,25 +1203,40 @@ be a descendant of the grid when it is being dragged.
   /* theme will provide own background */
   background-color: #eee; }
 
-.fc-event {
-  border-radius: 0; }
-  .fc-event .event {
-    font-family: 'Noto Sans', sans-serif;
-    color: rgba(0, 0, 0, 0.85);
-    padding: 0.5em; }
-    .fc-event .event .event-time {
-      font-size: 1.25em;
-      margin: 0 0.5em 0 0;
-      text-transform: uppercase; }
-    .fc-event .event .event-desc {
-      display: none;
-      font-size: 0.9em; }
-    .fc-event .event.all-day .event-time {
-      background: #bfbfbf;
-      border-radius: 2px;
-      padding: 0.15em 0.5em; }
-  .fc-event.active .event .event-title {
+body {
+  font-size: 0.7em; }
+  @media (min-width: 768px) {
+    body {
+      font-size: 0.75em; } }
+  @media (min-width: 996px) {
+    body {
+      font-size: 0.9em; } }
+  @media (min-width: 1200px) {
+    body {
+      font-size: 1em; } }
+
+.event-container {
+  background-color: #fff; }
+
+.event {
+  font-family: 'Noto Sans', sans-serif;
+  color: rgba(0, 0, 0, 0.85);
+  padding: 0.5em;
+  margin: 1px;
+  cursor: pointer; }
+  .event .event-time {
+    font-size: 1em;
+    margin: 0 0.5em 0 0;
+    text-transform: uppercase; }
+  .event .event-title {
     display: block;
-    margin: 1em 0; }
-  .fc-event.active .event .event-desc {
-    display: block; }
+    font-size: 0.85em; }
+  .event .event-desc {
+    display: none;
+    font-size: 0.75em;
+    word-wrap: break-word;
+    white-space: pre-line; }
+  .event.all-day .event-time {
+    background: #bfbfbf;
+    border-radius: 2px;
+    padding: 0.15em 0.5em; }
