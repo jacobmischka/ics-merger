@@ -31400,6 +31400,7 @@
 	
 					var activeEventNode = this.state.activeEvent ? _react2.default.createElement(_ActiveEvent2.default, { event: this.state.activeEvent,
 						originalPosition: this.state.activeEventOriginalPosition,
+						originalScroll: this.state.activeEventOriginalScroll,
 						onClose: this.handleUnsetActiveEvent }) : null;
 	
 					return _react2.default.createElement(
@@ -31426,10 +31427,11 @@
 			}
 		}, {
 			key: 'handleSetActiveEvent',
-			value: function handleSetActiveEvent(calEvent, position) {
+			value: function handleSetActiveEvent(calEvent, position, scroll) {
 				this.setState({
 					activeEvent: calEvent,
-					activeEventOriginalPosition: position
+					activeEventOriginalPosition: position,
+					activeEventOriginalScroll: scroll
 				});
 			}
 		}, {
@@ -70349,6 +70351,8 @@
 				active: false
 			};
 	
+			_this.getEventTime = _this.getEventTime.bind(_this);
+			_this.getClassName = _this.getClassName.bind(_this);
 			_this.handleClick = _this.handleClick.bind(_this);
 			return _this;
 		}
@@ -70358,6 +70362,38 @@
 			value: function render() {
 				var _this2 = this;
 	
+				var eventTime = this.getEventTime();
+				var className = this.getClassName();
+	
+				var color = (0, _color2.default)(this.props.event.color);
+	
+				var style = {
+					border: '1px solid ' + color.rgbString(),
+					backgroundColor: color.alpha(0.3).rgbString()
+				};
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: className, style: style,
+						onClick: this.handleClick,
+						ref: function ref(div) {
+							return _this2.container = div;
+						} },
+					_react2.default.createElement(
+						'span',
+						{ className: 'event-time' },
+						eventTime
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'event-title' },
+						this.props.event.title
+					)
+				);
+			}
+		}, {
+			key: 'getEventTime',
+			value: function getEventTime() {
 				var eventTime = void 0;
 				if (this.props.event.allDay) {
 					eventTime = 'All day';
@@ -70372,47 +70408,23 @@
 					eventTime = startTime + ' \u2013 ' + endTime;
 				}
 	
+				return eventTime;
+			}
+		}, {
+			key: 'getClassName',
+			value: function getClassName() {
 				var className = 'event';
 				if (this.props.event.allDay) className += ' all-day';
-				if (this.state.active) className += ' active';
 	
-				var color = (0, _color2.default)(this.props.event.color);
-	
-				var style = {
-					border: '1px solid ' + color.rgbString(),
-					backgroundColor: color.alpha(0.3).rgbString()
-				};
-	
-				style = Object.assign(style, this.props.style);
-	
-				return _react2.default.createElement(
-					'div',
-					{ className: className, style: style,
-						onClick: this.props.onClick || this.handleClick,
-						ref: function ref(div) {
-							return _this2.container = div;
-						} },
-					_react2.default.createElement(
-						'span',
-						{ className: 'event-time' },
-						eventTime
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'event-title' },
-						this.props.event.title
-					),
-					_react2.default.createElement(
-						'p',
-						{ className: 'event-desc' },
-						this.props.event.description
-					)
-				);
+				return className;
 			}
 		}, {
 			key: 'handleClick',
-			value: function handleClick() {
+			value: function handleClick(event) {
+				event.preventDefault();
+				console.log('calevent');
 				// Work around ClientRect not resolving immediately
+	
 				var _container$getBoundin = this.container.getBoundingClientRect(),
 				    top = _container$getBoundin.top,
 				    right = _container$getBoundin.right,
@@ -70421,7 +70433,7 @@
 				    width = _container$getBoundin.width,
 				    height = _container$getBoundin.height;
 	
-				var size = {
+				var rect = {
 					top: top,
 					right: right,
 					bottom: bottom,
@@ -70429,8 +70441,12 @@
 					width: width,
 					height: height
 				};
+				var scroll = {
+					x: window.scrollX,
+					y: window.scrollY
+				};
 	
-				this.props.setActive(this.props.event, size);
+				this.props.setActive(this.props.event, rect, scroll);
 				this.setState(function (state) {
 					return {
 						active: !state.active
@@ -70448,9 +70464,7 @@
 	CalendarEvent.propTypes = {
 		event: _react2.default.PropTypes.object.isRequired,
 		view: _react2.default.PropTypes.object,
-		setActive: _react2.default.PropTypes.func,
-		onClick: _react2.default.PropTypes.func,
-		style: _react2.default.PropTypes.object
+		setActive: _react2.default.PropTypes.func
 	};
 
 /***/ },
@@ -74535,9 +74549,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _CalendarEvent = __webpack_require__(599);
+	var _CalendarEvent2 = __webpack_require__(599);
 	
-	var _CalendarEvent2 = _interopRequireDefault(_CalendarEvent);
+	var _CalendarEvent3 = _interopRequireDefault(_CalendarEvent2);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -74547,8 +74561,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var ActiveEvent = function (_React$Component) {
-		_inherits(ActiveEvent, _React$Component);
+	var ActiveEvent = function (_CalendarEvent) {
+		_inherits(ActiveEvent, _CalendarEvent);
 	
 		function ActiveEvent(props) {
 			_classCallCheck(this, ActiveEvent);
@@ -74559,6 +74573,7 @@
 				expanded: false
 			};
 	
+			_this.handleOutsideClick = _this.handleOutsideClick.bind(_this);
 			_this.handleClick = _this.handleClick.bind(_this);
 			return _this;
 		}
@@ -74566,8 +74581,10 @@
 		_createClass(ActiveEvent, [{
 			key: 'render',
 			value: function render() {
-				var left = this.props.originalPosition.left - 1 - this.props.originalPosition.width / 2;
-				var top = this.props.originalPosition.top - 1 - this.props.originalPosition.height / 2;
+				var _this2 = this;
+	
+				var left = this.props.originalPosition.left - 1 + this.props.originalScroll.x;
+				var top = this.props.originalPosition.top - 1 + this.props.originalScroll.y;
 				var style = {
 					boxSizing: 'border-box',
 					position: 'absolute',
@@ -74575,48 +74592,98 @@
 					top: 0,
 					width: this.props.originalPosition.width * 2,
 					height: this.props.originalPosition.height * 2,
-					transform: 'translate(' + left + 'px, ' + top + 'px) scale(0.5)',
+					maxWidth: '90vw',
+					maxHeight: '90vh',
+					transform: 'translate(calc(' + left + 'px - 25%), calc(' + top + 'px - 25%)) scale(0.5)',
 					backgroundColor: 'orange',
 					border: '1px solid red',
 					zIndex: 100,
 					transitionDuration: '0.15s',
 					transitionProperty: 'left, top, width, height, transform',
-					fontSize: '2em'
+					fontSize: '2em',
+					overflow: 'hidden',
+					cursor: 'auto'
 				};
 	
 				if (this.state.expanded) {
-					style.transform = 'translate(' + left + 'px, ' + top + 'px)';
+					style.height = null;
+					style.position = 'fixed';
+					style.transform = 'translate(calc(50vw - 50%), calc(50vh - 50%))';
+					style.boxShadow = '0 0 20px 5px rgba(0, 0, 0, 0.5)';
 				}
 	
-				return _react2.default.createElement(_CalendarEvent2.default, { key: 'active-event', event: this.props.event,
-					style: style, onClick: this.handleClick });
+				var eventTime = this.getEventTime();
+				var className = this.getClassName();
+				className += ' active-event';
+	
+				return _react2.default.createElement(
+					'div',
+					{ key: 'active-event', className: className, style: style,
+						ref: function ref(div) {
+							return _this2.container = div;
+						} },
+					_react2.default.createElement(
+						'span',
+						{ className: 'event-time' },
+						eventTime
+					),
+					_react2.default.createElement(
+						'span',
+						{ className: 'event-title' },
+						this.props.event.title
+					),
+					_react2.default.createElement(
+						'p',
+						{ className: 'event-desc' },
+						this.props.event.description
+					)
+				);
 			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				var _this2 = this;
+				var _this3 = this;
 	
 				window.requestAnimationFrame(function () {
 					window.requestAnimationFrame(function () {
-						_this2.setState({ expanded: true });
+						_this3.setState({ expanded: true });
+	
+						document.addEventListener('click', _this3.handleOutsideClick);
 					});
 				});
 			}
 		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				document.removeEventListener('click', this.handleOutsideClick);
+			}
+		}, {
 			key: 'handleClick',
 			value: function handleClick() {
-				var _this3 = this;
+				var _this4 = this;
 	
 				window.requestAnimationFrame(function () {
-					_this3.setState({ expanded: false }, function () {
-						window.setTimeout(_this3.props.onClose, 130);
+					_this4.setState({ expanded: false }, function () {
+						window.setTimeout(_this4.props.onClose, 140);
 					});
+				});
+			}
+		}, {
+			key: 'handleOutsideClick',
+			value: function handleOutsideClick(event) {
+				var _this5 = this;
+	
+				if (event.defaultPrevented) return;
+	
+				window.requestAnimationFrame(function () {
+					var rect = _this5.container.getBoundingClientRect();
+					if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) _this5.handleClick();
 				});
 			}
 		}]);
 	
 		return ActiveEvent;
-	}(_react2.default.Component);
+	}(_CalendarEvent3.default);
 	
 	exports.default = ActiveEvent;
 	
@@ -74624,6 +74691,7 @@
 	ActiveEvent.propTypes = {
 		event: _react2.default.PropTypes.object.isRequired,
 		originalPosition: _react2.default.PropTypes.object,
+		originalScroll: _react2.default.PropTypes.object,
 		onClose: _react2.default.PropTypes.func
 	};
 

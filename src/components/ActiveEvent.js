@@ -2,21 +2,22 @@ import React from 'react';
 
 import CalendarEvent from './CalendarEvent.js';
 
-export default class ActiveEvent extends React.Component {
+export default class ActiveEvent extends CalendarEvent {
 	constructor(props){
 		super(props);
 		this.state = {
 			expanded: false
 		};
 
+		this.handleOutsideClick = this.handleOutsideClick.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 	}
 
 	render(){
 		let left = (this.props.originalPosition.left - 1)
-			- (this.props.originalPosition.width / 2);
+			+ this.props.originalScroll.x;
 		let top = (this.props.originalPosition.top - 1)
-			- (this.props.originalPosition.height / 2);
+			+ this.props.originalScroll.y;
 		let style = {
 			boxSizing: 'border-box',
 			position: 'absolute',
@@ -24,23 +25,42 @@ export default class ActiveEvent extends React.Component {
 			top: 0,
 			width: this.props.originalPosition.width * 2,
 			height: this.props.originalPosition.height * 2,
-			transform: `translate(${left}px, ${top}px) scale(0.5)`,
+			maxWidth: '90vw',
+			maxHeight: '90vh',
+			transform: `translate(calc(${left}px - 25%), calc(${top}px - 25%)) scale(0.5)`,
 			backgroundColor: 'orange',
 			border: '1px solid red',
 			zIndex: 100,
 			transitionDuration: '0.15s',
 			transitionProperty: 'left, top, width, height, transform',
-			fontSize: '2em'
+			fontSize: '2em',
+			overflow: 'hidden',
+			cursor: 'auto'
 		};
 
 		if(this.state.expanded){
-			style.transform = `translate(${left}px, ${top}px)`;
+			style.height = null;
+			style.position = 'fixed';
+			style.transform = 'translate(calc(50vw - 50%), calc(50vh - 50%))';
+			style.boxShadow = '0 0 20px 5px rgba(0, 0, 0, 0.5)';
 		}
+
+		let eventTime = this.getEventTime();
+		let className = this.getClassName();
+		className += ' active-event';
 
 
 		return (
-			<CalendarEvent key="active-event" event={this.props.event}
-				style={style} onClick={this.handleClick} />
+			<div key="active-event" className={className} style={style}
+					ref={div => this.container = div}>
+				<span className="event-time">
+					{eventTime}
+				</span>
+				<span className="event-title">{this.props.event.title}</span>
+				<p className="event-desc">
+					{this.props.event.description}
+				</p>
+			</div>
 		);
 	}
 
@@ -48,15 +68,33 @@ export default class ActiveEvent extends React.Component {
 		window.requestAnimationFrame(() => {
 			window.requestAnimationFrame(() => {
 				this.setState({expanded: true});
+
+				document.addEventListener('click', this.handleOutsideClick);
 			});
 		});
+	}
+
+	componentWillUnmount(){
+		document.removeEventListener('click', this.handleOutsideClick);
 	}
 
 	handleClick(){
 		window.requestAnimationFrame(() => {
 			this.setState({expanded: false}, () => {
-				window.setTimeout(this.props.onClose, 130);
+				window.setTimeout(this.props.onClose, 140);
 			});
+		});
+	}
+
+	handleOutsideClick(event){
+		if(event.defaultPrevented)
+			return;
+
+		window.requestAnimationFrame(() => {
+			let rect =  this.container.getBoundingClientRect();
+			if(event.clientX < rect.left || event.clientX > rect.right
+					|| event.clientY < rect.top || event.clientY > rect.bottom)
+				this.handleClick();
 		});
 	}
 }
@@ -64,5 +102,6 @@ export default class ActiveEvent extends React.Component {
 ActiveEvent.propTypes = {
 	event: React.PropTypes.object.isRequired,
 	originalPosition: React.PropTypes.object,
+	originalScroll: React.PropTypes.object,
 	onClose: React.PropTypes.func
 };

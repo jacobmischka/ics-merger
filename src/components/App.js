@@ -48,6 +48,7 @@ export default class App extends React.Component {
 				? (
 					<ActiveEvent event={this.state.activeEvent}
 						originalPosition={this.state.activeEventOriginalPosition}
+						originalScroll={this.state.activeEventOriginalScroll}
 						onClose={this.handleUnsetActiveEvent}/>
 				)
 				: null;
@@ -72,10 +73,11 @@ export default class App extends React.Component {
 		}
 	}
 
-	handleSetActiveEvent(calEvent, position){
+	handleSetActiveEvent(calEvent, position, scroll){
 		this.setState({
 			activeEvent: calEvent,
-			activeEventOriginalPosition: position
+			activeEventOriginalPosition: position,
+			activeEventOriginalScroll: scroll
 		});
 	}
 

@@ -1232,7 +1232,6 @@ body {
     display: block;
     font-size: 0.85em; }
   .event .event-desc {
-    display: none;
     font-size: 0.75em;
     word-wrap: break-word;
     white-space: pre-line; }
