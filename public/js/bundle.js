@@ -31363,8 +31363,10 @@
 			_this.state = {
 				GOOGLE_CALENDAR_API_KEY: '',
 				calendars: [],
+				calendarGroups: [],
 				calendarId: 'basic',
-				activeEvent: null
+				activeEvent: null,
+				activeEventOriginalElement: null
 			};
 	
 			fetch('/.env.json').then(function (response) {
@@ -31383,24 +31385,30 @@
 		_createClass(App, [{
 			key: 'render',
 			value: function render() {
-				var calendar = this.state.calendars[this.state.calendarId];
+				var _this2 = this;
+	
+				var calendar = this.state.calendarGroups[this.state.calendarId];
 				if (calendar) {
-					var googleCalendarIds = calendar.ids;
-					var eventSources = googleCalendarIds.map(function (id, index) {
+					var calendars = calendar.calendars;
+					var eventSources = calendars.map(function (id, index) {
+						var calendar = _this2.state.calendars[id];
+						var googleCalendarId = calendar.googleCalendarId;
 						var color = _constants.COLORS[index];
-						return {
-							googleCalendarId: id,
-							eventDataTransform: function eventDataTransform(eventData) {
-								return Object.assign(eventData, {
-									color: color
-								});
-							}
-						};
+						if (calendar && googleCalendarId && color) {
+							return {
+								googleCalendarId: googleCalendarId,
+								eventDataTransform: function eventDataTransform(eventData) {
+									return Object.assign(eventData, {
+										color: color,
+										calendar: calendar
+									});
+								}
+							};
+						}
 					});
 	
 					var activeEventNode = this.state.activeEvent ? _react2.default.createElement(_ActiveEvent2.default, { event: this.state.activeEvent,
-						originalPosition: this.state.activeEventOriginalPosition,
-						originalScroll: this.state.activeEventOriginalScroll,
+						originalElement: this.state.activeEventOriginalElement,
 						onClose: this.handleUnsetActiveEvent }) : null;
 	
 					return _react2.default.createElement(
@@ -31415,23 +31423,22 @@
 					return _react2.default.createElement(
 						'p',
 						null,
-						'No calendar',
+						'No calendar ',
 						_react2.default.createElement(
 							'code',
 							null,
 							this.state.calendarId
 						),
-						'found.'
+						' found.'
 					);
 				}
 			}
 		}, {
 			key: 'handleSetActiveEvent',
-			value: function handleSetActiveEvent(calEvent, position, scroll) {
+			value: function handleSetActiveEvent(calEvent, element) {
 				this.setState({
 					activeEvent: calEvent,
-					activeEventOriginalPosition: position,
-					activeEventOriginalScroll: scroll
+					activeEventOriginalElement: element
 				});
 			}
 		}, {
@@ -70422,31 +70429,8 @@
 			key: 'handleClick',
 			value: function handleClick(event) {
 				event.preventDefault();
-				console.log('calevent');
-				// Work around ClientRect not resolving immediately
 	
-				var _container$getBoundin = this.container.getBoundingClientRect(),
-				    top = _container$getBoundin.top,
-				    right = _container$getBoundin.right,
-				    bottom = _container$getBoundin.bottom,
-				    left = _container$getBoundin.left,
-				    width = _container$getBoundin.width,
-				    height = _container$getBoundin.height;
-	
-				var rect = {
-					top: top,
-					right: right,
-					bottom: bottom,
-					left: left,
-					width: width,
-					height: height
-				};
-				var scroll = {
-					x: window.scrollX,
-					y: window.scrollY
-				};
-	
-				this.props.setActive(this.props.event, rect, scroll);
+				this.props.setActive(this.props.event, this.container);
 				this.setState(function (state) {
 					return {
 						active: !state.active
@@ -74549,6 +74533,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _color = __webpack_require__(600);
+	
+	var _color2 = _interopRequireDefault(_color);
+	
 	var _CalendarEvent2 = __webpack_require__(599);
 	
 	var _CalendarEvent3 = _interopRequireDefault(_CalendarEvent2);
@@ -74573,6 +74561,7 @@
 				expanded: false
 			};
 	
+			_this.getEventDate = _this.getEventDate.bind(_this);
 			_this.handleOutsideClick = _this.handleOutsideClick.bind(_this);
 			_this.handleClick = _this.handleClick.bind(_this);
 			return _this;
@@ -74583,38 +74572,37 @@
 			value: function render() {
 				var _this2 = this;
 	
-				var left = this.props.originalPosition.left - 1 + this.props.originalScroll.x;
-				var top = this.props.originalPosition.top - 1 + this.props.originalScroll.y;
-				var style = {
-					boxSizing: 'border-box',
-					position: 'absolute',
-					left: 0,
-					top: 0,
-					width: this.props.originalPosition.width * 2,
-					height: this.props.originalPosition.height * 2,
-					maxWidth: '90vw',
-					maxHeight: '90vh',
-					transform: 'translate(calc(' + left + 'px - 25%), calc(' + top + 'px - 25%)) scale(0.5)',
-					backgroundColor: 'orange',
-					border: '1px solid red',
-					zIndex: 100,
-					transitionDuration: '0.15s',
-					transitionProperty: 'left, top, width, height, transform',
-					fontSize: '2em',
-					overflow: 'hidden',
-					cursor: 'auto'
-				};
+				var style = void 0;
+				if (!this.state.expanded) {
+					var rect = this.props.originalElement.getBoundingClientRect();
 	
-				if (this.state.expanded) {
-					style.height = null;
-					style.position = 'fixed';
-					style.transform = 'translate(calc(50vw - 50%), calc(50vh - 50%))';
-					style.boxShadow = '0 0 20px 5px rgba(0, 0, 0, 0.5)';
+					var left = rect.left - 1;
+					var top = rect.top - 1;
+	
+					var backgroundColor = (0, _color2.default)(this.props.event.color).lighten(0.6).rgbString();
+					var borderColor = this.props.event.color;
+	
+					style = {
+						width: rect.width * 2,
+						height: rect.height * 2,
+						transform: 'translate(calc(' + left + 'px - 25%), calc(' + top + 'px - 25%)) scale(0.5)',
+						backgroundColor: backgroundColor,
+						border: '2px solid ' + borderColor
+					};
 				}
 	
 				var eventTime = this.getEventTime();
+				var eventDate = this.getEventDate();
 				var className = this.getClassName();
 				className += ' active-event';
+				if (this.state.expanded) className += ' expanded';
+	
+				var headerStyle = void 0;
+				if (this.state.expanded) {
+					headerStyle = {
+						borderBottom: '5px solid ' + this.props.event.color
+					};
+				}
 	
 				return _react2.default.createElement(
 					'div',
@@ -74623,14 +74611,32 @@
 							return _this2.container = div;
 						} },
 					_react2.default.createElement(
-						'span',
-						{ className: 'event-time' },
-						eventTime
-					),
-					_react2.default.createElement(
-						'span',
-						{ className: 'event-title' },
-						this.props.event.title
+						'header',
+						{ style: headerStyle },
+						_react2.default.createElement(
+							'span',
+							{ className: 'event-date-time' },
+							_react2.default.createElement(
+								'span',
+								{ className: 'event-date' },
+								eventDate
+							),
+							_react2.default.createElement(
+								'span',
+								{ className: 'event-time' },
+								eventTime
+							)
+						),
+						_react2.default.createElement(
+							'span',
+							{ className: 'event-title' },
+							_react2.default.createElement(
+								'span',
+								{ className: 'event-calendar' },
+								this.props.event.calendar.calname
+							),
+							this.props.event.title
+						)
 					),
 					_react2.default.createElement(
 						'p',
@@ -74638,6 +74644,46 @@
 						this.props.event.description
 					)
 				);
+			}
+		}, {
+			key: 'getEventDate',
+			value: function getEventDate() {
+				var sameDay = this.props.event.start.isSame(this.props.event.end, 'day');
+				var sameDayAllDay = this.props.event.allDay && this.props.event.start.isSame(this.props.event.end.clone().subtract(1, 'day'));
+				if (sameDay || sameDayAllDay) {
+					return this.props.event.start.format('ll');
+				} else {
+					var startDate = void 0,
+					    endDate = void 0;
+					if (this.props.event.start.isSame(this.props.event.end, 'year')) {
+						startDate = this.props.event.start.format('MMM D');
+						endDate = this.props.event.end.format('ll');
+					} else {
+						var dateFormat = 'll';
+						startDate = this.props.event.start.format(dateFormat);
+						endDate = this.props.event.end.format(dateFormat);
+					}
+	
+					return _react2.default.createElement(
+						'span',
+						null,
+						_react2.default.createElement(
+							'span',
+							{ className: 'start-date' },
+							startDate
+						),
+						_react2.default.createElement(
+							'span',
+							null,
+							' \u2013 '
+						),
+						_react2.default.createElement(
+							'span',
+							{ className: 'end-date' },
+							endDate
+						)
+					);
+				}
 			}
 		}, {
 			key: 'componentDidMount',
@@ -74690,8 +74736,7 @@
 	
 	ActiveEvent.propTypes = {
 		event: _react2.default.PropTypes.object.isRequired,
-		originalPosition: _react2.default.PropTypes.object,
-		originalScroll: _react2.default.PropTypes.object,
+		originalElement: _react2.default.PropTypes.object,
 		onClose: _react2.default.PropTypes.func
 	};
 

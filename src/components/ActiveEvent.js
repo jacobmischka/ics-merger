@@ -1,4 +1,5 @@
 import React from 'react';
+import Color from 'color';
 
 import CalendarEvent from './CalendarEvent.js';
 
@@ -9,59 +10,95 @@ export default class ActiveEvent extends CalendarEvent {
 			expanded: false
 		};
 
+		this.getEventDate = this.getEventDate.bind(this);
 		this.handleOutsideClick = this.handleOutsideClick.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 	}
 
 	render(){
-		let left = (this.props.originalPosition.left - 1)
-			+ this.props.originalScroll.x;
-		let top = (this.props.originalPosition.top - 1)
-			+ this.props.originalScroll.y;
-		let style = {
-			boxSizing: 'border-box',
-			position: 'absolute',
-			left: 0,
-			top: 0,
-			width: this.props.originalPosition.width * 2,
-			height: this.props.originalPosition.height * 2,
-			maxWidth: '90vw',
-			maxHeight: '90vh',
-			transform: `translate(calc(${left}px - 25%), calc(${top}px - 25%)) scale(0.5)`,
-			backgroundColor: 'orange',
-			border: '1px solid red',
-			zIndex: 100,
-			transitionDuration: '0.15s',
-			transitionProperty: 'left, top, width, height, transform',
-			fontSize: '2em',
-			overflow: 'hidden',
-			cursor: 'auto'
-		};
+		let style;
+		if(!this.state.expanded){
+			let rect = this.props.originalElement.getBoundingClientRect();
 
-		if(this.state.expanded){
-			style.height = null;
-			style.position = 'fixed';
-			style.transform = 'translate(calc(50vw - 50%), calc(50vh - 50%))';
-			style.boxShadow = '0 0 20px 5px rgba(0, 0, 0, 0.5)';
+			let left = rect.left - 1;
+			let top = rect.top - 1;
+
+			let backgroundColor = Color(this.props.event.color).lighten(0.6).rgbString();
+			let borderColor = this.props.event.color;
+
+			style = {
+				width: rect.width * 2,
+				height: rect.height * 2,
+				transform: `translate(calc(${left}px - 25%), calc(${top}px - 25%)) scale(0.5)`,
+				backgroundColor: backgroundColor,
+				border: `2px solid ${borderColor}`
+			};
 		}
 
 		let eventTime = this.getEventTime();
+		let eventDate = this.getEventDate();
 		let className = this.getClassName();
 		className += ' active-event';
+		if(this.state.expanded)
+			className += ' expanded';
 
+		let headerStyle;
+		if(this.state.expanded){
+			headerStyle = {
+				borderBottom: `5px solid ${this.props.event.color}`
+			};
+		}
 
 		return (
 			<div key="active-event" className={className} style={style}
 					ref={div => this.container = div}>
-				<span className="event-time">
-					{eventTime}
-				</span>
-				<span className="event-title">{this.props.event.title}</span>
+				<header style={headerStyle}>
+					<span className="event-date-time">
+						<span className="event-date">{eventDate}</span>
+						<span className="event-time">{eventTime}</span>
+					</span>
+					<span className="event-title">
+						<span className="event-calendar">
+							{this.props.event.calendar.calname}
+						</span>
+						{this.props.event.title}
+					</span>
+				</header>
 				<p className="event-desc">
 					{this.props.event.description}
 				</p>
 			</div>
 		);
+	}
+
+	getEventDate(){
+		const sameDay = this.props.event.start.isSame(this.props.event.end, 'day');
+		const sameDayAllDay = this.props.event.allDay && this.props.event.start
+			.isSame(this.props.event.end.clone().subtract(1, 'day'));
+		if(sameDay || sameDayAllDay){
+			return this.props.event.start.format('ll');
+		}
+		else {
+			let startDate, endDate;
+			if(this.props.event.start.isSame(this.props.event.end, 'year')){
+				startDate = this.props.event.start.format('MMM D');
+				endDate = this.props.event.end.format('ll');
+
+			}
+			else {
+				const dateFormat = 'll';
+				startDate = this.props.event.start.format(dateFormat);
+				endDate = this.props.event.end.format(dateFormat);
+			}
+
+			return (
+				<span>
+					<span className="start-date">{startDate}</span>
+					<span> – </span>
+					<span className="end-date">{endDate}</span>
+				</span>
+			);
+		}
 	}
 
 	componentDidMount(){
@@ -101,7 +138,6 @@ export default class ActiveEvent extends CalendarEvent {
 
 ActiveEvent.propTypes = {
 	event: React.PropTypes.object.isRequired,
-	originalPosition: React.PropTypes.object,
-	originalScroll: React.PropTypes.object,
+	originalElement: React.PropTypes.object,
 	onClose: React.PropTypes.func
 };

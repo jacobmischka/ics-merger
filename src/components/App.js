@@ -11,8 +11,10 @@ export default class App extends React.Component {
 		this.state = {
 			GOOGLE_CALENDAR_API_KEY: '',
 			calendars: [],
+			calendarGroups: [],
 			calendarId: 'basic',
-			activeEvent: null
+			activeEvent: null,
+			activeEventOriginalElement: null,
 		};
 
 		fetch('/.env.json')
@@ -29,26 +31,30 @@ export default class App extends React.Component {
 	}
 
 	render(){
-		let calendar = this.state.calendars[this.state.calendarId];
+		let calendar = this.state.calendarGroups[this.state.calendarId];
 		if(calendar){
-			let googleCalendarIds = calendar.ids;
-			let eventSources = googleCalendarIds.map((id, index) => {
+			let calendars = calendar.calendars;
+			let eventSources = calendars.map((id, index) => {
+				let calendar = this.state.calendars[id];
+				let googleCalendarId = calendar.googleCalendarId;
 				let color = COLORS[index];
-				return {
-					googleCalendarId: id,
-					eventDataTransform(eventData){
-						return Object.assign(eventData, {
-							color: color
-						});
-					}
-				};
+				if(calendar && googleCalendarId && color){
+					return {
+						googleCalendarId: googleCalendarId,
+						eventDataTransform(eventData){
+							return Object.assign(eventData, {
+								color: color,
+								calendar: calendar
+							});
+						}
+					};
+				}
 			});
 
 			let activeEventNode = this.state.activeEvent
 				? (
 					<ActiveEvent event={this.state.activeEvent}
-						originalPosition={this.state.activeEventOriginalPosition}
-						originalScroll={this.state.activeEventOriginalScroll}
+						originalElement={this.state.activeEventOriginalElement}
 						onClose={this.handleUnsetActiveEvent}/>
 				)
 				: null;
@@ -65,19 +71,16 @@ export default class App extends React.Component {
 		else {
 			return (
 				<p>
-					No calendar
-					<code>{this.state.calendarId}</code>
-					found.
+					No calendar <code>{this.state.calendarId}</code> found.
 				</p>
 			);
 		}
 	}
 
-	handleSetActiveEvent(calEvent, position, scroll){
+	handleSetActiveEvent(calEvent, element){
 		this.setState({
 			activeEvent: calEvent,
-			activeEventOriginalPosition: position,
-			activeEventOriginalScroll: scroll
+			activeEventOriginalElement: element
 		});
 	}
 

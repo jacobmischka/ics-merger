@@ -38,9 +38,9 @@ app.get('/combine.ics', (req, res) => {
 	});
 });
 
-if(dotenv && dotenv.calendars){
-	for(let calendarName in dotenv.calendars){
-		let calendarConfig = dotenv.calendars[calendarName];
+if(dotenv && dotenv.calendarGroups){
+	for(let calendarName in dotenv.calendarGroups){
+		let calendarConfig = dotenv.calendarGroups[calendarName];
 
 		app.get(`/${calendarName}.ics`, (req, res) => {
 			if(!calendarConfig.urls){
@@ -48,7 +48,9 @@ if(dotenv && dotenv.calendars){
 				return;
 			}
 
-			let icals = getIcalsFromUrls(calendarConfig.urls);
+			let calendars = calendarConfig.calendars;
+			let urls = calendars.map(calId => dotenv.calendars[calId].url);
+			let icals = getIcalsFromUrls(urls);
 
 			setHeaders(res);
 
