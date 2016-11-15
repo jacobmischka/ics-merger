@@ -29,6 +29,11 @@ body {
 		font-size: 1em;
 	}
 
+	h1 {
+		font-size: 2.5em;
+		text-align: center;
+	}
+
 	h2 {
 		font-size: 2em;
 		font-weight: normal;
@@ -168,5 +173,17 @@ body {
 				padding: 0 2em 1em;
 			}
 		}
+	}
+}
+
+.calendar-legend-item {
+	display: flex;
+	align-items: center;
+
+	.calendar-legend-color {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		margin: 0 0.5em 0 0;
 	}
 }

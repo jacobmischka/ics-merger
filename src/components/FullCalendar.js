@@ -32,7 +32,8 @@ export default class FullCalendar extends React.Component {
 			return true;
 
 		for(let i = 0; i < this.props.eventSources.length; i++){
-			if(this.props.eventSources[i].googleCalendarId !==
+			if(!this.props.eventSources[i] || !nextProps.eventSources[i]
+					|| this.props.eventSources[i].googleCalendarId !==
 					nextProps.eventSources[i].googleCalendarId)
 				return true;
 		}

@@ -1215,6 +1215,9 @@ body {
   @media (min-width: 1200px) {
     body {
       font-size: 1em; } }
+  body h1 {
+    font-size: 2.5em;
+    text-align: center; }
   body h2 {
     font-size: 2em;
     font-weight: normal; }
@@ -1304,3 +1307,12 @@ body {
             display: block; }
       .event.active-event.expanded .event-desc {
         padding: 0 2em 1em; }
+
+.calendar-legend-item {
+  display: flex;
+  align-items: center; }
+  .calendar-legend-item .calendar-legend-color {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin: 0 0.5em 0 0; }
