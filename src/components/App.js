@@ -1,5 +1,6 @@
 import React from 'react';
 import Color from 'color';
+import Clipboard from 'clipboard';
 
 import FullCalendar from './FullCalendar.js';
 import ActiveEvent from './ActiveEvent.js';
@@ -14,6 +15,9 @@ export default class App extends React.Component {
 			calendarId: 'basic',
 			activeEvent: null,
 			activeEventOriginalElement: null,
+
+			showSub: false,
+			copied: false
 		};
 
 		fetch('/.env.json')
@@ -28,6 +32,12 @@ export default class App extends React.Component {
 		this.handleClickCalendarListItem = this.handleClickCalendarListItem.bind(this);
 		this.handleSetActiveEvent = this.handleSetActiveEvent.bind(this);
 		this.handleUnsetActiveEvent = this.handleUnsetActiveEvent.bind(this);
+		this.handleShowSub = this.handleShowSub.bind(this);
+	}
+
+	componentWillUpdate(nextProps, nextState){
+		if(this.state.showSub && !nextState.showSub && this.clipboard)
+			this.clipboard.destroy();
 	}
 
 	render(){
@@ -102,6 +112,9 @@ export default class App extends React.Component {
 				));
 			}
 
+			const calendarIcalUrl =
+				`${window.location.origin}/${this.state.calendarId}.ics`;
+
 			return (
 				<div>
 					{activeEventNode}
@@ -109,6 +122,28 @@ export default class App extends React.Component {
 					<FullCalendar apiKey={this.state.GOOGLE_CALENDAR_API_KEY}
 						eventSources={eventSources}
 						setActiveEvent={this.handleSetActiveEvent} />
+		{
+			this.state.showSub
+				? (
+					<div className="sub-container">
+						<input type="text" className="input" id="sub-url" readOnly
+							value={calendarIcalUrl} />
+						<button id="copy-button" className="button"
+								data-balloon-visible={this.state.copied ? true : null}
+								data-balloon={this.state.copied ? 'Copied!' : null}
+								data-clipboard-target="#sub-url">
+							Copy
+						</button>
+					</div>
+				)
+				: (
+					<div className="sub-container">						
+						<a href="#" className="button outline" onClick={this.handleShowSub}>
+							Subscribe to this calendar
+						</a>
+					</div>
+				)
+		}
 		{
 			calendarsInGroup
 				? (
@@ -166,6 +201,19 @@ export default class App extends React.Component {
 		}
 	}
 
+	componentDidUpdate(){
+		if(this.state.showSub){
+			this.clipboard = new Clipboard('#copy-button');
+			this.clipboard.on('success', () => {
+				this.setState({copied: true}, () => {
+					window.setTimeout(() => {
+						this.setState({copied: false});
+					}, 2000);
+				});
+			});
+		}
+	}
+
 	handleClickCalendarListItem(event){
 		let calendarId = event.target.dataset.id;
 		this.setState({calendarId});
@@ -183,5 +231,10 @@ export default class App extends React.Component {
 			activeEvent: null,
 			activeEventOriginalPosition: null
 		});
+	}
+
+	handleShowSub(event){
+		event.preventDefault();
+		this.setState({showSub: true});
 	}
 }

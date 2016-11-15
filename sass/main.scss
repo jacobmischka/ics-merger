@@ -1,10 +1,18 @@
-@import "imports/fullcalendar";
+@import
+	"imports/fullcalendar",
+	"imports/balloon";
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
+$primary-color: #2c6fa1;
 $text-color: #000;
+$grey-color: #666;
 
 $primary-text: 0.85;
 $secondary-text: 0.56;
+
+$primary-opacity: 1;
+$secondary-opacity: 0.75;
+$disabled: 0.25;
 
 $shadow-color: rgba(0, 0, 0, 0.5);
 
@@ -37,6 +45,7 @@ body {
 	h2 {
 		font-size: 2em;
 		font-weight: normal;
+
 	}
 }
 
@@ -185,5 +194,68 @@ body {
 		width: 1em;
 		height: 1em;
 		margin: 0 0.5em 0 0;
+	}
+}
+
+.button {
+	border-radius: 5px;
+	background: $primary-color;
+	padding: 0.5em 1em;
+	cursor: pointer;
+	text-decoration: none;
+	border: 2px solid $primary-color;
+	color: white;
+	font-size: 1.25em;
+
+	&:hover {
+		background: rgba($primary-color, 0.75);
+	}
+
+	&.outline {
+		background: transparent;
+		color: $primary-color;
+
+		&:hover {
+			background: rgba($primary-color, 0.75);
+			color: white;
+		}
+	}
+}
+
+.input {
+	font-size: 1.5em;
+	padding: 0.5em;
+	border: 1px solid rgba($grey-color, 0.45);
+}
+
+.sub-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin: 2em 0;
+	font-size: 1.25em;
+
+	#sub-url {
+		color: rgba($text-color, $secondary-text);
+		margin: 0 1em;
+		max-width: 80%;
+		user-select: all;
+		width: 80%;
+
+		@media (min-width: $small-desktop) {
+			width: 60%;
+		}
+
+		@media (min-width: $medium-desktop) {
+			width: 50%;
+		}
+
+		@media (min-width: $large-desktop) {
+			width: 40%;
+		}
+	}
+
+	#copy-button {
+
 	}
 }
