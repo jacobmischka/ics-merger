@@ -17,7 +17,7 @@ module.exports = {
 	},
 	target: 'web',
 	module: {
-		loaders: [
+		rules: [
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,

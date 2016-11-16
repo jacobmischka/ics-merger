@@ -1,23 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router';
 import Color from 'color';
-import Clipboard from 'clipboard';
 
 import FullCalendar from './FullCalendar.js';
 import ActiveEvent from './ActiveEvent.js';
+import Subscription from './Subscription.js';
 
 export default class App extends React.Component {
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state = {
 			GOOGLE_CALENDAR_API_KEY: '',
 			calendars: [],
 			calendarGroups: [],
-			calendarId: 'basic',
 			activeEvent: null,
-			activeEventOriginalElement: null,
-
-			showSub: false,
-			copied: false
+			activeEventOriginalElement: null
 		};
 
 		fetch('/.env.json')
@@ -29,27 +26,24 @@ export default class App extends React.Component {
 				console.error(err);
 			});
 
-		this.handleClickCalendarListItem = this.handleClickCalendarListItem.bind(this);
 		this.handleSetActiveEvent = this.handleSetActiveEvent.bind(this);
 		this.handleUnsetActiveEvent = this.handleUnsetActiveEvent.bind(this);
-		this.handleShowSub = this.handleShowSub.bind(this);
-	}
-
-	componentWillUpdate(nextProps, nextState){
-		if(this.state.showSub && !nextState.showSub && this.clipboard)
-			this.clipboard.destroy();
 	}
 
 	render(){
+		const calendarId = this.props.params && this.props.params.calendarId
+			? this.props.params.calendarId
+			: 'basic';
+
 		// FIXME: This doesn't work if a calendar and a group share the same id
-		let calendar = this.state.calendarGroups[this.state.calendarId];
+		let calendar = this.state.calendarGroups[calendarId];
 		let calendars;
 		if(calendar){
 			calendars = calendar.calendars;
 		}
 		else {
-			calendar = this.state.calendars[this.state.calendarId];
-			calendars = [this.state.calendarId];
+			calendar = this.state.calendars[calendarId];
+			calendars = [calendarId];
 		}
 
 		if(calendar && calendars){
@@ -82,24 +76,22 @@ export default class App extends React.Component {
 
 			let groupedCalendarListItems = Object.keys(this.state.calendarGroups).map(id => (
 				<li key={`grouped-calendar-list-items-${id}`}>
-					<a href="#" data-id={id}
-							onClick={this.handleClickCalendarListItem}>
+					<Link to={`/${id}`} activeClassName="active">
 						{this.state.calendarGroups[id].calname}
-					</a>
+					</Link>
 				</li>
 			));
 
 			let calendarListItems = Object.keys(this.state.calendars).map(id => (
 				<li key={`calendar-list-items-${id}`}>
-					<a href="#" data-id={id}
-							onClick={this.handleClickCalendarListItem}>
+					<Link to={`/${id}`} activeClassName="active">
 						{this.state.calendars[id].calname}
-					</a>
+					</Link>
 				</li>
 			));
 
 			let calendarsInGroup;
-			if(this.state.calendarGroups[this.state.calendarId]){
+			if(this.state.calendarGroups[calendarId]){
 				calendarsInGroup = calendar.calendars.map(id => (
 					<li className="calendar-legend-item" key={`in-group-${id}`}>
 						<span className="calendar-legend-color" style={{
@@ -112,9 +104,6 @@ export default class App extends React.Component {
 				));
 			}
 
-			const calendarIcalUrl =
-				`${window.location.origin}/${this.state.calendarId}.ics`;
-
 			return (
 				<div>
 					{activeEventNode}
@@ -122,28 +111,7 @@ export default class App extends React.Component {
 					<FullCalendar apiKey={this.state.GOOGLE_CALENDAR_API_KEY}
 						eventSources={eventSources}
 						setActiveEvent={this.handleSetActiveEvent} />
-		{
-			this.state.showSub
-				? (
-					<div className="sub-container">
-						<input type="text" className="input" id="sub-url" readOnly
-							value={calendarIcalUrl} />
-						<button id="copy-button" className="button"
-								data-balloon-visible={this.state.copied ? true : null}
-								data-balloon={this.state.copied ? 'Copied!' : null}
-								data-clipboard-target="#sub-url">
-							Copy
-						</button>
-					</div>
-				)
-				: (
-					<div className="sub-container">						
-						<a href="#" className="button outline" onClick={this.handleShowSub}>
-							Subscribe to this calendar
-						</a>
-					</div>
-				)
-		}
+					<Subscription calendarId={calendarId} />
 		{
 			calendarsInGroup
 				? (
@@ -195,28 +163,10 @@ export default class App extends React.Component {
 		else {
 			return (
 				<p>
-					No calendar <code>{this.state.calendarId}</code> found.
+					No calendar <code>{calendarId}</code> found.
 				</p>
 			);
 		}
-	}
-
-	componentDidUpdate(){
-		if(this.state.showSub){
-			this.clipboard = new Clipboard('#copy-button');
-			this.clipboard.on('success', () => {
-				this.setState({copied: true}, () => {
-					window.setTimeout(() => {
-						this.setState({copied: false});
-					}, 2000);
-				});
-			});
-		}
-	}
-
-	handleClickCalendarListItem(event){
-		let calendarId = event.target.dataset.id;
-		this.setState({calendarId});
 	}
 
 	handleSetActiveEvent(calEvent, element){
@@ -232,9 +182,8 @@ export default class App extends React.Component {
 			activeEventOriginalPosition: null
 		});
 	}
-
-	handleShowSub(event){
-		event.preventDefault();
-		this.setState({showSub: true});
-	}
 }
+
+App.propTypes = {
+	params: React.PropTypes.object
+};

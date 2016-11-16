@@ -47,6 +47,13 @@ body {
 		font-weight: normal;
 
 	}
+
+	a.active {
+		pointer-events: none;
+		text-decoration: none;
+		cursor: auto;
+		color: rgba($text-color, $primary-text);
+	}
 }
 
 

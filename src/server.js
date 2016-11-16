@@ -10,7 +10,7 @@ const app = express();
 app.use(express.static('public'));
 
 app.get('/.env.json', (req, res) => {
-	let options = {
+	const options = {
 		root: './',
 		dotfiles: 'allow'
 	};
@@ -43,7 +43,7 @@ if(dotenv && dotenv.calendarGroups){
 		let calendarConfig = dotenv.calendarGroups[calendarName];
 
 		app.get(`/${calendarName}.ics`, (req, res) => {
-			if(!calendarConfig.urls){
+			if(!calendarConfig || !calendarConfig.calendars){
 				res.sendStatus(501);
 				return;
 			}
@@ -62,6 +62,12 @@ if(dotenv && dotenv.calendarGroups){
 		});
 	}
 }
+
+app.get('/:calendarId', (req, res) => {
+	res.sendFile('index.html', {
+		root: './public/'
+	});
+});
 
 function setHeaders(res){
 	res.set('Expires', 'Mon, 01 Jan 1990 00:00:00 GMT');
