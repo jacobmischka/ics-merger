@@ -1379,6 +1379,8 @@ body {
     text-decoration: none;
     cursor: auto;
     color: rgba(0, 0, 0, 0.85); }
+  body .text-center {
+    text-align: center; }
 
 .event-container {
   background-color: #fff; }
@@ -1494,7 +1496,8 @@ body {
   text-decoration: none;
   border: 2px solid #2c6fa1;
   color: white;
-  font-size: 1.25em; }
+  font-size: 1.25em;
+  line-height: 1.4; }
   .button:hover {
     background: rgba(44, 111, 161, 0.75); }
   .button.outline {
@@ -1509,37 +1512,50 @@ body {
   padding: 0.5em;
   border: 1px solid rgba(102, 102, 102, 0.45); }
 
-.sub-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 2em 0;
-  font-size: 1.25em; }
-  .sub-container #sub-url {
+.subscription-component {
+  margin: 2em; }
+  .subscription-component .sub-controls {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    font-size: 1.25em; }
+    .subscription-component .sub-controls .copy-with-url {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-align: stretch;
+          -ms-flex-align: stretch;
+              align-items: stretch; }
+      .subscription-component .sub-controls .copy-with-url #sub-url {
+        display: block;
+        color: rgba(0, 0, 0, 0.56);
+        -webkit-user-select: all;
+           -moz-user-select: all;
+            -ms-user-select: all;
+                user-select: all; }
+    .subscription-component .sub-controls .button {
+      margin: 0.5em; }
+  .subscription-component #hide-sub {
     color: rgba(0, 0, 0, 0.56);
-    margin: 0 1em;
-    max-width: 80%;
-    -webkit-user-select: all;
-       -moz-user-select: all;
-        -ms-user-select: all;
-            user-select: all;
-    width: 80%; }
-    @media (min-width: 768px) {
-      .sub-container #sub-url {
-        width: 60%; } }
-    @media (min-width: 996px) {
-      .sub-container #sub-url {
-        width: 50%; } }
-    @media (min-width: 1200px) {
-      .sub-container #sub-url {
-        width: 40%; } }
+    font-size: 0.85em;
+    text-decoration: none; }
+    .subscription-component #hide-sub:hover {
+      text-decoration: underline; }
 
 .calendar-legend-container {
   display: -webkit-box;
@@ -1570,6 +1586,12 @@ body {
 
 .calendar-nav-container {
   padding: 0 2em; }
+  @media (min-width: 768px) {
+    .calendar-nav-container {
+      padding: 0 3em; } }
+  @media (min-width: 1200px) {
+    .calendar-nav-container {
+      padding: 0 4em; } }
   .calendar-nav-container .calendar-nav {
     display: -webkit-box;
     display: -ms-flexbox;

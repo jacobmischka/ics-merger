@@ -45329,6 +45329,16 @@ return Promise;
     return promise
   }
 
+  function readArrayBufferAsText(buf) {
+    var view = new Uint8Array(buf)
+    var chars = new Array(view.length)
+
+    for (var i = 0; i < view.length; i++) {
+      chars[i] = String.fromCharCode(view[i])
+    }
+    return chars.join('')
+  }
+
   function bufferClone(buf) {
     if (buf.slice) {
       return buf.slice(0)
@@ -45392,6 +45402,14 @@ return Promise;
           return Promise.resolve(new Blob([this._bodyText]))
         }
       }
+
+      this.arrayBuffer = function() {
+        if (this._bodyArrayBuffer) {
+          return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
+        } else {
+          return this.blob().then(readBlobAsArrayBuffer)
+        }
+      }
     }
 
     this.text = function() {
@@ -45403,23 +45421,11 @@ return Promise;
       if (this._bodyBlob) {
         return readBlobAsText(this._bodyBlob)
       } else if (this._bodyArrayBuffer) {
-        var view = new Uint8Array(this._bodyArrayBuffer)
-        var str = String.fromCharCode.apply(null, view)
-        return Promise.resolve(str)
+        return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer))
       } else if (this._bodyFormData) {
         throw new Error('could not read FormData body as text')
       } else {
         return Promise.resolve(this._bodyText)
-      }
-    }
-
-    if (support.arrayBuffer) {
-      this.arrayBuffer = function() {
-        if (this._bodyArrayBuffer) {
-          return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
-        } else {
-          return this.blob().then(readBlobAsArrayBuffer)
-        }
       }
     }
 
@@ -46002,7 +46008,7 @@ var App = function (_React$Component) {
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'h2',
 							null,
-							'All calendars'
+							'Other calendars'
 						),
 						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 							'nav',
@@ -46245,45 +46251,96 @@ var Subscription = function (_React$Component) {
 
 		_this.state = {
 			showSub: false,
+			copyButtonHovered: false,
+			showUrl: false,
 			copied: false
 		};
 
 		_this.handleShowSub = _this.handleShowSub.bind(_this);
+		_this.handleHideSub = _this.handleHideSub.bind(_this);
+		_this.toggleShowUrl = _this.toggleShowUrl.bind(_this);
+		_this.handleCopyButtonMouseDown = _this.handleCopyButtonMouseDown.bind(_this);
+		_this.handleCopyButtonMouseUp = _this.handleCopyButtonMouseUp.bind(_this);
 		return _this;
 	}
 
 	_createClass(Subscription, [{
 		key: 'componentWillUpdate',
 		value: function componentWillUpdate(nextProps, nextState) {
-			if (this.state.showSub && !nextState.showSub && this.clipboard) this.clipboard.destroy();
+			if (this.state.showSub && !nextState.showSub || this.state.showUrl && !nextState.showUrl) this.clipboard.destroy();
 		}
 	}, {
 		key: 'render',
 		value: function render() {
 			var calendarIcalUrl = window.location.origin + '/' + this.props.calendarId + '.ics';
 
+			var webcalUrl = calendarIcalUrl.replace(window.location.protocol, 'webcal:');
+
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 				'div',
-				null,
+				{ className: 'subscription-component' },
 				this.state.showSub ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'sub-container' },
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'input', id: 'sub-url', readOnly: true,
-						value: calendarIcalUrl }),
+					null,
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'button',
-						{ id: 'copy-button', className: 'button',
-							'data-balloon-visible': this.state.copied ? true : null,
-							'data-balloon': this.state.copied ? 'Copied!' : null,
-							'data-clipboard-target': '#sub-url' },
-						'Copy'
+						'div',
+						{ className: 'sub-controls' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'a',
+							{ id: 'webcal-button', className: 'button outline',
+								href: webcalUrl },
+							'Subscribe with Outlook'
+						),
+						this.state.showUrl ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'section',
+							{ className: 'copy-with-url' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'text', className: 'input', id: 'sub-url',
+								value: calendarIcalUrl, readOnly: true }),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'button',
+								{ id: 'copy-button', className: 'button',
+									'data-balloon-visible': this.state.copied || null,
+									'data-balloon': this.state.copied ? 'Copied!' : null,
+									'data-clipboard-target': '#sub-url',
+									title: 'Long press to hide url',
+									onMouseDown: this.handleCopyButtonMouseDown,
+									onMouseUp: this.handleCopyButtonMouseUp },
+								'Copy subscription address'
+							)
+						) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'button',
+							{ id: 'copy-button', className: 'button outline',
+								'data-balloon-visible': this.state.copied || null,
+								'data-balloon': this.state.copied ? 'Copied!' : null,
+								'data-clipboard-text': calendarIcalUrl,
+								title: 'Long press to show url',
+								onMouseDown: this.handleCopyButtonMouseDown,
+								onMouseUp: this.handleCopyButtonMouseUp },
+							'Copy subscription address'
+						),
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'a',
+							{ id: 'download-button', className: 'button outline',
+								href: calendarIcalUrl, target: '_blank',
+								download: this.props.calendarId + '.ics' },
+							'Download ICal/.ics file'
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'div',
+						{ className: 'text-center' },
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'a',
+							{ href: '#', id: 'hide-sub', onClick: this.handleHideSub },
+							'Hide subscription info'
+						)
 					)
 				) : __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
-					{ className: 'sub-container' },
+					{ className: 'sub-controls' },
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'a',
-						{ href: '#', className: 'button outline', onClick: this.handleShowSub },
+						'button',
+						{ className: 'button outline', onClick: this.handleShowSub },
 						'Subscribe to this calendar'
 					)
 				)
@@ -46310,6 +46367,33 @@ var Subscription = function (_React$Component) {
 		value: function handleShowSub(event) {
 			event.preventDefault();
 			this.setState({ showSub: true });
+		}
+	}, {
+		key: 'handleHideSub',
+		value: function handleHideSub(event) {
+			event.preventDefault();
+			this.setState({ showSub: false });
+		}
+	}, {
+		key: 'toggleShowUrl',
+		value: function toggleShowUrl() {
+			this.setState(function (state) {
+				return { showUrl: !state.showUrl };
+			});
+		}
+	}, {
+		key: 'handleCopyButtonMouseDown',
+		value: function handleCopyButtonMouseDown() {
+			var _this3 = this;
+
+			this.copyButtonPressTimeout = window.setTimeout(function () {
+				_this3.toggleShowUrl();
+			}, 1000);
+		}
+	}, {
+		key: 'handleCopyButtonMouseUp',
+		value: function handleCopyButtonMouseUp() {
+			if (this.copyButtonPressTimeout) window.clearTimeout(this.copyButtonPressTimeout);
 		}
 	}]);
 

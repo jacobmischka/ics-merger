@@ -54,9 +54,11 @@ body {
 		cursor: auto;
 		color: rgba($text-color, $primary-text);
 	}
+
+	.text-center {
+		text-align: center;
+	}
 }
-
-
 
 .event-container {
 	background-color: #fff;
@@ -201,6 +203,7 @@ body {
 	border: 2px solid $primary-color;
 	color: white;
 	font-size: 1.25em;
+	line-height: 1.4;
 
 	&:hover {
 		background: rgba($primary-color, 0.75);
@@ -223,35 +226,42 @@ body {
 	border: 1px solid rgba($grey-color, 0.45);
 }
 
-.sub-container {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	margin: 2em 0;
-	font-size: 1.25em;
+.subscription-component {
+	margin: 2em;
 
-	#sub-url {
-		color: rgba($text-color, $secondary-text);
-		margin: 0 1em;
-		max-width: 80%;
-		user-select: all;
-		width: 80%;
+	.sub-controls {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: flex-end;
+		font-size: 1.25em;
 
-		@media (min-width: $small-desktop) {
-			width: 60%;
+		.copy-with-url {
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
+
+			#sub-url {
+				display: block;
+				color: rgba($text-color, $secondary-text);
+				user-select: all;
+			}
 		}
 
-		@media (min-width: $medium-desktop) {
-			width: 50%;
-		}
-
-		@media (min-width: $large-desktop) {
-			width: 40%;
+		.button {
+			margin: 0.5em;
 		}
 	}
 
-	#copy-button {
+	#hide-sub {
+		color: rgba($text-color, $secondary-text);
+		font-size: 0.85em;
+		text-decoration: none;
 
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }
 
@@ -288,6 +298,14 @@ body {
 
 .calendar-nav-container {
 	padding: 0 2em;
+
+	@media (min-width: $small-desktop) {
+		padding: 0 3em;
+	}
+
+	@media (min-width: $large-desktop) {
+		padding: 0 4em;
+	}
 
 	.calendar-nav {
 		display: flex;

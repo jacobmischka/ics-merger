@@ -132,7 +132,7 @@ export default class App extends React.Component {
 			groupedCalendarListItems || calendarListItems
 				? (
 					<div className="calendar-nav-container">
-						<h2>All calendars</h2>
+						<h2>Other calendars</h2>
 						<nav className="calendar-nav">
 				{
 					groupedCalendarListItems
