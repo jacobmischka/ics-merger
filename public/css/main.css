@@ -1486,19 +1486,6 @@ body {
       .event.active-event.expanded .event-desc {
         padding: 0 2em 1em; }
 
-.calendar-legend-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center; }
-  .calendar-legend-item .calendar-legend-color {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin: 0 0.5em 0 0; }
-
 .button {
   border-radius: 5px;
   background: #2c6fa1;
@@ -1553,3 +1540,52 @@ body {
     @media (min-width: 1200px) {
       .sub-container #sub-url {
         width: 40%; } }
+
+.calendar-legend-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .calendar-legend-container .calendar-legend {
+    background-color: #fafafa;
+    border: 1px solid rgba(102, 102, 102, 0.45);
+    padding: 1em; }
+    .calendar-legend-container .calendar-legend .legend-title {
+      text-align: center;
+      font-size: 1.1em; }
+    .calendar-legend-container .calendar-legend .legend-list .legend-list-item {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+      .calendar-legend-container .calendar-legend .legend-list .legend-list-item .calendar-legend-color {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        margin: 0 0.5em 0 0; }
+
+.calendar-nav-container {
+  padding: 0 2em; }
+  .calendar-nav-container .calendar-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around; }
+    .calendar-nav-container .calendar-nav section {
+      -webkit-box-flex: 0;
+          -ms-flex-positive: 0;
+              flex-grow: 0;
+      -ms-flex-negative: 1;
+          flex-shrink: 1;
+      min-width: 15em; }

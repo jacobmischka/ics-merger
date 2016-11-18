@@ -26,6 +26,7 @@ export default class CalendarEvent extends React.Component {
 
 		return (
 			<div className={className} style={style}
+					title={this.props.event.calendar.calname}
 					onClick={this.handleClick}
 					ref={div => this.container = div}>
 				<span className="event-time">{eventTime}</span>

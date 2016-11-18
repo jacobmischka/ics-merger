@@ -192,18 +192,6 @@ body {
 	}
 }
 
-.calendar-legend-item {
-	display: flex;
-	align-items: center;
-
-	.calendar-legend-color {
-		display: inline-block;
-		width: 1em;
-		height: 1em;
-		margin: 0 0.5em 0 0;
-	}
-}
-
 .button {
 	border-radius: 5px;
 	background: $primary-color;
@@ -264,5 +252,53 @@ body {
 
 	#copy-button {
 
+	}
+}
+
+.calendar-legend-container {
+	display: flex;
+	justify-content: center;
+
+	.calendar-legend {
+		background-color: #fafafa;
+		border: 1px solid rgba($grey-color, 0.45);
+		padding: 1em;
+
+		.legend-title {
+			text-align: center;
+			font-size: 1.1em;
+		}
+
+		.legend-list {
+
+			.legend-list-item {
+				display: flex;
+				align-items: center;
+
+				.calendar-legend-color {
+					display: inline-block;
+					width: 1em;
+					height: 1em;
+					margin: 0 0.5em 0 0;
+				}
+			}
+		}
+	}
+}
+
+.calendar-nav-container {
+	padding: 0 2em;
+
+	.calendar-nav {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+
+		section {
+			flex-grow: 0;
+			flex-shrink: 1;
+			min-width: 15em;
+		}
 	}
 }

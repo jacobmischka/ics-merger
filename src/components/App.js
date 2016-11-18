@@ -93,7 +93,7 @@ export default class App extends React.Component {
 			let calendarsInGroup;
 			if(this.state.calendarGroups[calendarId]){
 				calendarsInGroup = calendar.calendars.map(id => (
-					<li className="calendar-legend-item" key={`in-group-${id}`}>
+					<li className="legend-list-item" key={`in-group-${id}`}>
 						<span className="calendar-legend-color" style={{
 								backgroundColor: Color(this.state.calendars[id].color).alpha(0.3).rgbString(),
 								border: `1px solid ${this.state.calendars[id].color}`
@@ -115,11 +115,15 @@ export default class App extends React.Component {
 		{
 			calendarsInGroup
 				? (
-					<div>
-						<h2>Calendars in group</h2>
-						<ul>
-							{calendarsInGroup}
-						</ul>
+					<div className="calendar-legend-container">
+						<div className="calendar-legend">
+							<span className="legend-title">
+								Calendars in {calendar.calname}
+							</span>
+							<ul className="legend-list">
+								{calendarsInGroup}
+							</ul>
+						</div>
 					</div>
 				)
 				: null
@@ -127,32 +131,34 @@ export default class App extends React.Component {
 		{
 			groupedCalendarListItems || calendarListItems
 				? (
-					<div>
+					<div className="calendar-nav-container">
 						<h2>All calendars</h2>
-			{
-				groupedCalendarListItems
-					? (
-						<div>
-							<h3>Grouped calendars</h3>
-							<ul>
-								{groupedCalendarListItems}
-							</ul>
-						</div>
-					)
-					: null
-			}
-			{
-				calendarListItems
-					? (
-						<div>
-							<h3>Calendars</h3>
-							<ul>
-								{calendarListItems}
-							</ul>
-						</div>
-					)
-					: null
-			}
+						<nav className="calendar-nav">
+				{
+					groupedCalendarListItems
+						? (
+							<section>
+								<h3>Calendar sets</h3>
+								<ul>
+									{groupedCalendarListItems}
+								</ul>
+							</section>
+						)
+						: null
+				}
+				{
+					calendarListItems
+						? (
+							<section>
+								<h3>Calendars</h3>
+								<ul>
+									{calendarListItems}
+								</ul>
+							</section>
+						)
+						: null
+				}
+						</nav>
 					</div>
 				)
 				: null
