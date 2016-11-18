@@ -24,7 +24,9 @@
     "rollup-watch:node": "rollup -cw",
     "rollup-watch:bundle": "rollup -c rollup.config.bundle.js -w",
     "rollup-watch:server": "rollup -c rollup.config.server.js -w",
-    "analyze:bundle": "webpack-bundle-analyzer ./public/js/stats.json"
+    "analyze:bundle": "webpack-bundle-analyzer ./public/js/stats.json",
+    "deploy": "NODE_ENV=production now -e NODE_ENV=production",
+    "now-build": ""
   },
   "bin": {
     "ical-merge": "./cli.js"
