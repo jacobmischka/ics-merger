@@ -2,7 +2,7 @@
   "name": "ical-merger",
   "version": "1.0.0",
   "description": "Merges multiple ical .ics files into one for importing elsewhere",
-  "main": "dist/ical-merger.umd.js",
+  "main": "dist/ical-merger.cjs.js",
   "web": "dist/ical-merger.bundle.js",
   "jsnext:main": "dist/ical-merger.js",
   "module": "dist/ical-merger.js",
