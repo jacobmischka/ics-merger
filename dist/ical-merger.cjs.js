@@ -2,7 +2,7 @@
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var ICAL = _interopDefault(require('ical.js'));
+const ICAL = _interopDefault(require('ical.js'));
 
 var icalMerger = {"prodid":"-//Jacob Mischka//iCal Merger//EN","version":"2.0"};
 

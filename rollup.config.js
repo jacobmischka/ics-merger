@@ -19,5 +19,6 @@ export default {
 	external: [
 		path.resolve('./.env.json'),
 		'ical.js'
-	]
+	],
+	preferConst: true
 };

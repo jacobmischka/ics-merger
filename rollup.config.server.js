@@ -14,5 +14,6 @@ export default {
 		'express',
 		'node-fetch',
 		'body-parser'
-	]
+	],
+	preferConst: true
 };

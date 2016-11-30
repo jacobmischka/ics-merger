@@ -16,7 +16,6 @@
     "rollup": "run-p rollup:*",
     "rollup:node": "rollup -c",
     "rollup:bundle": "rollup -c rollup.config.bundle.js",
-    "rollup:web": "rollup -c rollup.config.web.js",
     "rollup:server": "rollup -c rollup.config.server.js",
     "watch:rollup": "run-p rollup-watch:*",
     "watch:sass": "gulp sass:watch",
@@ -25,8 +24,8 @@
     "rollup-watch:bundle": "rollup -c rollup.config.bundle.js -w",
     "rollup-watch:server": "rollup -c rollup.config.server.js -w",
     "analyze:bundle": "webpack-bundle-analyzer ./public/js/stats.json",
-    "deploy": "NODE_ENV=production now -e NODE_ENV=production",
-    "now-build": ""
+    "deploy": "now -e NODE_ENV=production",
+    "now-build": "echo \"Built files are currently checked into source control\""
   },
   "bin": {
     "ical-merge": "./cli.js"
@@ -36,7 +35,7 @@
     "type": "git"
   },
   "engines": {
-    "node": "^6.0.0"
+    "node": ">6.8.1"
   },
   "author": "Jacob Mischka <jacobmischka@gmail.com>",
   "license": "MIT",

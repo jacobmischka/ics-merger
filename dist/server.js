@@ -2,10 +2,10 @@
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var express = _interopDefault(require('express'));
-var fetch = _interopDefault(require('node-fetch'));
-var ICAL = _interopDefault(require('ical.js'));
-var dotenv = _interopDefault(require('../.env.json'));
+const express = _interopDefault(require('express'));
+const fetch = _interopDefault(require('node-fetch'));
+const ICAL = _interopDefault(require('ical.js'));
+const dotenv = _interopDefault(require('../.env.json'));
 
 var icalMerger = {"prodid":"-//Jacob Mischka//iCal Merger//EN","version":"2.0"};
 

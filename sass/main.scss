@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
 $primary-color: #2c6fa1;
+$accent-color: #1a6b60;
+$background-color: #fff;
 $text-color: #000;
 $grey-color: #666;
 
@@ -58,10 +60,47 @@ body {
 	.text-center {
 		text-align: center;
 	}
+
+	.fc {
+
+		button {
+			height: auto;
+		}
+
+		.fc-button-group {
+
+		}
+
+		.fc-button {
+			font-size: 1.1em;
+			padding: 0.5em;
+
+			&.fc-state-default {
+				background: transparent;
+				border: 2px solid $accent-color;
+				color: $accent-color;
+				text-shadow: none;
+				box-shadow: none;
+			}
+
+			&.fc-state-active {
+				background: $accent-color;
+				color: $background-color;
+			}
+
+			&:hover,
+			&:focus {
+				outline: none;
+				background: rgba($accent-color, $secondary-opacity);
+				color: $background-color;
+			}
+		}
+	}
 }
 
 .event-container {
-	background-color: #fff;
+	background-color: $background-color;
+	overflow: hidden;
 }
 
 .event {
@@ -78,7 +117,7 @@ body {
 	}
 
 	.event-title {
-
+		word-wrap: break-word;
 	}
 
 	.event-desc {
@@ -159,7 +198,7 @@ body {
 				flex-direction: row;
 				justify-content: space-between;
 				align-items: center;
-				background-color: #fff;
+				background-color: $background-color;
 				padding: 0.5em 1em;
 				box-shadow: 0 0 5px 0 $shadow-color;
 
