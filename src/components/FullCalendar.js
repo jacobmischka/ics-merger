@@ -6,6 +6,7 @@ import 'fullcalendar/dist/gcal.js';
 import uniqueId from 'lodash/uniqueId';
 
 import CalendarEvent from './CalendarEvent.js';
+import { BREAKPOINTS } from '../constants.js';
 
 export default class FullCalendar extends React.Component {
 	constructor(props){
@@ -64,6 +65,10 @@ export default class FullCalendar extends React.Component {
 	createCalendar(){
 		const setActive = this.props.setActiveEvent;
 
+		const defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP
+			? 'month'
+			: 'listWeek';
+
 		$(`#${this.state.calendarId}`).fullCalendar({
 			googleCalendarApiKey: this.props.apiKey,
 			eventSources: this.props.eventSources,
@@ -71,9 +76,10 @@ export default class FullCalendar extends React.Component {
 			fixedWeekCount: false,
 			header: {
 				left: 'title',
-				center: 'month,agendaWeek,agendaDay',
+				center: 'month,listWeek,agendaDay',
 				right: 'today prev,next'
 			},
+			defaultView,
 			navLinks: true,
 			eventRender(calEvent, element, view){
 				let div = document.createElement('div');

@@ -25,19 +25,19 @@ $very-large-desktop: 1600px;
 
 body {
 	font-family: 'Noto Sans', sans-serif;
-	font-size: 0.8em;
+	// font-size: 0.8em;
 
-	@media (min-width: $small-desktop) {
-		font-size: 0.85em;
-	}
-
-	@media (min-width: $medium-desktop) {
-		font-size: 0.9em;
-	}
-
-	@media (min-width: $large-desktop) {
-		font-size: 1em;
-	}
+	// @media (min-width: $small-desktop) {
+	// 	font-size: 0.85em;
+	// }
+	//
+	// @media (min-width: $medium-desktop) {
+	// 	font-size: 0.9em;
+	// }
+	//
+	// @media (min-width: $large-desktop) {
+	// 	font-size: 1em;
+	// }
 
 	h1 {
 		font-size: 2.5em;
@@ -62,6 +62,41 @@ body {
 	}
 
 	.fc {
+
+		.fc-toolbar {
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+
+			@media (max-width: $small-desktop) {
+				justify-content: space-around;
+
+				.fc-left {
+					text-align: center;
+					width: 100%;
+				}
+			}
+
+			* {
+				float: none;
+			}
+
+			.fc-left {
+				order: 1;
+			}
+
+			.fc-center {
+				order: 2;
+			}
+
+			.fc-right {
+				order: 3;
+			}
+
+			.fc-clear {
+				display: none;
+			}
+		}
 
 		button {
 			height: auto;
@@ -167,11 +202,15 @@ body {
 
 			.event-date-time {
 				margin: 0;
+				text-align: center;
+
+				@media (min-width: $small-desktop) {
+					text-align: right;
+				}
 
 				.event-date {
 					display: none;
 					text-transform: none;
-					text-align: right;
 
 					.start-date,
 					.end-date {
@@ -196,16 +235,27 @@ body {
 			header {
 				display: flex;
 				flex-direction: row;
-				justify-content: space-between;
+				flex-wrap: wrap;
+				justify-content: space-around;
 				align-items: center;
 				background-color: $background-color;
 				padding: 0.5em 1em;
 				box-shadow: 0 0 5px 0 $shadow-color;
+				text-align: center;
+
+				@media (min-width: $small-desktop) {
+					justify-content: space-between;
+					flex-wrap: nowrap;
+					text-align: left;
+				}
 
 				.event-title {
 					order: 1;
-					margin-right: 1em;
 					font-size: 1.25em;
+
+					@media (min-width: $small-desktop) {
+						margin-right: 1em;
+					}
 
 					.event-calendar {
 						display: block;
@@ -214,7 +264,10 @@ body {
 
 				.event-date-time {
 					order: 2;
-					margin-left: 1em;
+
+					@media (min-width: $small-desktop) {
+						margin-left: 1em;
+					}
 
 					.event-date {
 						display: block;
