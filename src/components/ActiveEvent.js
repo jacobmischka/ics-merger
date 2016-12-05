@@ -105,7 +105,15 @@ export default class ActiveEvent extends CalendarEvent {
 		window.requestAnimationFrame(() => {
 			window.requestAnimationFrame(() => {
 				this.setState({expanded: true});
-
+				if('parentIFrame' in window){
+					window.parentIFrame.getPageInfo(parentPage => {
+						let y = parentPage.scrollTop >= 0
+							? `${parentPage.scrollTop + (parentPage.clientHeight / 2) - parentPage.offsetTop}px`
+							: '50%';
+						this.container.style.transform =
+							`translate(calc(50vw - 50%), calc(${y} - 50%))`;
+					});
+				}
 				document.addEventListener('click', this.handleOutsideClick);
 			});
 		});
@@ -118,6 +126,9 @@ export default class ActiveEvent extends CalendarEvent {
 	handleClick(){
 		window.requestAnimationFrame(() => {
 			this.setState({expanded: false}, () => {
+				if('parentIFrame' in window){
+					window.parentIFrame.getPageInfo(false);
+				}
 				window.setTimeout(this.props.onClose, 140);
 			});
 		});
