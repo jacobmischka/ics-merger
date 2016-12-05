@@ -8,6 +8,7 @@ module.exports = {
 		'whatwg-fetch',
 		'classlist-polyfill',
 		'element-dataset',
+		'iframe-resizer/js/iframeResizer.contentWindow.js',
 		'./src/web.js'
 	],
 	output: {

@@ -105,7 +105,7 @@ export default class App extends React.Component {
 			}
 
 			return (
-				<div>
+				<div data-iframe-height>
 					{activeEventNode}
 					<h1>{calendar.calname}</h1>
 					<FullCalendar apiKey={this.state.GOOGLE_CALENDAR_API_KEY}
