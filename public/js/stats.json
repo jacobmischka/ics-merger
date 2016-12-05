@@ -2,8 +2,8 @@
   "errors": [],
   "warnings": [],
   "version": "2.1.0-beta.27",
-  "hash": "c63422b552853ff54f65",
-  "time": 19236,
+  "hash": "611adca478fe306c2d97",
+  "time": 4377,
   "publicPath": "/js/",
   "assetsByChunkName": {
     "main": [
@@ -14,7 +14,7 @@
   "assets": [
     {
       "name": "bundle.js",
-      "size": 871172,
+      "size": 2436777,
       "chunks": [
         0
       ],
@@ -25,7 +25,7 @@
     },
     {
       "name": "bundle.js.map",
-      "size": 6261474,
+      "size": 3028202,
       "chunks": [
         0
       ],
@@ -53,7 +53,7 @@
       "initial": true,
       "entry": true,
       "extraAsync": false,
-      "size": 2371129,
+      "size": 2371548,
       "names": [
         "main"
       ],
@@ -61,7 +61,7 @@
         "bundle.js",
         "bundle.js.map"
       ],
-      "hash": "5eed4900cd6452af254e",
+      "hash": "70964002ad232d6ded5a",
       "parents": [],
       "origins": [
         {
@@ -92,9 +92,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/core.regexp.escape.js",
-      "issuerId": 369,
-      "issuerName": "./~/core-js/modules/core.regexp.escape.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.symbol.js",
+      "issuerId": 489,
+      "issuerName": "./~/core-js/modules/es6.symbol.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -3116,9 +3116,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactMount.js",
-      "issuerId": 317,
-      "issuerName": "./~/react-dom/lib/ReactMount.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react/lib/ReactComponent.js",
+      "issuerId": 156,
+      "issuerName": "./~/react/lib/ReactComponent.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -3503,9 +3503,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactDOM.js",
-      "issuerId": 597,
-      "issuerName": "./~/react-dom/lib/ReactDOM.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react/lib/React.js",
+      "issuerId": 73,
+      "issuerName": "./~/react/lib/React.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -4844,9 +4844,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactMount.js",
-      "issuerId": 317,
-      "issuerName": "./~/react-dom/lib/ReactMount.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactDOMComponentTree.js",
+      "issuerId": 14,
+      "issuerName": "./~/react-dom/lib/ReactDOMComponentTree.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -5141,9 +5141,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.freeze.js",
-      "issuerId": 431,
-      "issuerName": "./~/core-js/modules/es6.object.freeze.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.seal.js",
+      "issuerId": 441,
+      "issuerName": "./~/core-js/modules/es6.object.seal.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -5888,9 +5888,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.define-property.js",
-      "issuerId": 430,
-      "issuerName": "./~/core-js/modules/es6.object.define-property.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.symbol.js",
+      "issuerId": 489,
+      "issuerName": "./~/core-js/modules/es6.symbol.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -6104,9 +6104,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.define-property.js",
-      "issuerId": 430,
-      "issuerName": "./~/core-js/modules/es6.object.define-property.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.symbol.js",
+      "issuerId": 489,
+      "issuerName": "./~/core-js/modules/es6.symbol.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -7094,9 +7094,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.keys.js",
-      "issuerId": 439,
-      "issuerName": "./~/core-js/modules/es6.object.keys.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.get-prototype-of.js",
+      "issuerId": 434,
+      "issuerName": "./~/core-js/modules/es6.object.get-prototype-of.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -7418,9 +7418,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-router/lib/PatternUtils.js",
-      "issuerId": 71,
-      "issuerName": "./~/react-router/lib/PatternUtils.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-router/lib/Router.js",
+      "issuerId": 659,
+      "issuerName": "./~/react-router/lib/Router.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -8003,9 +8003,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.anchor.js",
-      "issuerId": 467,
-      "issuerName": "./~/core-js/modules/es6.string.anchor.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.big.js",
+      "issuerId": 468,
+      "issuerName": "./~/core-js/modules/es6.string.big.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -8314,7 +8314,7 @@
           "moduleName": "./~/react-dom/lib/ReactChildReconciler.js",
           "type": "cjs require",
           "userRequest": "react/lib/ReactComponentTreeHook",
-          "loc": "29:27-70"
+          "loc": "37:31-74"
         },
         {
           "moduleId": 594,
@@ -8323,7 +8323,7 @@
           "moduleName": "./~/react-dom/lib/ReactChildReconciler.js",
           "type": "cjs require",
           "userRequest": "react/lib/ReactComponentTreeHook",
-          "loc": "37:31-74"
+          "loc": "29:27-70"
         },
         {
           "moduleId": 604,
@@ -8404,7 +8404,7 @@
           "moduleName": "./~/react/lib/checkReactTypeSpec.js",
           "type": "cjs require",
           "userRequest": "./ReactComponentTreeHook",
-          "loc": "29:27-62"
+          "loc": "71:37-72"
         },
         {
           "moduleId": 679,
@@ -8413,7 +8413,7 @@
           "moduleName": "./~/react/lib/checkReactTypeSpec.js",
           "type": "cjs require",
           "userRequest": "./ReactComponentTreeHook",
-          "loc": "71:37-72"
+          "loc": "29:27-62"
         }
       ],
       "usedExports": true,
@@ -9344,9 +9344,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.array.map.js",
-      "issuerId": 382,
-      "issuerName": "./~/core-js/modules/es6.array.map.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.array.filter.js",
+      "issuerId": 373,
+      "issuerName": "./~/core-js/modules/es6.array.filter.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -9929,9 +9929,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/fn/regexp/escape.js",
-      "issuerId": 360,
-      "issuerName": "./~/core-js/fn/regexp/escape.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/shim.js",
+      "issuerId": 540,
+      "issuerName": "./~/core-js/shim.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -10766,9 +10766,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/useBasename.js",
-      "issuerId": 197,
-      "issuerName": "./~/history/lib/useBasename.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/useQueries.js",
+      "issuerId": 198,
+      "issuerName": "./~/history/lib/useQueries.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -10865,9 +10865,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactMount.js",
-      "issuerId": 317,
-      "issuerName": "./~/react-dom/lib/ReactMount.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactDOMComponentTree.js",
+      "issuerId": 14,
+      "issuerName": "./~/react-dom/lib/ReactDOMComponentTree.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -11342,9 +11342,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.create.js",
-      "issuerId": 428,
-      "issuerName": "./~/core-js/modules/es6.object.create.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.symbol.js",
+      "issuerId": 489,
+      "issuerName": "./~/core-js/modules/es6.symbol.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -13349,9 +13349,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactMount.js",
-      "issuerId": 317,
-      "issuerName": "./~/react-dom/lib/ReactMount.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react/lib/ReactComponent.js",
+      "issuerId": 156,
+      "issuerName": "./~/react/lib/ReactComponent.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -13493,9 +13493,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/BeforeInputEventPlugin.js",
-      "issuerId": 586,
-      "issuerName": "./~/react-dom/lib/BeforeInputEventPlugin.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ChangeEventPlugin.js",
+      "issuerId": 588,
+      "issuerName": "./~/react-dom/lib/ChangeEventPlugin.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -13979,9 +13979,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.regexp.replace.js",
-      "issuerId": 463,
-      "issuerName": "./~/core-js/modules/es6.regexp.replace.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.regexp.match.js",
+      "issuerId": 462,
+      "issuerName": "./~/core-js/modules/es6.regexp.match.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -14042,9 +14042,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.regexp.constructor.js",
-      "issuerId": 461,
-      "issuerName": "./~/core-js/modules/es6.regexp.constructor.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.regexp.to-string.js",
+      "issuerId": 466,
+      "issuerName": "./~/core-js/modules/es6.regexp.to-string.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -14609,9 +14609,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/createBrowserHistory.js",
-      "issuerId": 564,
-      "issuerName": "./~/history/lib/createBrowserHistory.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/createHashHistory.js",
+      "issuerId": 565,
+      "issuerName": "./~/history/lib/createHashHistory.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -15160,9 +15160,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.array.from.js",
-      "issuerId": 377,
-      "issuerName": "./~/core-js/modules/es6.array.from.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.array.of.js",
+      "issuerId": 383,
+      "issuerName": "./~/core-js/modules/es6.array.of.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -16186,9 +16186,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/_parse-float.js",
-      "issuerId": 184,
-      "issuerName": "./~/core-js/modules/_parse-float.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/_parse-int.js",
+      "issuerId": 185,
+      "issuerName": "./~/core-js/modules/_parse-int.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -16618,9 +16618,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/createBrowserHistory.js",
-      "issuerId": 564,
-      "issuerName": "./~/history/lib/createBrowserHistory.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/createHashHistory.js",
+      "issuerId": 565,
+      "issuerName": "./~/history/lib/createHashHistory.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -16672,9 +16672,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/createBrowserHistory.js",
-      "issuerId": 564,
-      "issuerName": "./~/history/lib/createBrowserHistory.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/createHashHistory.js",
+      "issuerId": 565,
+      "issuerName": "./~/history/lib/createHashHistory.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -16726,9 +16726,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/useBasename.js",
-      "issuerId": 197,
-      "issuerName": "./~/history/lib/useBasename.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/useQueries.js",
+      "issuerId": 198,
+      "issuerName": "./~/history/lib/useQueries.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -18184,9 +18184,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/babel-loader/index.js!/home/mischka/projects/ics-merger/src/components/FullCalendar.js",
-      "issuerId": 350,
-      "issuerName": "./src/components/FullCalendar.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/babel-loader/index.js!/home/mischka/projects/ics-merger/src/components/ActiveEvent.js",
+      "issuerId": 348,
+      "issuerName": "./src/components/ActiveEvent.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -18638,9 +18638,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.set.to-json.js",
-      "issuerId": 527,
-      "issuerName": "./~/core-js/modules/es7.set.to-json.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.map.to-json.js",
+      "issuerId": 505,
+      "issuerName": "./~/core-js/modules/es7.map.to-json.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -18728,9 +18728,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/_object-dp.js",
-      "issuerId": 13,
-      "issuerName": "./~/core-js/modules/_object-dp.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/_object-gopd.js",
+      "issuerId": 27,
+      "issuerName": "./~/core-js/modules/_object-gopd.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -19133,9 +19133,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.object.values.js",
-      "issuerId": 516,
-      "issuerName": "./~/core-js/modules/es7.object.values.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.object.entries.js",
+      "issuerId": 512,
+      "issuerName": "./~/core-js/modules/es7.object.entries.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -19763,9 +19763,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/BrowserProtocol.js",
-      "issuerId": 131,
-      "issuerName": "./~/history/lib/BrowserProtocol.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/HashProtocol.js",
+      "issuerId": 562,
+      "issuerName": "./~/history/lib/HashProtocol.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -25174,9 +25174,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/EventPropagators.js",
-      "issuerId": 79,
-      "issuerName": "./~/react-dom/lib/EventPropagators.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/EventPluginHub.js",
+      "issuerId": 78,
+      "issuerName": "./~/react-dom/lib/EventPluginHub.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -25219,9 +25219,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/EventPropagators.js",
-      "issuerId": 79,
-      "issuerName": "./~/react-dom/lib/EventPropagators.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/EventPluginHub.js",
+      "issuerId": 78,
+      "issuerName": "./~/react-dom/lib/EventPluginHub.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -25579,9 +25579,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-router/lib/matchRoutes.js",
-      "issuerId": 669,
-      "issuerName": "./~/react-router/lib/matchRoutes.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-router/lib/getComponents.js",
+      "issuerId": 664,
+      "issuerName": "./~/react-router/lib/getComponents.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -26365,7 +26365,7 @@
       "name": "./src/components/App.js",
       "index": 537,
       "index2": 685,
-      "size": 7928,
+      "size": 7953,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -26397,7 +26397,7 @@
       "providedExports": [
         "default"
       ],
-      "source": "var _typeof = typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; };\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nimport React from 'react';\nimport { Link } from 'react-router';\nimport Color from 'color';\n\nimport FullCalendar from './FullCalendar.js';\nimport ActiveEvent from './ActiveEvent.js';\nimport Subscription from './Subscription.js';\n\nvar App = function (_React$Component) {\n\t_inherits(App, _React$Component);\n\n\tfunction App(props) {\n\t\t_classCallCheck(this, App);\n\n\t\tvar _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));\n\n\t\t_this.state = {\n\t\t\tGOOGLE_CALENDAR_API_KEY: '',\n\t\t\tcalendars: [],\n\t\t\tcalendarGroups: [],\n\t\t\tactiveEvent: null,\n\t\t\tactiveEventOriginalElement: null\n\t\t};\n\n\t\tfetch('/.env.json').then(function (response) {\n\t\t\treturn response.json();\n\t\t}).then(function (dotenv) {\n\t\t\t_this.setState(dotenv);\n\t\t}).catch(function (err) {\n\t\t\tconsole.error(err);\n\t\t});\n\n\t\t_this.handleSetActiveEvent = _this.handleSetActiveEvent.bind(_this);\n\t\t_this.handleUnsetActiveEvent = _this.handleUnsetActiveEvent.bind(_this);\n\t\treturn _this;\n\t}\n\n\t_createClass(App, [{\n\t\tkey: 'render',\n\t\tvalue: function render() {\n\t\t\tvar _this2 = this;\n\n\t\t\tvar calendarId = this.props.params && this.props.params.calendarId ? this.props.params.calendarId : 'basic';\n\n\t\t\t// FIXME: This doesn't work if a calendar and a group share the same id\n\t\t\tvar calendar = this.state.calendarGroups[calendarId];\n\t\t\tvar calendars = void 0;\n\t\t\tif (calendar) {\n\t\t\t\tcalendars = calendar.calendars;\n\t\t\t} else {\n\t\t\t\tcalendar = this.state.calendars[calendarId];\n\t\t\t\tcalendars = [calendarId];\n\t\t\t}\n\n\t\t\tif (calendar && calendars) {\n\t\t\t\tvar eventSources = calendars.map(function (id) {\n\t\t\t\t\tvar calendar = _this2.state.calendars[id];\n\t\t\t\t\tif (calendar) {\n\t\t\t\t\t\tvar _ret = function () {\n\t\t\t\t\t\t\tvar color = calendar.color;\n\t\t\t\t\t\t\tvar googleCalendarId = calendar.googleCalendarId;\n\t\t\t\t\t\t\tif (googleCalendarId) {\n\t\t\t\t\t\t\t\treturn {\n\t\t\t\t\t\t\t\t\tv: {\n\t\t\t\t\t\t\t\t\t\tgoogleCalendarId: googleCalendarId,\n\t\t\t\t\t\t\t\t\t\teventDataTransform: function eventDataTransform(eventData) {\n\t\t\t\t\t\t\t\t\t\t\treturn Object.assign(eventData, {\n\t\t\t\t\t\t\t\t\t\t\t\tcolor: color,\n\t\t\t\t\t\t\t\t\t\t\t\tcalendar: calendar\n\t\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t};\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}();\n\n\t\t\t\t\t\tif ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === \"object\") return _ret.v;\n\t\t\t\t\t}\n\t\t\t\t});\n\n\t\t\t\tvar activeEventNode = this.state.activeEvent ? React.createElement(ActiveEvent, { event: this.state.activeEvent,\n\t\t\t\t\toriginalElement: this.state.activeEventOriginalElement,\n\t\t\t\t\tonClose: this.handleUnsetActiveEvent }) : null;\n\n\t\t\t\tvar groupedCalendarListItems = Object.keys(this.state.calendarGroups).map(function (id) {\n\t\t\t\t\treturn React.createElement(\n\t\t\t\t\t\t'li',\n\t\t\t\t\t\t{ key: 'grouped-calendar-list-items-' + id },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\tLink,\n\t\t\t\t\t\t\t{ to: '/' + id, activeClassName: 'active' },\n\t\t\t\t\t\t\t_this2.state.calendarGroups[id].calname\n\t\t\t\t\t\t)\n\t\t\t\t\t);\n\t\t\t\t});\n\n\t\t\t\tvar calendarListItems = Object.keys(this.state.calendars).map(function (id) {\n\t\t\t\t\treturn React.createElement(\n\t\t\t\t\t\t'li',\n\t\t\t\t\t\t{ key: 'calendar-list-items-' + id },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\tLink,\n\t\t\t\t\t\t\t{ to: '/' + id, activeClassName: 'active' },\n\t\t\t\t\t\t\t_this2.state.calendars[id].calname\n\t\t\t\t\t\t)\n\t\t\t\t\t);\n\t\t\t\t});\n\n\t\t\t\tvar calendarsInGroup = void 0;\n\t\t\t\tif (this.state.calendarGroups[calendarId]) {\n\t\t\t\t\tcalendarsInGroup = calendar.calendars.map(function (id) {\n\t\t\t\t\t\treturn React.createElement(\n\t\t\t\t\t\t\t'li',\n\t\t\t\t\t\t\t{ className: 'legend-list-item', key: 'in-group-' + id },\n\t\t\t\t\t\t\tReact.createElement('span', { className: 'calendar-legend-color', style: {\n\t\t\t\t\t\t\t\t\tbackgroundColor: Color(_this2.state.calendars[id].color).alpha(0.3).rgbString(),\n\t\t\t\t\t\t\t\t\tborder: '1px solid ' + _this2.state.calendars[id].color\n\t\t\t\t\t\t\t\t} }),\n\t\t\t\t\t\t\t_this2.state.calendars[id].calname\n\t\t\t\t\t\t);\n\t\t\t\t\t});\n\t\t\t\t}\n\n\t\t\t\treturn React.createElement(\n\t\t\t\t\t'div',\n\t\t\t\t\tnull,\n\t\t\t\t\tactiveEventNode,\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'h1',\n\t\t\t\t\t\tnull,\n\t\t\t\t\t\tcalendar.calname\n\t\t\t\t\t),\n\t\t\t\t\tReact.createElement(FullCalendar, { apiKey: this.state.GOOGLE_CALENDAR_API_KEY,\n\t\t\t\t\t\teventSources: eventSources,\n\t\t\t\t\t\tsetActiveEvent: this.handleSetActiveEvent }),\n\t\t\t\t\tReact.createElement(Subscription, { calendarId: calendarId }),\n\t\t\t\t\tcalendarsInGroup ? React.createElement(\n\t\t\t\t\t\t'div',\n\t\t\t\t\t\t{ className: 'calendar-legend-container' },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'div',\n\t\t\t\t\t\t\t{ className: 'calendar-legend' },\n\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t'span',\n\t\t\t\t\t\t\t\t{ className: 'legend-title' },\n\t\t\t\t\t\t\t\t'Calendars in ',\n\t\t\t\t\t\t\t\tcalendar.calname\n\t\t\t\t\t\t\t),\n\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t'ul',\n\t\t\t\t\t\t\t\t{ className: 'legend-list' },\n\t\t\t\t\t\t\t\tcalendarsInGroup\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t)\n\t\t\t\t\t) : null,\n\t\t\t\t\tgroupedCalendarListItems || calendarListItems ? React.createElement(\n\t\t\t\t\t\t'div',\n\t\t\t\t\t\t{ className: 'calendar-nav-container' },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'h2',\n\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t'Other calendars'\n\t\t\t\t\t\t),\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'nav',\n\t\t\t\t\t\t\t{ className: 'calendar-nav' },\n\t\t\t\t\t\t\tgroupedCalendarListItems ? React.createElement(\n\t\t\t\t\t\t\t\t'section',\n\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t\t'h3',\n\t\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\t\t'Calendar sets'\n\t\t\t\t\t\t\t\t),\n\t\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t\t'ul',\n\t\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\t\tgroupedCalendarListItems\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\tcalendarListItems ? React.createElement(\n\t\t\t\t\t\t\t\t'section',\n\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t\t'h3',\n\t\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\t\t'Calendars'\n\t\t\t\t\t\t\t\t),\n\t\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t\t'ul',\n\t\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\t\tcalendarListItems\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t) : null\n\t\t\t\t\t\t)\n\t\t\t\t\t) : null\n\t\t\t\t);\n\t\t\t} else {\n\t\t\t\treturn React.createElement(\n\t\t\t\t\t'p',\n\t\t\t\t\tnull,\n\t\t\t\t\t'No calendar ',\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'code',\n\t\t\t\t\t\tnull,\n\t\t\t\t\t\tcalendarId\n\t\t\t\t\t),\n\t\t\t\t\t' found.'\n\t\t\t\t);\n\t\t\t}\n\t\t}\n\t}, {\n\t\tkey: 'handleSetActiveEvent',\n\t\tvalue: function handleSetActiveEvent(calEvent, element) {\n\t\t\tthis.setState({\n\t\t\t\tactiveEvent: calEvent,\n\t\t\t\tactiveEventOriginalElement: element\n\t\t\t});\n\t\t}\n\t}, {\n\t\tkey: 'handleUnsetActiveEvent',\n\t\tvalue: function handleUnsetActiveEvent() {\n\t\t\tthis.setState({\n\t\t\t\tactiveEvent: null,\n\t\t\t\tactiveEventOriginalPosition: null\n\t\t\t});\n\t\t}\n\t}]);\n\n\treturn App;\n}(React.Component);\n\nexport default App;\n\n\nApp.propTypes = {\n\tparams: React.PropTypes.object\n};"
+      "source": "var _typeof = typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; };\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nimport React from 'react';\nimport { Link } from 'react-router';\nimport Color from 'color';\n\nimport FullCalendar from './FullCalendar.js';\nimport ActiveEvent from './ActiveEvent.js';\nimport Subscription from './Subscription.js';\n\nvar App = function (_React$Component) {\n\t_inherits(App, _React$Component);\n\n\tfunction App(props) {\n\t\t_classCallCheck(this, App);\n\n\t\tvar _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));\n\n\t\t_this.state = {\n\t\t\tGOOGLE_CALENDAR_API_KEY: '',\n\t\t\tcalendars: [],\n\t\t\tcalendarGroups: [],\n\t\t\tactiveEvent: null,\n\t\t\tactiveEventOriginalElement: null\n\t\t};\n\n\t\tfetch('/.env.json').then(function (response) {\n\t\t\treturn response.json();\n\t\t}).then(function (dotenv) {\n\t\t\t_this.setState(dotenv);\n\t\t}).catch(function (err) {\n\t\t\tconsole.error(err);\n\t\t});\n\n\t\t_this.handleSetActiveEvent = _this.handleSetActiveEvent.bind(_this);\n\t\t_this.handleUnsetActiveEvent = _this.handleUnsetActiveEvent.bind(_this);\n\t\treturn _this;\n\t}\n\n\t_createClass(App, [{\n\t\tkey: 'render',\n\t\tvalue: function render() {\n\t\t\tvar _this2 = this;\n\n\t\t\tvar calendarId = this.props.params && this.props.params.calendarId ? this.props.params.calendarId : 'basic';\n\n\t\t\t// FIXME: This doesn't work if a calendar and a group share the same id\n\t\t\tvar calendar = this.state.calendarGroups[calendarId];\n\t\t\tvar calendars = void 0;\n\t\t\tif (calendar) {\n\t\t\t\tcalendars = calendar.calendars;\n\t\t\t} else {\n\t\t\t\tcalendar = this.state.calendars[calendarId];\n\t\t\t\tcalendars = [calendarId];\n\t\t\t}\n\n\t\t\tif (calendar && calendars) {\n\t\t\t\tvar eventSources = calendars.map(function (id) {\n\t\t\t\t\tvar calendar = _this2.state.calendars[id];\n\t\t\t\t\tif (calendar) {\n\t\t\t\t\t\tvar _ret = function () {\n\t\t\t\t\t\t\tvar color = calendar.color;\n\t\t\t\t\t\t\tvar googleCalendarId = calendar.googleCalendarId;\n\t\t\t\t\t\t\tif (googleCalendarId) {\n\t\t\t\t\t\t\t\treturn {\n\t\t\t\t\t\t\t\t\tv: {\n\t\t\t\t\t\t\t\t\t\tgoogleCalendarId: googleCalendarId,\n\t\t\t\t\t\t\t\t\t\teventDataTransform: function eventDataTransform(eventData) {\n\t\t\t\t\t\t\t\t\t\t\treturn Object.assign(eventData, {\n\t\t\t\t\t\t\t\t\t\t\t\tcolor: color,\n\t\t\t\t\t\t\t\t\t\t\t\tcalendar: calendar\n\t\t\t\t\t\t\t\t\t\t\t});\n\t\t\t\t\t\t\t\t\t\t},\n\n\t\t\t\t\t\t\t\t\t\tcolor: color\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t};\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}();\n\n\t\t\t\t\t\tif ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === \"object\") return _ret.v;\n\t\t\t\t\t}\n\t\t\t\t});\n\n\t\t\t\tvar activeEventNode = this.state.activeEvent ? React.createElement(ActiveEvent, { event: this.state.activeEvent,\n\t\t\t\t\toriginalElement: this.state.activeEventOriginalElement,\n\t\t\t\t\tonClose: this.handleUnsetActiveEvent }) : null;\n\n\t\t\t\tvar groupedCalendarListItems = Object.keys(this.state.calendarGroups).map(function (id) {\n\t\t\t\t\treturn React.createElement(\n\t\t\t\t\t\t'li',\n\t\t\t\t\t\t{ key: 'grouped-calendar-list-items-' + id },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\tLink,\n\t\t\t\t\t\t\t{ to: '/' + id, activeClassName: 'active' },\n\t\t\t\t\t\t\t_this2.state.calendarGroups[id].calname\n\t\t\t\t\t\t)\n\t\t\t\t\t);\n\t\t\t\t});\n\n\t\t\t\tvar calendarListItems = Object.keys(this.state.calendars).map(function (id) {\n\t\t\t\t\treturn React.createElement(\n\t\t\t\t\t\t'li',\n\t\t\t\t\t\t{ key: 'calendar-list-items-' + id },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\tLink,\n\t\t\t\t\t\t\t{ to: '/' + id, activeClassName: 'active' },\n\t\t\t\t\t\t\t_this2.state.calendars[id].calname\n\t\t\t\t\t\t)\n\t\t\t\t\t);\n\t\t\t\t});\n\n\t\t\t\tvar calendarsInGroup = void 0;\n\t\t\t\tif (this.state.calendarGroups[calendarId]) {\n\t\t\t\t\tcalendarsInGroup = calendar.calendars.map(function (id) {\n\t\t\t\t\t\treturn React.createElement(\n\t\t\t\t\t\t\t'li',\n\t\t\t\t\t\t\t{ className: 'legend-list-item', key: 'in-group-' + id },\n\t\t\t\t\t\t\tReact.createElement('span', { className: 'calendar-legend-color', style: {\n\t\t\t\t\t\t\t\t\tbackgroundColor: Color(_this2.state.calendars[id].color).alpha(0.3).rgbString(),\n\t\t\t\t\t\t\t\t\tborder: '1px solid ' + _this2.state.calendars[id].color\n\t\t\t\t\t\t\t\t} }),\n\t\t\t\t\t\t\t_this2.state.calendars[id].calname\n\t\t\t\t\t\t);\n\t\t\t\t\t});\n\t\t\t\t}\n\n\t\t\t\treturn React.createElement(\n\t\t\t\t\t'div',\n\t\t\t\t\tnull,\n\t\t\t\t\tactiveEventNode,\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'h1',\n\t\t\t\t\t\tnull,\n\t\t\t\t\t\tcalendar.calname\n\t\t\t\t\t),\n\t\t\t\t\tReact.createElement(FullCalendar, { apiKey: this.state.GOOGLE_CALENDAR_API_KEY,\n\t\t\t\t\t\teventSources: eventSources,\n\t\t\t\t\t\tsetActiveEvent: this.handleSetActiveEvent }),\n\t\t\t\t\tReact.createElement(Subscription, { calendarId: calendarId }),\n\t\t\t\t\tcalendarsInGroup ? React.createElement(\n\t\t\t\t\t\t'div',\n\t\t\t\t\t\t{ className: 'calendar-legend-container' },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'div',\n\t\t\t\t\t\t\t{ className: 'calendar-legend' },\n\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t'span',\n\t\t\t\t\t\t\t\t{ className: 'legend-title' },\n\t\t\t\t\t\t\t\t'Calendars in ',\n\t\t\t\t\t\t\t\tcalendar.calname\n\t\t\t\t\t\t\t),\n\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t'ul',\n\t\t\t\t\t\t\t\t{ className: 'legend-list' },\n\t\t\t\t\t\t\t\tcalendarsInGroup\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t)\n\t\t\t\t\t) : null,\n\t\t\t\t\tgroupedCalendarListItems || calendarListItems ? React.createElement(\n\t\t\t\t\t\t'div',\n\t\t\t\t\t\t{ className: 'calendar-nav-container' },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'h2',\n\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t'Other calendars'\n\t\t\t\t\t\t),\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'nav',\n\t\t\t\t\t\t\t{ className: 'calendar-nav' },\n\t\t\t\t\t\t\tgroupedCalendarListItems ? React.createElement(\n\t\t\t\t\t\t\t\t'section',\n\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t\t'h3',\n\t\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\t\t'Calendar sets'\n\t\t\t\t\t\t\t\t),\n\t\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t\t'ul',\n\t\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\t\tgroupedCalendarListItems\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t) : null,\n\t\t\t\t\t\t\tcalendarListItems ? React.createElement(\n\t\t\t\t\t\t\t\t'section',\n\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t\t'h3',\n\t\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\t\t'Calendars'\n\t\t\t\t\t\t\t\t),\n\t\t\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t\t\t'ul',\n\t\t\t\t\t\t\t\t\tnull,\n\t\t\t\t\t\t\t\t\tcalendarListItems\n\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t) : null\n\t\t\t\t\t\t)\n\t\t\t\t\t) : null\n\t\t\t\t);\n\t\t\t} else {\n\t\t\t\treturn React.createElement(\n\t\t\t\t\t'p',\n\t\t\t\t\tnull,\n\t\t\t\t\t'No calendar ',\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'code',\n\t\t\t\t\t\tnull,\n\t\t\t\t\t\tcalendarId\n\t\t\t\t\t),\n\t\t\t\t\t' found.'\n\t\t\t\t);\n\t\t\t}\n\t\t}\n\t}, {\n\t\tkey: 'handleSetActiveEvent',\n\t\tvalue: function handleSetActiveEvent(calEvent, element) {\n\t\t\tthis.setState({\n\t\t\t\tactiveEvent: calEvent,\n\t\t\t\tactiveEventOriginalElement: element\n\t\t\t});\n\t\t}\n\t}, {\n\t\tkey: 'handleUnsetActiveEvent',\n\t\tvalue: function handleUnsetActiveEvent() {\n\t\t\tthis.setState({\n\t\t\t\tactiveEvent: null,\n\t\t\t\tactiveEventOriginalPosition: null\n\t\t\t});\n\t\t}\n\t}]);\n\n\treturn App;\n}(React.Component);\n\nexport default App;\n\n\nApp.propTypes = {\n\tparams: React.PropTypes.object\n};"
     },
     {
       "id": 350,
@@ -26405,7 +26405,7 @@
       "name": "./src/components/FullCalendar.js",
       "index": 549,
       "index2": 674,
-      "size": 4641,
+      "size": 5035,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -26437,7 +26437,7 @@
       "providedExports": [
         "default"
       ],
-      "source": "var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nimport React from 'react';\nimport ReactDOM from 'react-dom';\nimport $ from 'jquery';\nimport 'fullcalendar';\nimport 'fullcalendar/dist/gcal.js';\nimport uniqueId from 'lodash/uniqueId';\n\nimport CalendarEvent from './CalendarEvent.js';\nimport { BREAKPOINTS } from '../constants.js';\n\nvar FullCalendar = function (_React$Component) {\n\t_inherits(FullCalendar, _React$Component);\n\n\tfunction FullCalendar(props) {\n\t\t_classCallCheck(this, FullCalendar);\n\n\t\tvar _this = _possibleConstructorReturn(this, (FullCalendar.__proto__ || Object.getPrototypeOf(FullCalendar)).call(this, props));\n\n\t\t_this.state = {\n\t\t\tcalendarId: uniqueId()\n\t\t};\n\n\t\t_this.createCalendar = _this.createCalendar.bind(_this);\n\t\t_this.destroyCalendar = _this.destroyCalendar.bind(_this);\n\t\treturn _this;\n\t}\n\n\t_createClass(FullCalendar, [{\n\t\tkey: 'render',\n\t\tvalue: function render() {\n\t\t\treturn React.createElement('div', { id: this.state.calendarId });\n\t\t}\n\t}, {\n\t\tkey: 'shouldComponentUpdate',\n\t\tvalue: function shouldComponentUpdate(nextProps) {\n\t\t\tif (this.props.apiKey !== nextProps.apiKey) return true;\n\n\t\t\tif (this.props.eventSources.length !== nextProps.eventSources.length) return true;\n\n\t\t\tfor (var i = 0; i < this.props.eventSources.length; i++) {\n\t\t\t\tif (!this.props.eventSources[i] || !nextProps.eventSources[i] || this.props.eventSources[i].googleCalendarId !== nextProps.eventSources[i].googleCalendarId) return true;\n\t\t\t}\n\n\t\t\treturn false;\n\t\t}\n\t}, {\n\t\tkey: 'componentDidMount',\n\t\tvalue: function componentDidMount() {\n\t\t\tthis.createCalendar();\n\t\t}\n\t}, {\n\t\tkey: 'componentWillUpdate',\n\t\tvalue: function componentWillUpdate() {\n\t\t\tthis.destroyCalendar();\n\t\t}\n\t}, {\n\t\tkey: 'componentDidUpdate',\n\t\tvalue: function componentDidUpdate() {\n\t\t\tthis.createCalendar();\n\t\t}\n\t}, {\n\t\tkey: 'componentWillUnmount',\n\t\tvalue: function componentWillUnmount() {\n\t\t\tthis.destroyCalendar();\n\t\t}\n\t}, {\n\t\tkey: 'destroyCalendar',\n\t\tvalue: function destroyCalendar() {\n\t\t\t$('#' + this.state.calendarId).fullCalendar('destroy');\n\t\t}\n\t}, {\n\t\tkey: 'createCalendar',\n\t\tvalue: function createCalendar() {\n\t\t\tvar setActive = this.props.setActiveEvent;\n\n\t\t\tvar defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP ? 'month' : 'listWeek';\n\n\t\t\t$('#' + this.state.calendarId).fullCalendar({\n\t\t\t\tgoogleCalendarApiKey: this.props.apiKey,\n\t\t\t\teventSources: this.props.eventSources,\n\t\t\t\theight: 'auto',\n\t\t\t\tfixedWeekCount: false,\n\t\t\t\theader: {\n\t\t\t\t\tleft: 'title',\n\t\t\t\t\tcenter: 'month,listWeek,agendaDay',\n\t\t\t\t\tright: 'today prev,next'\n\t\t\t\t},\n\t\t\t\tdefaultView: defaultView,\n\t\t\t\tnavLinks: true,\n\t\t\t\teventRender: function eventRender(calEvent, element, view) {\n\t\t\t\t\tvar div = document.createElement('div');\n\t\t\t\t\tdiv.className = 'event-container';\n\t\t\t\t\tif (view && view.name && view.name.startsWith('agenda')) div.style.position = 'absolute';\n\t\t\t\t\tReactDOM.render(React.createElement(CalendarEvent, { event: calEvent, view: view,\n\t\t\t\t\t\tsetActive: setActive }), div);\n\t\t\t\t\treturn div;\n\t\t\t\t}\n\t\t\t});\n\t\t}\n\t}]);\n\n\treturn FullCalendar;\n}(React.Component);\n\nexport default FullCalendar;\n\n\nFullCalendar.propTypes = {\n\tapiKey: React.PropTypes.string.isRequired,\n\teventSources: React.PropTypes.array.isRequired,\n\tsetActiveEvent: React.PropTypes.func\n};"
+      "source": "var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nimport React from 'react';\nimport ReactDOM from 'react-dom';\nimport $ from 'jquery';\nimport 'fullcalendar';\nimport 'fullcalendar/dist/gcal.js';\nimport uniqueId from 'lodash/uniqueId';\n\nimport CalendarEvent from './CalendarEvent.js';\nimport { BREAKPOINTS } from '../constants.js';\n\nvar FullCalendar = function (_React$Component) {\n\t_inherits(FullCalendar, _React$Component);\n\n\tfunction FullCalendar(props) {\n\t\t_classCallCheck(this, FullCalendar);\n\n\t\tvar _this = _possibleConstructorReturn(this, (FullCalendar.__proto__ || Object.getPrototypeOf(FullCalendar)).call(this, props));\n\n\t\t_this.state = {\n\t\t\tcalendarId: uniqueId()\n\t\t};\n\n\t\t_this.createCalendar = _this.createCalendar.bind(_this);\n\t\t_this.destroyCalendar = _this.destroyCalendar.bind(_this);\n\t\treturn _this;\n\t}\n\n\t_createClass(FullCalendar, [{\n\t\tkey: 'render',\n\t\tvalue: function render() {\n\t\t\tvar buttonColor = this.props.eventSources.length === 1 ? this.props.eventSources[0].color : null;\n\n\t\t\treturn React.createElement(\n\t\t\t\t'div',\n\t\t\t\tnull,\n\t\t\t\tReact.createElement('div', { id: this.state.calendarId }),\n\t\t\t\tbuttonColor ? React.createElement(\n\t\t\t\t\t'style',\n\t\t\t\t\t{ jsx: true },\n\t\t\t\t\t'\\n\\t\\t\\t\\t\\tdiv .fc-button.fc-state-default {\\n\\t\\t\\t\\t\\t\\tborder: 2px solid ' + buttonColor + '\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t'\n\t\t\t\t) : null\n\t\t\t);\n\t\t}\n\t}, {\n\t\tkey: 'shouldComponentUpdate',\n\t\tvalue: function shouldComponentUpdate(nextProps) {\n\t\t\tif (this.props.apiKey !== nextProps.apiKey) return true;\n\n\t\t\tif (this.props.eventSources.length !== nextProps.eventSources.length) return true;\n\n\t\t\tfor (var i = 0; i < this.props.eventSources.length; i++) {\n\t\t\t\tif (!this.props.eventSources[i] || !nextProps.eventSources[i] || this.props.eventSources[i].googleCalendarId !== nextProps.eventSources[i].googleCalendarId) return true;\n\t\t\t}\n\n\t\t\treturn false;\n\t\t}\n\t}, {\n\t\tkey: 'componentDidMount',\n\t\tvalue: function componentDidMount() {\n\t\t\tthis.createCalendar();\n\t\t}\n\t}, {\n\t\tkey: 'componentWillUpdate',\n\t\tvalue: function componentWillUpdate() {\n\t\t\tthis.destroyCalendar();\n\t\t}\n\t}, {\n\t\tkey: 'componentDidUpdate',\n\t\tvalue: function componentDidUpdate() {\n\t\t\tthis.createCalendar();\n\t\t}\n\t}, {\n\t\tkey: 'componentWillUnmount',\n\t\tvalue: function componentWillUnmount() {\n\t\t\tthis.destroyCalendar();\n\t\t}\n\t}, {\n\t\tkey: 'destroyCalendar',\n\t\tvalue: function destroyCalendar() {\n\t\t\t$('#' + this.state.calendarId).fullCalendar('destroy');\n\t\t}\n\t}, {\n\t\tkey: 'createCalendar',\n\t\tvalue: function createCalendar() {\n\t\t\tvar setActive = this.props.setActiveEvent;\n\n\t\t\tvar defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP ? 'month' : 'listWeek';\n\n\t\t\t$('#' + this.state.calendarId).fullCalendar({\n\t\t\t\tgoogleCalendarApiKey: this.props.apiKey,\n\t\t\t\teventSources: this.props.eventSources,\n\t\t\t\theight: 'auto',\n\t\t\t\tcontentHeight: 'auto',\n\t\t\t\tfixedWeekCount: false,\n\t\t\t\theader: {\n\t\t\t\t\tleft: 'title',\n\t\t\t\t\tcenter: 'month,listWeek,agendaDay',\n\t\t\t\t\tright: 'today prev,next'\n\t\t\t\t},\n\t\t\t\tdefaultView: defaultView,\n\t\t\t\tnavLinks: true,\n\t\t\t\teventRender: function eventRender(calEvent, element, view) {\n\t\t\t\t\tvar div = document.createElement('div');\n\t\t\t\t\tdiv.className = 'event-container';\n\t\t\t\t\tif (view && view.name && view.name.startsWith('agenda')) div.style.position = 'absolute';\n\t\t\t\t\tReactDOM.render(React.createElement(CalendarEvent, { event: calEvent, view: view,\n\t\t\t\t\t\tsetActive: setActive }), div);\n\t\t\t\t\treturn div;\n\t\t\t\t}\n\t\t\t});\n\t\t}\n\t}]);\n\n\treturn FullCalendar;\n}(React.Component);\n\nexport default FullCalendar;\n\n\nFullCalendar.propTypes = {\n\tapiKey: React.PropTypes.string.isRequired,\n\teventSources: React.PropTypes.array.isRequired,\n\tsetActiveEvent: React.PropTypes.func\n};"
     },
     {
       "id": 351,

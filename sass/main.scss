@@ -131,6 +131,11 @@ body {
 			}
 		}
 	}
+
+	// HACK: Workaround for https://github.com/fullcalendar/fullcalendar/issues/3346
+	.fc-list-view .fc-scroller {
+		height: auto !important;
+	}
 }
 
 .event-container {

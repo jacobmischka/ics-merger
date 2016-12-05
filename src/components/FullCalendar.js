@@ -20,8 +20,27 @@ export default class FullCalendar extends React.Component {
 	}
 
 	render(){
+		const buttonColor = this.props.eventSources.length === 1
+			? this.props.eventSources[0].color
+			: null;
+
 		return (
-			<div id={this.state.calendarId}></div>
+			<div>
+				<div id={this.state.calendarId}></div>
+	{
+		buttonColor
+			? (
+				<style jsx>
+				{`
+					div .fc-button.fc-state-default {
+						border: 2px solid ${buttonColor}
+					}
+				`}
+				</style>
+			)
+			: null
+	}
+			</div>
 		);
 	}
 
@@ -73,6 +92,7 @@ export default class FullCalendar extends React.Component {
 			googleCalendarApiKey: this.props.apiKey,
 			eventSources: this.props.eventSources,
 			height: 'auto',
+			contentHeight: 'auto',
 			fixedWeekCount: false,
 			header: {
 				left: 'title',

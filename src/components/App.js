@@ -60,7 +60,8 @@ export default class App extends React.Component {
 									color: color,
 									calendar: calendar
 								});
-							}
+							},
+							color: color
 						};
 					}
 				}
