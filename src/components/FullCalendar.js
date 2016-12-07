@@ -27,19 +27,11 @@ export default class FullCalendar extends React.Component {
 		return (
 			<div>
 				<div id={this.state.calendarId}></div>
-	{
-		buttonColor
-			? (
-				<style jsx>
-				{`
-					div .fc-button.fc-state-default {
-						border: 2px solid ${buttonColor}
+				<style jsx>{`
+					#${this.state.calendarId} .fc-button.fc-state-default {
+						border: 2px solid ${buttonColor};
 					}
-				`}
-				</style>
-			)
-			: null
-	}
+				`}</style>
 			</div>
 		);
 	}

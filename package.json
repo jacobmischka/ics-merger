@@ -80,7 +80,7 @@
     "rollup-plugin-json": "^2.0.2",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-watch": "^2.5.0",
-    "styled-jsx": "^0.0.3",
+    "styled-jsx": "^0.0.7",
     "webpack": "2.1.0-beta.27",
     "webpack-bundle-analyzer": "^1.5.2",
     "whatwg-fetch": "^2.0.0"
