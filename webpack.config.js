@@ -1,4 +1,5 @@
 /* eslint-env node */
+const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
@@ -31,6 +32,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 		new BundleAnalyzerPlugin({
 			analyzerMode: 'disabled',
 			generateStatsFile: true,

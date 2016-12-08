@@ -1,6 +1,7 @@
 @import
 	"imports/fullcalendar",
 	"imports/balloon";
+
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
 $primary-color: #2c6fa1;
@@ -11,6 +12,7 @@ $grey-color: #666;
 
 $primary-text: 0.85;
 $secondary-text: 0.56;
+$disabled-text: 0.24;
 
 $primary-opacity: 1;
 $secondary-opacity: 0.75;
@@ -47,7 +49,6 @@ body {
 	h2 {
 		font-size: 2em;
 		font-weight: normal;
-
 	}
 
 	a.active {
@@ -132,8 +133,8 @@ body {
 		}
 	}
 
-	// HACK: Workaround for https://github.com/fullcalendar/fullcalendar/issues/3346
 	.fc-list-view .fc-scroller {
+		// HACK: Workaround for https://github.com/fullcalendar/fullcalendar/issues/3346
 		height: auto !important;
 	}
 }
@@ -188,7 +189,6 @@ body {
 		transition-duration: 0.15s;
 		transition-property: left, top, width, height, transform, background-color, border;
 		z-index: 100;
-		overflow: hidden;
 		cursor: auto;
 
 		header {
@@ -225,6 +225,25 @@ body {
 
 				.event-time {
 					margin: 0;
+				}
+			}
+
+			.close {
+				position: absolute;
+				right: 0;
+				top: 0;
+				cursor: pointer;
+				font-size: 1em;
+				background: none;
+				border: none;
+				outline: none;
+				color: rgba($text-color, $disabled-text);
+				padding: 0.1em;
+				margin: 0.1em;
+				line-height: 0.8;
+
+				&:hover {
+					color: rgba($text-color, $secondary-text);
 				}
 			}
 		}

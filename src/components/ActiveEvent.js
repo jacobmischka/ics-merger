@@ -63,6 +63,10 @@ export default class ActiveEvent extends CalendarEvent {
 						</span>
 						{this.props.event.title}
 					</span>
+					<button type="button" className="close" onClick={this.handleClick}
+							title="Close active event">
+						×
+					</button>
 				</header>
 				<p className="event-desc">
 					{this.props.event.description}
