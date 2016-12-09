@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
-import Color from 'color';
 
 import FullCalendar from './FullCalendar.js';
 import ActiveEvent from './ActiveEvent.js';
+import CalendarLegend from './CalendarLegend.js';
 import Subscription from './Subscription.js';
 
 export default class App extends React.Component {
@@ -39,21 +39,21 @@ export default class App extends React.Component {
 		let calendar = this.state.calendarGroups[calendarId];
 		let calendars;
 		if(calendar){
-			calendars = calendar.calendars;
+			calendars = calendar.calendars.map(id => this.state.calendars[id]);
 		}
 		else {
 			calendar = this.state.calendars[calendarId];
-			calendars = [calendarId];
+			calendars = calendar ? calendar.subCalendars || [calendar] : [];
 		}
 
 		if(calendar && calendars){
-			let eventSources = calendars.map(id => {
-				let calendar = this.state.calendars[id];
+			let eventSources = [];
+			for(let calendar of calendars){
 				if(calendar){
 					let color = calendar.color;
 					let googleCalendarId = calendar.googleCalendarId;
 					if(googleCalendarId){
-						return {
+						eventSources.push({
 							googleCalendarId: googleCalendarId,
 							eventDataTransform(eventData){
 								return Object.assign(eventData, {
@@ -61,10 +61,23 @@ export default class App extends React.Component {
 									calendar: calendar
 								});
 							}
-						};
+						});
+					}
+					if(calendar.subCalendars){
+						for(let subCalendar of calendar.subCalendars){
+							eventSources.push({
+								googleCalendarId: subCalendar.googleCalendarId,
+								eventDataTransform(eventData){
+									return Object.assign(eventData, {
+										color: color,
+										calendar: calendar
+									});
+								}
+							});
+						}
 					}
 				}
-			});
+			}
 
 			let activeEventNode = this.state.activeEvent
 				? (
@@ -90,20 +103,6 @@ export default class App extends React.Component {
 				</li>
 			));
 
-			let calendarsInGroup;
-			if(this.state.calendarGroups[calendarId]){
-				calendarsInGroup = calendar.calendars.map(id => (
-					<li className="legend-list-item" key={`in-group-${id}`}>
-						<span className="calendar-legend-color" style={{
-								backgroundColor: Color(this.state.calendars[id].color).alpha(0.3).rgbString(),
-								border: `1px solid ${this.state.calendars[id].color}`
-							}}>
-						</span>
-						{this.state.calendars[id].calname}
-					</li>
-				));
-			}
-
 			return (
 				<div data-iframe-height>
 					{activeEventNode}
@@ -112,22 +111,7 @@ export default class App extends React.Component {
 						eventSources={eventSources}
 						setActiveEvent={this.handleSetActiveEvent} />
 					<Subscription calendarId={calendarId} />
-		{
-			calendarsInGroup
-				? (
-					<div className="calendar-legend-container">
-						<div className="calendar-legend">
-							<span className="legend-title">
-								Calendars in {calendar.calname}
-							</span>
-							<ul className="legend-list">
-								{calendarsInGroup}
-							</ul>
-						</div>
-					</div>
-				)
-				: null
-		}
+					<CalendarLegend calendars={calendars} calname={calendar.calname} />
 		{
 			groupedCalendarListItems || calendarListItems
 				? (

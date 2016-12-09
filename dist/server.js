@@ -78,28 +78,19 @@ app.get('/combine.ics', (req, res) => {
 	});
 });
 
-if(dotenv && dotenv.calendarGroups){
-	for(let calendarName in dotenv.calendarGroups){
-		let calendarConfig = dotenv.calendarGroups[calendarName];
+if(dotenv && dotenv.calendars){
+	for(let calendarName in dotenv.calendars){
+		let calendarConfig = dotenv.calendars[calendarName];
 
-		app.get(`/${calendarName}.ics`, (req, res) => {
-			if(!calendarConfig || !calendarConfig.calendars){
-				res.sendStatus(501);
-				return;
-			}
+		respondWithCalendar(calendarConfig, calendarName);
+	}
 
-			let calendars = calendarConfig.calendars;
-			let urls = calendars.map(calId => dotenv.calendars[calId].url);
-			let icals = getIcalsFromUrls(urls);
+	if(dotenv.calendarGroups){
+		for(let calendarName in dotenv.calendarGroups){
+			let calendarConfig = dotenv.calendarGroups[calendarName];
 
-			setHeaders(res);
-
-			let options = Object.assign({}, calendarConfig);
-
-			icals.then(icals => {
-				res.send(merge(icals, options));
-			});
-		});
+			respondWithCalendar(calendarConfig, calendarName);
+		}
 	}
 }
 
@@ -109,6 +100,42 @@ app.get('/:calendarId', (req, res) => {
 	});
 });
 
+function respondWithCalendar(calendar, calendarName){
+	app.get(`/${calendarName}.ics`, (req, res) => {
+		if(!calendar){
+			res.sendStatus(501);
+			return;
+		}
+
+		let urls = [];
+		if(calendar.url)
+			urls.push(calendar.url);
+		if(calendar.calendars)
+			for(let calId of calendar.calendars){
+				let calendar = dotenv.calendars[calId];
+				if(calendar){
+					if(calendar.url)
+						urls.push(calendar.url);
+					if(calendar.subCalendars)
+						urls = urls.concat(calendar.subCalendars.map(subCal => subCal.url));
+				}
+			}
+		if(calendar.subCalendars)
+			urls = urls.concat(calendar.subCalendars.map(subCal => subCal.url));
+
+		console.log(urls);
+		let icals = getIcalsFromUrls(urls);
+
+		setHeaders(res);
+
+		let options = Object.assign({}, calendar);
+
+		icals.then(icals => {
+			res.send(merge(icals, options));
+		});
+	});
+}
+
 function setHeaders(res){
 	res.set('Expires', 'Mon, 01 Jan 1990 00:00:00 GMT');
 	res.set('Date', new Date().toGMTString());
@@ -117,28 +144,23 @@ function setHeaders(res){
 	res.set('Pragma', 'no-cache');
 }
 
-let port = 3000;
-if(app.get('env') === 'production')
-	port = 80;
+const port = app.get('env') === 'production' ? 80 : 3000;
 
 app.listen(port, () => {
 	console.log(`Listening on ${port}`);
 });
 
 function getIcalsFromUrls(urls){
-	let icals = [];
 	let promises = [];
 	for(let url of urls){
 		promises.push(fetch(url).then(response => {
 			return response.text();
 		}).then(text => {
-			icals.push(text);
+			return text;
 		}).catch(err => {
 			console.error(`Error reading ${url}: ${err}`);
 		}));
 	}
 
-	return Promise.all(promises).then(() => {
-		return icals;
-	});
+	return Promise.all(promises).then(icals => icals);
 }
