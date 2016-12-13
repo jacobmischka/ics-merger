@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import FullCalendar from './FullCalendar.js';
 import ActiveEvent from './ActiveEvent.js';
 import CalendarLegend from './CalendarLegend.js';
+import CustomGroupSelector from './CustomGroupSelector.js';
 import Subscription from './Subscription.js';
 
 export default class App extends React.Component {
@@ -11,8 +12,8 @@ export default class App extends React.Component {
 		super(props);
 		this.state = {
 			GOOGLE_CALENDAR_API_KEY: '',
-			calendars: [],
-			calendarGroups: [],
+			calendars: {},
+			calendarGroups: {},
 			customCalendar: {
 				calname: 'Custom Calendar',
 				calendars: []
@@ -34,6 +35,7 @@ export default class App extends React.Component {
 
 		this.handleSetActiveEvent = this.handleSetActiveEvent.bind(this);
 		this.handleUnsetActiveEvent = this.handleUnsetActiveEvent.bind(this);
+		this.handleChangeCustomCalendarIds = this.handleChangeCustomCalendarIds.bind(this);
 	}
 
 	render(){
@@ -108,6 +110,13 @@ export default class App extends React.Component {
 					<Link to="/custom" activeClassName="active">
 						Custom Group
 					</Link>
+			{
+				calendarId === 'custom' && (
+					<CustomGroupSelector calendars={this.state.calendars}
+						customCalendarIds={this.state.customCalendar.calendars}
+						handleChangeCustomCalendarIds={this.handleChangeCustomCalendarIds} />
+				)
+			}
 				</li>
 			);
 
@@ -122,7 +131,16 @@ export default class App extends React.Component {
 
 			const icsFilename = calendarId === 'custom'
 				? `combine.ics?${this.state.customCalendar.calendars
-					.map(calId => `urls[]=${this.state.calendars[calId].url}`).join('&')}`
+					.map(calId => {
+						if(this.state.calendars[calId].url){
+							return `urls[]=${this.state.calendars[calId].url}`;
+						}
+						else {
+							return this.state.calendars[calId].subCalendars.map(subCal => {
+								return `urls[]=${subCal.url}`;
+							}).join('&');
+						}
+					}).join('&')}`
 				: `${calendarId}.ics`;
 
 			return (
@@ -208,6 +226,31 @@ export default class App extends React.Component {
 		this.setState({
 			activeEvent: null,
 			activeEventOriginalPosition: null
+		});
+	}
+
+	handleChangeCustomCalendarIds(event){
+		const checkbox = event.target;
+
+		this.setState(previousState => {
+			let customCalendar = Object.assign({}, previousState.customCalendar);
+			customCalendar.calendars = customCalendar.calendars.slice();
+			if(checkbox.checked){
+				if(!customCalendar.calendars.includes(checkbox.value)){
+					customCalendar.calendars.push(checkbox.value);
+					return {
+						customCalendar
+					};
+				}
+			}
+			else {
+				if(customCalendar.calendars.includes(checkbox.value)){
+					customCalendar.calendars.splice(customCalendar.calendars.indexOf(checkbox.value), 1);
+					return {
+						customCalendar
+					};
+				}
+			}
 		});
 	}
 }

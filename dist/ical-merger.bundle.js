@@ -9408,27 +9408,32 @@ function merge(inputs, options){
 	for(var i = 0, list = inputs; i < list.length; i += 1){
 		var input = list[i];
 
-		var jcal = ical.parse(input);
-		var cal = new ical.Component(jcal);
+		try {
+			var jcal = ical.parse(input);
+			var cal = new ical.Component(jcal);
 
-		if(!calendar) {
-			calendar = cal;
-			calendar.updatePropertyWithValue('prodid', icalMerger.prodid);
-			calendar.updatePropertyWithValue('version', icalMerger.version);
+			if(!calendar) {
+				calendar = cal;
+				calendar.updatePropertyWithValue('prodid', icalMerger.prodid);
+				calendar.updatePropertyWithValue('version', icalMerger.version);
 
-			if(options.calname)
+				if(options.calname)
 				{ calendar.updatePropertyWithValue('x-wr-calname', options.calname); }
-			if(options.timezone)
+				if(options.timezone)
 				{ calendar.updatePropertyWithValue('x-wr-timezone', options.timezone); }
-			if(options.caldesc)
+				if(options.caldesc)
 				{ calendar.updatePropertyWithValue('x-wr-caldesc', options.caldesc); }
-		}
-		else {
-			for(var i$1 = 0, list$1 = cal.getAllSubcomponents('vevent'); i$1 < list$1.length; i$1 += 1){
-				var vevent = list$1[i$1];
-
-				calendar.addSubcomponent(vevent);
 			}
+			else {
+				for(var i$1 = 0, list$1 = cal.getAllSubcomponents('vevent'); i$1 < list$1.length; i$1 += 1){
+					var vevent = list$1[i$1];
+
+					calendar.addSubcomponent(vevent);
+				}
+			}
+		}
+		catch(e) {
+			console.error(("Failed to merge: " + e + "\n\nWith input: " + input));
 		}
 	}
 
