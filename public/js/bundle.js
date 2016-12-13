@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/js/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 606);
+/******/ 	return __webpack_require__(__webpack_require__.s = 612);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1478,7 +1478,7 @@ module.exports = Object.getPrototypeOf || function(O){
 var debugTool = null;
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactDebugTool = __webpack_require__(530);
+  var ReactDebugTool = __webpack_require__(532);
   debugTool = ReactDebugTool;
 }
 
@@ -4348,7 +4348,7 @@ module.exports = DOMLazyTree;
 
 'use strict';
 
-var ReactRef = __webpack_require__(544);
+var ReactRef = __webpack_require__(546);
 var ReactInstrumentation = __webpack_require__(28);
 
 var warning = __webpack_require__(3);
@@ -4809,16 +4809,16 @@ function _resetWarned() {
 
 var _assign = __webpack_require__(10);
 
-var ReactChildren = __webpack_require__(591);
+var ReactChildren = __webpack_require__(593);
 var ReactComponent = __webpack_require__(159);
-var ReactPureComponent = __webpack_require__(595);
-var ReactClass = __webpack_require__(592);
-var ReactDOMFactories = __webpack_require__(593);
+var ReactPureComponent = __webpack_require__(597);
+var ReactClass = __webpack_require__(594);
+var ReactDOMFactories = __webpack_require__(595);
 var ReactElement = __webpack_require__(60);
-var ReactPropTypes = __webpack_require__(594);
-var ReactVersion = __webpack_require__(596);
+var ReactPropTypes = __webpack_require__(596);
+var ReactVersion = __webpack_require__(598);
 
-var onlyChild = __webpack_require__(598);
+var onlyChild = __webpack_require__(600);
 var warning = __webpack_require__(3);
 
 var createElement = ReactElement.createElement;
@@ -6195,10 +6195,10 @@ module.exports = EventPluginRegistry;
 var _assign = __webpack_require__(10);
 
 var EventPluginRegistry = __webpack_require__(97);
-var ReactEventEmitterMixin = __webpack_require__(534);
+var ReactEventEmitterMixin = __webpack_require__(536);
 var ViewportMetrics = __webpack_require__(221);
 
-var getVendorPrefixedEventName = __webpack_require__(570);
+var getVendorPrefixedEventName = __webpack_require__(572);
 var isEventSupported = __webpack_require__(152);
 
 /**
@@ -19053,7 +19053,7 @@ return jQuery;
 /* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(494);
+var root = __webpack_require__(496);
 
 /** Built-in value references. */
 var Symbol = root.Symbol;
@@ -19079,7 +19079,7 @@ module.exports = Symbol;
 'use strict';
 
 var DOMLazyTree = __webpack_require__(68);
-var Danger = __webpack_require__(507);
+var Danger = __webpack_require__(509);
 var ReactDOMComponentTree = __webpack_require__(14);
 var ReactInstrumentation = __webpack_require__(28);
 
@@ -21077,7 +21077,7 @@ var _react = __webpack_require__(13);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _getRouteParams = __webpack_require__(583);
+var _getRouteParams = __webpack_require__(585);
 
 var _getRouteParams2 = _interopRequireDefault(_getRouteParams);
 
@@ -23935,7 +23935,7 @@ exports.__esModule = true;
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _queryString = __webpack_require__(501);
+var _queryString = __webpack_require__(503);
 
 var _runTransitionHook = __webpack_require__(137);
 
@@ -24058,7 +24058,7 @@ exports.default = useQueries;
 "use strict";
 'use strict';
 
-module.exports = __webpack_require__(515);
+module.exports = __webpack_require__(517);
 
 
 /***/ },
@@ -24360,7 +24360,7 @@ var DOMProperty = __webpack_require__(47);
 var ReactDOMComponentTree = __webpack_require__(14);
 var ReactInstrumentation = __webpack_require__(28);
 
-var quoteAttributeValueForBrowser = __webpack_require__(571);
+var quoteAttributeValueForBrowser = __webpack_require__(573);
 var warning = __webpack_require__(3);
 
 var VALID_ATTRIBUTE_NAME_REGEX = new RegExp('^[' + DOMProperty.ATTRIBUTE_NAME_START_CHAR + '][' + DOMProperty.ATTRIBUTE_NAME_CHAR + ']*$');
@@ -24972,7 +24972,7 @@ module.exports = ReactHostComponent;
 
 'use strict';
 
-var ReactDOMSelection = __webpack_require__(525);
+var ReactDOMSelection = __webpack_require__(527);
 
 var containsNode = __webpack_require__(464);
 var focusNode = __webpack_require__(203);
@@ -25109,12 +25109,12 @@ var React = __webpack_require__(72);
 var ReactBrowserEventEmitter = __webpack_require__(98);
 var ReactCurrentOwner = __webpack_require__(37);
 var ReactDOMComponentTree = __webpack_require__(14);
-var ReactDOMContainerInfo = __webpack_require__(517);
-var ReactDOMFeatureFlags = __webpack_require__(519);
+var ReactDOMContainerInfo = __webpack_require__(519);
+var ReactDOMFeatureFlags = __webpack_require__(521);
 var ReactFeatureFlags = __webpack_require__(215);
 var ReactInstanceMap = __webpack_require__(80);
 var ReactInstrumentation = __webpack_require__(28);
-var ReactMarkupChecksum = __webpack_require__(539);
+var ReactMarkupChecksum = __webpack_require__(541);
 var ReactReconciler = __webpack_require__(69);
 var ReactUpdateQueue = __webpack_require__(147);
 var ReactUpdates = __webpack_require__(36);
@@ -25921,11 +25921,11 @@ module.exports = getTextContentAccessor;
 var _prodInvariant = __webpack_require__(7),
     _assign = __webpack_require__(10);
 
-var ReactCompositeComponent = __webpack_require__(514);
+var ReactCompositeComponent = __webpack_require__(516);
 var ReactEmptyComponent = __webpack_require__(214);
 var ReactHostComponent = __webpack_require__(216);
 
-var getNextDebugID = __webpack_require__(568);
+var getNextDebugID = __webpack_require__(570);
 var invariant = __webpack_require__(2);
 var warning = __webpack_require__(3);
 
@@ -26158,9 +26158,9 @@ module.exports = setTextContent;
 var _prodInvariant = __webpack_require__(7);
 
 var ReactCurrentOwner = __webpack_require__(37);
-var REACT_ELEMENT_TYPE = __webpack_require__(533);
+var REACT_ELEMENT_TYPE = __webpack_require__(535);
 
-var getIteratorFn = __webpack_require__(567);
+var getIteratorFn = __webpack_require__(569);
 var invariant = __webpack_require__(2);
 var KeyEscapeUtils = __webpack_require__(143);
 var warning = __webpack_require__(3);
@@ -26721,21 +26721,21 @@ var _routerWarning = __webpack_require__(71);
 
 var _routerWarning2 = _interopRequireDefault(_routerWarning);
 
-var _computeChangedRoutes2 = __webpack_require__(581);
+var _computeChangedRoutes2 = __webpack_require__(583);
 
 var _computeChangedRoutes3 = _interopRequireDefault(_computeChangedRoutes2);
 
-var _TransitionUtils = __webpack_require__(578);
+var _TransitionUtils = __webpack_require__(580);
 
-var _isActive2 = __webpack_require__(585);
+var _isActive2 = __webpack_require__(587);
 
 var _isActive3 = _interopRequireDefault(_isActive2);
 
-var _getComponents = __webpack_require__(582);
+var _getComponents = __webpack_require__(584);
 
 var _getComponents2 = _interopRequireDefault(_getComponents);
 
-var _matchRoutes = __webpack_require__(587);
+var _matchRoutes = __webpack_require__(589);
 
 var _matchRoutes2 = _interopRequireDefault(_matchRoutes);
 
@@ -27029,7 +27029,7 @@ Object.defineProperty(exports, 'formatPattern', {
   }
 });
 
-var _Router2 = __webpack_require__(577);
+var _Router2 = __webpack_require__(579);
 
 var _Router3 = _interopRequireDefault(_Router2);
 
@@ -27037,19 +27037,19 @@ var _Link2 = __webpack_require__(230);
 
 var _Link3 = _interopRequireDefault(_Link2);
 
-var _IndexLink2 = __webpack_require__(573);
+var _IndexLink2 = __webpack_require__(575);
 
 var _IndexLink3 = _interopRequireDefault(_IndexLink2);
 
-var _withRouter2 = __webpack_require__(588);
+var _withRouter2 = __webpack_require__(590);
 
 var _withRouter3 = _interopRequireDefault(_withRouter2);
 
-var _IndexRedirect2 = __webpack_require__(574);
+var _IndexRedirect2 = __webpack_require__(576);
 
 var _IndexRedirect3 = _interopRequireDefault(_IndexRedirect2);
 
-var _IndexRoute2 = __webpack_require__(575);
+var _IndexRoute2 = __webpack_require__(577);
 
 var _IndexRoute3 = _interopRequireDefault(_IndexRoute2);
 
@@ -27057,7 +27057,7 @@ var _Redirect2 = __webpack_require__(232);
 
 var _Redirect3 = _interopRequireDefault(_Redirect2);
 
-var _Route2 = __webpack_require__(576);
+var _Route2 = __webpack_require__(578);
 
 var _Route3 = _interopRequireDefault(_Route2);
 
@@ -27065,7 +27065,7 @@ var _RouterContext2 = __webpack_require__(158);
 
 var _RouterContext3 = _interopRequireDefault(_RouterContext2);
 
-var _match2 = __webpack_require__(586);
+var _match2 = __webpack_require__(588);
 
 var _match3 = _interopRequireDefault(_match2);
 
@@ -27073,15 +27073,15 @@ var _useRouterHistory2 = __webpack_require__(238);
 
 var _useRouterHistory3 = _interopRequireDefault(_useRouterHistory2);
 
-var _applyRouterMiddleware2 = __webpack_require__(579);
+var _applyRouterMiddleware2 = __webpack_require__(581);
 
 var _applyRouterMiddleware3 = _interopRequireDefault(_applyRouterMiddleware2);
 
-var _browserHistory2 = __webpack_require__(580);
+var _browserHistory2 = __webpack_require__(582);
 
 var _browserHistory3 = _interopRequireDefault(_browserHistory2);
 
-var _hashHistory2 = __webpack_require__(584);
+var _hashHistory2 = __webpack_require__(586);
 
 var _hashHistory3 = _interopRequireDefault(_hashHistory2);
 
@@ -27198,7 +27198,7 @@ var ReactCurrentOwner = __webpack_require__(37);
 var ReactComponentTreeHook = __webpack_require__(25);
 var ReactElement = __webpack_require__(60);
 
-var checkReactTypeSpec = __webpack_require__(597);
+var checkReactTypeSpec = __webpack_require__(599);
 
 var canDefineProperty = __webpack_require__(162);
 var getIteratorFn = __webpack_require__(163);
@@ -27570,7 +27570,7 @@ __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 
 __webpack_require__(459);
 
-__webpack_require__(600);
+__webpack_require__(602);
 
 __webpack_require__(263);
 
@@ -27983,7 +27983,7 @@ function flush() {
 function attemptVertx() {
   try {
     var r = require;
-    var vertx = __webpack_require__(605);
+    var vertx = __webpack_require__(611);
     vertxNext = vertx.runOnLoop || vertx.runOnContext;
     return useVertxTimer();
   } catch (e) {
@@ -30593,7 +30593,7 @@ return Promise;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_color__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_color___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_color__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_linkify_it__ = __webpack_require__(607);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_linkify_it__ = __webpack_require__(488);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_linkify_it___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_linkify_it__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__CalendarEvent_js__ = __webpack_require__(164);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -30676,7 +30676,7 @@ var ActiveEvent = function (_CalendarEvent) {
 		value: function markupDescription(description) {
 			if (description && linkify.test(description)) {
 				linkify.match(description).map(function (match) {
-					description = description.replace(match.raw, '<a href="' + match.url + '">' + match.text + '</a>');
+					description = description.replace(match.raw, '<a href="' + match.url + '" target="_blank" rel="noopener noreferrer">' + match.text + '</a>');
 				});
 			}
 
@@ -30759,8 +30759,8 @@ var ActiveEvent = function (_CalendarEvent) {
 						'\xD7'
 					)
 				),
-				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('p', { className: 'event-desc',
-					dangerouslySetInnerHTML: this.markupDescription(this.props.event.description) })
+				this.props.event.description ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('p', { className: 'event-desc',
+					dangerouslySetInnerHTML: this.markupDescription(this.props.event.description) }) : null
 			);
 		}
 	}, {
@@ -30868,14 +30868,16 @@ var App = function (_React$Component) {
 			calendars: [],
 			calendarGroups: [],
 			activeEvent: null,
-			activeEventOriginalElement: null
+			activeEventOriginalElement: null,
+			loaded: null
 		};
 
 		fetch('/.env.json').then(function (response) {
 			return response.json();
 		}).then(function (dotenv) {
-			_this.setState(dotenv);
+			_this.setState(Object.assign(dotenv, { loaded: true }));
 		}).catch(function (err) {
+			_this.setState({ loaded: false });
 			console.error(err);
 		});
 
@@ -31069,17 +31071,33 @@ var App = function (_React$Component) {
 					) : null
 				);
 			} else {
-				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-					'p',
-					null,
-					'No calendar ',
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-						'code',
-						null,
-						calendarId
-					),
-					' found.'
-				);
+				switch (this.state.loaded) {
+					case null:
+					default:
+						return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'div',
+							{ className: 'loading-container' },
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: '/assets/spinner.gif', alt: 'Loading' })
+						);
+					case true:
+						return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'p',
+							null,
+							'No calendar ',
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'code',
+								null,
+								calendarId
+							),
+							' found.'
+						);
+					case false:
+						return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'p',
+							null,
+							'There was a problem loading calendar data.'
+						);
+				}
 			}
 		}
 	}, {
@@ -31180,7 +31198,7 @@ CalendarLegend.propTypes = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_fullcalendar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_fullcalendar__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_fullcalendar_dist_gcal_js__ = __webpack_require__(477);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_fullcalendar_dist_gcal_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_fullcalendar_dist_gcal_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_uniqueId__ = __webpack_require__(499);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_uniqueId__ = __webpack_require__(501);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_lodash_uniqueId___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_lodash_uniqueId__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__CalendarEvent_js__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__constants_js__ = __webpack_require__(255);
@@ -31522,7 +31540,7 @@ module.exports = { "default": __webpack_require__(265), __esModule: true };
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
     if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(601)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(603)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
     } else if (typeof exports !== "undefined") {
         factory(module, require('select'));
     } else {
@@ -31756,7 +31774,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
     if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(258), __webpack_require__(604), __webpack_require__(479)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [module, __webpack_require__(258), __webpack_require__(606), __webpack_require__(479)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
     } else if (typeof exports !== "undefined") {
         factory(module, require('./clipboard-action'), require('tiny-emitter'), require('good-listener'));
     } else {
@@ -32134,7 +32152,7 @@ module.exports = function (fromModel) {
 
 /* MIT license */
 var colorNames = __webpack_require__(166);
-var swizzle = __webpack_require__(602);
+var swizzle = __webpack_require__(604);
 
 var reverseNames = {};
 
@@ -37467,7 +37485,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 (function(factory) {
 	if (true) {
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(138), __webpack_require__(500) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(138), __webpack_require__(502) ], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	}
 	else if (typeof exports === 'object') { // Node/CommonJS
 		module.exports = factory(require('jquery'), require('moment'));
@@ -52734,6 +52752,830 @@ module.exports = function isArrayish(obj) {
 
 /***/ },
 /* 488 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Helpers
+
+// Merge objects
+//
+function assign(obj /*from1, from2, from3, ...*/) {
+  var sources = Array.prototype.slice.call(arguments, 1);
+
+  sources.forEach(function (source) {
+    if (!source) { return; }
+
+    Object.keys(source).forEach(function (key) {
+      obj[key] = source[key];
+    });
+  });
+
+  return obj;
+}
+
+function _class(obj) { return Object.prototype.toString.call(obj); }
+function isString(obj) { return _class(obj) === '[object String]'; }
+function isObject(obj) { return _class(obj) === '[object Object]'; }
+function isRegExp(obj) { return _class(obj) === '[object RegExp]'; }
+function isFunction(obj) { return _class(obj) === '[object Function]'; }
+
+
+function escapeRE(str) { return str.replace(/[.?*+^$[\]\\(){}|-]/g, '\\$&'); }
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+var defaultOptions = {
+  fuzzyLink: true,
+  fuzzyEmail: true,
+  fuzzyIP: false
+};
+
+
+function isOptionsObj(obj) {
+  return Object.keys(obj || {}).reduce(function (acc, k) {
+    return acc || defaultOptions.hasOwnProperty(k);
+  }, false);
+}
+
+
+var defaultSchemas = {
+  'http:': {
+    validate: function (text, pos, self) {
+      var tail = text.slice(pos);
+
+      if (!self.re.http) {
+        // compile lazily, because "host"-containing variables can change on tlds update.
+        self.re.http =  new RegExp(
+          '^\\/\\/' + self.re.src_auth + self.re.src_host_port_strict + self.re.src_path, 'i'
+        );
+      }
+      if (self.re.http.test(tail)) {
+        return tail.match(self.re.http)[0].length;
+      }
+      return 0;
+    }
+  },
+  'https:':  'http:',
+  'ftp:':    'http:',
+  '//':      {
+    validate: function (text, pos, self) {
+      var tail = text.slice(pos);
+
+      if (!self.re.no_http) {
+      // compile lazily, because "host"-containing variables can change on tlds update.
+        self.re.no_http =  new RegExp(
+          '^' +
+          self.re.src_auth +
+          // Don't allow single-level domains, because of false positives like '//test'
+          // with code comments
+          '(?:localhost|(?:(?:' + self.re.src_domain + ')\\.)+' + self.re.src_domain_root + ')' +
+          self.re.src_port +
+          self.re.src_host_terminator +
+          self.re.src_path,
+
+          'i'
+        );
+      }
+
+      if (self.re.no_http.test(tail)) {
+        // should not be `://` & `///`, that protects from errors in protocol name
+        if (pos >= 3 && text[pos - 3] === ':') { return 0; }
+        if (pos >= 3 && text[pos - 3] === '/') { return 0; }
+        return tail.match(self.re.no_http)[0].length;
+      }
+      return 0;
+    }
+  },
+  'mailto:': {
+    validate: function (text, pos, self) {
+      var tail = text.slice(pos);
+
+      if (!self.re.mailto) {
+        self.re.mailto =  new RegExp(
+          '^' + self.re.src_email_name + '@' + self.re.src_host_strict, 'i'
+        );
+      }
+      if (self.re.mailto.test(tail)) {
+        return tail.match(self.re.mailto)[0].length;
+      }
+      return 0;
+    }
+  }
+};
+
+/*eslint-disable max-len*/
+
+// RE pattern for 2-character tlds (autogenerated by ./support/tlds_2char_gen.js)
+var tlds_2ch_src_re = 'a[cdefgilmnoqrstuwxz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvwxyz]|d[ejkmoz]|e[cegrstu]|f[ijkmor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdeghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eosuw]|s[abcdeghijklmnortuvxyz]|t[cdfghjklmnortvwz]|u[agksyz]|v[aceginu]|w[fs]|y[et]|z[amw]';
+
+// DON'T try to make PRs with changes. Extend TLDs with LinkifyIt.tlds() instead
+var tlds_default = 'biz|com|edu|gov|net|org|pro|web|xxx|aero|asia|coop|info|museum|name|shop|рф'.split('|');
+
+/*eslint-enable max-len*/
+
+////////////////////////////////////////////////////////////////////////////////
+
+function resetScanCache(self) {
+  self.__index__ = -1;
+  self.__text_cache__   = '';
+}
+
+function createValidator(re) {
+  return function (text, pos) {
+    var tail = text.slice(pos);
+
+    if (re.test(tail)) {
+      return tail.match(re)[0].length;
+    }
+    return 0;
+  };
+}
+
+function createNormalizer() {
+  return function (match, self) {
+    self.normalize(match);
+  };
+}
+
+// Schemas compiler. Build regexps.
+//
+function compile(self) {
+
+  // Load & clone RE patterns.
+  var re = self.re = __webpack_require__(489)(self.__opts__);
+
+  // Define dynamic patterns
+  var tlds = self.__tlds__.slice();
+
+  self.onCompile();
+
+  if (!self.__tlds_replaced__) {
+    tlds.push(tlds_2ch_src_re);
+  }
+  tlds.push(re.src_xn);
+
+  re.src_tlds = tlds.join('|');
+
+  function untpl(tpl) { return tpl.replace('%TLDS%', re.src_tlds); }
+
+  re.email_fuzzy      = RegExp(untpl(re.tpl_email_fuzzy), 'i');
+  re.link_fuzzy       = RegExp(untpl(re.tpl_link_fuzzy), 'i');
+  re.link_no_ip_fuzzy = RegExp(untpl(re.tpl_link_no_ip_fuzzy), 'i');
+  re.host_fuzzy_test  = RegExp(untpl(re.tpl_host_fuzzy_test), 'i');
+
+  //
+  // Compile each schema
+  //
+
+  var aliases = [];
+
+  self.__compiled__ = {}; // Reset compiled data
+
+  function schemaError(name, val) {
+    throw new Error('(LinkifyIt) Invalid schema "' + name + '": ' + val);
+  }
+
+  Object.keys(self.__schemas__).forEach(function (name) {
+    var val = self.__schemas__[name];
+
+    // skip disabled methods
+    if (val === null) { return; }
+
+    var compiled = { validate: null, link: null };
+
+    self.__compiled__[name] = compiled;
+
+    if (isObject(val)) {
+      if (isRegExp(val.validate)) {
+        compiled.validate = createValidator(val.validate);
+      } else if (isFunction(val.validate)) {
+        compiled.validate = val.validate;
+      } else {
+        schemaError(name, val);
+      }
+
+      if (isFunction(val.normalize)) {
+        compiled.normalize = val.normalize;
+      } else if (!val.normalize) {
+        compiled.normalize = createNormalizer();
+      } else {
+        schemaError(name, val);
+      }
+
+      return;
+    }
+
+    if (isString(val)) {
+      aliases.push(name);
+      return;
+    }
+
+    schemaError(name, val);
+  });
+
+  //
+  // Compile postponed aliases
+  //
+
+  aliases.forEach(function (alias) {
+    if (!self.__compiled__[self.__schemas__[alias]]) {
+      // Silently fail on missed schemas to avoid errons on disable.
+      // schemaError(alias, self.__schemas__[alias]);
+      return;
+    }
+
+    self.__compiled__[alias].validate =
+      self.__compiled__[self.__schemas__[alias]].validate;
+    self.__compiled__[alias].normalize =
+      self.__compiled__[self.__schemas__[alias]].normalize;
+  });
+
+  //
+  // Fake record for guessed links
+  //
+  self.__compiled__[''] = { validate: null, normalize: createNormalizer() };
+
+  //
+  // Build schema condition
+  //
+  var slist = Object.keys(self.__compiled__)
+                      .filter(function (name) {
+                        // Filter disabled & fake schemas
+                        return name.length > 0 && self.__compiled__[name];
+                      })
+                      .map(escapeRE)
+                      .join('|');
+  // (?!_) cause 1.5x slowdown
+  self.re.schema_test   = RegExp('(^|(?!_)(?:[><]|' + re.src_ZPCc + '))(' + slist + ')', 'i');
+  self.re.schema_search = RegExp('(^|(?!_)(?:[><]|' + re.src_ZPCc + '))(' + slist + ')', 'ig');
+
+  self.re.pretest       = RegExp(
+                            '(' + self.re.schema_test.source + ')|' +
+                            '(' + self.re.host_fuzzy_test.source + ')|' +
+                            '@',
+                            'i');
+
+  //
+  // Cleanup
+  //
+
+  resetScanCache(self);
+}
+
+/**
+ * class Match
+ *
+ * Match result. Single element of array, returned by [[LinkifyIt#match]]
+ **/
+function Match(self, shift) {
+  var start = self.__index__,
+      end   = self.__last_index__,
+      text  = self.__text_cache__.slice(start, end);
+
+  /**
+   * Match#schema -> String
+   *
+   * Prefix (protocol) for matched string.
+   **/
+  this.schema    = self.__schema__.toLowerCase();
+  /**
+   * Match#index -> Number
+   *
+   * First position of matched string.
+   **/
+  this.index     = start + shift;
+  /**
+   * Match#lastIndex -> Number
+   *
+   * Next position after matched string.
+   **/
+  this.lastIndex = end + shift;
+  /**
+   * Match#raw -> String
+   *
+   * Matched string.
+   **/
+  this.raw       = text;
+  /**
+   * Match#text -> String
+   *
+   * Notmalized text of matched string.
+   **/
+  this.text      = text;
+  /**
+   * Match#url -> String
+   *
+   * Normalized url of matched string.
+   **/
+  this.url       = text;
+}
+
+function createMatch(self, shift) {
+  var match = new Match(self, shift);
+
+  self.__compiled__[match.schema].normalize(match, self);
+
+  return match;
+}
+
+
+/**
+ * class LinkifyIt
+ **/
+
+/**
+ * new LinkifyIt(schemas, options)
+ * - schemas (Object): Optional. Additional schemas to validate (prefix/validator)
+ * - options (Object): { fuzzyLink|fuzzyEmail|fuzzyIP: true|false }
+ *
+ * Creates new linkifier instance with optional additional schemas.
+ * Can be called without `new` keyword for convenience.
+ *
+ * By default understands:
+ *
+ * - `http(s)://...` , `ftp://...`, `mailto:...` & `//...` links
+ * - "fuzzy" links and emails (example.com, foo@bar.com).
+ *
+ * `schemas` is an object, where each key/value describes protocol/rule:
+ *
+ * - __key__ - link prefix (usually, protocol name with `:` at the end, `skype:`
+ *   for example). `linkify-it` makes shure that prefix is not preceeded with
+ *   alphanumeric char and symbols. Only whitespaces and punctuation allowed.
+ * - __value__ - rule to check tail after link prefix
+ *   - _String_ - just alias to existing rule
+ *   - _Object_
+ *     - _validate_ - validator function (should return matched length on success),
+ *       or `RegExp`.
+ *     - _normalize_ - optional function to normalize text & url of matched result
+ *       (for example, for @twitter mentions).
+ *
+ * `options`:
+ *
+ * - __fuzzyLink__ - recognige URL-s without `http(s):` prefix. Default `true`.
+ * - __fuzzyIP__ - allow IPs in fuzzy links above. Can conflict with some texts
+ *   like version numbers. Default `false`.
+ * - __fuzzyEmail__ - recognize emails without `mailto:` prefix.
+ *
+ **/
+function LinkifyIt(schemas, options) {
+  if (!(this instanceof LinkifyIt)) {
+    return new LinkifyIt(schemas, options);
+  }
+
+  if (!options) {
+    if (isOptionsObj(schemas)) {
+      options = schemas;
+      schemas = {};
+    }
+  }
+
+  this.__opts__           = assign({}, defaultOptions, options);
+
+  // Cache last tested result. Used to skip repeating steps on next `match` call.
+  this.__index__          = -1;
+  this.__last_index__     = -1; // Next scan position
+  this.__schema__         = '';
+  this.__text_cache__     = '';
+
+  this.__schemas__        = assign({}, defaultSchemas, schemas);
+  this.__compiled__       = {};
+
+  this.__tlds__           = tlds_default;
+  this.__tlds_replaced__  = false;
+
+  this.re = {};
+
+  compile(this);
+}
+
+
+/** chainable
+ * LinkifyIt#add(schema, definition)
+ * - schema (String): rule name (fixed pattern prefix)
+ * - definition (String|RegExp|Object): schema definition
+ *
+ * Add new rule definition. See constructor description for details.
+ **/
+LinkifyIt.prototype.add = function add(schema, definition) {
+  this.__schemas__[schema] = definition;
+  compile(this);
+  return this;
+};
+
+
+/** chainable
+ * LinkifyIt#set(options)
+ * - options (Object): { fuzzyLink|fuzzyEmail|fuzzyIP: true|false }
+ *
+ * Set recognition options for links without schema.
+ **/
+LinkifyIt.prototype.set = function set(options) {
+  this.__opts__ = assign(this.__opts__, options);
+  return this;
+};
+
+
+/**
+ * LinkifyIt#test(text) -> Boolean
+ *
+ * Searches linkifiable pattern and returns `true` on success or `false` on fail.
+ **/
+LinkifyIt.prototype.test = function test(text) {
+  // Reset scan cache
+  this.__text_cache__ = text;
+  this.__index__      = -1;
+
+  if (!text.length) { return false; }
+
+  var m, ml, me, len, shift, next, re, tld_pos, at_pos;
+
+  // try to scan for link with schema - that's the most simple rule
+  if (this.re.schema_test.test(text)) {
+    re = this.re.schema_search;
+    re.lastIndex = 0;
+    while ((m = re.exec(text)) !== null) {
+      len = this.testSchemaAt(text, m[2], re.lastIndex);
+      if (len) {
+        this.__schema__     = m[2];
+        this.__index__      = m.index + m[1].length;
+        this.__last_index__ = m.index + m[0].length + len;
+        break;
+      }
+    }
+  }
+
+  if (this.__opts__.fuzzyLink && this.__compiled__['http:']) {
+    // guess schemaless links
+    tld_pos = text.search(this.re.host_fuzzy_test);
+    if (tld_pos >= 0) {
+      // if tld is located after found link - no need to check fuzzy pattern
+      if (this.__index__ < 0 || tld_pos < this.__index__) {
+        if ((ml = text.match(this.__opts__.fuzzyIP ? this.re.link_fuzzy : this.re.link_no_ip_fuzzy)) !== null) {
+
+          shift = ml.index + ml[1].length;
+
+          if (this.__index__ < 0 || shift < this.__index__) {
+            this.__schema__     = '';
+            this.__index__      = shift;
+            this.__last_index__ = ml.index + ml[0].length;
+          }
+        }
+      }
+    }
+  }
+
+  if (this.__opts__.fuzzyEmail && this.__compiled__['mailto:']) {
+    // guess schemaless emails
+    at_pos = text.indexOf('@');
+    if (at_pos >= 0) {
+      // We can't skip this check, because this cases are possible:
+      // 192.168.1.1@gmail.com, my.in@example.com
+      if ((me = text.match(this.re.email_fuzzy)) !== null) {
+
+        shift = me.index + me[1].length;
+        next  = me.index + me[0].length;
+
+        if (this.__index__ < 0 || shift < this.__index__ ||
+            (shift === this.__index__ && next > this.__last_index__)) {
+          this.__schema__     = 'mailto:';
+          this.__index__      = shift;
+          this.__last_index__ = next;
+        }
+      }
+    }
+  }
+
+  return this.__index__ >= 0;
+};
+
+
+/**
+ * LinkifyIt#pretest(text) -> Boolean
+ *
+ * Very quick check, that can give false positives. Returns true if link MAY BE
+ * can exists. Can be used for speed optimization, when you need to check that
+ * link NOT exists.
+ **/
+LinkifyIt.prototype.pretest = function pretest(text) {
+  return this.re.pretest.test(text);
+};
+
+
+/**
+ * LinkifyIt#testSchemaAt(text, name, position) -> Number
+ * - text (String): text to scan
+ * - name (String): rule (schema) name
+ * - position (Number): text offset to check from
+ *
+ * Similar to [[LinkifyIt#test]] but checks only specific protocol tail exactly
+ * at given position. Returns length of found pattern (0 on fail).
+ **/
+LinkifyIt.prototype.testSchemaAt = function testSchemaAt(text, schema, pos) {
+  // If not supported schema check requested - terminate
+  if (!this.__compiled__[schema.toLowerCase()]) {
+    return 0;
+  }
+  return this.__compiled__[schema.toLowerCase()].validate(text, pos, this);
+};
+
+
+/**
+ * LinkifyIt#match(text) -> Array|null
+ *
+ * Returns array of found link descriptions or `null` on fail. We strongly
+ * recommend to use [[LinkifyIt#test]] first, for best speed.
+ *
+ * ##### Result match description
+ *
+ * - __schema__ - link schema, can be empty for fuzzy links, or `//` for
+ *   protocol-neutral  links.
+ * - __index__ - offset of matched text
+ * - __lastIndex__ - index of next char after mathch end
+ * - __raw__ - matched text
+ * - __text__ - normalized text
+ * - __url__ - link, generated from matched text
+ **/
+LinkifyIt.prototype.match = function match(text) {
+  var shift = 0, result = [];
+
+  // Try to take previous element from cache, if .test() called before
+  if (this.__index__ >= 0 && this.__text_cache__ === text) {
+    result.push(createMatch(this, shift));
+    shift = this.__last_index__;
+  }
+
+  // Cut head if cache was used
+  var tail = shift ? text.slice(shift) : text;
+
+  // Scan string until end reached
+  while (this.test(tail)) {
+    result.push(createMatch(this, shift));
+
+    tail = tail.slice(this.__last_index__);
+    shift += this.__last_index__;
+  }
+
+  if (result.length) {
+    return result;
+  }
+
+  return null;
+};
+
+
+/** chainable
+ * LinkifyIt#tlds(list [, keepOld]) -> this
+ * - list (Array): list of tlds
+ * - keepOld (Boolean): merge with current list if `true` (`false` by default)
+ *
+ * Load (or merge) new tlds list. Those are user for fuzzy links (without prefix)
+ * to avoid false positives. By default this algorythm used:
+ *
+ * - hostname with any 2-letter root zones are ok.
+ * - biz|com|edu|gov|net|org|pro|web|xxx|aero|asia|coop|info|museum|name|shop|рф
+ *   are ok.
+ * - encoded (`xn--...`) root zones are ok.
+ *
+ * If list is replaced, then exact match for 2-chars root zones will be checked.
+ **/
+LinkifyIt.prototype.tlds = function tlds(list, keepOld) {
+  list = Array.isArray(list) ? list : [ list ];
+
+  if (!keepOld) {
+    this.__tlds__ = list.slice();
+    this.__tlds_replaced__ = true;
+    compile(this);
+    return this;
+  }
+
+  this.__tlds__ = this.__tlds__.concat(list)
+                                  .sort()
+                                  .filter(function (el, idx, arr) {
+                                    return el !== arr[idx - 1];
+                                  })
+                                  .reverse();
+
+  compile(this);
+  return this;
+};
+
+/**
+ * LinkifyIt#normalize(match)
+ *
+ * Default normalizer (if schema does not define it's own).
+ **/
+LinkifyIt.prototype.normalize = function normalize(match) {
+
+  // Do minimal possible changes by default. Need to collect feedback prior
+  // to move forward https://github.com/markdown-it/linkify-it/issues/1
+
+  if (!match.schema) { match.url = 'http://' + match.url; }
+
+  if (match.schema === 'mailto:' && !/^mailto:/i.test(match.url)) {
+    match.url = 'mailto:' + match.url;
+  }
+};
+
+
+/**
+ * LinkifyIt#onCompile()
+ *
+ * Override to modify basic RegExp-s.
+ **/
+LinkifyIt.prototype.onCompile = function onCompile() {
+};
+
+
+module.exports = LinkifyIt;
+
+
+/***/ },
+/* 489 */
+/***/ function(module, exports, __webpack_require__) {
+
+"use strict";
+'use strict';
+
+
+module.exports = function (opts) {
+  var re = {};
+
+  // Use direct extract instead of `regenerate` to reduse browserified size
+  re.src_Any = __webpack_require__(610).source;
+  re.src_Cc  = __webpack_require__(607).source;
+  re.src_Z   = __webpack_require__(609).source;
+  re.src_P   = __webpack_require__(608).source;
+
+  // \p{\Z\P\Cc\CF} (white spaces + control + format + punctuation)
+  re.src_ZPCc = [ re.src_Z, re.src_P, re.src_Cc ].join('|');
+
+  // \p{\Z\Cc} (white spaces + control)
+  re.src_ZCc = [ re.src_Z, re.src_Cc ].join('|');
+
+  // All possible word characters (everything without punctuation, spaces & controls)
+  // Defined via punctuation & spaces to save space
+  // Should be something like \p{\L\N\S\M} (\w but without `_`)
+  re.src_pseudo_letter       = '(?:(?!>|<|' + re.src_ZPCc + ')' + re.src_Any + ')';
+  // The same as abothe but without [0-9]
+  // var src_pseudo_letter_non_d = '(?:(?![0-9]|' + src_ZPCc + ')' + src_Any + ')';
+
+  ////////////////////////////////////////////////////////////////////////////////
+
+  re.src_ip4 =
+
+    '(?:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)';
+
+  // Prohibit any of "@/[]()" in user/pass to avoid wrong domain fetch.
+  re.src_auth    = '(?:(?:(?!' + re.src_ZCc + '|[@/\\[\\]()]).)+@)?';
+
+  re.src_port =
+
+    '(?::(?:6(?:[0-4]\\d{3}|5(?:[0-4]\\d{2}|5(?:[0-2]\\d|3[0-5])))|[1-5]?\\d{1,4}))?';
+
+  re.src_host_terminator =
+
+    '(?=$|>|<|' + re.src_ZPCc + ')(?!-|_|:\\d|\\.-|\\.(?!$|' + re.src_ZPCc + '))';
+
+  re.src_path =
+
+    '(?:' +
+      '[/?#]' +
+        '(?:' +
+          '(?!' + re.src_ZCc + '|[()[\\]{}.,"\'?!\\-<>]).|' +
+          '\\[(?:(?!' + re.src_ZCc + '|\\]).)*\\]|' +
+          '\\((?:(?!' + re.src_ZCc + '|[)]).)*\\)|' +
+          '\\{(?:(?!' + re.src_ZCc + '|[}]).)*\\}|' +
+          '\\"(?:(?!' + re.src_ZCc + '|["]).)+\\"|' +
+          "\\'(?:(?!" + re.src_ZCc + "|[']).)+\\'|" +
+          "\\'(?=" + re.src_pseudo_letter + '|[-]).|' +  // allow `I'm_king` if no pair found
+          '\\.{2,3}[a-zA-Z0-9%/]|' + // github has ... in commit range links. Restrict to
+                                     // - english
+                                     // - percent-encoded
+                                     // - parts of file path
+                                     // until more examples found.
+          '\\.(?!' + re.src_ZCc + '|[.]).|' +
+          (opts && opts['---'] ?
+            '\\-(?!--(?:[^-]|$))(?:-*)|' // `---` => long dash, terminate
+          :
+            '\\-+|'
+          ) +
+          '\\,(?!' + re.src_ZCc + ').|' +      // allow `,,,` in paths
+          '\\!(?!' + re.src_ZCc + '|[!]).|' +
+          '\\?(?!' + re.src_ZCc + '|[?]).' +
+        ')+' +
+      '|\\/' +
+    ')?';
+
+  re.src_email_name =
+
+    '[\\-;:&=\\+\\$,\\"\\.a-zA-Z0-9_]+';
+
+  re.src_xn =
+
+    'xn--[a-z0-9\\-]{1,59}';
+
+  // More to read about domain names
+  // http://serverfault.com/questions/638260/
+
+  re.src_domain_root =
+
+    // Allow letters & digits (http://test1)
+    '(?:' +
+      re.src_xn +
+      '|' +
+      re.src_pseudo_letter + '{1,63}' +
+    ')';
+
+  re.src_domain =
+
+    '(?:' +
+      re.src_xn +
+      '|' +
+      '(?:' + re.src_pseudo_letter + ')' +
+      '|' +
+      // don't allow `--` in domain names, because:
+      // - that can conflict with markdown &mdash; / &ndash;
+      // - nobody use those anyway
+      '(?:' + re.src_pseudo_letter + '(?:-(?!-)|' + re.src_pseudo_letter + '){0,61}' + re.src_pseudo_letter + ')' +
+    ')';
+
+  re.src_host =
+
+    '(?:' +
+    // Don't need IP check, because digits are already allowed in normal domain names
+    //   src_ip4 +
+    // '|' +
+      '(?:(?:(?:' + re.src_domain + ')\\.)*' + re.src_domain/*_root*/ + ')' +
+    ')';
+
+  re.tpl_host_fuzzy =
+
+    '(?:' +
+      re.src_ip4 +
+    '|' +
+      '(?:(?:(?:' + re.src_domain + ')\\.)+(?:%TLDS%))' +
+    ')';
+
+  re.tpl_host_no_ip_fuzzy =
+
+    '(?:(?:(?:' + re.src_domain + ')\\.)+(?:%TLDS%))';
+
+  re.src_host_strict =
+
+    re.src_host + re.src_host_terminator;
+
+  re.tpl_host_fuzzy_strict =
+
+    re.tpl_host_fuzzy + re.src_host_terminator;
+
+  re.src_host_port_strict =
+
+    re.src_host + re.src_port + re.src_host_terminator;
+
+  re.tpl_host_port_fuzzy_strict =
+
+    re.tpl_host_fuzzy + re.src_port + re.src_host_terminator;
+
+  re.tpl_host_port_no_ip_fuzzy_strict =
+
+    re.tpl_host_no_ip_fuzzy + re.src_port + re.src_host_terminator;
+
+
+  ////////////////////////////////////////////////////////////////////////////////
+  // Main rules
+
+  // Rude test fuzzy links by host, for quick deny
+  re.tpl_host_fuzzy_test =
+
+    'localhost|www\\.|\\.\\d{1,3}\\.|(?:\\.(?:%TLDS%)(?:' + re.src_ZPCc + '|>|$))';
+
+  re.tpl_email_fuzzy =
+
+      '(^|<|>|\\(|' + re.src_ZCc + ')(' + re.src_email_name + '@' + re.tpl_host_fuzzy_strict + ')';
+
+  re.tpl_link_fuzzy =
+      // Fuzzy link can't be prepended with .:/\- and non punctuation.
+      // but can start with > (markdown blockquote)
+      '(^|(?![.:/\\-_@])(?:[$+<=>^`|]|' + re.src_ZPCc + '))' +
+      '((?![$+<=>^`|])' + re.tpl_host_port_fuzzy_strict + re.src_path + ')';
+
+  re.tpl_link_no_ip_fuzzy =
+      // Fuzzy link can't be prepended with .:/\- and non punctuation.
+      // but can start with > (markdown blockquote)
+      '(^|(?![.:/\\-_@])(?:[$+<=>^`|]|' + re.src_ZPCc + '))' +
+      '((?![$+<=>^`|])' + re.tpl_host_port_no_ip_fuzzy_strict + re.src_path + ')';
+
+  return re;
+};
+
+
+/***/ },
+/* 490 */
 /***/ function(module, exports) {
 
 /**
@@ -52760,12 +53602,12 @@ module.exports = arrayMap;
 
 
 /***/ },
-/* 489 */
+/* 491 */
 /***/ function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(139),
-    getRawTag = __webpack_require__(492),
-    objectToString = __webpack_require__(493);
+    getRawTag = __webpack_require__(494),
+    objectToString = __webpack_require__(495);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -52795,13 +53637,13 @@ module.exports = baseGetTag;
 
 
 /***/ },
-/* 490 */
+/* 492 */
 /***/ function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(139),
-    arrayMap = __webpack_require__(488),
-    isArray = __webpack_require__(495),
-    isSymbol = __webpack_require__(497);
+    arrayMap = __webpack_require__(490),
+    isArray = __webpack_require__(497),
+    isSymbol = __webpack_require__(499);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -52838,7 +53680,7 @@ module.exports = baseToString;
 
 
 /***/ },
-/* 491 */
+/* 493 */
 /***/ function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -52849,7 +53691,7 @@ module.exports = freeGlobal;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(103)))
 
 /***/ },
-/* 492 */
+/* 494 */
 /***/ function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(139);
@@ -52901,7 +53743,7 @@ module.exports = getRawTag;
 
 
 /***/ },
-/* 493 */
+/* 495 */
 /***/ function(module, exports) {
 
 /** Used for built-in method references. */
@@ -52929,10 +53771,10 @@ module.exports = objectToString;
 
 
 /***/ },
-/* 494 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
-var freeGlobal = __webpack_require__(491);
+var freeGlobal = __webpack_require__(493);
 
 /** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -52944,7 +53786,7 @@ module.exports = root;
 
 
 /***/ },
-/* 495 */
+/* 497 */
 /***/ function(module, exports) {
 
 /**
@@ -52976,7 +53818,7 @@ module.exports = isArray;
 
 
 /***/ },
-/* 496 */
+/* 498 */
 /***/ function(module, exports) {
 
 /**
@@ -53011,11 +53853,11 @@ module.exports = isObjectLike;
 
 
 /***/ },
-/* 497 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(489),
-    isObjectLike = __webpack_require__(496);
+var baseGetTag = __webpack_require__(491),
+    isObjectLike = __webpack_require__(498);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -53046,10 +53888,10 @@ module.exports = isSymbol;
 
 
 /***/ },
-/* 498 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
-var baseToString = __webpack_require__(490);
+var baseToString = __webpack_require__(492);
 
 /**
  * Converts `value` to a string. An empty string is returned for `null`
@@ -53080,10 +53922,10 @@ module.exports = toString;
 
 
 /***/ },
-/* 499 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
-var toString = __webpack_require__(498);
+var toString = __webpack_require__(500);
 
 /** Used to generate unique IDs. */
 var idCounter = 0;
@@ -53114,7 +53956,7 @@ module.exports = uniqueId;
 
 
 /***/ },
-/* 500 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -57422,12 +58264,12 @@ return hooks;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(242)(module)))
 
 /***/ },
-/* 501 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 'use strict';
-var strictUriEncode = __webpack_require__(603);
+var strictUriEncode = __webpack_require__(605);
 var objectAssign = __webpack_require__(10);
 
 function encode(value, opts) {
@@ -57527,7 +58369,7 @@ exports.stringify = function (obj, opts) {
 
 
 /***/ },
-/* 502 */
+/* 504 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -57606,7 +58448,7 @@ var ARIADOMPropertyConfig = {
 module.exports = ARIADOMPropertyConfig;
 
 /***/ },
-/* 503 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57635,7 +58477,7 @@ var AutoFocusUtils = {
 module.exports = AutoFocusUtils;
 
 /***/ },
-/* 504 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -57653,9 +58495,9 @@ module.exports = AutoFocusUtils;
 
 var EventPropagators = __webpack_require__(79);
 var ExecutionEnvironment = __webpack_require__(16);
-var FallbackCompositionState = __webpack_require__(510);
-var SyntheticCompositionEvent = __webpack_require__(553);
-var SyntheticInputEvent = __webpack_require__(556);
+var FallbackCompositionState = __webpack_require__(512);
+var SyntheticCompositionEvent = __webpack_require__(555);
+var SyntheticInputEvent = __webpack_require__(558);
 
 var END_KEYCODES = [9, 13, 27, 32]; // Tab, Return, Esc, Space
 var START_KEYCODE = 229;
@@ -58025,7 +58867,7 @@ var BeforeInputEventPlugin = {
 module.exports = BeforeInputEventPlugin;
 
 /***/ },
-/* 505 */
+/* 507 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58046,7 +58888,7 @@ var ExecutionEnvironment = __webpack_require__(16);
 var ReactInstrumentation = __webpack_require__(28);
 
 var camelizeStyleName = __webpack_require__(463);
-var dangerousStyleValue = __webpack_require__(563);
+var dangerousStyleValue = __webpack_require__(565);
 var hyphenateStyleName = __webpack_require__(470);
 var memoizeStringOnly = __webpack_require__(473);
 var warning = __webpack_require__(3);
@@ -58240,7 +59082,7 @@ module.exports = CSSPropertyOperations;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 506 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58566,7 +59408,7 @@ var ChangeEventPlugin = {
 module.exports = ChangeEventPlugin;
 
 /***/ },
-/* 507 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58620,7 +59462,7 @@ module.exports = Danger;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 508 */
+/* 510 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -58651,7 +59493,7 @@ var DefaultEventPluginOrder = ['ResponderEventPlugin', 'SimpleEventPlugin', 'Tap
 module.exports = DefaultEventPluginOrder;
 
 /***/ },
-/* 509 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58756,7 +59598,7 @@ var EnterLeaveEventPlugin = {
 module.exports = EnterLeaveEventPlugin;
 
 /***/ },
-/* 510 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -58856,7 +59698,7 @@ PooledClass.addPoolingTo(FallbackCompositionState);
 module.exports = FallbackCompositionState;
 
 /***/ },
-/* 511 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59073,7 +59915,7 @@ var HTMLDOMPropertyConfig = {
 module.exports = HTMLDOMPropertyConfig;
 
 /***/ },
-/* 512 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59233,7 +60075,7 @@ module.exports = ReactChildReconciler;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 513 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59250,7 +60092,7 @@ module.exports = ReactChildReconciler;
 'use strict';
 
 var DOMChildrenOperations = __webpack_require__(140);
-var ReactDOMIDOperations = __webpack_require__(520);
+var ReactDOMIDOperations = __webpack_require__(522);
 
 /**
  * Abstracts away all functionality of the reconciler that requires knowledge of
@@ -59268,7 +60110,7 @@ var ReactComponentBrowserEnvironment = {
 module.exports = ReactComponentBrowserEnvironment;
 
 /***/ },
-/* 514 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59297,7 +60139,7 @@ var ReactNodeTypes = __webpack_require__(219);
 var ReactReconciler = __webpack_require__(69);
 
 if (process.env.NODE_ENV !== 'production') {
-  var checkReactTypeSpec = __webpack_require__(562);
+  var checkReactTypeSpec = __webpack_require__(564);
 }
 
 var emptyObject = __webpack_require__(77);
@@ -60176,7 +61018,7 @@ module.exports = ReactCompositeComponent;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 515 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60195,15 +61037,15 @@ module.exports = ReactCompositeComponent;
 'use strict';
 
 var ReactDOMComponentTree = __webpack_require__(14);
-var ReactDefaultInjection = __webpack_require__(532);
+var ReactDefaultInjection = __webpack_require__(534);
 var ReactMount = __webpack_require__(218);
 var ReactReconciler = __webpack_require__(69);
 var ReactUpdates = __webpack_require__(36);
-var ReactVersion = __webpack_require__(547);
+var ReactVersion = __webpack_require__(549);
 
-var findDOMNode = __webpack_require__(564);
+var findDOMNode = __webpack_require__(566);
 var getHostComponentFromComposite = __webpack_require__(224);
-var renderSubtreeIntoContainer = __webpack_require__(572);
+var renderSubtreeIntoContainer = __webpack_require__(574);
 var warning = __webpack_require__(3);
 
 ReactDefaultInjection.inject();
@@ -60280,9 +61122,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 if (process.env.NODE_ENV !== 'production') {
   var ReactInstrumentation = __webpack_require__(28);
-  var ReactDOMUnknownPropertyHook = __webpack_require__(529);
-  var ReactDOMNullInputValuePropHook = __webpack_require__(523);
-  var ReactDOMInvalidARIAHook = __webpack_require__(522);
+  var ReactDOMUnknownPropertyHook = __webpack_require__(531);
+  var ReactDOMNullInputValuePropHook = __webpack_require__(525);
+  var ReactDOMInvalidARIAHook = __webpack_require__(524);
 
   ReactInstrumentation.debugTool.addHook(ReactDOMUnknownPropertyHook);
   ReactInstrumentation.debugTool.addHook(ReactDOMNullInputValuePropHook);
@@ -60293,7 +61135,7 @@ module.exports = ReactDOM;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 516 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60314,8 +61156,8 @@ module.exports = ReactDOM;
 var _prodInvariant = __webpack_require__(7),
     _assign = __webpack_require__(10);
 
-var AutoFocusUtils = __webpack_require__(503);
-var CSSPropertyOperations = __webpack_require__(505);
+var AutoFocusUtils = __webpack_require__(505);
+var CSSPropertyOperations = __webpack_require__(507);
 var DOMLazyTree = __webpack_require__(68);
 var DOMNamespaces = __webpack_require__(141);
 var DOMProperty = __webpack_require__(47);
@@ -60325,13 +61167,13 @@ var EventPluginRegistry = __webpack_require__(97);
 var ReactBrowserEventEmitter = __webpack_require__(98);
 var ReactDOMComponentFlags = __webpack_require__(212);
 var ReactDOMComponentTree = __webpack_require__(14);
-var ReactDOMInput = __webpack_require__(521);
-var ReactDOMOption = __webpack_require__(524);
+var ReactDOMInput = __webpack_require__(523);
+var ReactDOMOption = __webpack_require__(526);
 var ReactDOMSelect = __webpack_require__(213);
-var ReactDOMTextarea = __webpack_require__(527);
+var ReactDOMTextarea = __webpack_require__(529);
 var ReactInstrumentation = __webpack_require__(28);
-var ReactMultiChild = __webpack_require__(540);
-var ReactServerRenderingTransaction = __webpack_require__(545);
+var ReactMultiChild = __webpack_require__(542);
+var ReactServerRenderingTransaction = __webpack_require__(547);
 
 var emptyFunction = __webpack_require__(32);
 var escapeTextContentForBrowser = __webpack_require__(101);
@@ -61294,7 +62136,7 @@ module.exports = ReactDOMComponent;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 517 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61333,7 +62175,7 @@ module.exports = ReactDOMContainerInfo;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 518 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61398,7 +62240,7 @@ _assign(ReactDOMEmptyComponent.prototype, {
 module.exports = ReactDOMEmptyComponent;
 
 /***/ },
-/* 519 */
+/* 521 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -61422,7 +62264,7 @@ var ReactDOMFeatureFlags = {
 module.exports = ReactDOMFeatureFlags;
 
 /***/ },
-/* 520 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61461,7 +62303,7 @@ var ReactDOMIDOperations = {
 module.exports = ReactDOMIDOperations;
 
 /***/ },
-/* 521 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61735,7 +62577,7 @@ module.exports = ReactDOMInput;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 522 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61834,7 +62676,7 @@ module.exports = ReactDOMInvalidARIAHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 523 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61883,7 +62725,7 @@ module.exports = ReactDOMNullInputValuePropHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 524 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62012,7 +62854,7 @@ module.exports = ReactDOMOption;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 525 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62030,7 +62872,7 @@ module.exports = ReactDOMOption;
 
 var ExecutionEnvironment = __webpack_require__(16);
 
-var getNodeForCharacterOffset = __webpack_require__(569);
+var getNodeForCharacterOffset = __webpack_require__(571);
 var getTextContentAccessor = __webpack_require__(225);
 
 /**
@@ -62229,7 +63071,7 @@ var ReactDOMSelection = {
 module.exports = ReactDOMSelection;
 
 /***/ },
-/* 526 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62399,7 +63241,7 @@ module.exports = ReactDOMTextComponent;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 527 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62559,7 +63401,7 @@ module.exports = ReactDOMTextarea;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 528 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62701,7 +63543,7 @@ module.exports = {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 529 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62819,7 +63661,7 @@ module.exports = ReactDOMUnknownPropertyHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 530 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -62836,8 +63678,8 @@ module.exports = ReactDOMUnknownPropertyHook;
 
 'use strict';
 
-var ReactInvalidSetStateWarningHook = __webpack_require__(538);
-var ReactHostOperationHistoryHook = __webpack_require__(536);
+var ReactInvalidSetStateWarningHook = __webpack_require__(540);
+var ReactHostOperationHistoryHook = __webpack_require__(538);
 var ReactComponentTreeHook = __webpack_require__(25);
 var ExecutionEnvironment = __webpack_require__(16);
 
@@ -63186,7 +64028,7 @@ module.exports = ReactDebugTool;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 531 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63259,7 +64101,7 @@ var ReactDefaultBatchingStrategy = {
 module.exports = ReactDefaultBatchingStrategy;
 
 /***/ },
-/* 532 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63275,25 +64117,25 @@ module.exports = ReactDefaultBatchingStrategy;
 
 'use strict';
 
-var ARIADOMPropertyConfig = __webpack_require__(502);
-var BeforeInputEventPlugin = __webpack_require__(504);
-var ChangeEventPlugin = __webpack_require__(506);
-var DefaultEventPluginOrder = __webpack_require__(508);
-var EnterLeaveEventPlugin = __webpack_require__(509);
-var HTMLDOMPropertyConfig = __webpack_require__(511);
-var ReactComponentBrowserEnvironment = __webpack_require__(513);
-var ReactDOMComponent = __webpack_require__(516);
+var ARIADOMPropertyConfig = __webpack_require__(504);
+var BeforeInputEventPlugin = __webpack_require__(506);
+var ChangeEventPlugin = __webpack_require__(508);
+var DefaultEventPluginOrder = __webpack_require__(510);
+var EnterLeaveEventPlugin = __webpack_require__(511);
+var HTMLDOMPropertyConfig = __webpack_require__(513);
+var ReactComponentBrowserEnvironment = __webpack_require__(515);
+var ReactDOMComponent = __webpack_require__(518);
 var ReactDOMComponentTree = __webpack_require__(14);
-var ReactDOMEmptyComponent = __webpack_require__(518);
-var ReactDOMTreeTraversal = __webpack_require__(528);
-var ReactDOMTextComponent = __webpack_require__(526);
-var ReactDefaultBatchingStrategy = __webpack_require__(531);
-var ReactEventListener = __webpack_require__(535);
-var ReactInjection = __webpack_require__(537);
-var ReactReconcileTransaction = __webpack_require__(543);
-var SVGDOMPropertyConfig = __webpack_require__(548);
-var SelectEventPlugin = __webpack_require__(549);
-var SimpleEventPlugin = __webpack_require__(550);
+var ReactDOMEmptyComponent = __webpack_require__(520);
+var ReactDOMTreeTraversal = __webpack_require__(530);
+var ReactDOMTextComponent = __webpack_require__(528);
+var ReactDefaultBatchingStrategy = __webpack_require__(533);
+var ReactEventListener = __webpack_require__(537);
+var ReactInjection = __webpack_require__(539);
+var ReactReconcileTransaction = __webpack_require__(545);
+var SVGDOMPropertyConfig = __webpack_require__(550);
+var SelectEventPlugin = __webpack_require__(551);
+var SimpleEventPlugin = __webpack_require__(552);
 
 var alreadyInjected = false;
 
@@ -63350,7 +64192,7 @@ module.exports = {
 };
 
 /***/ },
-/* 533 */
+/* 535 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -63375,7 +64217,7 @@ var REACT_ELEMENT_TYPE = typeof Symbol === 'function' && Symbol['for'] && Symbol
 module.exports = REACT_ELEMENT_TYPE;
 
 /***/ },
-/* 534 */
+/* 536 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63413,7 +64255,7 @@ var ReactEventEmitterMixin = {
 module.exports = ReactEventEmitterMixin;
 
 /***/ },
-/* 535 */
+/* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63573,7 +64415,7 @@ var ReactEventListener = {
 module.exports = ReactEventListener;
 
 /***/ },
-/* 536 */
+/* 538 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -63612,7 +64454,7 @@ var ReactHostOperationHistoryHook = {
 module.exports = ReactHostOperationHistoryHook;
 
 /***/ },
-/* 537 */
+/* 539 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63651,7 +64493,7 @@ var ReactInjection = {
 module.exports = ReactInjection;
 
 /***/ },
-/* 538 */
+/* 540 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63694,7 +64536,7 @@ module.exports = ReactInvalidSetStateWarningHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 539 */
+/* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63710,7 +64552,7 @@ module.exports = ReactInvalidSetStateWarningHook;
 
 'use strict';
 
-var adler32 = __webpack_require__(561);
+var adler32 = __webpack_require__(563);
 
 var TAG_END = /\/?>/;
 var COMMENT_START = /^<\!\-\-/;
@@ -63749,7 +64591,7 @@ var ReactMarkupChecksum = {
 module.exports = ReactMarkupChecksum;
 
 /***/ },
-/* 540 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63773,10 +64615,10 @@ var ReactInstrumentation = __webpack_require__(28);
 
 var ReactCurrentOwner = __webpack_require__(37);
 var ReactReconciler = __webpack_require__(69);
-var ReactChildReconciler = __webpack_require__(512);
+var ReactChildReconciler = __webpack_require__(514);
 
 var emptyFunction = __webpack_require__(32);
-var flattenChildren = __webpack_require__(565);
+var flattenChildren = __webpack_require__(567);
 var invariant = __webpack_require__(2);
 
 /**
@@ -64205,7 +65047,7 @@ module.exports = ReactMultiChild;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 541 */
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64305,7 +65147,7 @@ module.exports = ReactOwner;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 542 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64336,7 +65178,7 @@ module.exports = ReactPropTypeLocationNames;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 543 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64520,7 +65362,7 @@ module.exports = ReactReconcileTransaction;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 544 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64537,7 +65379,7 @@ module.exports = ReactReconcileTransaction;
 
 'use strict';
 
-var ReactOwner = __webpack_require__(541);
+var ReactOwner = __webpack_require__(543);
 
 var ReactRef = {};
 
@@ -64614,7 +65456,7 @@ ReactRef.detachRefs = function (instance, element) {
 module.exports = ReactRef;
 
 /***/ },
-/* 545 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64635,7 +65477,7 @@ var _assign = __webpack_require__(10);
 var PooledClass = __webpack_require__(59);
 var Transaction = __webpack_require__(100);
 var ReactInstrumentation = __webpack_require__(28);
-var ReactServerUpdateQueue = __webpack_require__(546);
+var ReactServerUpdateQueue = __webpack_require__(548);
 
 /**
  * Executed within the scope of the `Transaction` instance. Consider these as
@@ -64710,7 +65552,7 @@ module.exports = ReactServerRenderingTransaction;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 546 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -64855,7 +65697,7 @@ module.exports = ReactServerUpdateQueue;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 547 */
+/* 549 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -64874,7 +65716,7 @@ module.exports = ReactServerUpdateQueue;
 module.exports = '15.4.1';
 
 /***/ },
-/* 548 */
+/* 550 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -65181,7 +66023,7 @@ Object.keys(ATTRS).forEach(function (key) {
 module.exports = SVGDOMPropertyConfig;
 
 /***/ },
-/* 549 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65377,7 +66219,7 @@ var SelectEventPlugin = {
 module.exports = SelectEventPlugin;
 
 /***/ },
-/* 550 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65399,17 +66241,17 @@ var _prodInvariant = __webpack_require__(7);
 var EventListener = __webpack_require__(202);
 var EventPropagators = __webpack_require__(79);
 var ReactDOMComponentTree = __webpack_require__(14);
-var SyntheticAnimationEvent = __webpack_require__(551);
-var SyntheticClipboardEvent = __webpack_require__(552);
+var SyntheticAnimationEvent = __webpack_require__(553);
+var SyntheticClipboardEvent = __webpack_require__(554);
 var SyntheticEvent = __webpack_require__(42);
-var SyntheticFocusEvent = __webpack_require__(555);
-var SyntheticKeyboardEvent = __webpack_require__(557);
+var SyntheticFocusEvent = __webpack_require__(557);
+var SyntheticKeyboardEvent = __webpack_require__(559);
 var SyntheticMouseEvent = __webpack_require__(99);
-var SyntheticDragEvent = __webpack_require__(554);
-var SyntheticTouchEvent = __webpack_require__(558);
-var SyntheticTransitionEvent = __webpack_require__(559);
+var SyntheticDragEvent = __webpack_require__(556);
+var SyntheticTouchEvent = __webpack_require__(560);
+var SyntheticTransitionEvent = __webpack_require__(561);
 var SyntheticUIEvent = __webpack_require__(81);
-var SyntheticWheelEvent = __webpack_require__(560);
+var SyntheticWheelEvent = __webpack_require__(562);
 
 var emptyFunction = __webpack_require__(32);
 var getEventCharCode = __webpack_require__(149);
@@ -65611,7 +66453,7 @@ module.exports = SimpleEventPlugin;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 551 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65655,7 +66497,7 @@ SyntheticEvent.augmentClass(SyntheticAnimationEvent, AnimationEventInterface);
 module.exports = SyntheticAnimationEvent;
 
 /***/ },
-/* 552 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65698,7 +66540,7 @@ SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 module.exports = SyntheticClipboardEvent;
 
 /***/ },
-/* 553 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65739,7 +66581,7 @@ SyntheticEvent.augmentClass(SyntheticCompositionEvent, CompositionEventInterface
 module.exports = SyntheticCompositionEvent;
 
 /***/ },
-/* 554 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65780,7 +66622,7 @@ SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 module.exports = SyntheticDragEvent;
 
 /***/ },
-/* 555 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65821,7 +66663,7 @@ SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 module.exports = SyntheticFocusEvent;
 
 /***/ },
-/* 556 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65863,7 +66705,7 @@ SyntheticEvent.augmentClass(SyntheticInputEvent, InputEventInterface);
 module.exports = SyntheticInputEvent;
 
 /***/ },
-/* 557 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -65882,7 +66724,7 @@ module.exports = SyntheticInputEvent;
 var SyntheticUIEvent = __webpack_require__(81);
 
 var getEventCharCode = __webpack_require__(149);
-var getEventKey = __webpack_require__(566);
+var getEventKey = __webpack_require__(568);
 var getEventModifierState = __webpack_require__(150);
 
 /**
@@ -65952,7 +66794,7 @@ SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 module.exports = SyntheticKeyboardEvent;
 
 /***/ },
-/* 558 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66002,7 +66844,7 @@ SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 module.exports = SyntheticTouchEvent;
 
 /***/ },
-/* 559 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66046,7 +66888,7 @@ SyntheticEvent.augmentClass(SyntheticTransitionEvent, TransitionEventInterface);
 module.exports = SyntheticTransitionEvent;
 
 /***/ },
-/* 560 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66105,7 +66947,7 @@ SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 module.exports = SyntheticWheelEvent;
 
 /***/ },
-/* 561 */
+/* 563 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -66154,7 +66996,7 @@ function adler32(data) {
 module.exports = adler32;
 
 /***/ },
-/* 562 */
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66172,7 +67014,7 @@ module.exports = adler32;
 
 var _prodInvariant = __webpack_require__(7);
 
-var ReactPropTypeLocationNames = __webpack_require__(542);
+var ReactPropTypeLocationNames = __webpack_require__(544);
 var ReactPropTypesSecret = __webpack_require__(220);
 
 var invariant = __webpack_require__(2);
@@ -66247,7 +67089,7 @@ module.exports = checkReactTypeSpec;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 563 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66332,7 +67174,7 @@ module.exports = dangerousStyleValue;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 564 */
+/* 566 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66398,7 +67240,7 @@ module.exports = findDOMNode;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 565 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66480,7 +67322,7 @@ module.exports = flattenChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 566 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66587,7 +67429,7 @@ function getEventKey(nativeEvent) {
 module.exports = getEventKey;
 
 /***/ },
-/* 567 */
+/* 569 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -66633,7 +67475,7 @@ function getIteratorFn(maybeIterable) {
 module.exports = getIteratorFn;
 
 /***/ },
-/* 568 */
+/* 570 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -66659,7 +67501,7 @@ function getNextDebugID() {
 module.exports = getNextDebugID;
 
 /***/ },
-/* 569 */
+/* 571 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -66738,7 +67580,7 @@ function getNodeForCharacterOffset(root, offset) {
 module.exports = getNodeForCharacterOffset;
 
 /***/ },
-/* 570 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66844,7 +67686,7 @@ function getVendorPrefixedEventName(eventName) {
 module.exports = getVendorPrefixedEventName;
 
 /***/ },
-/* 571 */
+/* 573 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66875,7 +67717,7 @@ function quoteAttributeValueForBrowser(value) {
 module.exports = quoteAttributeValueForBrowser;
 
 /***/ },
-/* 572 */
+/* 574 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66896,7 +67738,7 @@ var ReactMount = __webpack_require__(218);
 module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ },
-/* 573 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66930,7 +67772,7 @@ exports.default = IndexLink;
 module.exports = exports['default'];
 
 /***/ },
-/* 574 */
+/* 576 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67001,7 +67843,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 575 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67069,7 +67911,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 576 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67134,7 +67976,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 577 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67316,7 +68158,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 578 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67477,7 +68319,7 @@ function runLeaveHooks(routes, prevState) {
 }
 
 /***/ },
-/* 579 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67541,7 +68383,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 580 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67563,7 +68405,7 @@ exports.default = (0, _createRouterHistory2.default)(_createBrowserHistory2.defa
 module.exports = exports['default'];
 
 /***/ },
-/* 581 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67646,7 +68488,7 @@ exports.default = computeChangedRoutes;
 module.exports = exports['default'];
 
 /***/ },
-/* 582 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67692,7 +68534,7 @@ exports.default = getComponents;
 module.exports = exports['default'];
 
 /***/ },
-/* 583 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67724,7 +68566,7 @@ exports.default = getRouteParams;
 module.exports = exports['default'];
 
 /***/ },
-/* 584 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67746,7 +68588,7 @@ exports.default = (0, _createRouterHistory2.default)(_createHashHistory2.default
 module.exports = exports['default'];
 
 /***/ },
-/* 585 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67904,7 +68746,7 @@ function isActive(_ref, indexOnly, currentLocation, routes, params) {
 module.exports = exports['default'];
 
 /***/ },
-/* 586 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67983,7 +68825,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 587 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68243,7 +69085,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 588 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68322,7 +69164,7 @@ module.exports = exports['default'];
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 589 */
+/* 591 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -68386,7 +69228,7 @@ var KeyEscapeUtils = {
 module.exports = KeyEscapeUtils;
 
 /***/ },
-/* 590 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68516,7 +69358,7 @@ module.exports = PooledClass;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 591 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -68532,11 +69374,11 @@ module.exports = PooledClass;
 
 'use strict';
 
-var PooledClass = __webpack_require__(590);
+var PooledClass = __webpack_require__(592);
 var ReactElement = __webpack_require__(60);
 
 var emptyFunction = __webpack_require__(32);
-var traverseAllChildren = __webpack_require__(599);
+var traverseAllChildren = __webpack_require__(601);
 
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
 var fourArgumentPooler = PooledClass.fourArgumentPooler;
@@ -68712,7 +69554,7 @@ var ReactChildren = {
 module.exports = ReactChildren;
 
 /***/ },
-/* 592 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69435,7 +70277,7 @@ module.exports = ReactClass;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 593 */
+/* 595 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -69611,7 +70453,7 @@ module.exports = ReactDOMFactories;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 594 */
+/* 596 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70051,7 +70893,7 @@ module.exports = ReactPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 595 */
+/* 597 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70098,7 +70940,7 @@ ReactPureComponent.prototype.isPureReactComponent = true;
 module.exports = ReactPureComponent;
 
 /***/ },
-/* 596 */
+/* 598 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -70117,7 +70959,7 @@ module.exports = ReactPureComponent;
 module.exports = '15.4.1';
 
 /***/ },
-/* 597 */
+/* 599 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70210,7 +71052,7 @@ module.exports = checkReactTypeSpec;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 598 */
+/* 600 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70254,7 +71096,7 @@ module.exports = onlyChild;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 599 */
+/* 601 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -70277,7 +71119,7 @@ var REACT_ELEMENT_TYPE = __webpack_require__(239);
 
 var getIteratorFn = __webpack_require__(163);
 var invariant = __webpack_require__(2);
-var KeyEscapeUtils = __webpack_require__(589);
+var KeyEscapeUtils = __webpack_require__(591);
 var warning = __webpack_require__(3);
 
 var SEPARATOR = '.';
@@ -70436,7 +71278,7 @@ module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
-/* 600 */
+/* 602 */
 /***/ function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {/**
@@ -71126,7 +71968,7 @@ module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(103), __webpack_require__(1)))
 
 /***/ },
-/* 601 */
+/* 603 */
 /***/ function(module, exports) {
 
 function select(element) {
@@ -71165,7 +72007,7 @@ module.exports = select;
 
 
 /***/ },
-/* 602 */
+/* 604 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -71201,7 +72043,7 @@ swizzle.wrap = function (fn) {
 
 
 /***/ },
-/* 603 */
+/* 605 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -71214,7 +72056,7 @@ module.exports = function (str) {
 
 
 /***/ },
-/* 604 */
+/* 606 */
 /***/ function(module, exports) {
 
 function E () {
@@ -71286,13 +72128,37 @@ module.exports = E;
 
 
 /***/ },
-/* 605 */
+/* 607 */
+/***/ function(module, exports) {
+
+module.exports=/[\0-\x1F\x7F-\x9F]/
+
+/***/ },
+/* 608 */
+/***/ function(module, exports) {
+
+module.exports=/[!-#%-\*,-/:;\?@\[-\]_\{\}\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u0AF0\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166D\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E44\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]|\uD800[\uDD00-\uDD02\uDF9F\uDFD0]|\uD801\uDD6F|\uD802[\uDC57\uDD1F\uDD3F\uDE50-\uDE58\uDE7F\uDEF0-\uDEF6\uDF39-\uDF3F\uDF99-\uDF9C]|\uD804[\uDC47-\uDC4D\uDCBB\uDCBC\uDCBE-\uDCC1\uDD40-\uDD43\uDD74\uDD75\uDDC5-\uDDC9\uDDCD\uDDDB\uDDDD-\uDDDF\uDE38-\uDE3D\uDEA9]|\uD805[\uDC4B-\uDC4F\uDC5B\uDC5D\uDCC6\uDDC1-\uDDD7\uDE41-\uDE43\uDE60-\uDE6C\uDF3C-\uDF3E]|\uD807[\uDC41-\uDC45\uDC70\uDC71]|\uD809[\uDC70-\uDC74]|\uD81A[\uDE6E\uDE6F\uDEF5\uDF37-\uDF3B\uDF44]|\uD82F\uDC9F|\uD836[\uDE87-\uDE8B]|\uD83A[\uDD5E\uDD5F]/
+
+/***/ },
+/* 609 */
+/***/ function(module, exports) {
+
+module.exports=/[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/
+
+/***/ },
+/* 610 */
+/***/ function(module, exports) {
+
+module.exports=/[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/
+
+/***/ },
+/* 611 */
 /***/ function(module, exports) {
 
 /* (ignored) */
 
 /***/ },
-/* 606 */
+/* 612 */
 /***/ function(module, exports, __webpack_require__) {
 
 __webpack_require__(245);
@@ -71303,854 +72169,6 @@ __webpack_require__(243);
 __webpack_require__(248);
 module.exports = __webpack_require__(244);
 
-
-/***/ },
-/* 607 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-
-
-////////////////////////////////////////////////////////////////////////////////
-// Helpers
-
-// Merge objects
-//
-function assign(obj /*from1, from2, from3, ...*/) {
-  var sources = Array.prototype.slice.call(arguments, 1);
-
-  sources.forEach(function (source) {
-    if (!source) { return; }
-
-    Object.keys(source).forEach(function (key) {
-      obj[key] = source[key];
-    });
-  });
-
-  return obj;
-}
-
-function _class(obj) { return Object.prototype.toString.call(obj); }
-function isString(obj) { return _class(obj) === '[object String]'; }
-function isObject(obj) { return _class(obj) === '[object Object]'; }
-function isRegExp(obj) { return _class(obj) === '[object RegExp]'; }
-function isFunction(obj) { return _class(obj) === '[object Function]'; }
-
-
-function escapeRE(str) { return str.replace(/[.?*+^$[\]\\(){}|-]/g, '\\$&'); }
-
-////////////////////////////////////////////////////////////////////////////////
-
-
-var defaultOptions = {
-  fuzzyLink: true,
-  fuzzyEmail: true,
-  fuzzyIP: false
-};
-
-
-function isOptionsObj(obj) {
-  return Object.keys(obj || {}).reduce(function (acc, k) {
-    return acc || defaultOptions.hasOwnProperty(k);
-  }, false);
-}
-
-
-var defaultSchemas = {
-  'http:': {
-    validate: function (text, pos, self) {
-      var tail = text.slice(pos);
-
-      if (!self.re.http) {
-        // compile lazily, because "host"-containing variables can change on tlds update.
-        self.re.http =  new RegExp(
-          '^\\/\\/' + self.re.src_auth + self.re.src_host_port_strict + self.re.src_path, 'i'
-        );
-      }
-      if (self.re.http.test(tail)) {
-        return tail.match(self.re.http)[0].length;
-      }
-      return 0;
-    }
-  },
-  'https:':  'http:',
-  'ftp:':    'http:',
-  '//':      {
-    validate: function (text, pos, self) {
-      var tail = text.slice(pos);
-
-      if (!self.re.no_http) {
-      // compile lazily, because "host"-containing variables can change on tlds update.
-        self.re.no_http =  new RegExp(
-          '^' +
-          self.re.src_auth +
-          // Don't allow single-level domains, because of false positives like '//test'
-          // with code comments
-          '(?:localhost|(?:(?:' + self.re.src_domain + ')\\.)+' + self.re.src_domain_root + ')' +
-          self.re.src_port +
-          self.re.src_host_terminator +
-          self.re.src_path,
-
-          'i'
-        );
-      }
-
-      if (self.re.no_http.test(tail)) {
-        // should not be `://` & `///`, that protects from errors in protocol name
-        if (pos >= 3 && text[pos - 3] === ':') { return 0; }
-        if (pos >= 3 && text[pos - 3] === '/') { return 0; }
-        return tail.match(self.re.no_http)[0].length;
-      }
-      return 0;
-    }
-  },
-  'mailto:': {
-    validate: function (text, pos, self) {
-      var tail = text.slice(pos);
-
-      if (!self.re.mailto) {
-        self.re.mailto =  new RegExp(
-          '^' + self.re.src_email_name + '@' + self.re.src_host_strict, 'i'
-        );
-      }
-      if (self.re.mailto.test(tail)) {
-        return tail.match(self.re.mailto)[0].length;
-      }
-      return 0;
-    }
-  }
-};
-
-/*eslint-disable max-len*/
-
-// RE pattern for 2-character tlds (autogenerated by ./support/tlds_2char_gen.js)
-var tlds_2ch_src_re = 'a[cdefgilmnoqrstuwxz]|b[abdefghijmnorstvwyz]|c[acdfghiklmnoruvwxyz]|d[ejkmoz]|e[cegrstu]|f[ijkmor]|g[abdefghilmnpqrstuwy]|h[kmnrtu]|i[delmnoqrst]|j[emop]|k[eghimnprwyz]|l[abcikrstuvy]|m[acdeghklmnopqrstuvwxyz]|n[acefgilopruz]|om|p[aefghklmnrstwy]|qa|r[eosuw]|s[abcdeghijklmnortuvxyz]|t[cdfghjklmnortvwz]|u[agksyz]|v[aceginu]|w[fs]|y[et]|z[amw]';
-
-// DON'T try to make PRs with changes. Extend TLDs with LinkifyIt.tlds() instead
-var tlds_default = 'biz|com|edu|gov|net|org|pro|web|xxx|aero|asia|coop|info|museum|name|shop|рф'.split('|');
-
-/*eslint-enable max-len*/
-
-////////////////////////////////////////////////////////////////////////////////
-
-function resetScanCache(self) {
-  self.__index__ = -1;
-  self.__text_cache__   = '';
-}
-
-function createValidator(re) {
-  return function (text, pos) {
-    var tail = text.slice(pos);
-
-    if (re.test(tail)) {
-      return tail.match(re)[0].length;
-    }
-    return 0;
-  };
-}
-
-function createNormalizer() {
-  return function (match, self) {
-    self.normalize(match);
-  };
-}
-
-// Schemas compiler. Build regexps.
-//
-function compile(self) {
-
-  // Load & clone RE patterns.
-  var re = self.re = __webpack_require__(608)(self.__opts__);
-
-  // Define dynamic patterns
-  var tlds = self.__tlds__.slice();
-
-  self.onCompile();
-
-  if (!self.__tlds_replaced__) {
-    tlds.push(tlds_2ch_src_re);
-  }
-  tlds.push(re.src_xn);
-
-  re.src_tlds = tlds.join('|');
-
-  function untpl(tpl) { return tpl.replace('%TLDS%', re.src_tlds); }
-
-  re.email_fuzzy      = RegExp(untpl(re.tpl_email_fuzzy), 'i');
-  re.link_fuzzy       = RegExp(untpl(re.tpl_link_fuzzy), 'i');
-  re.link_no_ip_fuzzy = RegExp(untpl(re.tpl_link_no_ip_fuzzy), 'i');
-  re.host_fuzzy_test  = RegExp(untpl(re.tpl_host_fuzzy_test), 'i');
-
-  //
-  // Compile each schema
-  //
-
-  var aliases = [];
-
-  self.__compiled__ = {}; // Reset compiled data
-
-  function schemaError(name, val) {
-    throw new Error('(LinkifyIt) Invalid schema "' + name + '": ' + val);
-  }
-
-  Object.keys(self.__schemas__).forEach(function (name) {
-    var val = self.__schemas__[name];
-
-    // skip disabled methods
-    if (val === null) { return; }
-
-    var compiled = { validate: null, link: null };
-
-    self.__compiled__[name] = compiled;
-
-    if (isObject(val)) {
-      if (isRegExp(val.validate)) {
-        compiled.validate = createValidator(val.validate);
-      } else if (isFunction(val.validate)) {
-        compiled.validate = val.validate;
-      } else {
-        schemaError(name, val);
-      }
-
-      if (isFunction(val.normalize)) {
-        compiled.normalize = val.normalize;
-      } else if (!val.normalize) {
-        compiled.normalize = createNormalizer();
-      } else {
-        schemaError(name, val);
-      }
-
-      return;
-    }
-
-    if (isString(val)) {
-      aliases.push(name);
-      return;
-    }
-
-    schemaError(name, val);
-  });
-
-  //
-  // Compile postponed aliases
-  //
-
-  aliases.forEach(function (alias) {
-    if (!self.__compiled__[self.__schemas__[alias]]) {
-      // Silently fail on missed schemas to avoid errons on disable.
-      // schemaError(alias, self.__schemas__[alias]);
-      return;
-    }
-
-    self.__compiled__[alias].validate =
-      self.__compiled__[self.__schemas__[alias]].validate;
-    self.__compiled__[alias].normalize =
-      self.__compiled__[self.__schemas__[alias]].normalize;
-  });
-
-  //
-  // Fake record for guessed links
-  //
-  self.__compiled__[''] = { validate: null, normalize: createNormalizer() };
-
-  //
-  // Build schema condition
-  //
-  var slist = Object.keys(self.__compiled__)
-                      .filter(function (name) {
-                        // Filter disabled & fake schemas
-                        return name.length > 0 && self.__compiled__[name];
-                      })
-                      .map(escapeRE)
-                      .join('|');
-  // (?!_) cause 1.5x slowdown
-  self.re.schema_test   = RegExp('(^|(?!_)(?:[><]|' + re.src_ZPCc + '))(' + slist + ')', 'i');
-  self.re.schema_search = RegExp('(^|(?!_)(?:[><]|' + re.src_ZPCc + '))(' + slist + ')', 'ig');
-
-  self.re.pretest       = RegExp(
-                            '(' + self.re.schema_test.source + ')|' +
-                            '(' + self.re.host_fuzzy_test.source + ')|' +
-                            '@',
-                            'i');
-
-  //
-  // Cleanup
-  //
-
-  resetScanCache(self);
-}
-
-/**
- * class Match
- *
- * Match result. Single element of array, returned by [[LinkifyIt#match]]
- **/
-function Match(self, shift) {
-  var start = self.__index__,
-      end   = self.__last_index__,
-      text  = self.__text_cache__.slice(start, end);
-
-  /**
-   * Match#schema -> String
-   *
-   * Prefix (protocol) for matched string.
-   **/
-  this.schema    = self.__schema__.toLowerCase();
-  /**
-   * Match#index -> Number
-   *
-   * First position of matched string.
-   **/
-  this.index     = start + shift;
-  /**
-   * Match#lastIndex -> Number
-   *
-   * Next position after matched string.
-   **/
-  this.lastIndex = end + shift;
-  /**
-   * Match#raw -> String
-   *
-   * Matched string.
-   **/
-  this.raw       = text;
-  /**
-   * Match#text -> String
-   *
-   * Notmalized text of matched string.
-   **/
-  this.text      = text;
-  /**
-   * Match#url -> String
-   *
-   * Normalized url of matched string.
-   **/
-  this.url       = text;
-}
-
-function createMatch(self, shift) {
-  var match = new Match(self, shift);
-
-  self.__compiled__[match.schema].normalize(match, self);
-
-  return match;
-}
-
-
-/**
- * class LinkifyIt
- **/
-
-/**
- * new LinkifyIt(schemas, options)
- * - schemas (Object): Optional. Additional schemas to validate (prefix/validator)
- * - options (Object): { fuzzyLink|fuzzyEmail|fuzzyIP: true|false }
- *
- * Creates new linkifier instance with optional additional schemas.
- * Can be called without `new` keyword for convenience.
- *
- * By default understands:
- *
- * - `http(s)://...` , `ftp://...`, `mailto:...` & `//...` links
- * - "fuzzy" links and emails (example.com, foo@bar.com).
- *
- * `schemas` is an object, where each key/value describes protocol/rule:
- *
- * - __key__ - link prefix (usually, protocol name with `:` at the end, `skype:`
- *   for example). `linkify-it` makes shure that prefix is not preceeded with
- *   alphanumeric char and symbols. Only whitespaces and punctuation allowed.
- * - __value__ - rule to check tail after link prefix
- *   - _String_ - just alias to existing rule
- *   - _Object_
- *     - _validate_ - validator function (should return matched length on success),
- *       or `RegExp`.
- *     - _normalize_ - optional function to normalize text & url of matched result
- *       (for example, for @twitter mentions).
- *
- * `options`:
- *
- * - __fuzzyLink__ - recognige URL-s without `http(s):` prefix. Default `true`.
- * - __fuzzyIP__ - allow IPs in fuzzy links above. Can conflict with some texts
- *   like version numbers. Default `false`.
- * - __fuzzyEmail__ - recognize emails without `mailto:` prefix.
- *
- **/
-function LinkifyIt(schemas, options) {
-  if (!(this instanceof LinkifyIt)) {
-    return new LinkifyIt(schemas, options);
-  }
-
-  if (!options) {
-    if (isOptionsObj(schemas)) {
-      options = schemas;
-      schemas = {};
-    }
-  }
-
-  this.__opts__           = assign({}, defaultOptions, options);
-
-  // Cache last tested result. Used to skip repeating steps on next `match` call.
-  this.__index__          = -1;
-  this.__last_index__     = -1; // Next scan position
-  this.__schema__         = '';
-  this.__text_cache__     = '';
-
-  this.__schemas__        = assign({}, defaultSchemas, schemas);
-  this.__compiled__       = {};
-
-  this.__tlds__           = tlds_default;
-  this.__tlds_replaced__  = false;
-
-  this.re = {};
-
-  compile(this);
-}
-
-
-/** chainable
- * LinkifyIt#add(schema, definition)
- * - schema (String): rule name (fixed pattern prefix)
- * - definition (String|RegExp|Object): schema definition
- *
- * Add new rule definition. See constructor description for details.
- **/
-LinkifyIt.prototype.add = function add(schema, definition) {
-  this.__schemas__[schema] = definition;
-  compile(this);
-  return this;
-};
-
-
-/** chainable
- * LinkifyIt#set(options)
- * - options (Object): { fuzzyLink|fuzzyEmail|fuzzyIP: true|false }
- *
- * Set recognition options for links without schema.
- **/
-LinkifyIt.prototype.set = function set(options) {
-  this.__opts__ = assign(this.__opts__, options);
-  return this;
-};
-
-
-/**
- * LinkifyIt#test(text) -> Boolean
- *
- * Searches linkifiable pattern and returns `true` on success or `false` on fail.
- **/
-LinkifyIt.prototype.test = function test(text) {
-  // Reset scan cache
-  this.__text_cache__ = text;
-  this.__index__      = -1;
-
-  if (!text.length) { return false; }
-
-  var m, ml, me, len, shift, next, re, tld_pos, at_pos;
-
-  // try to scan for link with schema - that's the most simple rule
-  if (this.re.schema_test.test(text)) {
-    re = this.re.schema_search;
-    re.lastIndex = 0;
-    while ((m = re.exec(text)) !== null) {
-      len = this.testSchemaAt(text, m[2], re.lastIndex);
-      if (len) {
-        this.__schema__     = m[2];
-        this.__index__      = m.index + m[1].length;
-        this.__last_index__ = m.index + m[0].length + len;
-        break;
-      }
-    }
-  }
-
-  if (this.__opts__.fuzzyLink && this.__compiled__['http:']) {
-    // guess schemaless links
-    tld_pos = text.search(this.re.host_fuzzy_test);
-    if (tld_pos >= 0) {
-      // if tld is located after found link - no need to check fuzzy pattern
-      if (this.__index__ < 0 || tld_pos < this.__index__) {
-        if ((ml = text.match(this.__opts__.fuzzyIP ? this.re.link_fuzzy : this.re.link_no_ip_fuzzy)) !== null) {
-
-          shift = ml.index + ml[1].length;
-
-          if (this.__index__ < 0 || shift < this.__index__) {
-            this.__schema__     = '';
-            this.__index__      = shift;
-            this.__last_index__ = ml.index + ml[0].length;
-          }
-        }
-      }
-    }
-  }
-
-  if (this.__opts__.fuzzyEmail && this.__compiled__['mailto:']) {
-    // guess schemaless emails
-    at_pos = text.indexOf('@');
-    if (at_pos >= 0) {
-      // We can't skip this check, because this cases are possible:
-      // 192.168.1.1@gmail.com, my.in@example.com
-      if ((me = text.match(this.re.email_fuzzy)) !== null) {
-
-        shift = me.index + me[1].length;
-        next  = me.index + me[0].length;
-
-        if (this.__index__ < 0 || shift < this.__index__ ||
-            (shift === this.__index__ && next > this.__last_index__)) {
-          this.__schema__     = 'mailto:';
-          this.__index__      = shift;
-          this.__last_index__ = next;
-        }
-      }
-    }
-  }
-
-  return this.__index__ >= 0;
-};
-
-
-/**
- * LinkifyIt#pretest(text) -> Boolean
- *
- * Very quick check, that can give false positives. Returns true if link MAY BE
- * can exists. Can be used for speed optimization, when you need to check that
- * link NOT exists.
- **/
-LinkifyIt.prototype.pretest = function pretest(text) {
-  return this.re.pretest.test(text);
-};
-
-
-/**
- * LinkifyIt#testSchemaAt(text, name, position) -> Number
- * - text (String): text to scan
- * - name (String): rule (schema) name
- * - position (Number): text offset to check from
- *
- * Similar to [[LinkifyIt#test]] but checks only specific protocol tail exactly
- * at given position. Returns length of found pattern (0 on fail).
- **/
-LinkifyIt.prototype.testSchemaAt = function testSchemaAt(text, schema, pos) {
-  // If not supported schema check requested - terminate
-  if (!this.__compiled__[schema.toLowerCase()]) {
-    return 0;
-  }
-  return this.__compiled__[schema.toLowerCase()].validate(text, pos, this);
-};
-
-
-/**
- * LinkifyIt#match(text) -> Array|null
- *
- * Returns array of found link descriptions or `null` on fail. We strongly
- * recommend to use [[LinkifyIt#test]] first, for best speed.
- *
- * ##### Result match description
- *
- * - __schema__ - link schema, can be empty for fuzzy links, or `//` for
- *   protocol-neutral  links.
- * - __index__ - offset of matched text
- * - __lastIndex__ - index of next char after mathch end
- * - __raw__ - matched text
- * - __text__ - normalized text
- * - __url__ - link, generated from matched text
- **/
-LinkifyIt.prototype.match = function match(text) {
-  var shift = 0, result = [];
-
-  // Try to take previous element from cache, if .test() called before
-  if (this.__index__ >= 0 && this.__text_cache__ === text) {
-    result.push(createMatch(this, shift));
-    shift = this.__last_index__;
-  }
-
-  // Cut head if cache was used
-  var tail = shift ? text.slice(shift) : text;
-
-  // Scan string until end reached
-  while (this.test(tail)) {
-    result.push(createMatch(this, shift));
-
-    tail = tail.slice(this.__last_index__);
-    shift += this.__last_index__;
-  }
-
-  if (result.length) {
-    return result;
-  }
-
-  return null;
-};
-
-
-/** chainable
- * LinkifyIt#tlds(list [, keepOld]) -> this
- * - list (Array): list of tlds
- * - keepOld (Boolean): merge with current list if `true` (`false` by default)
- *
- * Load (or merge) new tlds list. Those are user for fuzzy links (without prefix)
- * to avoid false positives. By default this algorythm used:
- *
- * - hostname with any 2-letter root zones are ok.
- * - biz|com|edu|gov|net|org|pro|web|xxx|aero|asia|coop|info|museum|name|shop|рф
- *   are ok.
- * - encoded (`xn--...`) root zones are ok.
- *
- * If list is replaced, then exact match for 2-chars root zones will be checked.
- **/
-LinkifyIt.prototype.tlds = function tlds(list, keepOld) {
-  list = Array.isArray(list) ? list : [ list ];
-
-  if (!keepOld) {
-    this.__tlds__ = list.slice();
-    this.__tlds_replaced__ = true;
-    compile(this);
-    return this;
-  }
-
-  this.__tlds__ = this.__tlds__.concat(list)
-                                  .sort()
-                                  .filter(function (el, idx, arr) {
-                                    return el !== arr[idx - 1];
-                                  })
-                                  .reverse();
-
-  compile(this);
-  return this;
-};
-
-/**
- * LinkifyIt#normalize(match)
- *
- * Default normalizer (if schema does not define it's own).
- **/
-LinkifyIt.prototype.normalize = function normalize(match) {
-
-  // Do minimal possible changes by default. Need to collect feedback prior
-  // to move forward https://github.com/markdown-it/linkify-it/issues/1
-
-  if (!match.schema) { match.url = 'http://' + match.url; }
-
-  if (match.schema === 'mailto:' && !/^mailto:/i.test(match.url)) {
-    match.url = 'mailto:' + match.url;
-  }
-};
-
-
-/**
- * LinkifyIt#onCompile()
- *
- * Override to modify basic RegExp-s.
- **/
-LinkifyIt.prototype.onCompile = function onCompile() {
-};
-
-
-module.exports = LinkifyIt;
-
-
-/***/ },
-/* 608 */
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-'use strict';
-
-
-module.exports = function (opts) {
-  var re = {};
-
-  // Use direct extract instead of `regenerate` to reduse browserified size
-  re.src_Any = __webpack_require__(612).source;
-  re.src_Cc  = __webpack_require__(609).source;
-  re.src_Z   = __webpack_require__(611).source;
-  re.src_P   = __webpack_require__(610).source;
-
-  // \p{\Z\P\Cc\CF} (white spaces + control + format + punctuation)
-  re.src_ZPCc = [ re.src_Z, re.src_P, re.src_Cc ].join('|');
-
-  // \p{\Z\Cc} (white spaces + control)
-  re.src_ZCc = [ re.src_Z, re.src_Cc ].join('|');
-
-  // All possible word characters (everything without punctuation, spaces & controls)
-  // Defined via punctuation & spaces to save space
-  // Should be something like \p{\L\N\S\M} (\w but without `_`)
-  re.src_pseudo_letter       = '(?:(?!>|<|' + re.src_ZPCc + ')' + re.src_Any + ')';
-  // The same as abothe but without [0-9]
-  // var src_pseudo_letter_non_d = '(?:(?![0-9]|' + src_ZPCc + ')' + src_Any + ')';
-
-  ////////////////////////////////////////////////////////////////////////////////
-
-  re.src_ip4 =
-
-    '(?:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)';
-
-  // Prohibit any of "@/[]()" in user/pass to avoid wrong domain fetch.
-  re.src_auth    = '(?:(?:(?!' + re.src_ZCc + '|[@/\\[\\]()]).)+@)?';
-
-  re.src_port =
-
-    '(?::(?:6(?:[0-4]\\d{3}|5(?:[0-4]\\d{2}|5(?:[0-2]\\d|3[0-5])))|[1-5]?\\d{1,4}))?';
-
-  re.src_host_terminator =
-
-    '(?=$|>|<|' + re.src_ZPCc + ')(?!-|_|:\\d|\\.-|\\.(?!$|' + re.src_ZPCc + '))';
-
-  re.src_path =
-
-    '(?:' +
-      '[/?#]' +
-        '(?:' +
-          '(?!' + re.src_ZCc + '|[()[\\]{}.,"\'?!\\-<>]).|' +
-          '\\[(?:(?!' + re.src_ZCc + '|\\]).)*\\]|' +
-          '\\((?:(?!' + re.src_ZCc + '|[)]).)*\\)|' +
-          '\\{(?:(?!' + re.src_ZCc + '|[}]).)*\\}|' +
-          '\\"(?:(?!' + re.src_ZCc + '|["]).)+\\"|' +
-          "\\'(?:(?!" + re.src_ZCc + "|[']).)+\\'|" +
-          "\\'(?=" + re.src_pseudo_letter + '|[-]).|' +  // allow `I'm_king` if no pair found
-          '\\.{2,3}[a-zA-Z0-9%/]|' + // github has ... in commit range links. Restrict to
-                                     // - english
-                                     // - percent-encoded
-                                     // - parts of file path
-                                     // until more examples found.
-          '\\.(?!' + re.src_ZCc + '|[.]).|' +
-          (opts && opts['---'] ?
-            '\\-(?!--(?:[^-]|$))(?:-*)|' // `---` => long dash, terminate
-          :
-            '\\-+|'
-          ) +
-          '\\,(?!' + re.src_ZCc + ').|' +      // allow `,,,` in paths
-          '\\!(?!' + re.src_ZCc + '|[!]).|' +
-          '\\?(?!' + re.src_ZCc + '|[?]).' +
-        ')+' +
-      '|\\/' +
-    ')?';
-
-  re.src_email_name =
-
-    '[\\-;:&=\\+\\$,\\"\\.a-zA-Z0-9_]+';
-
-  re.src_xn =
-
-    'xn--[a-z0-9\\-]{1,59}';
-
-  // More to read about domain names
-  // http://serverfault.com/questions/638260/
-
-  re.src_domain_root =
-
-    // Allow letters & digits (http://test1)
-    '(?:' +
-      re.src_xn +
-      '|' +
-      re.src_pseudo_letter + '{1,63}' +
-    ')';
-
-  re.src_domain =
-
-    '(?:' +
-      re.src_xn +
-      '|' +
-      '(?:' + re.src_pseudo_letter + ')' +
-      '|' +
-      // don't allow `--` in domain names, because:
-      // - that can conflict with markdown &mdash; / &ndash;
-      // - nobody use those anyway
-      '(?:' + re.src_pseudo_letter + '(?:-(?!-)|' + re.src_pseudo_letter + '){0,61}' + re.src_pseudo_letter + ')' +
-    ')';
-
-  re.src_host =
-
-    '(?:' +
-    // Don't need IP check, because digits are already allowed in normal domain names
-    //   src_ip4 +
-    // '|' +
-      '(?:(?:(?:' + re.src_domain + ')\\.)*' + re.src_domain/*_root*/ + ')' +
-    ')';
-
-  re.tpl_host_fuzzy =
-
-    '(?:' +
-      re.src_ip4 +
-    '|' +
-      '(?:(?:(?:' + re.src_domain + ')\\.)+(?:%TLDS%))' +
-    ')';
-
-  re.tpl_host_no_ip_fuzzy =
-
-    '(?:(?:(?:' + re.src_domain + ')\\.)+(?:%TLDS%))';
-
-  re.src_host_strict =
-
-    re.src_host + re.src_host_terminator;
-
-  re.tpl_host_fuzzy_strict =
-
-    re.tpl_host_fuzzy + re.src_host_terminator;
-
-  re.src_host_port_strict =
-
-    re.src_host + re.src_port + re.src_host_terminator;
-
-  re.tpl_host_port_fuzzy_strict =
-
-    re.tpl_host_fuzzy + re.src_port + re.src_host_terminator;
-
-  re.tpl_host_port_no_ip_fuzzy_strict =
-
-    re.tpl_host_no_ip_fuzzy + re.src_port + re.src_host_terminator;
-
-
-  ////////////////////////////////////////////////////////////////////////////////
-  // Main rules
-
-  // Rude test fuzzy links by host, for quick deny
-  re.tpl_host_fuzzy_test =
-
-    'localhost|www\\.|\\.\\d{1,3}\\.|(?:\\.(?:%TLDS%)(?:' + re.src_ZPCc + '|>|$))';
-
-  re.tpl_email_fuzzy =
-
-      '(^|<|>|\\(|' + re.src_ZCc + ')(' + re.src_email_name + '@' + re.tpl_host_fuzzy_strict + ')';
-
-  re.tpl_link_fuzzy =
-      // Fuzzy link can't be prepended with .:/\- and non punctuation.
-      // but can start with > (markdown blockquote)
-      '(^|(?![.:/\\-_@])(?:[$+<=>^`|]|' + re.src_ZPCc + '))' +
-      '((?![$+<=>^`|])' + re.tpl_host_port_fuzzy_strict + re.src_path + ')';
-
-  re.tpl_link_no_ip_fuzzy =
-      // Fuzzy link can't be prepended with .:/\- and non punctuation.
-      // but can start with > (markdown blockquote)
-      '(^|(?![.:/\\-_@])(?:[$+<=>^`|]|' + re.src_ZPCc + '))' +
-      '((?![$+<=>^`|])' + re.tpl_host_port_no_ip_fuzzy_strict + re.src_path + ')';
-
-  return re;
-};
-
-
-/***/ },
-/* 609 */
-/***/ function(module, exports) {
-
-module.exports=/[\0-\x1F\x7F-\x9F]/
-
-/***/ },
-/* 610 */
-/***/ function(module, exports) {
-
-module.exports=/[!-#%-\*,-/:;\?@\[-\]_\{\}\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u0AF0\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166D\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E44\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]|\uD800[\uDD00-\uDD02\uDF9F\uDFD0]|\uD801\uDD6F|\uD802[\uDC57\uDD1F\uDD3F\uDE50-\uDE58\uDE7F\uDEF0-\uDEF6\uDF39-\uDF3F\uDF99-\uDF9C]|\uD804[\uDC47-\uDC4D\uDCBB\uDCBC\uDCBE-\uDCC1\uDD40-\uDD43\uDD74\uDD75\uDDC5-\uDDC9\uDDCD\uDDDB\uDDDD-\uDDDF\uDE38-\uDE3D\uDEA9]|\uD805[\uDC4B-\uDC4F\uDC5B\uDC5D\uDCC6\uDDC1-\uDDD7\uDE41-\uDE43\uDE60-\uDE6C\uDF3C-\uDF3E]|\uD807[\uDC41-\uDC45\uDC70\uDC71]|\uD809[\uDC70-\uDC74]|\uD81A[\uDE6E\uDE6F\uDEF5\uDF37-\uDF3B\uDF44]|\uD82F\uDC9F|\uD836[\uDE87-\uDE8B]|\uD83A[\uDD5E\uDD5F]/
-
-/***/ },
-/* 611 */
-/***/ function(module, exports) {
-
-module.exports=/[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/
-
-/***/ },
-/* 612 */
-/***/ function(module, exports) {
-
-module.exports=/[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/
 
 /***/ }
 /******/ ]);

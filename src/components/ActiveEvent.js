@@ -53,7 +53,7 @@ export default class ActiveEvent extends CalendarEvent {
 		if(description && linkify.test(description)){
 			linkify.match(description).map(match => {
 				description = description.replace(match.raw,
-					`<a href="${match.url}">${match.text}</a>`);
+					`<a href="${match.url}" target="_blank" rel="noopener noreferrer">${match.text}</a>`);
 			});
 		}
 
@@ -113,9 +113,15 @@ export default class ActiveEvent extends CalendarEvent {
 						×
 					</button>
 				</header>
+	{
+		this.props.event.description
+			? (
 				<p className="event-desc"
 					dangerouslySetInnerHTML={this.markupDescription(this.props.event.description)}>
 				</p>
+			)
+			: null
+	}
 			</div>
 		);
 	}

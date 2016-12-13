@@ -14,15 +14,17 @@ export default class App extends React.Component {
 			calendars: [],
 			calendarGroups: [],
 			activeEvent: null,
-			activeEventOriginalElement: null
+			activeEventOriginalElement: null,
+			loaded: null
 		};
 
 		fetch('/.env.json')
 			.then(response => {
 				return response.json();
 			}).then(dotenv => {
-				this.setState(dotenv);
+				this.setState(Object.assign(dotenv, {loaded: true}));
 			}).catch(err => {
+				this.setState({loaded: false});
 				console.error(err);
 			});
 
@@ -151,11 +153,27 @@ export default class App extends React.Component {
 			);
 		}
 		else {
-			return (
-				<p>
-					No calendar <code>{calendarId}</code> found.
-				</p>
-			);
+			switch(this.state.loaded){
+				case null:
+				default:
+					return (
+						<div className="loading-container">
+							<img src="/assets/spinner.gif" alt="Loading" />
+						</div>
+					);
+				case true:
+					return (
+						<p>
+							No calendar <code>{calendarId}</code> found.
+						</p>
+					);
+				case false:
+					return (
+						<p>
+							There was a problem loading calendar data.
+						</p>
+					);
+			}
 		}
 	}
 
