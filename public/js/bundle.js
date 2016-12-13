@@ -30867,6 +30867,10 @@ var App = function (_React$Component) {
 			GOOGLE_CALENDAR_API_KEY: '',
 			calendars: [],
 			calendarGroups: [],
+			customCalendar: {
+				calname: 'Custom Calendar',
+				calendars: []
+			},
 			activeEvent: null,
 			activeEventOriginalElement: null,
 			loaded: null
@@ -30894,7 +30898,7 @@ var App = function (_React$Component) {
 			var calendarId = this.props.params && this.props.params.calendarId ? this.props.params.calendarId : 'basic';
 
 			// FIXME: This doesn't work if a calendar and a group share the same id
-			var calendar = this.state.calendarGroups[calendarId];
+			var calendar = calendarId === 'custom' ? this.state.customCalendar : this.state.calendarGroups[calendarId];
 			var calendars = void 0;
 			if (calendar) {
 				calendars = calendar.calendars.map(function (id) {
@@ -31002,6 +31006,16 @@ var App = function (_React$Component) {
 					);
 				});
 
+				groupedCalendarListItems.push(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'li',
+					{ key: 'custom' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						__WEBPACK_IMPORTED_MODULE_1_react_router__["Link"],
+						{ to: '/custom', activeClassName: 'active' },
+						'Custom Group'
+					)
+				));
+
 				var calendarListItems = Object.keys(this.state.calendars).map(function (id) {
 					return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'li',
@@ -31013,6 +31027,10 @@ var App = function (_React$Component) {
 						)
 					);
 				});
+
+				var icsFilename = calendarId === 'custom' ? 'combine.ics?' + this.state.customCalendar.calendars.map(function (calId) {
+					return 'urls[]=' + _this2.state.calendars[calId].url;
+				}).join('&') : calendarId + '.ics';
 
 				return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
@@ -31026,7 +31044,7 @@ var App = function (_React$Component) {
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__FullCalendar_js__["a" /* default */], { apiKey: this.state.GOOGLE_CALENDAR_API_KEY,
 						eventSources: eventSources,
 						setActiveEvent: this.handleSetActiveEvent }),
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Subscription_js__["a" /* default */], { calendarId: calendarId }),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__Subscription_js__["a" /* default */], { icsFilename: icsFilename }),
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__CalendarLegend_js__["a" /* default */], { calendars: calendars, calname: calendar.calname }),
 					groupedCalendarListItems || calendarListItems ? __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 						'div',
@@ -31374,7 +31392,7 @@ var Subscription = function (_React$Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var calendarIcalUrl = window.location.origin + '/' + this.props.calendarId + '.ics';
+			var calendarIcalUrl = window.location.origin + '/' + this.props.icsFilename;
 
 			var webcalUrl = calendarIcalUrl.replace(window.location.protocol, 'webcal:');
 
@@ -31424,7 +31442,7 @@ var Subscription = function (_React$Component) {
 							'a',
 							{ id: 'download-button', className: 'button outline',
 								href: calendarIcalUrl, target: '_blank',
-								download: this.props.calendarId + '.ics' },
+								download: this.props.icsFilename },
 							'Download ICal/.ics file'
 						)
 					),
@@ -31506,7 +31524,7 @@ var Subscription = function (_React$Component) {
 
 
 Subscription.propTypes = {
-	calendarId: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string
+	icsFilename: __WEBPACK_IMPORTED_MODULE_0_react___default.a.PropTypes.string
 };
 
 /***/ },

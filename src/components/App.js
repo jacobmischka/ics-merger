@@ -13,6 +13,10 @@ export default class App extends React.Component {
 			GOOGLE_CALENDAR_API_KEY: '',
 			calendars: [],
 			calendarGroups: [],
+			customCalendar: {
+				calname: 'Custom Calendar',
+				calendars: []
+			},
 			activeEvent: null,
 			activeEventOriginalElement: null,
 			loaded: null
@@ -38,7 +42,9 @@ export default class App extends React.Component {
 			: 'basic';
 
 		// FIXME: This doesn't work if a calendar and a group share the same id
-		let calendar = this.state.calendarGroups[calendarId];
+		let calendar = calendarId === 'custom'
+			? this.state.customCalendar
+			: this.state.calendarGroups[calendarId];
 		let calendars;
 		if(calendar){
 			calendars = calendar.calendars.map(id => this.state.calendars[id]);
@@ -97,6 +103,14 @@ export default class App extends React.Component {
 				</li>
 			));
 
+			groupedCalendarListItems.push(
+				<li key="custom">
+					<Link to="/custom" activeClassName="active">
+						Custom Group
+					</Link>
+				</li>
+			);
+
 			let calendarListItems = Object.keys(this.state.calendars).map(id => (
 				<li key={`calendar-list-items-${id}`}>
 					<Link to={`/${id}`} activeClassName="active">
@@ -105,6 +119,12 @@ export default class App extends React.Component {
 				</li>
 			));
 
+
+			const icsFilename = calendarId === 'custom'
+				? `combine.ics?${this.state.customCalendar.calendars
+					.map(calId => `urls[]=${this.state.calendars[calId].url}`).join('&')}`
+				: `${calendarId}.ics`;
+
 			return (
 				<div data-iframe-height>
 					{activeEventNode}
@@ -112,7 +132,7 @@ export default class App extends React.Component {
 					<FullCalendar apiKey={this.state.GOOGLE_CALENDAR_API_KEY}
 						eventSources={eventSources}
 						setActiveEvent={this.handleSetActiveEvent} />
-					<Subscription calendarId={calendarId} />
+					<Subscription icsFilename={icsFilename} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
 		{
 			groupedCalendarListItems || calendarListItems
