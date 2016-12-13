@@ -26,7 +26,7 @@ export default class Subscription extends React.Component {
 
 	render(){
 		const calendarIcalUrl =
-			`${window.location.origin}/${this.props.calendarId}.ics`;
+			`${window.location.origin}/${this.props.icsFilename}`;
 
 		const webcalUrl = calendarIcalUrl
 			.replace(window.location.protocol, 'webcal:');
@@ -76,7 +76,7 @@ export default class Subscription extends React.Component {
 				}
 						<a id="download-button" className="button outline"
 								href={calendarIcalUrl} target="_blank"
-								download={`${this.props.calendarId}.ics`}>
+								download={this.props.icsFilename}>
 							Download ICal/.ics file
 						</a>
 					</div>
@@ -141,5 +141,5 @@ export default class Subscription extends React.Component {
 }
 
 Subscription.propTypes = {
-	calendarId: React.PropTypes.string
+	icsFilename: React.PropTypes.string
 };

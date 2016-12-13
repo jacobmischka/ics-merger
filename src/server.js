@@ -35,6 +35,9 @@ app.get('/combine.ics', (req, res) => {
 
 	icals.then(icals => {
 		res.send(merge(icals, options));
+	})
+	.catch(err => {
+		console.error(`Error merging: ${err}`);
 	});
 });
 
@@ -91,6 +94,9 @@ function respondWithCalendar(calendar, calendarName){
 
 		icals.then(icals => {
 			res.send(merge(icals, options));
+		})
+		.catch(err => {
+			console.error(`Error merging: ${err}`);
 		});
 	});
 }
@@ -118,8 +124,9 @@ function getIcalsFromUrls(urls){
 			return text;
 		}).catch(err => {
 			console.error(`Error reading ${url}: ${err}`);
+			return err;
 		}));
 	}
 
-	return Promise.all(promises).then(icals => icals);
+	return Promise.all(promises);
 }
