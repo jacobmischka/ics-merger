@@ -1,7 +1,10 @@
 import React from 'react';
 import Color from 'color';
+import LinkifyIt from 'linkify-it';
 
 import CalendarEvent from './CalendarEvent.js';
+
+const linkify = new LinkifyIt();
 
 export default class ActiveEvent extends CalendarEvent {
 	constructor(props){
@@ -11,8 +14,50 @@ export default class ActiveEvent extends CalendarEvent {
 		};
 
 		this.getEventDate = this.getEventDate.bind(this);
+		this.markupDescription = this.markupDescription.bind(this);
 		this.handleOutsideClick = this.handleOutsideClick.bind(this);
 		this.handleClick = this.handleClick.bind(this);
+	}
+
+	getEventDate(){
+		const sameDay = this.props.event.start.isSame(this.props.event.end, 'day');
+		const sameDayAllDay = this.props.event.allDay && this.props.event.start
+			.isSame(this.props.event.end.clone().subtract(1, 'day'));
+		if(sameDay || sameDayAllDay){
+			return this.props.event.start.format('ll');
+		}
+		else {
+			let startDate, endDate;
+			if(this.props.event.start.isSame(this.props.event.end, 'year')){
+				startDate = this.props.event.start.format('MMM D');
+				endDate = this.props.event.end.format('ll');
+
+			}
+			else {
+				const dateFormat = 'll';
+				startDate = this.props.event.start.format(dateFormat);
+				endDate = this.props.event.end.format(dateFormat);
+			}
+
+			return (
+				<span>
+					<span className="start-date">{startDate}</span>
+					<span> – </span>
+					<span className="end-date">{endDate}</span>
+				</span>
+			);
+		}
+	}
+
+	markupDescription(description){
+		if(description && linkify.test(description)){
+			linkify.match(description).map(match => {
+				description = description.replace(match.raw,
+					`<a href="${match.url}">${match.text}</a>`);
+			});
+		}
+
+		return {__html: description};
 	}
 
 	render(){
@@ -23,7 +68,7 @@ export default class ActiveEvent extends CalendarEvent {
 			let left = rect.left - 1;
 			let top = rect.top - 1;
 
-			let backgroundColor = Color(this.props.event.color).lighten(0.6).rgbString();
+			let backgroundColor = Color(this.props.event.color).lighten(0.6).rgb().string();
 			let borderColor = this.props.event.color;
 
 			style = {
@@ -68,41 +113,11 @@ export default class ActiveEvent extends CalendarEvent {
 						×
 					</button>
 				</header>
-				<p className="event-desc">
-					{this.props.event.description}
+				<p className="event-desc"
+					dangerouslySetInnerHTML={this.markupDescription(this.props.event.description)}>
 				</p>
 			</div>
 		);
-	}
-
-	getEventDate(){
-		const sameDay = this.props.event.start.isSame(this.props.event.end, 'day');
-		const sameDayAllDay = this.props.event.allDay && this.props.event.start
-			.isSame(this.props.event.end.clone().subtract(1, 'day'));
-		if(sameDay || sameDayAllDay){
-			return this.props.event.start.format('ll');
-		}
-		else {
-			let startDate, endDate;
-			if(this.props.event.start.isSame(this.props.event.end, 'year')){
-				startDate = this.props.event.start.format('MMM D');
-				endDate = this.props.event.end.format('ll');
-
-			}
-			else {
-				const dateFormat = 'll';
-				startDate = this.props.event.start.format(dateFormat);
-				endDate = this.props.event.end.format(dateFormat);
-			}
-
-			return (
-				<span>
-					<span className="start-date">{startDate}</span>
-					<span> – </span>
-					<span className="end-date">{endDate}</span>
-				</span>
-			);
-		}
 	}
 
 	componentDidMount(){

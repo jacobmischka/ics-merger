@@ -20,8 +20,8 @@ export default class CalendarEvent extends React.Component {
 		let color = Color(this.props.event.color);
 
 		let style = {
-			border: `1px solid ${color.rgbString()}`,
-			backgroundColor: color.alpha(0.3).rgbString()
+			border: `1px solid ${color.rgb().string()}`,
+			backgroundColor: color.alpha(0.3).rgb().string()
 		};
 
 		return (

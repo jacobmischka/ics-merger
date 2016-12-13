@@ -123,7 +123,6 @@ function respondWithCalendar(calendar, calendarName){
 		if(calendar.subCalendars)
 			urls = urls.concat(calendar.subCalendars.map(subCal => subCal.url));
 
-		console.log(urls);
 		let icals = getIcalsFromUrls(urls);
 
 		setHeaders(res);

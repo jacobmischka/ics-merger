@@ -8,7 +8,7 @@ const CalendarLegend = (props) => {
 	let calendarsInGroup = props.calendars.map(calendar => (
 		<li className="legend-list-item" key={`in-group-${calendar.calname}`}>
 			<span className="calendar-legend-color" style={{
-					backgroundColor: Color(calendar.color).alpha(0.3).rgbString(),
+					backgroundColor: Color(calendar.color).alpha(0.3).rgb().string(),
 					border: `1px solid ${calendar.color}`
 				}}>
 			</span>
