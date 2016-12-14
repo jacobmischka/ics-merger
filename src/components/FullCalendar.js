@@ -42,12 +42,10 @@ export default class FullCalendar extends React.Component {
 
 		const calendar = $(`#${this.state.calendarId}`);
 
-		console.log(eventSourcesToAdd, eventSourcesToRemove);
-
-		if(eventSourcesToRemove)
+		if(eventSourcesToRemove && eventSourcesToRemove.length > 0)
 			calendar.fullCalendar('removeEventSources', eventSourcesToRemove);
 
-		if(eventSourcesToAdd){
+		if(eventSourcesToAdd && eventSourcesToAdd.length > 0){
 			eventSourcesToAdd.map(eventSourceToAdd => {
 				calendar.fullCalendar('addEventSource', eventSourceToAdd);
 			});

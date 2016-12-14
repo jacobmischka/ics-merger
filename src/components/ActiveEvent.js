@@ -4,6 +4,8 @@ import LinkifyIt from 'linkify-it';
 
 import CalendarEvent from './CalendarEvent.js';
 
+import { rgbaOverRgb } from '../utils.js';
+
 const linkify = new LinkifyIt();
 
 export default class ActiveEvent extends CalendarEvent {
@@ -68,7 +70,7 @@ export default class ActiveEvent extends CalendarEvent {
 			let left = rect.left - 1;
 			let top = rect.top - 1;
 
-			let backgroundColor = Color(this.props.event.color).lighten(0.6).rgb().string();
+			let backgroundColor = rgbaOverRgb(Color(this.props.event.color).alpha(0.3).array());
 			let borderColor = this.props.event.color;
 
 			style = {
@@ -113,15 +115,13 @@ export default class ActiveEvent extends CalendarEvent {
 						×
 					</button>
 				</header>
-	{
-		this.props.event.description
-			? (
+		{
+			this.props.event.description && (
 				<p className="event-desc"
 					dangerouslySetInnerHTML={this.markupDescription(this.props.event.description)}>
 				</p>
 			)
-			: null
-	}
+		}
 			</div>
 		);
 	}

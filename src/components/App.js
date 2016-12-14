@@ -158,41 +158,35 @@ export default class App extends React.Component {
 						setActiveEvent={this.handleSetActiveEvent} />
 					<Subscription icsFilename={icsFilename} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
-		{
-			groupedCalendarListItems || calendarListItems
-				? (
+			{
+				(groupedCalendarListItems || calendarListItems) && (
 					<div className="calendar-nav-container">
 						<h2>Other calendars</h2>
 						<nav className="calendar-nav">
 				{
-					groupedCalendarListItems
-						? (
-							<section>
-								<h3>Calendar sets</h3>
-								<ul>
-									{groupedCalendarListItems}
-								</ul>
-							</section>
-						)
-						: null
+					groupedCalendarListItems && (
+						<section>
+							<h3>Calendar sets</h3>
+							<ul>
+								{groupedCalendarListItems}
+							</ul>
+						</section>
+					)
 				}
 				{
-					calendarListItems
-						? (
-							<section>
-								<h3>Calendars</h3>
-								<ul>
-									{calendarListItems}
-								</ul>
-							</section>
-						)
-						: null
+					calendarListItems && (
+						<section>
+							<h3>Calendars</h3>
+							<ul>
+								{calendarListItems}
+							</ul>
+						</section>
+					)
 				}
 						</nav>
 					</div>
 				)
-				: null
-		}
+			}
 				</div>
 			);
 		}
