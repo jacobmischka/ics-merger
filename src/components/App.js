@@ -1,3 +1,5 @@
+/* global ga */
+
 import React from 'react';
 import { Link } from 'react-router';
 
@@ -28,6 +30,10 @@ export default class App extends React.Component {
 				return response.json();
 			}).then(dotenv => {
 				this.setState(Object.assign(dotenv, {loaded: true}));
+				if(dotenv.GOOGLE_ANALYTICS_TRACKING_ID && ga){
+					ga('create', dotenv.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
+					ga('send', 'pageview');
+				}
 			}).catch(err => {
 				this.setState({loaded: false});
 				console.error(err);

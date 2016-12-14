@@ -10,6 +10,7 @@ module.exports = {
 		'classlist-polyfill',
 		'element-dataset',
 		'iframe-resizer/js/iframeResizer.contentWindow.js',
+		'./src/google-analytics.js',
 		'./src/web.js'
 	],
 	output: {
