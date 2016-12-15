@@ -45,7 +45,7 @@ CALDESC="Two calendars put together"\
 ical-merge cal.ics another.ics
 ```
 
-Accepts filenames, options are set by environment variables.
+Accepts filenames, options are set by environment variables. Output is sent to stdout.
 
 ### Web service
 
@@ -133,6 +133,6 @@ Webapp uses `googleCalendarId`s, web service uses `url`s.
 
 [FullCalendar instructions for Google Calendar API key and calendar IDs][fullcalendar-gcal]
 
-[env]: #-env-json-
+[env]: #envjson
 [fullcalendar]: https://fullcalendar.io
 [fullcalendar-gcal]: https://fullcalendar.io/docs/google_calendar/
