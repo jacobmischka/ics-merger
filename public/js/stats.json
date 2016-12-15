@@ -1,13 +1,13 @@
 {
   "errors": [],
   "warnings": [
-    "asset size limit: The following asset(s) exceed the recommended size limit (250 kB). \nThis can impact web performance.\nAssets: \n  bundle.js (649 kB)\n  bundle.js.map (5.41 MB)",
-    "entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (250 kB). This can impact web performance.\nEntrypoints:\n  main (6.06 MB)\n      bundle.js\n      bundle.js.map\n",
-    "webpack performance recommendations: \nYou can limit the size of your bundles by using System.import() or require.ensure to lazy load some parts of your application.\nFor more info visit https://webpack.js.org/guides/code-splitting/"
+    "asset size limit: The following asset(s) exceed the recommended size limit (250 kB). \nThis can impact web performance.\nAssets: \n  bundle.js (650 kB)",
+    "entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit (250 kB). This can impact web performance.\nEntrypoints:\n  main (650 kB)\n      bundle.js\n",
+    "webpack performance recommendations: \nYou can limit the size of your bundles by using import() or require.ensure to lazy load some parts of your application.\nFor more info visit https://webpack.js.org/guides/code-splitting/"
   ],
-  "version": "2.1.0-beta.28",
-  "hash": "7c651ba5a111fa42f0f0",
-  "time": 12614,
+  "version": "2.2.0-rc.0",
+  "hash": "6bf5e07db8c5b44c4d18",
+  "time": 10488,
   "publicPath": "/js/",
   "assetsByChunkName": {
     "main": [
@@ -18,7 +18,7 @@
   "assets": [
     {
       "name": "bundle.js",
-      "size": 649391,
+      "size": 649552,
       "chunks": [
         0
       ],
@@ -30,15 +30,14 @@
     },
     {
       "name": "bundle.js.map",
-      "size": 5405843,
+      "size": 5403457,
       "chunks": [
         0
       ],
       "chunkNames": [
         "main"
       ],
-      "emitted": true,
-      "isOverSizeLimit": true
+      "emitted": true
     }
   ],
   "entrypoints": {
@@ -49,7 +48,8 @@
       "assets": [
         "bundle.js",
         "bundle.js.map"
-      ]
+      ],
+      "isOverSizeLimit": true
     }
   },
   "chunks": [
@@ -67,7 +67,7 @@
         "bundle.js",
         "bundle.js.map"
       ],
-      "hash": "a435291247c3145edf46",
+      "hash": "57ba464b8bff77fce25c",
       "parents": [],
       "origins": [
         {
@@ -98,9 +98,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.symbol.js",
-      "issuerId": 408,
-      "issuerName": "./~/core-js/modules/es6.symbol.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.create.js",
+      "issuerId": 347,
+      "issuerName": "./~/core-js/modules/es6.object.create.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -1169,9 +1169,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react/lib/ReactComponent.js",
-      "issuerId": 158,
-      "issuerName": "./~/react/lib/ReactComponent.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactDOMComponentTree.js",
+      "issuerId": 13,
+      "issuerName": "./~/react-dom/lib/ReactDOMComponentTree.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -2195,9 +2195,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react/lib/React.js",
-      "issuerId": 68,
-      "issuerName": "./~/react/lib/React.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactDOM.js",
+      "issuerId": 515,
+      "issuerName": "./~/react-dom/lib/ReactDOM.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -3095,9 +3095,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.seal.js",
-      "issuerId": 360,
-      "issuerName": "./~/core-js/modules/es6.object.seal.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.freeze.js",
+      "issuerId": 350,
+      "issuerName": "./~/core-js/modules/es6.object.freeze.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -5210,9 +5210,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/BeforeInputEventPlugin.js",
-      "issuerId": 504,
-      "issuerName": "./~/react-dom/lib/BeforeInputEventPlugin.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/setInnerHTML.js",
+      "issuerId": 100,
+      "issuerName": "./~/react-dom/lib/setInnerHTML.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -5948,9 +5948,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.anchor.js",
-      "issuerId": 386,
-      "issuerName": "./~/core-js/modules/es6.string.anchor.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.big.js",
+      "issuerId": 387,
+      "issuerName": "./~/core-js/modules/es6.string.big.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -7136,9 +7136,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.array.for-each.js",
-      "issuerId": 295,
-      "issuerName": "./~/core-js/modules/es6.array.for-each.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.array.map.js",
+      "issuerId": 301,
+      "issuerName": "./~/core-js/modules/es6.array.map.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -7820,9 +7820,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.reflect.define-metadata.js",
-      "issuerId": 437,
-      "issuerName": "./~/core-js/modules/es7.reflect.define-metadata.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.reflect.delete-metadata.js",
+      "issuerId": 438,
+      "issuerName": "./~/core-js/modules/es7.reflect.delete-metadata.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -9026,9 +9026,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.symbol.js",
-      "issuerId": 408,
-      "issuerName": "./~/core-js/modules/es6.symbol.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.create.js",
+      "issuerId": 347,
+      "issuerName": "./~/core-js/modules/es6.object.create.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -11168,9 +11168,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react/lib/ReactComponent.js",
-      "issuerId": 158,
-      "issuerName": "./~/react/lib/ReactComponent.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactMount.js",
+      "issuerId": 215,
+      "issuerName": "./~/react-dom/lib/ReactMount.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -11924,9 +11924,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.regexp.to-string.js",
-      "issuerId": 385,
-      "issuerName": "./~/core-js/modules/es6.regexp.to-string.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.regexp.constructor.js",
+      "issuerId": 380,
+      "issuerName": "./~/core-js/modules/es6.regexp.constructor.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -12176,9 +12176,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.object.define-setter.js",
-      "issuerId": 430,
-      "issuerName": "./~/core-js/modules/es7.object.define-setter.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.object.define-getter.js",
+      "issuerId": 429,
+      "issuerName": "./~/core-js/modules/es7.object.define-getter.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -12869,9 +12869,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/babel-polyfill/lib/index.js",
-      "issuerId": 244,
-      "issuerName": "./~/babel-polyfill/lib/index.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/es6-promise/dist/es6-promise.js",
+      "issuerId": 246,
+      "issuerName": "./~/es6-promise/dist/es6-promise.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -12932,9 +12932,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/babel-loader/lib/index.js!/home/mischka/projects/ics-merger/src/components/CalendarLegend.js",
-      "issuerId": 251,
-      "issuerName": "./src/components/CalendarLegend.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/babel-loader/lib/index.js!/home/mischka/projects/ics-merger/src/components/ActiveEvent.js",
+      "issuerId": 249,
+      "issuerName": "./src/components/ActiveEvent.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -13312,9 +13312,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.ends-with.js",
-      "issuerId": 391,
-      "issuerName": "./~/core-js/modules/es6.string.ends-with.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.includes.js",
+      "issuerId": 396,
+      "issuerName": "./~/core-js/modules/es6.string.includes.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -14068,9 +14068,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.ends-with.js",
-      "issuerId": 391,
-      "issuerName": "./~/core-js/modules/es6.string.ends-with.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.includes.js",
+      "issuerId": 396,
+      "issuerName": "./~/core-js/modules/es6.string.includes.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -14932,9 +14932,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactDOMComponent.js",
-      "issuerId": 516,
-      "issuerName": "./~/react-dom/lib/ReactDOMComponent.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/DOMLazyTree.js",
+      "issuerId": 63,
+      "issuerName": "./~/react-dom/lib/DOMLazyTree.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -14986,9 +14986,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactDOMComponent.js",
-      "issuerId": 516,
-      "issuerName": "./~/react-dom/lib/ReactDOMComponent.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactBrowserEventEmitter.js",
+      "issuerId": 96,
+      "issuerName": "./~/react-dom/lib/ReactBrowserEventEmitter.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -15256,9 +15256,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/EventPluginHub.js",
-      "issuerId": 77,
-      "issuerName": "./~/react-dom/lib/EventPluginHub.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactCompositeComponent.js",
+      "issuerId": 514,
+      "issuerName": "./~/react-dom/lib/ReactCompositeComponent.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -15580,9 +15580,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ChangeEventPlugin.js",
-      "issuerId": 506,
-      "issuerName": "./~/react-dom/lib/ChangeEventPlugin.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactBrowserEventEmitter.js",
+      "issuerId": 96,
+      "issuerName": "./~/react-dom/lib/ReactBrowserEventEmitter.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -15688,9 +15688,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactDOMComponent.js",
-      "issuerId": 516,
-      "issuerName": "./~/react-dom/lib/ReactDOMComponent.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactDOMContainerInfo.js",
+      "issuerId": 517,
+      "issuerName": "./~/react-dom/lib/ReactDOMContainerInfo.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -16066,9 +16066,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/babel-loader/lib/index.js!/home/mischka/projects/ics-merger/src/components/FullCalendar.js",
-      "issuerId": 253,
-      "issuerName": "./src/components/FullCalendar.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/babel-loader/lib/index.js!/home/mischka/projects/ics-merger/src/components/ActiveEvent.js",
+      "issuerId": 249,
+      "issuerName": "./src/components/ActiveEvent.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -16880,9 +16880,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.weak-set.js",
-      "issuerId": 420,
-      "issuerName": "./~/core-js/modules/es6.weak-set.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.weak-map.js",
+      "issuerId": 198,
+      "issuerName": "./~/core-js/modules/es6.weak-map.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -16925,9 +16925,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/_object-dp.js",
-      "issuerId": 12,
-      "issuerName": "./~/core-js/modules/_object-dp.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/_object-gopd.js",
+      "issuerId": 24,
+      "issuerName": "./~/core-js/modules/_object-gopd.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -17330,9 +17330,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.object.values.js",
-      "issuerId": 435,
-      "issuerName": "./~/core-js/modules/es7.object.values.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.object.entries.js",
+      "issuerId": 431,
+      "issuerName": "./~/core-js/modules/es7.object.entries.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -18367,9 +18367,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactInjection.js",
-      "issuerId": 532,
-      "issuerName": "./~/react-dom/lib/ReactInjection.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/instantiateReactComponent.js",
+      "issuerId": 222,
+      "issuerName": "./~/react-dom/lib/instantiateReactComponent.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -18457,9 +18457,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactInjection.js",
-      "issuerId": 532,
-      "issuerName": "./~/react-dom/lib/ReactInjection.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/instantiateReactComponent.js",
+      "issuerId": 222,
+      "issuerName": "./~/react-dom/lib/instantiateReactComponent.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -19384,10 +19384,10 @@
         }
       ],
       "usedExports": [
-        "Link",
         "Router",
         "browserHistory",
-        "Route"
+        "Route",
+        "Link"
       ],
       "providedExports": null,
       "source": "'use strict';\n\nexports.__esModule = true;\nexports.createMemoryHistory = exports.hashHistory = exports.browserHistory = exports.applyRouterMiddleware = exports.formatPattern = exports.useRouterHistory = exports.match = exports.routerShape = exports.locationShape = exports.RouterContext = exports.createRoutes = exports.Route = exports.Redirect = exports.IndexRoute = exports.IndexRedirect = exports.withRouter = exports.IndexLink = exports.Link = exports.Router = undefined;\n\nvar _RouteUtils = require('./RouteUtils');\n\nObject.defineProperty(exports, 'createRoutes', {\n  enumerable: true,\n  get: function get() {\n    return _RouteUtils.createRoutes;\n  }\n});\n\nvar _PropTypes = require('./PropTypes');\n\nObject.defineProperty(exports, 'locationShape', {\n  enumerable: true,\n  get: function get() {\n    return _PropTypes.locationShape;\n  }\n});\nObject.defineProperty(exports, 'routerShape', {\n  enumerable: true,\n  get: function get() {\n    return _PropTypes.routerShape;\n  }\n});\n\nvar _PatternUtils = require('./PatternUtils');\n\nObject.defineProperty(exports, 'formatPattern', {\n  enumerable: true,\n  get: function get() {\n    return _PatternUtils.formatPattern;\n  }\n});\n\nvar _Router2 = require('./Router');\n\nvar _Router3 = _interopRequireDefault(_Router2);\n\nvar _Link2 = require('./Link');\n\nvar _Link3 = _interopRequireDefault(_Link2);\n\nvar _IndexLink2 = require('./IndexLink');\n\nvar _IndexLink3 = _interopRequireDefault(_IndexLink2);\n\nvar _withRouter2 = require('./withRouter');\n\nvar _withRouter3 = _interopRequireDefault(_withRouter2);\n\nvar _IndexRedirect2 = require('./IndexRedirect');\n\nvar _IndexRedirect3 = _interopRequireDefault(_IndexRedirect2);\n\nvar _IndexRoute2 = require('./IndexRoute');\n\nvar _IndexRoute3 = _interopRequireDefault(_IndexRoute2);\n\nvar _Redirect2 = require('./Redirect');\n\nvar _Redirect3 = _interopRequireDefault(_Redirect2);\n\nvar _Route2 = require('./Route');\n\nvar _Route3 = _interopRequireDefault(_Route2);\n\nvar _RouterContext2 = require('./RouterContext');\n\nvar _RouterContext3 = _interopRequireDefault(_RouterContext2);\n\nvar _match2 = require('./match');\n\nvar _match3 = _interopRequireDefault(_match2);\n\nvar _useRouterHistory2 = require('./useRouterHistory');\n\nvar _useRouterHistory3 = _interopRequireDefault(_useRouterHistory2);\n\nvar _applyRouterMiddleware2 = require('./applyRouterMiddleware');\n\nvar _applyRouterMiddleware3 = _interopRequireDefault(_applyRouterMiddleware2);\n\nvar _browserHistory2 = require('./browserHistory');\n\nvar _browserHistory3 = _interopRequireDefault(_browserHistory2);\n\nvar _hashHistory2 = require('./hashHistory');\n\nvar _hashHistory3 = _interopRequireDefault(_hashHistory2);\n\nvar _createMemoryHistory2 = require('./createMemoryHistory');\n\nvar _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.Router = _Router3.default; /* components */\n\nexports.Link = _Link3.default;\nexports.IndexLink = _IndexLink3.default;\nexports.withRouter = _withRouter3.default;\n\n/* components (configuration) */\n\nexports.IndexRedirect = _IndexRedirect3.default;\nexports.IndexRoute = _IndexRoute3.default;\nexports.Redirect = _Redirect3.default;\nexports.Route = _Route3.default;\n\n/* utils */\n\nexports.RouterContext = _RouterContext3.default;\nexports.match = _match3.default;\nexports.useRouterHistory = _useRouterHistory3.default;\nexports.applyRouterMiddleware = _applyRouterMiddleware3.default;\n\n/* histories */\n\nexports.browserHistory = _browserHistory3.default;\nexports.hashHistory = _hashHistory3.default;\nexports.createMemoryHistory = _createMemoryHistory3.default;"

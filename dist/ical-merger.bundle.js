@@ -9418,11 +9418,11 @@ function merge(inputs, options){
 				calendar.updatePropertyWithValue('version', icalMerger.version);
 
 				if(options.calname)
-				{ calendar.updatePropertyWithValue('x-wr-calname', options.calname); }
+					{ calendar.updatePropertyWithValue('x-wr-calname', options.calname); }
 				if(options.timezone)
-				{ calendar.updatePropertyWithValue('x-wr-timezone', options.timezone); }
+					{ calendar.updatePropertyWithValue('x-wr-timezone', options.timezone); }
 				if(options.caldesc)
-				{ calendar.updatePropertyWithValue('x-wr-caldesc', options.caldesc); }
+					{ calendar.updatePropertyWithValue('x-wr-caldesc', options.caldesc); }
 			}
 			else {
 				for(var i$1 = 0, list$1 = cal.getAllSubcomponents('vevent'); i$1 < list$1.length; i$1 += 1){
