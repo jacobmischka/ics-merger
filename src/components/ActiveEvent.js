@@ -99,7 +99,7 @@ export default class ActiveEvent extends CalendarEvent {
 		return (
 			<div key="active-event" className={className} style={style}
 					ref={div => this.container = div}>
-				<header style={headerStyle}>
+				<header style={headerStyle} ref={header => this.header = header}>
 					<span className="event-date-time">
 						<span className="event-date">{eventDate}</span>
 						<span className="event-time">{eventTime}</span>
@@ -117,7 +117,7 @@ export default class ActiveEvent extends CalendarEvent {
 				</header>
 		{
 			this.props.event.description && (
-				<p className="event-desc"
+				<p className="event-desc" ref={p => this.description = p}
 					dangerouslySetInnerHTML={this.markupDescription(this.props.event.description)}>
 				</p>
 			)
@@ -132,9 +132,17 @@ export default class ActiveEvent extends CalendarEvent {
 				this.setState({expanded: true});
 				if('parentIFrame' in window){
 					window.parentIFrame.getPageInfo(parentPage => {
-						let y = parentPage.scrollTop >= 0
-							? `${parentPage.scrollTop + (parentPage.clientHeight / 2) - parentPage.offsetTop}px`
-							: '50%';
+						let middleOfParentViewport = parentPage.scrollTop +
+							(parentPage.clientHeight / 2) - parentPage.offsetTop;
+						let y = middleOfParentViewport > this.container.clientHeight / 2
+							? middleOfParentViewport < window.innerHeight - this.container.clientHeight / 2
+								? `${middleOfParentViewport}px`
+								: '100vh - 50% - 10px'
+							: '50% + 10px';
+						let containerMaxHeight = parentPage.clientHeight * 0.9 - 50;
+						this.container.style.maxHeight = `${containerMaxHeight}px`;
+						this.description.style.maxHeight =
+							`${containerMaxHeight - this.header.clientHeight}px`;
 						this.container.style.transform =
 							`translate(calc(50vw - 50%), calc(${y} - 50%))`;
 					});

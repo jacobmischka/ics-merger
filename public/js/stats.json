@@ -2,8 +2,8 @@
   "errors": [],
   "warnings": [],
   "version": "2.2.1",
-  "hash": "2e551dbf454cc0c22afa",
-  "time": 12375,
+  "hash": "369ee1edbbf81ce6a01e",
+  "time": 12573,
   "publicPath": "/js/",
   "assetsByChunkName": {
     "main": [
@@ -14,7 +14,7 @@
   "assets": [
     {
       "name": "bundle.js",
-      "size": 644144,
+      "size": 644430,
       "chunks": [
         0
       ],
@@ -26,7 +26,7 @@
     },
     {
       "name": "bundle.js.map",
-      "size": 5404513,
+      "size": 5406126,
       "chunks": [
         0
       ],
@@ -55,7 +55,7 @@
       "initial": true,
       "entry": true,
       "extraAsync": false,
-      "size": 2040929,
+      "size": 2041514,
       "names": [
         "main"
       ],
@@ -63,7 +63,7 @@
         "bundle.js",
         "bundle.js.map"
       ],
-      "hash": "8726680ad042b959a54d",
+      "hash": "476e38b90c28f81f626a",
       "parents": [],
       "origins": [
         {
@@ -4892,9 +4892,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.get-prototype-of.js",
-      "issuerId": 352,
-      "issuerName": "./~/core-js/modules/es6.object.get-prototype-of.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.keys.js",
+      "issuerId": 357,
+      "issuerName": "./~/core-js/modules/es6.object.keys.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -5372,9 +5372,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-router/es/Link.js",
-      "issuerId": 226,
-      "issuerName": "./~/react-router/es/Link.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-router/es/Router.js",
+      "issuerId": 570,
+      "issuerName": "./~/react-router/es/Router.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -7031,9 +7031,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactMount.js",
-      "issuerId": 215,
-      "issuerName": "./~/react-dom/lib/ReactMount.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactReconciler.js",
+      "issuerId": 65,
+      "issuerName": "./~/react-dom/lib/ReactReconciler.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -8584,9 +8584,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/useBasename.js",
-      "issuerId": 203,
-      "issuerName": "./~/history/lib/useBasename.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/useQueries.js",
+      "issuerId": 204,
+      "issuerName": "./~/history/lib/useQueries.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -9075,9 +9075,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.object.create.js",
-      "issuerId": 346,
-      "issuerName": "./~/core-js/modules/es6.object.create.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.symbol.js",
+      "issuerId": 407,
+      "issuerName": "./~/core-js/modules/es6.symbol.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -9803,9 +9803,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.array.copy-within.js",
-      "issuerId": 288,
-      "issuerName": "./~/core-js/modules/es6.array.copy-within.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.array.fill.js",
+      "issuerId": 290,
+      "issuerName": "./~/core-js/modules/es6.array.fill.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -11834,9 +11834,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.set.js",
-      "issuerId": 197,
-      "issuerName": "./~/core-js/modules/es6.set.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.map.js",
+      "issuerId": 195,
+      "issuerName": "./~/core-js/modules/es6.map.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -11898,9 +11898,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.regexp.match.js",
-      "issuerId": 380,
-      "issuerName": "./~/core-js/modules/es6.regexp.match.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.regexp.replace.js",
+      "issuerId": 381,
+      "issuerName": "./~/core-js/modules/es6.regexp.replace.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -11962,9 +11962,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.regexp.flags.js",
-      "issuerId": 196,
-      "issuerName": "./~/core-js/modules/es6.regexp.flags.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.regexp.constructor.js",
+      "issuerId": 379,
+      "issuerName": "./~/core-js/modules/es6.regexp.constructor.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -12218,9 +12218,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.object.define-getter.js",
-      "issuerId": 428,
-      "issuerName": "./~/core-js/modules/es7.object.define-getter.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es7.object.define-setter.js",
+      "issuerId": 429,
+      "issuerName": "./~/core-js/modules/es7.object.define-setter.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -13437,9 +13437,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.includes.js",
-      "issuerId": 395,
-      "issuerName": "./~/core-js/modules/es6.string.includes.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.ends-with.js",
+      "issuerId": 390,
+      "issuerName": "./~/core-js/modules/es6.string.ends-with.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -14152,9 +14152,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.code-point-at.js",
-      "issuerId": 389,
-      "issuerName": "./~/core-js/modules/es6.string.code-point-at.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.iterator.js",
+      "issuerId": 397,
+      "issuerName": "./~/core-js/modules/es6.string.iterator.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -14207,9 +14207,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.includes.js",
-      "issuerId": 395,
-      "issuerName": "./~/core-js/modules/es6.string.includes.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.string.ends-with.js",
+      "issuerId": 390,
+      "issuerName": "./~/core-js/modules/es6.string.ends-with.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -14867,9 +14867,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/useBasename.js",
-      "issuerId": 203,
-      "issuerName": "./~/history/lib/useBasename.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/history/lib/useQueries.js",
+      "issuerId": 204,
+      "issuerName": "./~/history/lib/useQueries.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -16263,9 +16263,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/babel-loader/lib/index.js!/home/mischka/projects/ics-merger/src/components/FullCalendar.js",
-      "issuerId": 252,
-      "issuerName": "./src/components/FullCalendar.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/babel-loader/lib/index.js!/home/mischka/projects/ics-merger/src/components/ActiveEvent.js",
+      "issuerId": 248,
+      "issuerName": "./src/components/ActiveEvent.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -17003,9 +17003,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.set.js",
-      "issuerId": 197,
-      "issuerName": "./~/core-js/modules/es6.set.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/core-js/modules/es6.map.js",
+      "issuerId": 195,
+      "issuerName": "./~/core-js/modules/es6.map.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -18757,9 +18757,9 @@
         0
       ],
       "assets": [],
-      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/ReactReconcileTransaction.js",
-      "issuerId": 537,
-      "issuerName": "./~/react-dom/lib/ReactReconcileTransaction.js",
+      "issuer": "/home/mischka/projects/ics-merger/node_modules/react-dom/lib/SelectEventPlugin.js",
+      "issuerId": 543,
+      "issuerName": "./~/react-dom/lib/SelectEventPlugin.js",
       "failed": false,
       "errors": 0,
       "warnings": 0,
@@ -20299,7 +20299,7 @@
       "name": "./src/components/ActiveEvent.js",
       "index": 585,
       "index2": 589,
-      "size": 7731,
+      "size": 8316,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -20332,7 +20332,7 @@
         "default"
       ],
       "depth": 3,
-      "source": "var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nimport React from 'react';\nimport Color from 'color';\nimport LinkifyIt from 'linkify-it';\n\nimport CalendarEvent from './CalendarEvent.js';\n\nimport { rgbaOverRgb } from '../utils.js';\n\nvar linkify = new LinkifyIt();\n\nvar ActiveEvent = function (_CalendarEvent) {\n\t_inherits(ActiveEvent, _CalendarEvent);\n\n\tfunction ActiveEvent(props) {\n\t\t_classCallCheck(this, ActiveEvent);\n\n\t\tvar _this = _possibleConstructorReturn(this, (ActiveEvent.__proto__ || Object.getPrototypeOf(ActiveEvent)).call(this, props));\n\n\t\t_this.state = {\n\t\t\texpanded: false\n\t\t};\n\n\t\t_this.getEventDate = _this.getEventDate.bind(_this);\n\t\t_this.markupDescription = _this.markupDescription.bind(_this);\n\t\t_this.handleOutsideClick = _this.handleOutsideClick.bind(_this);\n\t\t_this.handleClick = _this.handleClick.bind(_this);\n\t\treturn _this;\n\t}\n\n\t_createClass(ActiveEvent, [{\n\t\tkey: 'getEventDate',\n\t\tvalue: function getEventDate() {\n\t\t\tvar sameDay = this.props.event.start.isSame(this.props.event.end, 'day');\n\t\t\tvar sameDayAllDay = this.props.event.allDay && this.props.event.start.isSame(this.props.event.end.clone().subtract(1, 'day'));\n\t\t\tif (sameDay || sameDayAllDay) {\n\t\t\t\treturn this.props.event.start.format('ll');\n\t\t\t} else {\n\t\t\t\tvar startDate = void 0,\n\t\t\t\t    endDate = void 0;\n\t\t\t\tif (this.props.event.start.isSame(this.props.event.end, 'year')) {\n\t\t\t\t\tstartDate = this.props.event.start.format('MMM D');\n\t\t\t\t\tendDate = this.props.event.end.format('ll');\n\t\t\t\t} else {\n\t\t\t\t\tvar dateFormat = 'll';\n\t\t\t\t\tstartDate = this.props.event.start.format(dateFormat);\n\t\t\t\t\tendDate = this.props.event.end.format(dateFormat);\n\t\t\t\t}\n\n\t\t\t\treturn React.createElement(\n\t\t\t\t\t'span',\n\t\t\t\t\tnull,\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'span',\n\t\t\t\t\t\t{ className: 'start-date' },\n\t\t\t\t\t\tstartDate\n\t\t\t\t\t),\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'span',\n\t\t\t\t\t\tnull,\n\t\t\t\t\t\t' \\u2013 '\n\t\t\t\t\t),\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'span',\n\t\t\t\t\t\t{ className: 'end-date' },\n\t\t\t\t\t\tendDate\n\t\t\t\t\t)\n\t\t\t\t);\n\t\t\t}\n\t\t}\n\t}, {\n\t\tkey: 'markupDescription',\n\t\tvalue: function markupDescription(description) {\n\t\t\tif (description && linkify.test(description)) {\n\t\t\t\tlinkify.match(description).map(function (match) {\n\t\t\t\t\tdescription = description.replace(match.raw, '<a href=\"' + match.url + '\" target=\"_blank\" rel=\"noopener noreferrer\">' + match.text + '</a>');\n\t\t\t\t});\n\t\t\t}\n\n\t\t\treturn { __html: description };\n\t\t}\n\t}, {\n\t\tkey: 'render',\n\t\tvalue: function render() {\n\t\t\tvar _this2 = this;\n\n\t\t\tvar style = void 0;\n\t\t\tif (!this.state.expanded) {\n\t\t\t\tvar rect = this.props.originalElement.getBoundingClientRect();\n\n\t\t\t\tvar left = rect.left - 1;\n\t\t\t\tvar top = rect.top - 1;\n\n\t\t\t\tvar backgroundColor = rgbaOverRgb(Color(this.props.event.color).alpha(0.3).array());\n\t\t\t\tvar borderColor = this.props.event.color;\n\n\t\t\t\tstyle = {\n\t\t\t\t\twidth: rect.width * 2,\n\t\t\t\t\theight: rect.height * 2,\n\t\t\t\t\ttransform: 'translate(calc(' + left + 'px - 25%), calc(' + top + 'px - 25%)) scale(0.5)',\n\t\t\t\t\tbackgroundColor: backgroundColor,\n\t\t\t\t\tborder: '2px solid ' + borderColor\n\t\t\t\t};\n\t\t\t}\n\n\t\t\tvar eventTime = this.getEventTime();\n\t\t\tvar eventDate = this.getEventDate();\n\t\t\tvar className = this.getClassName();\n\t\t\tclassName += ' active-event';\n\t\t\tif (this.state.expanded) className += ' expanded';\n\n\t\t\tvar headerStyle = void 0;\n\t\t\tif (this.state.expanded) {\n\t\t\t\theaderStyle = {\n\t\t\t\t\tborderBottom: '5px solid ' + this.props.event.color\n\t\t\t\t};\n\t\t\t}\n\n\t\t\treturn React.createElement(\n\t\t\t\t'div',\n\t\t\t\t{ key: 'active-event', className: className, style: style,\n\t\t\t\t\tref: function ref(div) {\n\t\t\t\t\t\treturn _this2.container = div;\n\t\t\t\t\t} },\n\t\t\t\tReact.createElement(\n\t\t\t\t\t'header',\n\t\t\t\t\t{ style: headerStyle },\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'span',\n\t\t\t\t\t\t{ className: 'event-date-time' },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'span',\n\t\t\t\t\t\t\t{ className: 'event-date' },\n\t\t\t\t\t\t\teventDate\n\t\t\t\t\t\t),\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'span',\n\t\t\t\t\t\t\t{ className: 'event-time' },\n\t\t\t\t\t\t\teventTime\n\t\t\t\t\t\t)\n\t\t\t\t\t),\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'span',\n\t\t\t\t\t\t{ className: 'event-title' },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'span',\n\t\t\t\t\t\t\t{ className: 'event-calendar' },\n\t\t\t\t\t\t\tthis.props.event.calendar.calname\n\t\t\t\t\t\t),\n\t\t\t\t\t\tthis.props.event.title\n\t\t\t\t\t),\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'button',\n\t\t\t\t\t\t{ type: 'button', className: 'close', onClick: this.handleClick,\n\t\t\t\t\t\t\ttitle: 'Close active event' },\n\t\t\t\t\t\t'\\xD7'\n\t\t\t\t\t)\n\t\t\t\t),\n\t\t\t\tthis.props.event.description && React.createElement('p', { className: 'event-desc',\n\t\t\t\t\tdangerouslySetInnerHTML: this.markupDescription(this.props.event.description) })\n\t\t\t);\n\t\t}\n\t}, {\n\t\tkey: 'componentDidMount',\n\t\tvalue: function componentDidMount() {\n\t\t\tvar _this3 = this;\n\n\t\t\twindow.requestAnimationFrame(function () {\n\t\t\t\twindow.requestAnimationFrame(function () {\n\t\t\t\t\t_this3.setState({ expanded: true });\n\t\t\t\t\tif ('parentIFrame' in window) {\n\t\t\t\t\t\twindow.parentIFrame.getPageInfo(function (parentPage) {\n\t\t\t\t\t\t\tvar y = parentPage.scrollTop >= 0 ? parentPage.scrollTop + parentPage.clientHeight / 2 - parentPage.offsetTop + 'px' : '50%';\n\t\t\t\t\t\t\t_this3.container.style.transform = 'translate(calc(50vw - 50%), calc(' + y + ' - 50%))';\n\t\t\t\t\t\t});\n\t\t\t\t\t}\n\t\t\t\t\tdocument.addEventListener('click', _this3.handleOutsideClick);\n\t\t\t\t});\n\t\t\t});\n\t\t}\n\t}, {\n\t\tkey: 'componentWillUnmount',\n\t\tvalue: function componentWillUnmount() {\n\t\t\tdocument.removeEventListener('click', this.handleOutsideClick);\n\t\t}\n\t}, {\n\t\tkey: 'handleClick',\n\t\tvalue: function handleClick() {\n\t\t\tvar _this4 = this;\n\n\t\t\twindow.requestAnimationFrame(function () {\n\t\t\t\t_this4.setState({ expanded: false }, function () {\n\t\t\t\t\tif ('parentIFrame' in window) {\n\t\t\t\t\t\twindow.parentIFrame.getPageInfo(false);\n\t\t\t\t\t}\n\t\t\t\t\twindow.setTimeout(_this4.props.onClose, 140);\n\t\t\t\t});\n\t\t\t});\n\t\t}\n\t}, {\n\t\tkey: 'handleOutsideClick',\n\t\tvalue: function handleOutsideClick(event) {\n\t\t\tvar _this5 = this;\n\n\t\t\tif (event.defaultPrevented) return;\n\n\t\t\twindow.requestAnimationFrame(function () {\n\t\t\t\tvar rect = _this5.container.getBoundingClientRect();\n\t\t\t\tif (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) _this5.handleClick();\n\t\t\t});\n\t\t}\n\t}]);\n\n\treturn ActiveEvent;\n}(CalendarEvent);\n\nexport default ActiveEvent;\n\n\nActiveEvent.propTypes = {\n\tevent: React.PropTypes.object.isRequired,\n\toriginalElement: React.PropTypes.object,\n\tonClose: React.PropTypes.func\n};"
+      "source": "var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nimport React from 'react';\nimport Color from 'color';\nimport LinkifyIt from 'linkify-it';\n\nimport CalendarEvent from './CalendarEvent.js';\n\nimport { rgbaOverRgb } from '../utils.js';\n\nvar linkify = new LinkifyIt();\n\nvar ActiveEvent = function (_CalendarEvent) {\n\t_inherits(ActiveEvent, _CalendarEvent);\n\n\tfunction ActiveEvent(props) {\n\t\t_classCallCheck(this, ActiveEvent);\n\n\t\tvar _this = _possibleConstructorReturn(this, (ActiveEvent.__proto__ || Object.getPrototypeOf(ActiveEvent)).call(this, props));\n\n\t\t_this.state = {\n\t\t\texpanded: false\n\t\t};\n\n\t\t_this.getEventDate = _this.getEventDate.bind(_this);\n\t\t_this.markupDescription = _this.markupDescription.bind(_this);\n\t\t_this.handleOutsideClick = _this.handleOutsideClick.bind(_this);\n\t\t_this.handleClick = _this.handleClick.bind(_this);\n\t\treturn _this;\n\t}\n\n\t_createClass(ActiveEvent, [{\n\t\tkey: 'getEventDate',\n\t\tvalue: function getEventDate() {\n\t\t\tvar sameDay = this.props.event.start.isSame(this.props.event.end, 'day');\n\t\t\tvar sameDayAllDay = this.props.event.allDay && this.props.event.start.isSame(this.props.event.end.clone().subtract(1, 'day'));\n\t\t\tif (sameDay || sameDayAllDay) {\n\t\t\t\treturn this.props.event.start.format('ll');\n\t\t\t} else {\n\t\t\t\tvar startDate = void 0,\n\t\t\t\t    endDate = void 0;\n\t\t\t\tif (this.props.event.start.isSame(this.props.event.end, 'year')) {\n\t\t\t\t\tstartDate = this.props.event.start.format('MMM D');\n\t\t\t\t\tendDate = this.props.event.end.format('ll');\n\t\t\t\t} else {\n\t\t\t\t\tvar dateFormat = 'll';\n\t\t\t\t\tstartDate = this.props.event.start.format(dateFormat);\n\t\t\t\t\tendDate = this.props.event.end.format(dateFormat);\n\t\t\t\t}\n\n\t\t\t\treturn React.createElement(\n\t\t\t\t\t'span',\n\t\t\t\t\tnull,\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'span',\n\t\t\t\t\t\t{ className: 'start-date' },\n\t\t\t\t\t\tstartDate\n\t\t\t\t\t),\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'span',\n\t\t\t\t\t\tnull,\n\t\t\t\t\t\t' \\u2013 '\n\t\t\t\t\t),\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'span',\n\t\t\t\t\t\t{ className: 'end-date' },\n\t\t\t\t\t\tendDate\n\t\t\t\t\t)\n\t\t\t\t);\n\t\t\t}\n\t\t}\n\t}, {\n\t\tkey: 'markupDescription',\n\t\tvalue: function markupDescription(description) {\n\t\t\tif (description && linkify.test(description)) {\n\t\t\t\tlinkify.match(description).map(function (match) {\n\t\t\t\t\tdescription = description.replace(match.raw, '<a href=\"' + match.url + '\" target=\"_blank\" rel=\"noopener noreferrer\">' + match.text + '</a>');\n\t\t\t\t});\n\t\t\t}\n\n\t\t\treturn { __html: description };\n\t\t}\n\t}, {\n\t\tkey: 'render',\n\t\tvalue: function render() {\n\t\t\tvar _this2 = this;\n\n\t\t\tvar style = void 0;\n\t\t\tif (!this.state.expanded) {\n\t\t\t\tvar rect = this.props.originalElement.getBoundingClientRect();\n\n\t\t\t\tvar left = rect.left - 1;\n\t\t\t\tvar top = rect.top - 1;\n\n\t\t\t\tvar backgroundColor = rgbaOverRgb(Color(this.props.event.color).alpha(0.3).array());\n\t\t\t\tvar borderColor = this.props.event.color;\n\n\t\t\t\tstyle = {\n\t\t\t\t\twidth: rect.width * 2,\n\t\t\t\t\theight: rect.height * 2,\n\t\t\t\t\ttransform: 'translate(calc(' + left + 'px - 25%), calc(' + top + 'px - 25%)) scale(0.5)',\n\t\t\t\t\tbackgroundColor: backgroundColor,\n\t\t\t\t\tborder: '2px solid ' + borderColor\n\t\t\t\t};\n\t\t\t}\n\n\t\t\tvar eventTime = this.getEventTime();\n\t\t\tvar eventDate = this.getEventDate();\n\t\t\tvar className = this.getClassName();\n\t\t\tclassName += ' active-event';\n\t\t\tif (this.state.expanded) className += ' expanded';\n\n\t\t\tvar headerStyle = void 0;\n\t\t\tif (this.state.expanded) {\n\t\t\t\theaderStyle = {\n\t\t\t\t\tborderBottom: '5px solid ' + this.props.event.color\n\t\t\t\t};\n\t\t\t}\n\n\t\t\treturn React.createElement(\n\t\t\t\t'div',\n\t\t\t\t{ key: 'active-event', className: className, style: style,\n\t\t\t\t\tref: function ref(div) {\n\t\t\t\t\t\treturn _this2.container = div;\n\t\t\t\t\t} },\n\t\t\t\tReact.createElement(\n\t\t\t\t\t'header',\n\t\t\t\t\t{ style: headerStyle, ref: function ref(header) {\n\t\t\t\t\t\t\treturn _this2.header = header;\n\t\t\t\t\t\t} },\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'span',\n\t\t\t\t\t\t{ className: 'event-date-time' },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'span',\n\t\t\t\t\t\t\t{ className: 'event-date' },\n\t\t\t\t\t\t\teventDate\n\t\t\t\t\t\t),\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'span',\n\t\t\t\t\t\t\t{ className: 'event-time' },\n\t\t\t\t\t\t\teventTime\n\t\t\t\t\t\t)\n\t\t\t\t\t),\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'span',\n\t\t\t\t\t\t{ className: 'event-title' },\n\t\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t\t'span',\n\t\t\t\t\t\t\t{ className: 'event-calendar' },\n\t\t\t\t\t\t\tthis.props.event.calendar.calname\n\t\t\t\t\t\t),\n\t\t\t\t\t\tthis.props.event.title\n\t\t\t\t\t),\n\t\t\t\t\tReact.createElement(\n\t\t\t\t\t\t'button',\n\t\t\t\t\t\t{ type: 'button', className: 'close', onClick: this.handleClick,\n\t\t\t\t\t\t\ttitle: 'Close active event' },\n\t\t\t\t\t\t'\\xD7'\n\t\t\t\t\t)\n\t\t\t\t),\n\t\t\t\tthis.props.event.description && React.createElement('p', { className: 'event-desc', ref: function ref(p) {\n\t\t\t\t\t\treturn _this2.description = p;\n\t\t\t\t\t},\n\t\t\t\t\tdangerouslySetInnerHTML: this.markupDescription(this.props.event.description) })\n\t\t\t);\n\t\t}\n\t}, {\n\t\tkey: 'componentDidMount',\n\t\tvalue: function componentDidMount() {\n\t\t\tvar _this3 = this;\n\n\t\t\twindow.requestAnimationFrame(function () {\n\t\t\t\twindow.requestAnimationFrame(function () {\n\t\t\t\t\t_this3.setState({ expanded: true });\n\t\t\t\t\tif ('parentIFrame' in window) {\n\t\t\t\t\t\twindow.parentIFrame.getPageInfo(function (parentPage) {\n\t\t\t\t\t\t\tvar middleOfParentViewport = parentPage.scrollTop + parentPage.clientHeight / 2 - parentPage.offsetTop;\n\t\t\t\t\t\t\tvar y = middleOfParentViewport > _this3.container.clientHeight / 2 ? middleOfParentViewport < window.innerHeight - _this3.container.clientHeight / 2 ? middleOfParentViewport + 'px' : '100vh - 50% - 10px' : '50% + 10px';\n\t\t\t\t\t\t\tvar containerMaxHeight = parentPage.clientHeight * 0.9 - 50;\n\t\t\t\t\t\t\t_this3.container.style.maxHeight = containerMaxHeight + 'px';\n\t\t\t\t\t\t\t_this3.description.style.maxHeight = containerMaxHeight - _this3.header.clientHeight + 'px';\n\t\t\t\t\t\t\t_this3.container.style.transform = 'translate(calc(50vw - 50%), calc(' + y + ' - 50%))';\n\t\t\t\t\t\t});\n\t\t\t\t\t}\n\t\t\t\t\tdocument.addEventListener('click', _this3.handleOutsideClick);\n\t\t\t\t});\n\t\t\t});\n\t\t}\n\t}, {\n\t\tkey: 'componentWillUnmount',\n\t\tvalue: function componentWillUnmount() {\n\t\t\tdocument.removeEventListener('click', this.handleOutsideClick);\n\t\t}\n\t}, {\n\t\tkey: 'handleClick',\n\t\tvalue: function handleClick() {\n\t\t\tvar _this4 = this;\n\n\t\t\twindow.requestAnimationFrame(function () {\n\t\t\t\t_this4.setState({ expanded: false }, function () {\n\t\t\t\t\tif ('parentIFrame' in window) {\n\t\t\t\t\t\twindow.parentIFrame.getPageInfo(false);\n\t\t\t\t\t}\n\t\t\t\t\twindow.setTimeout(_this4.props.onClose, 140);\n\t\t\t\t});\n\t\t\t});\n\t\t}\n\t}, {\n\t\tkey: 'handleOutsideClick',\n\t\tvalue: function handleOutsideClick(event) {\n\t\t\tvar _this5 = this;\n\n\t\t\tif (event.defaultPrevented) return;\n\n\t\t\twindow.requestAnimationFrame(function () {\n\t\t\t\tvar rect = _this5.container.getBoundingClientRect();\n\t\t\t\tif (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) _this5.handleClick();\n\t\t\t});\n\t\t}\n\t}]);\n\n\treturn ActiveEvent;\n}(CalendarEvent);\n\nexport default ActiveEvent;\n\n\nActiveEvent.propTypes = {\n\tevent: React.PropTypes.object.isRequired,\n\toriginalElement: React.PropTypes.object,\n\tonClose: React.PropTypes.func\n};"
     },
     {
       "id": 249,
