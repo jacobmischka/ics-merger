@@ -29,16 +29,17 @@ export default class FullCalendar extends React.Component {
 		if(this.props.apiKey !== nextProps.apiKey)
 			return true;
 
-		let prevCalendarIds = this.props.eventSources.map(eventSource => eventSource.googleCalendarId);
-		let nextCalendarIds = nextProps.eventSources.map(eventSource => eventSource.googleCalendarId);
+		let eventSourcesToAdd = nextProps.eventSources.filter(newEventSource =>
+			!this.props.eventSources.some(oldEventSource =>
+				oldEventSource.googleCalendarId === newEventSource.googleCalendarId
+					&& oldEventSource.color === newEventSource.color)
+		);
 
-		let eventSourcesToAdd = nextProps.eventSources.filter(eventSource => {
-			return !prevCalendarIds.includes(eventSource.googleCalendarId);
-		});
-
-		let eventSourcesToRemove = this.props.eventSources.filter(eventSource => {
-			return !nextCalendarIds.includes(eventSource.googleCalendarId);
-		});
+		let eventSourcesToRemove = this.props.eventSources.filter(oldEventSource =>
+			!nextProps.eventSources.some(newEventSource =>
+				newEventSource.googleCalendarId === oldEventSource.googleCalendarId
+					&& newEventSource.color === oldEventSource.color)
+		);
 
 		const calendar = $(`#${this.state.calendarId}`);
 

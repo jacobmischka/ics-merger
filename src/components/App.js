@@ -1,5 +1,3 @@
-/* global ga */
-
 import React from 'react';
 import { Link } from 'react-router';
 
@@ -25,23 +23,25 @@ export default class App extends React.Component {
 			loaded: null
 		};
 
+		this.handleSetActiveEvent = this.handleSetActiveEvent.bind(this);
+		this.handleUnsetActiveEvent = this.handleUnsetActiveEvent.bind(this);
+		this.handleChangeCustomCalendarIds = this.handleChangeCustomCalendarIds.bind(this);
+	}
+	
+	componentDidMount(){
 		fetch('/.env.json')
 			.then(response => {
 				return response.json();
 			}).then(dotenv => {
 				this.setState(Object.assign(dotenv, {loaded: true}));
-				if(dotenv.GOOGLE_ANALYTICS_TRACKING_ID && ga){
-					ga('create', dotenv.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
-					ga('send', 'pageview');
+				if(dotenv.GOOGLE_ANALYTICS_TRACKING_ID && window.ga){
+					window.ga('create', dotenv.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
+					window.ga('send', 'pageview');
 				}
 			}).catch(err => {
 				this.setState({loaded: false});
 				console.error(err);
 			});
-
-		this.handleSetActiveEvent = this.handleSetActiveEvent.bind(this);
-		this.handleUnsetActiveEvent = this.handleUnsetActiveEvent.bind(this);
-		this.handleChangeCustomCalendarIds = this.handleChangeCustomCalendarIds.bind(this);
 	}
 
 	render(){
@@ -71,6 +71,7 @@ export default class App extends React.Component {
 					if(googleCalendarId){
 						eventSources.push({
 							googleCalendarId: googleCalendarId,
+							color: color,
 							eventDataTransform(eventData){
 								return Object.assign(eventData, {
 									color: color,
@@ -83,6 +84,7 @@ export default class App extends React.Component {
 						for(let subCalendar of calendar.subCalendars){
 							eventSources.push({
 								googleCalendarId: subCalendar.googleCalendarId,
+								color: color,
 								eventDataTransform(eventData){
 									return Object.assign(eventData, {
 										color: color,

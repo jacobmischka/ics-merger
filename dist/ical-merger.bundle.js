@@ -1,14 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global.icalMerger = factory());
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.icalMerger = factory());
 }(this, (function () { 'use strict';
-
-var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-
-
-
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -23,12 +17,9 @@ var ical = createCommonjsModule(function (module) {
 
 /* istanbul ignore next */
 /* jshint ignore:start */
-if (typeof module === 'object') {
+{
   // CommonJS, where exports may be different each time.
   ICAL = module.exports;
-} else if (typeof ICAL !== 'object') {/* istanbul ignore next */
-  /** @ignore */
-  commonjsGlobal.ICAL = {};
 }
 /* jshint ignore:end */
 
@@ -6478,7 +6469,7 @@ ICAL.TimezoneService = (function() {
         res.interval = this.interval;
       }
 
-      for (var k in this.parts) {
+      for (var k in this$1.parts) {
         /* istanbul ignore if */
         if (!this$1.parts.hasOwnProperty(k)) {
           continue;
@@ -6515,7 +6506,7 @@ ICAL.TimezoneService = (function() {
       if (this.interval > 1) {
         str += ";INTERVAL=" + this.interval;
       }
-      for (var k in this.parts) {
+      for (var k in this$1.parts) {
         /* istanbul ignore else */
         if (this$1.parts.hasOwnProperty(k)) {
           str += ";" + k + "=" + this$1.parts[k];
@@ -6997,7 +6988,7 @@ ICAL.RecurIterator = (function() {
         var daysInMonth = ICAL.Time.daysInMonth(this.last.month, this.last.year);
 
         // Check every weekday in BYDAY with relative dow and pos.
-        for (var i in this.by_data.BYDAY) {
+        for (var i in this$1.by_data.BYDAY) {
           /* istanbul ignore if */
           if (!this$1.by_data.BYDAY.hasOwnProperty(i)) {
             continue;
@@ -7762,7 +7753,7 @@ ICAL.RecurIterator = (function() {
         t1.year = this.last.year;
         this.days.push(t1.dayOfYear());
       } else if (partCount == 1 && "BYMONTH" in parts) {
-        for (var monthkey in this.by_data.BYMONTH) {
+        for (var monthkey in this$1.by_data.BYMONTH) {
           /* istanbul ignore if */
           if (!this$1.by_data.BYMONTH.hasOwnProperty(monthkey)) {
             continue;
@@ -7774,7 +7765,7 @@ ICAL.RecurIterator = (function() {
           this$1.days.push(t2.dayOfYear());
         }
       } else if (partCount == 1 && "BYMONTHDAY" in parts) {
-        for (var monthdaykey in this.by_data.BYMONTHDAY) {
+        for (var monthdaykey in this$1.by_data.BYMONTHDAY) {
           /* istanbul ignore if */
           if (!this$1.by_data.BYMONTHDAY.hasOwnProperty(monthdaykey)) {
             continue;
@@ -7793,14 +7784,14 @@ ICAL.RecurIterator = (function() {
       } else if (partCount == 2 &&
                  "BYMONTHDAY" in parts &&
                  "BYMONTH" in parts) {
-        for (var monthkey in this.by_data.BYMONTH) {
+        for (var monthkey in this$1.by_data.BYMONTH) {
           /* istanbul ignore if */
           if (!this$1.by_data.BYMONTH.hasOwnProperty(monthkey)) {
             continue;
           }
           var month_ = this$1.by_data.BYMONTH[monthkey];
           var daysInMonth = ICAL.Time.daysInMonth(month_, aYear);
-          for (var monthdaykey in this.by_data.BYMONTHDAY) {
+          for (var monthdaykey in this$1.by_data.BYMONTHDAY) {
             /* istanbul ignore if */
             if (!this$1.by_data.BYMONTHDAY.hasOwnProperty(monthdaykey)) {
               continue;
@@ -7826,7 +7817,7 @@ ICAL.RecurIterator = (function() {
       } else if (partCount == 1 && "BYDAY" in parts) {
         this.days = this.days.concat(this.expand_by_day(aYear));
       } else if (partCount == 2 && "BYDAY" in parts && "BYMONTH" in parts) {
-        for (var monthkey in this.by_data.BYMONTH) {
+        for (var monthkey in this$1.by_data.BYMONTH) {
           /* istanbul ignore if */
           if (!this$1.by_data.BYMONTH.hasOwnProperty(monthkey)) {
             continue;
@@ -7862,7 +7853,7 @@ ICAL.RecurIterator = (function() {
               }
             }
           } else {
-            for (var daycodedkey in this.by_data.BYDAY) {
+            for (var daycodedkey in this$1.by_data.BYDAY) {
               /* istanbul ignore if */
               if (!this$1.by_data.BYDAY.hasOwnProperty(daycodedkey)) {
                 continue;
@@ -7982,7 +7973,7 @@ ICAL.RecurIterator = (function() {
       var end_dow = tmp.dayOfWeek();
       var end_year_day = tmp.dayOfYear();
 
-      for (var daykey in this.by_data.BYDAY) {
+      for (var daykey in this$1.by_data.BYDAY) {
         /* istanbul ignore if */
         if (!this$1.by_data.BYDAY.hasOwnProperty(daykey)) {
           continue;
@@ -8027,7 +8018,7 @@ ICAL.RecurIterator = (function() {
     is_day_in_byday: function is_day_in_byday(tt) {
       var this$1 = this;
 
-      for (var daykey in this.by_data.BYDAY) {
+      for (var daykey in this$1.by_data.BYDAY) {
         /* istanbul ignore if */
         if (!this$1.by_data.BYDAY.hasOwnProperty(daykey)) {
           continue;
