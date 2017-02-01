@@ -10,7 +10,7 @@
     "start": "node dist/server.js",
     "serve": "nodemon dist/server.js",
     "build": "run-p build:*",
-    "build:webpack": "webpack -p",
+    "build:webpack": "NODE_ENV=production webpack -p",
     "build:sass": "gulp sass --production",
     "build:rollup": "run-p rollup:*",
     "rollup:node": "rollup -c",
