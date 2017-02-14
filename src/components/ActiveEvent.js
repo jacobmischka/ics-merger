@@ -118,7 +118,7 @@ export default class ActiveEvent extends CalendarEvent {
 				</header>
 		{
 			this.props.event.description && (
-				<p className="event-desc" ref={p => this.description = p}
+				<p className="event-desc"
 					dangerouslySetInnerHTML={this.markupDescription(this.props.event.description)}>
 				</p>
 			)
@@ -126,6 +126,8 @@ export default class ActiveEvent extends CalendarEvent {
 				<style jsx>
 				{`
 					.active-event {
+						display: flex;
+						flex-direction: column;
 						font-family: 'Noto Sans', sans-serif;
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.primary});
 						padding: 0.5em;
@@ -146,6 +148,7 @@ export default class ActiveEvent extends CalendarEvent {
 					}
 					
 					header {
+						flex: 0 0;
 						background-color: transparent;
 						transition-duration: 0.15s;
 						transition-property: background-color, border;
@@ -182,6 +185,8 @@ export default class ActiveEvent extends CalendarEvent {
 					}
 					
 					.event-desc {
+						flex: 1 1;
+						margin: 0;
 						font-size: 0.75em;
 						word-wrap: break-word;
 						white-space: pre-line;
@@ -253,7 +258,7 @@ export default class ActiveEvent extends CalendarEvent {
 					}
 					
 					.expanded .event-desc {
-						padding: 0 2em 1em;
+						padding: 1em 2em 2em;
 						overflow-y: auto;
 					}
 					
@@ -298,8 +303,6 @@ export default class ActiveEvent extends CalendarEvent {
 							: '50% + 10px';
 						let containerMaxHeight = parentPage.clientHeight * 0.9 - 50;
 						this.container.style.maxHeight = `${containerMaxHeight}px`;
-						this.description.style.maxHeight =
-							`${containerMaxHeight - this.header.clientHeight}px`;
 						this.container.style.transform =
 							`translate(calc(50vw - 50%), calc(${y} - 50%))`;
 					});
