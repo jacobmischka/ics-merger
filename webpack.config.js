@@ -49,7 +49,8 @@ module.exports = {
 				include: /node_modules/,
 				loader: 'file-loader',
 				options: {
-					name: '../assets/[path][name].[ext]'
+					name: '../assets/[path][name].[ext]',
+					context: './node_modules'
 				}
 			}
 		]

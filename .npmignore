@@ -1,3 +1,4 @@
 !.env.json
-public/js/bundle.js.map
-public/js/stats.json
+!public/assets/node_modules/
+**/*.map
+stats.json
