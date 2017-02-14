@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import Color from 'color';
 
-export default class CalendarEvent extends React.Component {
+import { OPACITIES } from '../constants.js';
+
+export default class CalendarEvent extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -31,6 +33,40 @@ export default class CalendarEvent extends React.Component {
 					ref={div => this.container = div}>
 				<span className="event-time">{eventTime}</span>
 				<span className="event-title">{this.props.event.title}</span>
+				<style jsx>
+				{`
+					.event {
+						font-family: 'Noto Sans', sans-serif;
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.primary});
+						padding: 0.5em;
+						margin: 1px;
+						cursor: pointer;
+						font-size: 0.75em;
+					}
+					
+					.event-time {
+						margin: 0 0.5em 0 0;
+						text-transform: uppercase;
+					}
+					
+					.event-title {
+						word-wrap: break-word;
+					}
+					
+					.event-desc {
+						font-size: 0.75em;
+						word-wrap: break-word;
+						white-space: pre-line;
+					}
+					
+					.event.all-day .event-time {
+						text-align: center;
+						background: #bfbfbf;
+						border-radius: 2px;
+						padding: 0.15em 0.5em;
+					}
+				`}
+				</style>
 			</div>
 		);
 	}
@@ -79,7 +115,7 @@ export default class CalendarEvent extends React.Component {
 }
 
 CalendarEvent.propTypes = {
-	event: React.PropTypes.object.isRequired,
-	view: React.PropTypes.object,
-	setActive: React.PropTypes.func
+	event: PropTypes.object.isRequired,
+	view: PropTypes.object,
+	setActive: PropTypes.func
 };

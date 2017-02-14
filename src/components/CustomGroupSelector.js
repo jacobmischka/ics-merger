@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const CustomGroupSelector = props => {
 
 	const options = Object.keys(props.calendars).map(calendarId => {
 		return (
 			<li key={`custom-${calendarId}`}>
-				<label>					
+				<label>
 					<input type="checkbox" value={calendarId}
 						checked={props.customCalendarIds.includes(calendarId)}
 						onChange={props.handleChangeCustomCalendarIds} />
@@ -27,7 +27,7 @@ const CustomGroupSelector = props => {
 export default CustomGroupSelector;
 
 CustomGroupSelector.propTypes = {
-	calendars: React.PropTypes.object,
-	customCalendarIds: React.PropTypes.array,
-	handleChangeCustomCalendarIds: React.PropTypes.func
+	calendars: PropTypes.object,
+	customCalendarIds: PropTypes.array,
+	handleChangeCustomCalendarIds: PropTypes.func
 };

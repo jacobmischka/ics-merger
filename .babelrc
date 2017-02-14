@@ -4,6 +4,6 @@
 		["es2015", { "modules": false }]
 	],
 	"plugins": [
-		"array-includes"
+		"styled-jsx/babel"
 	]
 }

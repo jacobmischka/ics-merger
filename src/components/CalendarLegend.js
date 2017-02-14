@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Color from 'color';
+
+import { COLORS } from '../constants.js';
+
+const legendBorderColor = new Color(COLORS.GREY).alpha(0.45);
 
 const CalendarLegend = (props) => {
 	if(!props.calendars || props.calendars.length < 1)
@@ -13,6 +17,21 @@ const CalendarLegend = (props) => {
 				}}>
 			</span>
 			{calendar.calname}
+			<style jsx>
+			{`
+				.legend-list-item {
+					display: flex;
+					align-items: center;
+				}
+				
+				.calendar-legend-color {
+					display: inline-block;
+					width: 1em;
+					height: 1em;
+					margin: 0 0.5em 0 0;
+				}
+			`}
+			</style>
 		</li>
 	));
 
@@ -26,6 +45,25 @@ const CalendarLegend = (props) => {
 					{calendarsInGroup}
 				</ul>
 			</div>
+			<style jsx>
+			{`
+				.calendar-legend-container {
+					display: flex;
+					justify-content: center;
+				}
+				
+				.calendar-legend {
+					background-color: #fafafa;
+					padding: 1em;
+					border: 1px solid ${legendBorderColor};
+				}
+				
+				.legend-title {
+					text-align: center;
+					font-size: 1.1em;
+				}
+			`}
+			</style>
 		</div>
 	);
 };
@@ -33,6 +71,6 @@ const CalendarLegend = (props) => {
 export default CalendarLegend;
 
 CalendarLegend.propTypes = {
-	calendars: React.PropTypes.array,
-	calname: React.PropTypes.string
+	calendars: PropTypes.array,
+	calname: PropTypes.string
 };

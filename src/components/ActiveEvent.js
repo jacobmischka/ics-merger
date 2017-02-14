@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Color from 'color';
 import LinkifyIt from 'linkify-it';
 
 import CalendarEvent from './CalendarEvent.js';
 
+import { BREAKPOINTS, OPACITIES, COLORS } from '../constants.js';
 import { rgbaOverRgb } from '../utils.js';
 
 const linkify = new LinkifyIt();
@@ -122,6 +123,162 @@ export default class ActiveEvent extends CalendarEvent {
 				</p>
 			)
 		}
+				<style jsx>
+				{`
+					.active-event {
+						font-family: 'Noto Sans', sans-serif;
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.primary});
+						padding: 0.5em;
+						margin: 1px;
+						cursor: pointer;
+						box-sizing: border-box;
+						position: fixed;
+						left: 0;
+						top: 0;
+						max-width: 90vw;
+						max-height: 90vh;
+						font-size: 1.5em;
+						overflow: hidden;
+						transition-duration: 0.15s;
+						transition-property: left, top, width, height, transform, background-color, border;
+						z-index: 100;
+						cursor: auto;
+					}
+					
+					header {
+						background-color: transparent;
+						transition-duration: 0.15s;
+						transition-property: background-color, border;
+					}
+					
+					.event-calendar {
+						display: none;
+						font-size: 0.7em;
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
+					}
+					
+					.event-date-time {
+						margin: 0;
+						text-align: center;
+					}
+					
+					.event-date {
+						display: none;
+						text-transform: none;
+					}
+					
+					.start-date,
+					.end-date {
+						white-space: nowrap;
+					}
+					
+					.event-time {
+						margin: 0;
+						text-transform: uppercase;
+					}
+					
+					.event-title {
+						word-wrap: break-word;
+					}
+					
+					.event-desc {
+						font-size: 0.75em;
+						word-wrap: break-word;
+						white-space: pre-line;
+					}
+					
+					.event.all-day .event-time {
+						text-align: center;
+						background: #bfbfbf;
+						border-radius: 2px;
+						padding: 0.15em 0.5em;
+					}
+					
+					header .close {
+						position: absolute;
+						right: 0;
+						top: 0;
+						cursor: pointer;
+						font-size: 1em;
+						background: none;
+						border: none;
+						outline: none;
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.DISABLED});
+						padding: 0.1em;
+						margin: 0.1em;
+						line-height: 0.8;
+					}
+					
+					header .close:hover {
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
+					}
+					
+					.active-event.expanded {
+						font-size: 2em;
+						background-color: #fafafa;
+						border: 1px solid grey;
+						padding: 0;
+						transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+						box-shadow: 0 0 20px 0 ${COLORS.SHADOW};
+					}
+					
+					.expanded header {
+						display: flex;
+						flex-direction: row;
+						flex-wrap: wrap;
+						justify-content: space-around;
+						align-items: center;
+						padding: 0.5em 1em;
+						text-align: center;
+						box-shadow: 0 0 5px 0 ${COLORS.SHADOW};
+						background-color: ${COLORS.BACKGROUND};
+					}
+					
+					.expanded .event-title {
+						order: 1;
+						font-size: 1.25em;
+					}
+					
+					.expanded .event-calendar {
+						display: block;
+					}
+					
+					.expanded .event-date-time {
+						order: 2;
+					}
+					
+					.expanded .event-date,
+					.expanded .event-time {
+						display: block;
+					}
+					
+					.expanded .event-desc {
+						padding: 0 2em 1em;
+						overflow-y: auto;
+					}
+					
+					@media (min-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
+						
+						.event-date-time {
+							text-align: right;
+						}
+						
+						.expanded header {
+							justify-content: space-between;
+							flex-wrap: nowrap;
+							text-align: left;
+						}
+						
+						.expanded .event-title {
+							margin-right: 1em;
+						}
+						
+						.expanded .event-date-time {
+							margin-left: 1em;
+						}
+					}
+				`}
+				</style>
 			</div>
 		);
 	}
@@ -181,7 +338,7 @@ export default class ActiveEvent extends CalendarEvent {
 }
 
 ActiveEvent.propTypes = {
-	event: React.PropTypes.object.isRequired,
-	originalElement: React.PropTypes.object,
-	onClose: React.PropTypes.func
+	event: PropTypes.object.isRequired,
+	originalElement: PropTypes.object,
+	onClose: PropTypes.func
 };

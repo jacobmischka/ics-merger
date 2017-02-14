@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import FullCalendar from './FullCalendar.js';
@@ -7,7 +7,9 @@ import CalendarLegend from './CalendarLegend.js';
 import CustomGroupSelector from './CustomGroupSelector.js';
 import Subscription from './Subscription.js';
 
-export default class App extends React.Component {
+import { BREAKPOINTS } from '../constants.js';
+
+export default class App extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -189,6 +191,59 @@ export default class App extends React.Component {
 					</div>
 				)
 			}
+					<style jsx>
+					{`
+						h1 {
+							font-size: 2.75em;
+							font-weight: 500;
+							text-align: center;
+						}
+						
+						h2 {
+							font-size: 2em;
+							font-weight: normal;
+						}
+						
+						a.active {
+							pointer-events: none;
+							text-decoration: none;
+							cursor: auto;
+							color: rgba($text-color, $primary-text);
+						}
+						
+						.calendar-nav-container {
+							padding: 0 2em;
+						}
+						
+						@media (min-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
+							
+							.calendar-nav-container {
+								padding: 0 3em;
+							}
+						}
+						
+						@media (min-width: ${BREAKPOINTS.LARGE_DESKTOP}px) {
+							
+							.calendar-nav-container {
+								padding: 0 4em;
+							}
+						}
+						
+						.calendar-nav {
+							display: flex;
+							flex-direction: row;
+							flex-wrap: wrap;
+							justify-content: space-around;
+						}
+						
+						.calendar-nav section {
+							flex-grow: 0;
+							flex-shrink: 1;
+							min-width: 15em;
+						}
+					`}
+					</style>
+					
 				</div>
 			);
 		}
@@ -199,6 +254,18 @@ export default class App extends React.Component {
 					return (
 						<div className="loading-container">
 							<img src="/assets/spinner.gif" alt="Loading" />
+							<style jsx>
+							{`
+								.loading-container {
+									display: flex;
+									justify-content: center;
+									align-items: center;
+									text-align: center;
+									width: 100%;
+									height: 100%;
+								}
+							`}
+							</style>
 						</div>
 					);
 				case true:
@@ -258,5 +325,5 @@ export default class App extends React.Component {
 }
 
 App.propTypes = {
-	params: React.PropTypes.object
+	params: PropTypes.object
 };

@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import Clipboard from 'clipboard';
+import Color from 'color';
 
-export default class Subscription extends React.Component {
+import { COLORS, OPACITIES } from '../constants.js';
+
+const buttonHoverBackgroundColor = new Color(COLORS.PRIMARY).alpha(OPACITIES.SECONDARY);
+const secondaryText = new Color(COLORS.TEXT).alpha(OPACITIES.TEXT.SECONDARY);
+
+export default class Subscription extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -49,11 +55,9 @@ export default class Subscription extends React.Component {
 					this.state.showUrl
 					? (
 						<section className="copy-with-url">
-							<input type="text" className="input" id="sub-url"
+							<input type="text" id="sub-url"
 								value={calendarIcalUrl} readOnly />
 							<button id="copy-button" className="button"
-									data-balloon-visible={this.state.copied || null}
-									data-balloon={this.state.copied ? 'Copied!' : null}
 									data-clipboard-target="#sub-url"
 									title="Long press to hide url"
 									onMouseDown={this.handleCopyButtonMouseDown}
@@ -64,8 +68,6 @@ export default class Subscription extends React.Component {
 					)
 					: (
 						<button id="copy-button" className="button outline"
-								data-balloon-visible={this.state.copied || null}
-								data-balloon={this.state.copied ? 'Copied!' : null}
 								data-clipboard-text={calendarIcalUrl}
 								title="Long press to show url"
 								onMouseDown={this.handleCopyButtonMouseDown}
@@ -95,6 +97,82 @@ export default class Subscription extends React.Component {
 				</div>
 			)
 	}
+	
+				<style jsx>
+				{`
+					.subscription-component {
+						margin: 2em;
+					}
+					
+					.sub-controls {
+						display: flex;
+						flex-wrap: wrap;
+						flex-direction: row;
+						justify-content: space-around;
+						align-items: flex-end;
+						font-size: 1.25em;
+					}
+					
+					.copy-with-url {
+						display: flex;
+						flex-direction: column;
+						align-items: stretch;
+					}
+					
+					#sub-url {
+						display: block;
+						user-select: all;
+						color: ${secondaryText};
+					}
+					
+					#hide-sub {
+						font-size: 0.85em;
+						text-decoration: none;
+						color: ${secondaryText};
+					}
+					
+					#hide-sub:hover {
+						text-decoration: underline;
+					}
+					
+					input {
+						font-size: 1.5em;
+						padding: 0.5em;
+						border: 1px solid rgba($grey-color, 0.45);
+					}
+					
+					.button {
+						margin: 0.5em;
+						border-radius: 5px;
+						padding: 0.5em 1em;
+						cursor: pointer;
+						text-decoration: none;
+						color: white;
+						font-size: 1.25em;
+						line-height: 1.4;
+						border: 2px solid ${COLORS.PRIMARY};
+						background: ${COLORS.PRIMARY};
+					}
+					
+					.button:hover {
+						background: ${buttonHoverBackgroundColor};
+					}
+					
+					.button.outline {
+						background: transparent;
+						color: ${COLORS.PRIMARY};
+					}
+					
+					.button.outline:hover {
+						color: white;
+						background: ${buttonHoverBackgroundColor};
+					}
+				
+					.text-center {
+						text-align: center;
+					}
+				`}
+				</style>
 			</div>
 		);
 	}
@@ -141,5 +219,5 @@ export default class Subscription extends React.Component {
 }
 
 Subscription.propTypes = {
-	icsFilename: React.PropTypes.string
+	icsFilename: PropTypes.string
 };
