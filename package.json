@@ -1,10 +1,9 @@
 {
-  "name": "ical-merger",
+  "name": "@jacobmischka/ical-merger",
   "version": "1.0.0",
   "description": "Merges multiple ical .ics files into one for importing elsewhere",
   "main": "dist/ical-merger.cjs.js",
-  "web": "dist/ical-merger.bundle.js",
-  "jsnext:main": "dist/ical-merger.js",
+  "bundle": "dist/ical-merger.bundle.js",
   "module": "dist/ical-merger.js",
   "scripts": {
     "start": "node dist/server.js",
@@ -36,7 +35,7 @@
   "engines": {
     "node": ">6.8.1"
   },
-  "author": "Jacob Mischka <jacobmischka@gmail.com>",
+  "author": "Jacob Mischka <jacob@mischka.me>",
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",

@@ -1,4 +1,2 @@
-!.env.json
-!public/assets/node_modules/
 **/*.map
 stats.json
