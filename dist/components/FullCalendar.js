@@ -117,7 +117,7 @@ var FullCalendar = function (_Component) {
 
 			var defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP ? 'month' : 'listWeek';
 
-			$('#' + this.state.calendarId).fullCalendar({
+			$('#' + this.state.calendarId).fullCalendar(Object.assign({
 				googleCalendarApiKey: this.props.apiKey,
 				eventSources: this.props.eventSources,
 				height: 'auto',
@@ -137,7 +137,7 @@ var FullCalendar = function (_Component) {
 						setActive: setActive }), div);
 					return div;
 				}
-			});
+			}, this.props.fullcalendarConfig));
 		}
 	}]);
 
@@ -150,5 +150,6 @@ export default FullCalendar;
 FullCalendar.propTypes = {
 	apiKey: PropTypes.string.isRequired,
 	eventSources: PropTypes.array.isRequired,
-	setActiveEvent: PropTypes.func
+	setActiveEvent: PropTypes.func,
+	fullcalendarConfig: PropTypes.object
 };

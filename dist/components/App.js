@@ -18,6 +18,7 @@ import CustomGroupSelector from './CustomGroupSelector.js';
 import Subscription from './Subscription.js';
 
 import { BREAKPOINTS } from '../constants.js';
+import { getEventSources } from '../utils.js';
 
 var App = function (_Component) {
 	_inherits(App, _Component);
@@ -84,87 +85,7 @@ var App = function (_Component) {
 			}
 
 			if (calendar && calendars) {
-				var eventSources = [];
-				var _iteratorNormalCompletion = true;
-				var _didIteratorError = false;
-				var _iteratorError = undefined;
-
-				try {
-					var _loop = function _loop() {
-						var calendar = _step.value;
-
-						if (calendar) {
-							(function () {
-								var color = calendar.color;
-								var googleCalendarId = calendar.googleCalendarId;
-								if (googleCalendarId) {
-									eventSources.push({
-										googleCalendarId: googleCalendarId,
-										color: color,
-										eventDataTransform: function eventDataTransform(eventData) {
-											return Object.assign(eventData, {
-												color: color,
-												calendar: calendar
-											});
-										}
-									});
-								}
-								if (calendar.subCalendars) {
-									var _iteratorNormalCompletion2 = true;
-									var _didIteratorError2 = false;
-									var _iteratorError2 = undefined;
-
-									try {
-										for (var _iterator2 = calendar.subCalendars[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-											var subCalendar = _step2.value;
-
-											eventSources.push({
-												googleCalendarId: subCalendar.googleCalendarId,
-												color: color,
-												eventDataTransform: function eventDataTransform(eventData) {
-													return Object.assign(eventData, {
-														color: color,
-														calendar: calendar
-													});
-												}
-											});
-										}
-									} catch (err) {
-										_didIteratorError2 = true;
-										_iteratorError2 = err;
-									} finally {
-										try {
-											if (!_iteratorNormalCompletion2 && _iterator2.return) {
-												_iterator2.return();
-											}
-										} finally {
-											if (_didIteratorError2) {
-												throw _iteratorError2;
-											}
-										}
-									}
-								}
-							})();
-						}
-					};
-
-					for (var _iterator = calendars[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-						_loop();
-					}
-				} catch (err) {
-					_didIteratorError = true;
-					_iteratorError = err;
-				} finally {
-					try {
-						if (!_iteratorNormalCompletion && _iterator.return) {
-							_iterator.return();
-						}
-					} finally {
-						if (_didIteratorError) {
-							throw _iteratorError;
-						}
-					}
-				}
+				var eventSources = getEventSources(calendars);
 
 				var activeEventNode = this.state.activeEvent ? React.createElement(ActiveEvent, { event: this.state.activeEvent,
 					originalElement: this.state.activeEventOriginalElement,

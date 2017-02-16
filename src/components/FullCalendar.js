@@ -175,7 +175,7 @@ export default class FullCalendar extends Component {
 			? 'month'
 			: 'listWeek';
 
-		$(`#${this.state.calendarId}`).fullCalendar({
+		$(`#${this.state.calendarId}`).fullCalendar(Object.assign({
 			googleCalendarApiKey: this.props.apiKey,
 			eventSources: this.props.eventSources,
 			height: 'auto',
@@ -196,12 +196,13 @@ export default class FullCalendar extends Component {
 					setActive={setActive} />, div);
 				return div;
 			}
-		});
+		}, this.props.fullcalendarConfig));
 	}
 }
 
 FullCalendar.propTypes = {
 	apiKey: PropTypes.string.isRequired,
 	eventSources: PropTypes.array.isRequired,
-	setActiveEvent: PropTypes.func
+	setActiveEvent: PropTypes.func,
+	fullcalendarConfig: PropTypes.object
 };

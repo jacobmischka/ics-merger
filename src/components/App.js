@@ -8,6 +8,7 @@ import CustomGroupSelector from './CustomGroupSelector.js';
 import Subscription from './Subscription.js';
 
 import { BREAKPOINTS } from '../constants.js';
+import { getEventSources } from '../utils.js';
 
 export default class App extends Component {
 	constructor(props){
@@ -63,45 +64,14 @@ export default class App extends Component {
 		}
 
 		if(calendar && calendars){
-			let eventSources = [];
-			for(let calendar of calendars){
-				if(calendar){
-					let color = calendar.color;
-					let googleCalendarId = calendar.googleCalendarId;
-					if(googleCalendarId){
-						eventSources.push({
-							googleCalendarId: googleCalendarId,
-							color: color,
-							eventDataTransform(eventData){
-								return Object.assign(eventData, {
-									color: color,
-									calendar: calendar
-								});
-							}
-						});
-					}
-					if(calendar.subCalendars){
-						for(let subCalendar of calendar.subCalendars){
-							eventSources.push({
-								googleCalendarId: subCalendar.googleCalendarId,
-								color: color,
-								eventDataTransform(eventData){
-									return Object.assign(eventData, {
-										color: color,
-										calendar: calendar
-									});
-								}
-							});
-						}
-					}
-				}
-			}
+			let eventSources = getEventSources(calendars);
+			
 
 			let activeEventNode = this.state.activeEvent
 				? (
 					<ActiveEvent event={this.state.activeEvent}
 						originalElement={this.state.activeEventOriginalElement}
-						onClose={this.handleUnsetActiveEvent}/>
+						onClose={this.handleUnsetActiveEvent} />
 				)
 				: null;
 

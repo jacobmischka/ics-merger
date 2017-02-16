@@ -50,6 +50,7 @@ function merge(inputs, options = {}){
 	return calendar.toString();
 }
 
+/* eslint-env node */
 const app = express();
 
 app.use(express.static('public'));
@@ -154,7 +155,9 @@ function setHeaders(res){
 	res.set('Pragma', 'no-cache');
 }
 
-const port = app.get('env') === 'production' ? 80 : 3000;
+const port = app.get('env') === 'production'
+	? 80
+	: process.env.PORT || 3000;
 
 app.listen(port, () => {
 	console.log(`Listening on ${port}`);

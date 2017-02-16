@@ -1,5 +1,44 @@
 import colorString from 'color-string';
 
+export function getEventSources(calendars){
+	let eventSources = [];
+	
+	for(let calendar of calendars){
+		if(calendar){
+			let color = calendar.color;
+			let googleCalendarId = calendar.googleCalendarId;
+			if(googleCalendarId){
+				eventSources.push({
+					googleCalendarId: googleCalendarId,
+					color: color,
+					eventDataTransform(eventData){
+						return Object.assign(eventData, {
+							color: color,
+							calendar: calendar
+						});
+					}
+				});
+			}
+			if(calendar.subCalendars){
+				for(let subCalendar of calendar.subCalendars){
+					eventSources.push({
+						googleCalendarId: subCalendar.googleCalendarId,
+						color: color,
+						eventDataTransform(eventData){
+							return Object.assign(eventData, {
+								color: color,
+								calendar: calendar
+							});
+						}
+					});
+				}
+			}
+		}
+	}
+	
+	return eventSources;
+}
+
 export function nl2br(text){
 	return text.replace(/(?:\r\n|\r|\n)/g, '<br />');
 }

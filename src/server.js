@@ -1,3 +1,4 @@
+/* eslint-env node */
 import express from 'express';
 import fetch from 'node-fetch';
 
@@ -109,7 +110,9 @@ function setHeaders(res){
 	res.set('Pragma', 'no-cache');
 }
 
-const port = app.get('env') === 'production' ? 80 : 3000;
+const port = app.get('env') === 'production'
+	? 80
+	: process.env.PORT || 3000;
 
 app.listen(port, () => {
 	console.log(`Listening on ${port}`);
