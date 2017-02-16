@@ -26,15 +26,15 @@ module.exports = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loader: 'babel-loader'
+				use: 'babel-loader'
 			},
 			{
 				test: /element-dataset/,
-				loader: 'apply-loader'
+				use: 'apply-loader'
 			},
 			{
 				test: /\.css$/,
-				loader: ExtractTextPlugin.extract({
+				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: {
 						loader: 'css-loader',
@@ -47,10 +47,12 @@ module.exports = {
 			{
 				test: /\.(eot|svg|ttf|woff|woff2)$/,
 				include: /node_modules/,
-				loader: 'file-loader',
-				options: {
-					name: '../assets/[path][name].[ext]',
-					context: './node_modules'
+				use: {
+					loader: 'file-loader',
+					options: {
+						name: '../assets/[path][name].[ext]',
+						context: './node_modules'
+					}
 				}
 			}
 		]
