@@ -15,6 +15,6 @@ import App from './components/App.js';
 
 render((
 	<Router history={browserHistory}>
-		<Route path="/(:calendarId)" component={App} />
+		<Route path="/(:calendarId)" component={props => <App envFile="/.env.json" calendarId={props.params.calendarId} />} />
 	</Router>
 ), document.getElementById('app'));

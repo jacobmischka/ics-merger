@@ -31,7 +31,7 @@ export default class App extends Component {
 	}
 	
 	componentDidMount(){
-		fetch('/.env.json')
+		fetch(this.props.envFile)
 			.then(response => {
 				return response.json();
 			}).then(dotenv => {
@@ -47,9 +47,7 @@ export default class App extends Component {
 	}
 
 	render(){
-		const calendarId = this.props.params && this.props.params.calendarId
-			? this.props.params.calendarId
-			: 'basic';
+		const calendarId = this.props.calendarId || 'basic';
 
 		// FIXME: This doesn't work if a calendar and a group share the same id
 		let calendar = calendarId === 'custom'
@@ -325,5 +323,6 @@ export default class App extends Component {
 }
 
 App.propTypes = {
-	params: PropTypes.object
+	calendarId: PropTypes.string,
+	envFile: PropTypes.string
 };
