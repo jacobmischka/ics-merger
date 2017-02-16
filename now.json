@@ -1,6 +1,7 @@
 {
 	"files": [
 		"public/",
+		"dist/",
 		".env.json"
 	]
 }
