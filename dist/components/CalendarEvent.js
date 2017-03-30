@@ -53,23 +53,23 @@ var CalendarEvent = function (_Component) {
 					onClick: this.handleClick,
 					ref: function ref(div) {
 						return _this2.container = div;
-					}, 'data-jsx': 1000593973
+					}, 'data-jsx': 2641979894
 				},
 				React.createElement(
 					'span',
-					{ className: 'event-time', 'data-jsx': 1000593973
+					{ className: 'event-time', 'data-jsx': 2641979894
 					},
 					eventTime
 				),
 				React.createElement(
 					'span',
-					{ className: 'event-title', 'data-jsx': 1000593973
+					{ className: 'event-title', 'data-jsx': 2641979894
 					},
 					this.props.event.title
 				),
 				React.createElement(_JSXStyle, {
-					styleId: 1000593973,
-					css: '.event[data-jsx="1000593973"] {font-family: \'Noto Sans\', sans-serif;color: rgba(0, 0, 0, ' + OPACITIES.TEXT.primary + ');padding: 0.5em;margin: 1px;cursor: pointer;font-size: 0.75em;}.event-time[data-jsx="1000593973"] {margin: 0 0.5em 0 0;text-transform: uppercase;}.event-title[data-jsx="1000593973"] {word-wrap: break-word;}.event-desc[data-jsx="1000593973"] {font-size: 0.75em;word-wrap: break-word;white-space: pre-line;}.event.all-day[data-jsx="1000593973"] .event-time[data-jsx="1000593973"] {text-align: center;background: #bfbfbf;border-radius: 2px;padding: 0.15em 0.5em;}@media print {.event[data-jsx="1000593973"] {font-size: 0.5em;}}'
+					styleId: 2641979894,
+					css: '.event[data-jsx="2641979894"] {font-family: \'Noto Sans\', sans-serif;color: rgba(0, 0, 0, ' + OPACITIES.TEXT.primary + ');padding: 0.5em;margin: 1px;cursor: pointer;font-size: 0.75em;}.event-time[data-jsx="2641979894"] {margin: 0 0.5em 0 0;text-transform: uppercase;}.event-title[data-jsx="2641979894"] {word-wrap: break-word;}.event-desc[data-jsx="2641979894"] {font-size: 0.75em;word-wrap: break-word;white-space: pre-line;}.event.all-day[data-jsx="2641979894"] .event-time[data-jsx="2641979894"] {text-align: center;background: #bfbfbf;border-radius: 2px;padding: 0.15em 0.5em;}@media print {.event[data-jsx="2641979894"] {font-size: 0.6em;}}'
 				})
 			);
 		}

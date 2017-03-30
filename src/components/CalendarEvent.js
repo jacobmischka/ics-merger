@@ -69,7 +69,7 @@ export default class CalendarEvent extends Component {
 					@media print {
 						
 						.event {
-							font-size: 0.5em;
+							font-size: 0.6em;
 						}
 					}
 				`}

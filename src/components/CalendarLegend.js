@@ -39,7 +39,7 @@ const CalendarLegend = (props) => {
 		<div className="calendar-legend-container">
 			<div className="calendar-legend">
 				<span className="legend-title">
-					Calendars in {props.calname}
+					{`Calendars in ${props.calname}`}
 				</span>
 				<ul className="legend-list">
 					{calendarsInGroup}
@@ -54,6 +54,10 @@ const CalendarLegend = (props) => {
 				}
 				
 				.calendar-legend {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: center;
 					background-color: #fafafa;
 					padding: 1em;
 					border: 1px solid ${legendBorderColor};
@@ -64,9 +68,14 @@ const CalendarLegend = (props) => {
 					font-size: 1.1em;
 				}
 				
+				.legend-list {
+					padding: 0 1em;
+				}
+				
 				@media print {
+					
 					.calendar-legend-container {
-						display: none;
+						font-size: 0.65em;
 					}
 				}
 			`}

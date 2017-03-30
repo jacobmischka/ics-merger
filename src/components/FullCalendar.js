@@ -114,9 +114,31 @@ export default class FullCalendar extends Component {
 					}
 					
 					@media print {
+						
+						h2 {
+							font-size: 1.25em;
+						}
+						
+						.fc .fc-body .fc-day-number {
+							font-size: 0.75em;
+						}
+						
+						.fc .fc-head-container.fc-widget-header,
+						.fc .fc-list-table .fc-widget-header {
+							font-size: 0.7em;
+						}
+						
+						.fc .fc-list-table .fc-widget-header {
+							padding: 0.2em 0.75em;
+						}
+
 						.fc .fc-toolbar .fc-center,
 						.fc .fc-toolbar .fc-right {
 							display: none;
+						}
+						
+						.fc-today {
+							background: none !important;
 						}
 					}
 				`}
@@ -189,7 +211,7 @@ export default class FullCalendar extends Component {
 			fixedWeekCount: false,
 			header: {
 				left: 'title',
-				center: 'month,listWeek,agendaDay',
+				center: 'month,listWeek,basicWeek,agendaDay',
 				right: 'today prev,next'
 			},
 			defaultView,

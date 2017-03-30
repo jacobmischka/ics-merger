@@ -214,6 +214,11 @@ export default class App extends Component {
 							
 							h1 {
 								margin: 0;
+								font-size: 2em;
+							}
+							
+							h2 {
+								font-size: 1.5em;
 							}
 							
 							.calendar-nav-container {

@@ -29,29 +29,28 @@ var CalendarLegend = function CalendarLegend(props) {
 
 	return React.createElement(
 		'div',
-		{ className: 'calendar-legend-container', 'data-jsx': 2170029661
+		{ className: 'calendar-legend-container', 'data-jsx': 3199886006
 		},
 		React.createElement(
 			'div',
-			{ className: 'calendar-legend', 'data-jsx': 2170029661
+			{ className: 'calendar-legend', 'data-jsx': 3199886006
 			},
 			React.createElement(
 				'span',
-				{ className: 'legend-title', 'data-jsx': 2170029661
+				{ className: 'legend-title', 'data-jsx': 3199886006
 				},
-				'Calendars in ',
-				props.calname
+				'Calendars in ' + props.calname
 			),
 			React.createElement(
 				'ul',
-				{ className: 'legend-list', 'data-jsx': 2170029661
+				{ className: 'legend-list', 'data-jsx': 3199886006
 				},
 				calendarsInGroup
 			)
 		),
 		React.createElement(_JSXStyle, {
-			styleId: 2170029661,
-			css: '.calendar-legend-container[data-jsx="2170029661"] {margin: 2em;display:-webkit-flex; display:flex;justify-content: center;}.calendar-legend[data-jsx="2170029661"] {background-color: #fafafa;padding: 1em;border: 1px solid ' + legendBorderColor + ';}.legend-title[data-jsx="2170029661"] {text-align: center;font-size: 1.1em;}@media print {.calendar-legend-container[data-jsx="2170029661"] {display: none;}}'
+			styleId: 3199886006,
+			css: '.calendar-legend-container[data-jsx="3199886006"] {margin: 2em;display:-webkit-flex; display:flex;justify-content: center;}.calendar-legend[data-jsx="3199886006"] {display:-webkit-flex; display:flex;-webkit-flex-direction: column;-moz-flex-direction: column;flex-direction: column;justify-content: space-between;align-items: center;background-color: #fafafa;padding: 1em;border: 1px solid ' + legendBorderColor + ';}.legend-title[data-jsx="3199886006"] {text-align: center;font-size: 1.1em;}.legend-list[data-jsx="3199886006"] {padding: 0 1em;}@media print {.calendar-legend-container[data-jsx="3199886006"] {font-size: 0.65em;}}'
 		})
 	);
 };
