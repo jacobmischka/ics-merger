@@ -32,7 +32,7 @@ export default class Subscription extends Component {
 
 	render(){
 		const calendarIcalUrl =
-			`${window.location.origin}/${this.props.icsFilename}`;
+			`${window.location.origin}/${this.props.icsFilename}${window.location.search}`;
 
 		const webcalUrl = calendarIcalUrl
 			.replace(window.location.protocol, 'webcal:');

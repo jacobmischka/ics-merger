@@ -18,7 +18,7 @@ import CustomGroupSelector from './CustomGroupSelector.js';
 import Subscription from './Subscription.js';
 
 import { BREAKPOINTS } from '../constants.js';
-import { getEventSources } from '../utils.js';
+import { getEventSources, filterHiddenCalendars } from '../utils.js';
 
 var App = function (_Component) {
 	_inherits(App, _Component);
@@ -55,22 +55,24 @@ var App = function (_Component) {
 			fetch(this.props.envFile).then(function (response) {
 				return response.json();
 			}).then(function (dotenv) {
+				var params = new URLSearchParams(window.location.search.slice(1));
+				var keys = params.getAll('key');
+
+				filterHiddenCalendars(dotenv, keys);
 				_this2.setState(Object.assign(dotenv, { loaded: true }));
 				if (dotenv.GOOGLE_ANALYTICS_TRACKING_ID && window.ga) {
 					window.ga('create', dotenv.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
 					window.ga('send', 'pageview');
 				}
 			}).catch(function (err) {
-				_this2.setState({ loaded: false });
 				console.error(err);
+				_this2.setState({ loaded: false });
 			});
 		}
 	}, {
-		key: 'render',
-		value: function render() {
+		key: 'getCalendars',
+		value: function getCalendars(calendarId) {
 			var _this3 = this;
-
-			var calendarId = this.props.calendarId || 'basic';
 
 			// FIXME: This doesn't work if a calendar and a group share the same id
 			var calendar = calendarId === 'custom' ? this.state.customCalendar : this.state.calendarGroups[calendarId];
@@ -83,6 +85,19 @@ var App = function (_Component) {
 				calendar = this.state.calendars[calendarId];
 				calendars = calendar ? calendar.subCalendars || [calendar] : [];
 			}
+
+			return { calendar: calendar, calendars: calendars };
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this4 = this;
+
+			var calendarId = this.props.calendarId || 'basic';
+
+			var _getCalendars = this.getCalendars(calendarId),
+			    calendar = _getCalendars.calendar,
+			    calendars = _getCalendars.calendars;
 
 			if (calendar && calendars) {
 				var eventSources = getEventSources(calendars);
@@ -97,8 +112,8 @@ var App = function (_Component) {
 						{ key: 'grouped-calendar-list-items-' + id },
 						React.createElement(
 							Link,
-							{ to: '/' + id, activeClassName: 'active' },
-							_this3.state.calendarGroups[id].calname
+							{ to: '/' + id + window.location.search, activeClassName: 'active' },
+							_this4.state.calendarGroups[id].calname
 						)
 					);
 				});
@@ -108,7 +123,7 @@ var App = function (_Component) {
 					{ key: 'custom' },
 					React.createElement(
 						Link,
-						{ to: '/custom', activeClassName: 'active' },
+						{ to: '/custom' + window.location.search, activeClassName: 'active' },
 						'Custom Group'
 					),
 					calendarId === 'custom' && React.createElement(CustomGroupSelector, { calendars: this.state.calendars,
@@ -122,17 +137,17 @@ var App = function (_Component) {
 						{ key: 'calendar-list-items-' + id },
 						React.createElement(
 							Link,
-							{ to: '/' + id, activeClassName: 'active' },
-							_this3.state.calendars[id].calname
+							{ to: '/' + id + window.location.search, activeClassName: 'active' },
+							_this4.state.calendars[id].calname
 						)
 					);
 				});
 
 				var icsFilename = calendarId === 'custom' ? 'combine.ics?' + this.state.customCalendar.calendars.map(function (calId) {
-					if (_this3.state.calendars[calId].url) {
-						return 'urls[]=' + _this3.state.calendars[calId].url;
+					if (_this4.state.calendars[calId].url) {
+						return 'urls[]=' + _this4.state.calendars[calId].url;
 					} else {
-						return _this3.state.calendars[calId].subCalendars.map(function (subCal) {
+						return _this4.state.calendars[calId].subCalendars.map(function (subCal) {
 							return 'urls[]=' + subCal.url;
 						}).join('&');
 					}

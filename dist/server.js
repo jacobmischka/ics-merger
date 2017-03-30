@@ -5,6 +5,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 const express = _interopDefault(require('express'));
 const fetch = _interopDefault(require('node-fetch'));
 const ICAL = _interopDefault(require('ical.js'));
+const colorString = _interopDefault(require('color-string'));
 const dotenv = _interopDefault(require('../.env.json'));
 
 var icalMerger = {"prodid":"-//Jacob Mischka//iCal Merger//EN","version":"2.0"};
@@ -48,6 +49,13 @@ function merge(inputs, options = {}){
 	}
 
 	return calendar.toString();
+}
+
+function isCalendarVisible(calendar, keys){
+	if(!Array.isArray(keys))
+		keys = [keys];
+
+	return calendar && (!calendar.private || keys.includes(calendar.key));
 }
 
 /* eslint-env node */
@@ -111,7 +119,10 @@ app.get('/:calendarId', (req, res) => {
 
 function respondWithCalendar(calendar, calendarName){
 	app.get(`/${calendarName}.ics`, (req, res) => {
-		if(!calendar){
+		const isVisible = calendar =>
+			isCalendarVisible(calendar, req.query.key);
+		
+		if(!calendar || !isVisible(calendar)){
 			res.sendStatus(501);
 			return;
 		}
@@ -122,15 +133,15 @@ function respondWithCalendar(calendar, calendarName){
 		if(calendar.calendars)
 			for(let calId of calendar.calendars){
 				let calendar = dotenv.calendars[calId];
-				if(calendar){
+				if(isVisible(calendar)){
 					if(calendar.url)
 						urls.push(calendar.url);
 					if(calendar.subCalendars)
-						urls = urls.concat(calendar.subCalendars.map(subCal => subCal.url));
+						urls = urls.concat(calendar.subCalendars.filter(isVisible).map(subCal => subCal.url));
 				}
 			}
 		if(calendar.subCalendars)
-			urls = urls.concat(calendar.subCalendars.map(subCal => subCal.url));
+			urls = urls.concat(calendar.subCalendars.filter(isVisible).map(subCal => subCal.url));
 
 		let icals = getIcalsFromUrls(urls);
 

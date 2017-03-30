@@ -13,7 +13,8 @@ export default {
 		'ical.js',
 		'express',
 		'node-fetch',
-		'body-parser'
+		'body-parser',
+		'color-string'
 	],
 	preferConst: true
 };

@@ -1,5 +1,38 @@
 import colorString from 'color-string';
 
+export function isCalendarVisible(calendar, keys){
+	if(!Array.isArray(keys))
+		keys = [keys];
+
+	return calendar && (!calendar.private || keys.includes(calendar.key));
+}
+
+export function filterHiddenCalendars(config, keys){
+	
+	const isVisible = calendar => isCalendarVisible(calendar, keys);
+		
+	for(const groupId in config.calendarGroups){
+		let group = config.calendarGroups[groupId];
+		if(isVisible(group) && group.calendars)
+			group.calendars = group.calendars.filter(calendarId =>
+				isVisible(config.calendars[calendarId]));
+		else
+			delete config.calendarGroups[groupId];
+	}
+	
+	for(const calendarId in config.calendars){
+		let calendar = config.calendars[calendarId];
+		if(isVisible(calendar)){
+			if(calendar.subCalendars)
+				calendar.subCalendars = calendar.subCalendars.filter(isVisible);
+		}
+		else
+			delete config.calendars[calendarId];
+	}
+	
+	return config;
+}
+
 export function getEventSources(calendars){
 	let eventSources = [];
 	

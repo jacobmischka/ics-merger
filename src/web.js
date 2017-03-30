@@ -3,6 +3,7 @@ import 'es6-promise';
 import 'whatwg-fetch';
 import 'classlist-polyfill';
 import 'element-dataset';
+import 'url-search-params-polyfill';
 
 import React from 'react';
 import { render } from 'react-dom';

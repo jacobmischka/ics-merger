@@ -2,6 +2,35 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 import colorString from 'color-string';
 
+export function isCalendarVisible(calendar, keys) {
+	if (!Array.isArray(keys)) keys = [keys];
+
+	return calendar && (!calendar.private || keys.includes(calendar.key));
+}
+
+export function filterHiddenCalendars(config, keys) {
+
+	var isVisible = function isVisible(calendar) {
+		return isCalendarVisible(calendar, keys);
+	};
+
+	for (var groupId in config.calendarGroups) {
+		var group = config.calendarGroups[groupId];
+		if (isVisible(group) && group.calendars) group.calendars = group.calendars.filter(function (calendarId) {
+			return isVisible(config.calendars[calendarId]);
+		});else delete config.calendarGroups[groupId];
+	}
+
+	for (var calendarId in config.calendars) {
+		var calendar = config.calendars[calendarId];
+		if (isVisible(calendar)) {
+			if (calendar.subCalendars) calendar.subCalendars = calendar.subCalendars.filter(isVisible);
+		} else delete config.calendars[calendarId];
+	}
+
+	return config;
+}
+
 export function getEventSources(calendars) {
 	var eventSources = [];
 

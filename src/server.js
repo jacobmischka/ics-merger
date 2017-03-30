@@ -4,6 +4,8 @@ import fetch from 'node-fetch';
 
 import merge from './index.js';
 
+import { isCalendarVisible } from './utils.js';
+
 import dotenv from '../.env.json';
 
 const app = express();
@@ -66,7 +68,10 @@ app.get('/:calendarId', (req, res) => {
 
 function respondWithCalendar(calendar, calendarName){
 	app.get(`/${calendarName}.ics`, (req, res) => {
-		if(!calendar){
+		const isVisible = calendar =>
+			isCalendarVisible(calendar, req.query.key);
+		
+		if(!calendar || !isVisible(calendar)){
 			res.sendStatus(501);
 			return;
 		}
@@ -77,15 +82,15 @@ function respondWithCalendar(calendar, calendarName){
 		if(calendar.calendars)
 			for(let calId of calendar.calendars){
 				let calendar = dotenv.calendars[calId];
-				if(calendar){
+				if(isVisible(calendar)){
 					if(calendar.url)
 						urls.push(calendar.url);
 					if(calendar.subCalendars)
-						urls = urls.concat(calendar.subCalendars.map(subCal => subCal.url));
+						urls = urls.concat(calendar.subCalendars.filter(isVisible).map(subCal => subCal.url));
 				}
 			}
 		if(calendar.subCalendars)
-			urls = urls.concat(calendar.subCalendars.map(subCal => subCal.url));
+			urls = urls.concat(calendar.subCalendars.filter(isVisible).map(subCal => subCal.url));
 
 		let icals = getIcalsFromUrls(urls);
 

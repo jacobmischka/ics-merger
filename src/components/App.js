@@ -8,7 +8,7 @@ import CustomGroupSelector from './CustomGroupSelector.js';
 import Subscription from './Subscription.js';
 
 import { BREAKPOINTS } from '../constants.js';
-import { getEventSources } from '../utils.js';
+import { getEventSources, filterHiddenCalendars } from '../utils.js';
 
 export default class App extends Component {
 	constructor(props){
@@ -36,20 +36,22 @@ export default class App extends Component {
 			.then(response => {
 				return response.json();
 			}).then(dotenv => {
+				const params = new URLSearchParams(window.location.search.slice(1));
+				const keys = params.getAll('key');
+				
+				filterHiddenCalendars(dotenv, keys);
 				this.setState(Object.assign(dotenv, {loaded: true}));
 				if(dotenv.GOOGLE_ANALYTICS_TRACKING_ID && window.ga){
 					window.ga('create', dotenv.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
 					window.ga('send', 'pageview');
 				}
 			}).catch(err => {
-				this.setState({loaded: false});
 				console.error(err);
+				this.setState({loaded: false});
 			});
 	}
-
-	render(){
-		const calendarId = this.props.calendarId || 'basic';
-
+	
+	getCalendars(calendarId){
 		// FIXME: This doesn't work if a calendar and a group share the same id
 		let calendar = calendarId === 'custom'
 			? this.state.customCalendar
@@ -62,6 +64,14 @@ export default class App extends Component {
 			calendar = this.state.calendars[calendarId];
 			calendars = calendar ? calendar.subCalendars || [calendar] : [];
 		}
+		
+		return { calendar, calendars };
+	}
+
+	render(){
+		const calendarId = this.props.calendarId || 'basic';
+
+		const { calendar, calendars } = this.getCalendars(calendarId);
 
 		if(calendar && calendars){
 			let eventSources = getEventSources(calendars);
@@ -77,7 +87,7 @@ export default class App extends Component {
 
 			let groupedCalendarListItems = Object.keys(this.state.calendarGroups).map(id => (
 				<li key={`grouped-calendar-list-items-${id}`}>
-					<Link to={`/${id}`} activeClassName="active">
+					<Link to={`/${id}${window.location.search}`} activeClassName="active">
 						{this.state.calendarGroups[id].calname}
 					</Link>
 				</li>
@@ -85,7 +95,7 @@ export default class App extends Component {
 
 			groupedCalendarListItems.push(
 				<li key="custom">
-					<Link to="/custom" activeClassName="active">
+					<Link to={`/custom${window.location.search}`} activeClassName="active">
 						Custom Group
 					</Link>
 			{
@@ -100,7 +110,7 @@ export default class App extends Component {
 
 			let calendarListItems = Object.keys(this.state.calendars).map(id => (
 				<li key={`calendar-list-items-${id}`}>
-					<Link to={`/${id}`} activeClassName="active">
+					<Link to={`/${id}${window.location.search}`} activeClassName="active">
 						{this.state.calendars[id].calname}
 					</Link>
 				</li>

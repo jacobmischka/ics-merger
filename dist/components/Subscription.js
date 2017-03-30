@@ -48,7 +48,7 @@ var Subscription = function (_Component) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var calendarIcalUrl = window.location.origin + '/' + this.props.icsFilename;
+			var calendarIcalUrl = window.location.origin + '/' + this.props.icsFilename + window.location.search;
 
 			var webcalUrl = calendarIcalUrl.replace(window.location.protocol, 'webcal:');
 
