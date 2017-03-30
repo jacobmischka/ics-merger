@@ -1,3 +1,4 @@
 .env.json
+calendars.json
 **/*.map
 stats.json

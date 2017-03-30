@@ -6,7 +6,7 @@ import merge from './index.js';
 
 import { isCalendarVisible } from './utils.js';
 
-import dotenv from '../.env.json';
+import config from '../calendars.json';
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.get('/.env.json', (req, res) => {
 		dotfiles: 'allow'
 	};
 
-	res.sendFile('.env.json', options);
+	res.sendFile('calendars.json', options);
 });
 
 app.get('/combine.ics', (req, res) => {
@@ -32,8 +32,8 @@ app.get('/combine.ics', (req, res) => {
 	setHeaders(res);
 
 	let options = {};
-	if(dotenv && dotenv.combine)
-		options = Object.assign({}, dotenv.combine);
+	if(config && config.combine)
+		options = Object.assign({}, config.combine);
 	options = Object.assign({}, options, req.query);
 
 	icals.then(icals => {
@@ -44,16 +44,16 @@ app.get('/combine.ics', (req, res) => {
 	});
 });
 
-if(dotenv && dotenv.calendars){
-	for(let calendarName in dotenv.calendars){
-		let calendarConfig = dotenv.calendars[calendarName];
+if(config && config.calendars){
+	for(let calendarName in config.calendars){
+		let calendarConfig = config.calendars[calendarName];
 
 		respondWithCalendar(calendarConfig, calendarName);
 	}
 
-	if(dotenv.calendarGroups){
-		for(let calendarName in dotenv.calendarGroups){
-			let calendarConfig = dotenv.calendarGroups[calendarName];
+	if(config.calendarGroups){
+		for(let calendarName in config.calendarGroups){
+			let calendarConfig = config.calendarGroups[calendarName];
 
 			respondWithCalendar(calendarConfig, calendarName);
 		}
@@ -81,7 +81,7 @@ function respondWithCalendar(calendar, calendarName){
 			urls.push(calendar.url);
 		if(calendar.calendars)
 			for(let calId of calendar.calendars){
-				let calendar = dotenv.calendars[calId];
+				let calendar = config.calendars[calId];
 				if(isVisible(calendar)){
 					if(calendar.url)
 						urls.push(calendar.url);

@@ -54,14 +54,14 @@ var App = function (_Component) {
 
 			fetch(this.props.envFile).then(function (response) {
 				return response.json();
-			}).then(function (dotenv) {
+			}).then(function (config) {
 				var params = new URLSearchParams(window.location.search.slice(1));
 				var keys = params.getAll('key');
 
-				filterHiddenCalendars(dotenv, keys);
-				_this2.setState(Object.assign(dotenv, { loaded: true }));
-				if (dotenv.GOOGLE_ANALYTICS_TRACKING_ID && window.ga) {
-					window.ga('create', dotenv.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
+				filterHiddenCalendars(config, keys);
+				_this2.setState(Object.assign(config, { loaded: true }));
+				if (config.GOOGLE_ANALYTICS_TRACKING_ID && window.ga) {
+					window.ga('create', config.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
 					window.ga('send', 'pageview');
 				}
 			}).catch(function (err) {
