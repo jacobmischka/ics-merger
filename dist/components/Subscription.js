@@ -54,30 +54,30 @@ var Subscription = function (_Component) {
 
 			return React.createElement(
 				'div',
-				{ className: 'subscription-component', 'data-jsx': 1549204681
+				{ className: 'subscription-component', 'data-jsx': 3030989675
 				},
 				this.state.showSub ? React.createElement(
 					'div',
 					{
-						'data-jsx': 1549204681
+						'data-jsx': 3030989675
 					},
 					React.createElement(
 						'div',
-						{ className: 'sub-controls', 'data-jsx': 1549204681
+						{ className: 'sub-controls', 'data-jsx': 3030989675
 						},
 						React.createElement(
 							'a',
 							{ id: 'webcal-button', className: 'button outline',
-								href: webcalUrl, 'data-jsx': 1549204681
+								href: webcalUrl, 'data-jsx': 3030989675
 							},
 							'Subscribe with Outlook'
 						),
 						this.state.showUrl ? React.createElement(
 							'section',
-							{ className: 'copy-with-url', 'data-jsx': 1549204681
+							{ className: 'copy-with-url', 'data-jsx': 3030989675
 							},
 							React.createElement('input', { type: 'text', id: 'sub-url',
-								value: calendarIcalUrl, readOnly: true, 'data-jsx': 1549204681
+								value: calendarIcalUrl, readOnly: true, 'data-jsx': 3030989675
 							}),
 							React.createElement(
 								'button',
@@ -85,7 +85,7 @@ var Subscription = function (_Component) {
 									'data-clipboard-target': '#sub-url',
 									title: 'Long press to hide url',
 									onMouseDown: this.handleCopyButtonMouseDown,
-									onMouseUp: this.handleCopyButtonMouseUp, 'data-jsx': 1549204681
+									onMouseUp: this.handleCopyButtonMouseUp, 'data-jsx': 3030989675
 								},
 								'Copy subscription address'
 							)
@@ -95,7 +95,7 @@ var Subscription = function (_Component) {
 								'data-clipboard-text': calendarIcalUrl,
 								title: 'Long press to show url',
 								onMouseDown: this.handleCopyButtonMouseDown,
-								onMouseUp: this.handleCopyButtonMouseUp, 'data-jsx': 1549204681
+								onMouseUp: this.handleCopyButtonMouseUp, 'data-jsx': 3030989675
 							},
 							'Copy subscription address'
 						),
@@ -103,36 +103,36 @@ var Subscription = function (_Component) {
 							'a',
 							{ id: 'download-button', className: 'button outline',
 								href: calendarIcalUrl, target: '_blank',
-								download: this.props.icsFilename, 'data-jsx': 1549204681
+								download: this.props.icsFilename, 'data-jsx': 3030989675
 							},
 							'Download ICal/.ics file'
 						)
 					),
 					React.createElement(
 						'div',
-						{ className: 'text-center', 'data-jsx': 1549204681
+						{ className: 'text-center', 'data-jsx': 3030989675
 						},
 						React.createElement(
 							'a',
-							{ href: '#', id: 'hide-sub', onClick: this.handleHideSub, 'data-jsx': 1549204681
+							{ href: '#', id: 'hide-sub', onClick: this.handleHideSub, 'data-jsx': 3030989675
 							},
 							'Hide subscription info'
 						)
 					)
 				) : React.createElement(
 					'div',
-					{ className: 'sub-controls', 'data-jsx': 1549204681
+					{ className: 'sub-controls', 'data-jsx': 3030989675
 					},
 					React.createElement(
 						'button',
-						{ className: 'button outline', onClick: this.handleShowSub, 'data-jsx': 1549204681
+						{ className: 'button outline', onClick: this.handleShowSub, 'data-jsx': 3030989675
 						},
 						'Subscribe to this calendar'
 					)
 				),
 				React.createElement(_JSXStyle, {
-					styleId: 1549204681,
-					css: '.subscription-component[data-jsx="1549204681"] {margin: 2em;}.sub-controls[data-jsx="1549204681"] {display:-webkit-flex; display:flex;-webkit-flex-wrap: wrap;-moz-flex-wrap: wrap;flex-wrap: wrap;-webkit-flex-direction: row;-moz-flex-direction: row;flex-direction: row;justify-content: space-around;align-items: flex-end;font-size: 1.25em;}.copy-with-url[data-jsx="1549204681"] {display:-webkit-flex; display:flex;-webkit-flex-direction: column;-moz-flex-direction: column;flex-direction: column;align-items: stretch;}#sub-url[data-jsx="1549204681"] {display: block;-webkit-user-select: all;-moz-user-select: all;-ms-user-select: all;user-select: all;color: ' + secondaryText + ';}#hide-sub[data-jsx="1549204681"] {font-size: 0.85em;text-decoration: none;color: ' + secondaryText + ';}#hide-sub[data-jsx="1549204681"]:hover {text-decoration: underline;}input[data-jsx="1549204681"] {font-size: 1.5em;padding: 0.5em;border: 1px solid rgba($grey-color, 0.45);}.button[data-jsx="1549204681"] {margin: 0.5em;border-radius: 5px;padding: 0.5em 1em;cursor: pointer;text-decoration: none;color: white;font-size: 1.25em;line-height: 1.4;border: 2px solid ' + COLORS.PRIMARY + ';background: ' + COLORS.PRIMARY + ';}.button[data-jsx="1549204681"]:hover {background: ' + buttonHoverBackgroundColor + ';}.button.outline[data-jsx="1549204681"] {background: transparent;color: ' + COLORS.PRIMARY + ';}.button.outline[data-jsx="1549204681"]:hover {color: white;background: ' + buttonHoverBackgroundColor + ';}.text-center[data-jsx="1549204681"] {text-align: center;}'
+					styleId: 3030989675,
+					css: '.subscription-component[data-jsx="3030989675"] {margin: 2em;}.sub-controls[data-jsx="3030989675"] {display:-webkit-flex; display:flex;-webkit-flex-wrap: wrap;-moz-flex-wrap: wrap;flex-wrap: wrap;-webkit-flex-direction: row;-moz-flex-direction: row;flex-direction: row;justify-content: space-around;align-items: flex-end;font-size: 1.25em;}.copy-with-url[data-jsx="3030989675"] {display:-webkit-flex; display:flex;-webkit-flex-direction: column;-moz-flex-direction: column;flex-direction: column;align-items: stretch;}#sub-url[data-jsx="3030989675"] {display: block;-webkit-user-select: all;-moz-user-select: all;-ms-user-select: all;user-select: all;color: ' + secondaryText + ';}#hide-sub[data-jsx="3030989675"] {font-size: 0.85em;text-decoration: none;color: ' + secondaryText + ';}#hide-sub[data-jsx="3030989675"]:hover {text-decoration: underline;}input[data-jsx="3030989675"] {font-size: 1.5em;padding: 0.5em;border: 1px solid rgba($grey-color, 0.45);}.button[data-jsx="3030989675"] {margin: 0.5em;border-radius: 5px;padding: 0.5em 1em;cursor: pointer;text-decoration: none;color: white;font-size: 1.25em;line-height: 1.4;border: 2px solid ' + COLORS.PRIMARY + ';background: ' + COLORS.PRIMARY + ';}.button[data-jsx="3030989675"]:hover {background: ' + buttonHoverBackgroundColor + ';}.button.outline[data-jsx="3030989675"] {background: transparent;color: ' + COLORS.PRIMARY + ';}.button.outline[data-jsx="3030989675"]:hover {color: white;background: ' + buttonHoverBackgroundColor + ';}.text-center[data-jsx="3030989675"] {text-align: center;}@media print {.subscription-component[data-jsx="3030989675"] {display: none;}}'
 				})
 			);
 		}

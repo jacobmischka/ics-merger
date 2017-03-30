@@ -209,6 +209,17 @@ export default class App extends Component {
 							flex-shrink: 1;
 							min-width: 15em;
 						}
+						
+						@media print {
+							
+							h1 {
+								margin: 0;
+							}
+							
+							.calendar-nav-container {
+								display: none;
+							}
+						}
 					`}
 					</style>
 					

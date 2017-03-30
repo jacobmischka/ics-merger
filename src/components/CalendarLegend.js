@@ -48,6 +48,7 @@ const CalendarLegend = (props) => {
 			<style jsx>
 			{`
 				.calendar-legend-container {
+					margin: 2em;
 					display: flex;
 					justify-content: center;
 				}
@@ -61,6 +62,12 @@ const CalendarLegend = (props) => {
 				.legend-title {
 					text-align: center;
 					font-size: 1.1em;
+				}
+				
+				@media print {
+					.calendar-legend-container {
+						display: none;
+					}
 				}
 			`}
 			</style>

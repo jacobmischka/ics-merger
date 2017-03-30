@@ -65,6 +65,13 @@ export default class CalendarEvent extends Component {
 						border-radius: 2px;
 						padding: 0.15em 0.5em;
 					}
+					
+					@media print {
+						
+						.event {
+							font-size: 0.5em;
+						}
+					}
 				`}
 				</style>
 			</div>

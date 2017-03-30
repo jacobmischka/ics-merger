@@ -112,6 +112,13 @@ export default class FullCalendar extends Component {
 							width: 100%;
 						}
 					}
+					
+					@media print {
+						.fc .fc-toolbar .fc-center,
+						.fc .fc-toolbar .fc-right {
+							display: none;
+						}
+					}
 				`}
 				</style>
 			</div>

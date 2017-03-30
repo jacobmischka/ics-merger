@@ -140,13 +140,13 @@ var App = function (_Component) {
 
 				return React.createElement(
 					'div',
-					{ 'data-iframe-height': true, 'data-jsx': 3197762824
+					{ 'data-iframe-height': true, 'data-jsx': 4205032244
 					},
 					activeEventNode,
 					React.createElement(
 						'h1',
 						{
-							'data-jsx': 3197762824
+							'data-jsx': 4205032244
 						},
 						calendar.calname
 					),
@@ -157,35 +157,35 @@ var App = function (_Component) {
 					React.createElement(CalendarLegend, { calendars: calendars, calname: calendar.calname }),
 					(groupedCalendarListItems || calendarListItems) && React.createElement(
 						'div',
-						{ className: 'calendar-nav-container', 'data-jsx': 3197762824
+						{ className: 'calendar-nav-container', 'data-jsx': 4205032244
 						},
 						React.createElement(
 							'h2',
 							{
-								'data-jsx': 3197762824
+								'data-jsx': 4205032244
 							},
 							'Other calendars'
 						),
 						React.createElement(
 							'nav',
-							{ className: 'calendar-nav', 'data-jsx': 3197762824
+							{ className: 'calendar-nav', 'data-jsx': 4205032244
 							},
 							groupedCalendarListItems && React.createElement(
 								'section',
 								{
-									'data-jsx': 3197762824
+									'data-jsx': 4205032244
 								},
 								React.createElement(
 									'h3',
 									{
-										'data-jsx': 3197762824
+										'data-jsx': 4205032244
 									},
 									'Calendar sets'
 								),
 								React.createElement(
 									'ul',
 									{
-										'data-jsx': 3197762824
+										'data-jsx': 4205032244
 									},
 									groupedCalendarListItems
 								)
@@ -193,19 +193,19 @@ var App = function (_Component) {
 							calendarListItems && React.createElement(
 								'section',
 								{
-									'data-jsx': 3197762824
+									'data-jsx': 4205032244
 								},
 								React.createElement(
 									'h3',
 									{
-										'data-jsx': 3197762824
+										'data-jsx': 4205032244
 									},
 									'Calendars'
 								),
 								React.createElement(
 									'ul',
 									{
-										'data-jsx': 3197762824
+										'data-jsx': 4205032244
 									},
 									calendarListItems
 								)
@@ -213,8 +213,8 @@ var App = function (_Component) {
 						)
 					),
 					React.createElement(_JSXStyle, {
-						styleId: 3197762824,
-						css: 'h1[data-jsx="3197762824"] {font-size: 2.75em;font-weight: 500;text-align: center;}h2[data-jsx="3197762824"] {font-size: 2em;font-weight: normal;}a.active[data-jsx="3197762824"] {pointer-events: none;text-decoration: none;cursor: auto;color: rgba($text-color, $primary-text);}.calendar-nav-container[data-jsx="3197762824"] {padding: 0 2em;}@media (min-width: ' + BREAKPOINTS.SMALL_DESKTOP + 'px) {.calendar-nav-container[data-jsx="3197762824"] {padding: 0 3em;}}@media (min-width: ' + BREAKPOINTS.LARGE_DESKTOP + 'px) {.calendar-nav-container[data-jsx="3197762824"] {padding: 0 4em;}}.calendar-nav[data-jsx="3197762824"] {display:-webkit-flex; display:flex;-webkit-flex-direction: row;-moz-flex-direction: row;flex-direction: row;-webkit-flex-wrap: wrap;-moz-flex-wrap: wrap;flex-wrap: wrap;justify-content: space-around;}.calendar-nav[data-jsx="3197762824"] section[data-jsx="3197762824"] {-webkit-flex-grow: 0;-moz-flex-grow: 0;flex-grow: 0;-webkit-flex-shrink: 1;-moz-flex-shrink: 1;flex-shrink: 1;min-width: 15em;}'
+						styleId: 4205032244,
+						css: 'h1[data-jsx="4205032244"] {font-size: 2.75em;font-weight: 500;text-align: center;}h2[data-jsx="4205032244"] {font-size: 2em;font-weight: normal;}a.active[data-jsx="4205032244"] {pointer-events: none;text-decoration: none;cursor: auto;color: rgba($text-color, $primary-text);}.calendar-nav-container[data-jsx="4205032244"] {padding: 0 2em;}@media (min-width: ' + BREAKPOINTS.SMALL_DESKTOP + 'px) {.calendar-nav-container[data-jsx="4205032244"] {padding: 0 3em;}}@media (min-width: ' + BREAKPOINTS.LARGE_DESKTOP + 'px) {.calendar-nav-container[data-jsx="4205032244"] {padding: 0 4em;}}.calendar-nav[data-jsx="4205032244"] {display:-webkit-flex; display:flex;-webkit-flex-direction: row;-moz-flex-direction: row;flex-direction: row;-webkit-flex-wrap: wrap;-moz-flex-wrap: wrap;flex-wrap: wrap;justify-content: space-around;}.calendar-nav[data-jsx="4205032244"] section[data-jsx="4205032244"] {-webkit-flex-grow: 0;-moz-flex-grow: 0;flex-grow: 0;-webkit-flex-shrink: 1;-moz-flex-shrink: 1;flex-shrink: 1;min-width: 15em;}@media print {h1[data-jsx="4205032244"] {margin: 0;}.calendar-nav-container[data-jsx="4205032244"] {display: none;}}'
 					})
 				);
 			} else {

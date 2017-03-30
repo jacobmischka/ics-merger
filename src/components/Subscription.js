@@ -167,9 +167,15 @@ export default class Subscription extends Component {
 						color: white;
 						background: ${buttonHoverBackgroundColor};
 					}
-				
+					
 					.text-center {
 						text-align: center;
+					}
+					
+					@media print {
+						.subscription-component {
+							display: none;
+						}
 					}
 				`}
 				</style>

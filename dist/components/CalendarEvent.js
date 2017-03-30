@@ -53,23 +53,23 @@ var CalendarEvent = function (_Component) {
 					onClick: this.handleClick,
 					ref: function ref(div) {
 						return _this2.container = div;
-					}, 'data-jsx': 2587742225
+					}, 'data-jsx': 1000593973
 				},
 				React.createElement(
 					'span',
-					{ className: 'event-time', 'data-jsx': 2587742225
+					{ className: 'event-time', 'data-jsx': 1000593973
 					},
 					eventTime
 				),
 				React.createElement(
 					'span',
-					{ className: 'event-title', 'data-jsx': 2587742225
+					{ className: 'event-title', 'data-jsx': 1000593973
 					},
 					this.props.event.title
 				),
 				React.createElement(_JSXStyle, {
-					styleId: 2587742225,
-					css: '.event[data-jsx="2587742225"] {font-family: \'Noto Sans\', sans-serif;color: rgba(0, 0, 0, ' + OPACITIES.TEXT.primary + ');padding: 0.5em;margin: 1px;cursor: pointer;font-size: 0.75em;}.event-time[data-jsx="2587742225"] {margin: 0 0.5em 0 0;text-transform: uppercase;}.event-title[data-jsx="2587742225"] {word-wrap: break-word;}.event-desc[data-jsx="2587742225"] {font-size: 0.75em;word-wrap: break-word;white-space: pre-line;}.event.all-day[data-jsx="2587742225"] .event-time[data-jsx="2587742225"] {text-align: center;background: #bfbfbf;border-radius: 2px;padding: 0.15em 0.5em;}'
+					styleId: 1000593973,
+					css: '.event[data-jsx="1000593973"] {font-family: \'Noto Sans\', sans-serif;color: rgba(0, 0, 0, ' + OPACITIES.TEXT.primary + ');padding: 0.5em;margin: 1px;cursor: pointer;font-size: 0.75em;}.event-time[data-jsx="1000593973"] {margin: 0 0.5em 0 0;text-transform: uppercase;}.event-title[data-jsx="1000593973"] {word-wrap: break-word;}.event-desc[data-jsx="1000593973"] {font-size: 0.75em;word-wrap: break-word;white-space: pre-line;}.event.all-day[data-jsx="1000593973"] .event-time[data-jsx="1000593973"] {text-align: center;background: #bfbfbf;border-radius: 2px;padding: 0.15em 0.5em;}@media print {.event[data-jsx="1000593973"] {font-size: 0.5em;}}'
 				})
 			);
 		}
