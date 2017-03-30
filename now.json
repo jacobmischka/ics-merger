@@ -2,6 +2,6 @@
 	"files": [
 		"public/",
 		"dist/",
-		"calendars.json"
+		".env.json"
 	]
 }

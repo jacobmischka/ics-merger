@@ -35,14 +35,14 @@ export default class App extends Component {
 		fetch(this.props.envFile)
 			.then(response => {
 				return response.json();
-			}).then(config => {
+			}).then(dotenv => {
 				const params = new URLSearchParams(window.location.search.slice(1));
 				const keys = params.getAll('key');
 				
-				filterHiddenCalendars(config, keys);
-				this.setState(Object.assign(config, {loaded: true}));
-				if(config.GOOGLE_ANALYTICS_TRACKING_ID && window.ga){
-					window.ga('create', config.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
+				filterHiddenCalendars(dotenv, keys);
+				this.setState(Object.assign(dotenv, {loaded: true}));
+				if(dotenv.GOOGLE_ANALYTICS_TRACKING_ID && window.ga){
+					window.ga('create', dotenv.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
 					window.ga('send', 'pageview');
 				}
 			}).catch(err => {
