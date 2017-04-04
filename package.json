@@ -27,7 +27,7 @@
     "rollup-watch:server": "rollup -c rollup.config.server.js -w",
     "clean": "rm -r ./dist/* ; rm ./public/css/* ; rm ./public/js/*",
     "analyze:bundle": "webpack-bundle-analyzer ./public/js/stats.json",
-    "deploy": "now -e NODE_ENV=production",
+    "deploy": "echo '!.env.json' >> .npmignore ; now -e NODE_ENV=production ; sed -i '$ d' .npmignore",
     "now-build": "echo \"Built files are currently checked into source control\""
   },
   "bin": {
