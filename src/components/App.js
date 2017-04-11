@@ -37,8 +37,8 @@ export default class App extends Component {
 			.then(response => {
 				return response.json();
 			}).then(dotenv => {
-				const params = new URLSearchParams(this.props.search.slice(1));
-				const keys = params.getAll('key');
+				const searchParams = new URLSearchParams(this.props.search.slice(1));
+				const keys = searchParams.getAll('key');
 
 				filterHiddenCalendars(dotenv, keys);
 				this.setState(Object.assign(dotenv, {loaded: true}));
@@ -72,6 +72,8 @@ export default class App extends Component {
 	render(){
 		const { calendarId, search } = this.props;
 		const { calendar, calendars } = this.getCalendars(calendarId);
+		const searchParams = new URLSearchParams(this.props.search.slice(1));
+		const calendarView = searchParams.get('view');
 
 		if(calendar && calendars){
 			let eventSources = getEventSources(calendars);
@@ -137,7 +139,8 @@ export default class App extends Component {
 					<h1>{calendar.calname}</h1>
 					<FullCalendar apiKey={this.state.GOOGLE_CALENDAR_API_KEY}
 						eventSources={eventSources}
-						setActiveEvent={this.handleSetActiveEvent} />
+						setActiveEvent={this.handleSetActiveEvent}
+						defaultView={calendarView} />
 					<Subscription icsFilename={icsFilename} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
 			{

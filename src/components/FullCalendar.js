@@ -199,11 +199,13 @@ export default class FullCalendar extends Component {
 	}
 
 	createCalendar(){
-		const setActive = this.props.setActiveEvent;
+		const { setActiveEvent } = this.props;
+		let { defaultView } = this.props;
 
-		const defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP
-			? 'month'
-			: 'listWeek';
+		if(!defaultView)
+			defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP
+				? 'month'
+				: 'listWeek';
 
 		$(`#${this.state.calendarId}`).fullCalendar(Object.assign({
 			googleCalendarApiKey: this.props.apiKey,
@@ -223,7 +225,7 @@ export default class FullCalendar extends Component {
 				if(view && view.name && view.name.startsWith('agenda'))
 					div.style.position = 'absolute';
 				render(<CalendarEvent event={calEvent} view={view}
-					setActive={setActive} />, div);
+					setActive={setActiveEvent} />, div);
 				return div;
 			}
 		}, this.props.fullcalendarConfig));
@@ -234,5 +236,6 @@ FullCalendar.propTypes = {
 	apiKey: PropTypes.string.isRequired,
 	eventSources: PropTypes.array.isRequired,
 	setActiveEvent: PropTypes.func,
-	fullcalendarConfig: PropTypes.object
+	fullcalendarConfig: PropTypes.object,
+	defaultView: PropTypes.string
 };
