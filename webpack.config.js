@@ -45,13 +45,24 @@ module.exports = {
 				})
 			},
 			{
-				test: /\.(eot|svg|ttf|woff|woff2)$/,
+				test: /\.(eot|svg|ttf|woff|woff2|gif)$/,
 				include: /node_modules/,
 				use: {
 					loader: 'file-loader',
 					options: {
 						name: '../assets/[path][name].[ext]',
 						context: './node_modules'
+					}
+				}
+			},
+			{
+				test: /\.(eot|svg|ttf|woff|woff2|gif)$/,
+				include: /assets/,
+				use: {
+					loader: 'file-loader',
+					options: {
+						name: '../assets/[path][name].[ext]',
+						context: './assets'
 					}
 				}
 			}

@@ -9,6 +9,7 @@
     "start": "node dist/server.js",
     "serve": "nodemon dist/server.js",
     "build": "npm-run-all clean --parallel build:*",
+    "now-build": "npm-run-all clean --parallel build:webpack build:rollup",
     "build:webpack": "NODE_ENV=production webpack -p",
     "build:rollup": "run-p rollup:*",
     "build:components": "NODE_ENV=production babel ./src/components --out-dir ./dist/components",
@@ -25,10 +26,9 @@
     "rollup-watch:node": "rollup -cw",
     "rollup-watch:bundle": "rollup -c rollup.config.bundle.js -w",
     "rollup-watch:server": "rollup -c rollup.config.server.js -w",
-    "clean": "rm -r ./dist/* ; rm ./public/css/* ; rm ./public/js/*",
+    "clean": "rm -rf ./dist ./public ; mkdir -p dist",
     "analyze:bundle": "webpack-bundle-analyzer ./public/js/stats.json",
-    "deploy": "echo '!.env.json' >> .npmignore ; now -e NODE_ENV=production ; sed -i '$ d' .npmignore",
-    "now-build": "echo \"Built files are currently checked into source control\""
+    "deploy": "echo '!.env.json' >> .npmignore ; now ; sed -i '$ d' .npmignore"
   },
   "bin": {
     "ical-merge": "./cli.js"
