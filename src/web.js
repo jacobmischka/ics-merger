@@ -8,7 +8,7 @@ import '../assets/spinner.gif';
 
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import 'iframe-resizer/js/iframeResizer.contentWindow.js';
 import 'typeface-noto-sans';
@@ -16,7 +16,13 @@ import 'typeface-noto-sans';
 import App from './components/App.js';
 
 render((
-	<Router history={browserHistory}>
-		<Route path="/(:calendarId)" component={props => <App envFile="/.env.json" calendarId={props.params.calendarId} />} />
+	<Router>
+		<div>
+			<Route exact path="/" render={() => <Redirect to="/basic" />} />
+			<Route path="/:calendarId" render={({match, location}) => 
+				<App envFile="/.env.json"
+					search={location.search}
+					calendarId={match.params.calendarId} />} />
+		</div>
 	</Router>
 ), document.getElementById('app'));

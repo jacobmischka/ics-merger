@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
-import { Link } from 'react-router';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import FullCalendar from './FullCalendar.js';
 import ActiveEvent from './ActiveEvent.js';
@@ -36,9 +37,9 @@ export default class App extends Component {
 			.then(response => {
 				return response.json();
 			}).then(dotenv => {
-				const params = new URLSearchParams(window.location.search.slice(1));
+				const params = new URLSearchParams(this.props.search.slice(1));
 				const keys = params.getAll('key');
-				
+
 				filterHiddenCalendars(dotenv, keys);
 				this.setState(Object.assign(dotenv, {loaded: true}));
 				if(dotenv.GOOGLE_ANALYTICS_TRACKING_ID && window.ga){
@@ -69,8 +70,7 @@ export default class App extends Component {
 	}
 
 	render(){
-		const calendarId = this.props.calendarId || 'basic';
-
+		const { calendarId, search } = this.props;
 		const { calendar, calendars } = this.getCalendars(calendarId);
 
 		if(calendar && calendars){
@@ -87,17 +87,17 @@ export default class App extends Component {
 
 			let groupedCalendarListItems = Object.keys(this.state.calendarGroups).map(id => (
 				<li key={`grouped-calendar-list-items-${id}`}>
-					<Link to={`/${id}${window.location.search}`} activeClassName="active">
+					<NavLink to={{pathname: `/${id}`, search}}>
 						{this.state.calendarGroups[id].calname}
-					</Link>
+					</NavLink>
 				</li>
 			));
 
 			groupedCalendarListItems.push(
 				<li key="custom">
-					<Link to={`/custom${window.location.search}`} activeClassName="active">
+					<NavLink to={{pathname: '/custom', search}}>
 						Custom Group
-					</Link>
+					</NavLink>
 			{
 				calendarId === 'custom' && (
 					<CustomGroupSelector calendars={this.state.calendars}
@@ -110,9 +110,9 @@ export default class App extends Component {
 
 			let calendarListItems = Object.keys(this.state.calendars).map(id => (
 				<li key={`calendar-list-items-${id}`}>
-					<Link to={`/${id}${window.location.search}`} activeClassName="active">
+					<NavLink to={{pathname: `/${id}`, search}}>
 						{this.state.calendars[id].calname}
-					</Link>
+					</NavLink>
 				</li>
 			));
 
@@ -182,11 +182,11 @@ export default class App extends Component {
 							font-weight: normal;
 						}
 						
-						a.active {
+						ul :global(a.active) {
 							pointer-events: none;
 							text-decoration: none;
 							cursor: auto;
-							color: rgba($text-color, $primary-text);
+							color: black;
 						}
 						
 						.calendar-nav-container {
@@ -320,5 +320,6 @@ export default class App extends Component {
 
 App.propTypes = {
 	calendarId: PropTypes.string,
-	envFile: PropTypes.string
+	envFile: PropTypes.string,
+	search: PropTypes.string
 };

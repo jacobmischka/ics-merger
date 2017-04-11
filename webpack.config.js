@@ -1,4 +1,5 @@
 /* eslint-env node */
+const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -14,7 +15,7 @@ module.exports = {
 			: './src/web.js'
 	},
 	output: {
-		path: './public/js/',
+		path: path.resolve(__dirname, './public/js/'),
 		publicPath: '/js/',
 		filename: process.env.NODE_ENV === 'production'
 			? '[name].[chunkhash].js'
