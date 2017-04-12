@@ -18,7 +18,10 @@ import App from './components/App.js';
 render((
 	<Router>
 		<div>
-			<Route exact path="/" render={() => <Redirect to="/basic" />} />
+			<Route exact path="/" render={({location}) => <Redirect to={{
+					pathname: '/basic',
+					search: location.search
+				}} />} />
 			<Route path="/:calendarId" render={({match, location}) => 
 				<App envFile="/.env.json"
 					search={location.search}
