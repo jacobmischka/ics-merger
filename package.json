@@ -28,7 +28,8 @@
     "rollup-watch:server": "rollup -c rollup.config.server.js -w",
     "clean": "rm -rf ./dist ./public ; mkdir -p dist",
     "analyze:bundle": "webpack-bundle-analyzer ./public/js/stats.json",
-    "deploy": "echo '!.env.json' >> .npmignore ; now ; sed -i '$ d' .npmignore"
+    "deploy": "echo '!.env.json' >> .npmignore ; now ; sed -i '$ d' .npmignore",
+    "prepublish": "npm-run-all build"
   },
   "bin": {
     "ical-merge": "./cli.js"
