@@ -4,6 +4,7 @@ import 'whatwg-fetch';
 import 'classlist-polyfill';
 import 'element-dataset';
 import 'url-search-params-polyfill';
+import 'raf/polyfill';
 import '../assets/spinner.gif';
 
 import React from 'react';
