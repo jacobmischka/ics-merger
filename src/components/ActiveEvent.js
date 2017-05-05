@@ -237,7 +237,7 @@ export default class ActiveEvent extends CalendarEvent {
 						background-color: #fafafa;
 						border: 1px solid grey;
 						padding: 0;
-						transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+						transform: translate(50vw, 50vh) translate(-50%, -50%);
 						box-shadow: 0 0 20px 0 ${COLORS.SHADOW};
 					}
 					

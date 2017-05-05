@@ -4,6 +4,6 @@
 		["es2015", { "modules": false }]
 	],
 	"plugins": [
-		"styled-jsx/babel"
+		"styled-jsx-postcss/babel"
 	]
 }

@@ -41,6 +41,11 @@
   "engines": {
     "node": ">6.8.1"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "IE 9"
+  ],
   "author": "Jacob Mischka <jacob@mischka.me>",
   "license": "MIT",
   "dependencies": {
@@ -65,6 +70,7 @@
   },
   "devDependencies": {
     "apply-loader": "^1.0.0",
+    "autoprefixer": "^6.7.7",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.7",
@@ -91,6 +97,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-watch": "^3.2.2",
     "style-loader": "^0.16.1",
+    "styled-jsx-postcss": "^0.2.0",
     "url-search-params-polyfill": "^1.1.0",
     "webpack": "^2.2.0",
     "webpack-bundle-analyzer": "^2.1.1",
