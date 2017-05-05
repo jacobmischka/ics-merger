@@ -103,6 +103,11 @@ export default class FullCalendar extends Component {
 						height: auto !important;
 					}
 					
+					.fc .fc-list-table .fc-list-heading,
+					.fc .fc-list-table .fc-list-heading .fc-widget-header {
+						width: 100%;
+					}
+					
 					@media (max-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
 						.fc .fc-toolbar {
 							justify-content: space-around;
@@ -220,13 +225,21 @@ export default class FullCalendar extends Component {
 			defaultView,
 			navLinks: true,
 			eventRender(calEvent, element, view){
-				let div = document.createElement('div');
-				div.className = 'event-container';
-				if(view && view.name && view.name.startsWith('agenda'))
-					div.style.position = 'absolute';
+				let container, calEventElement;
+				if (view && view.name && view.name.startsWith('list')) {
+					container = document.createElement('tr');
+					calEventElement = 'td';
+				} else {
+					container = document.createElement('div');
+					calEventElement = 'div';
+				}
+				container.className = 'event-container';
+				if (view && view.name && view.name.startsWith('agenda'))
+					container.style.position = 'absolute';
 				render(<CalendarEvent event={calEvent} view={view}
-					setActive={setActiveEvent} />, div);
-				return div;
+					setActive={setActiveEvent} containerElement={calEventElement} />,
+					container);
+				return container;
 			}
 		}, this.props.fullcalendarConfig));
 	}

@@ -26,17 +26,19 @@ export default class CalendarEvent extends Component {
 			border: `1px solid ${color.rgb().string()}`,
 			backgroundColor: color.alpha(0.3).rgb().string()
 		};
+		
+		const ContainerElement = this.props.containerElement || 'div';
 
 		return (
-			<div className={className} style={style}
+			<ContainerElement className={className} style={style}
 					title={this.props.event.calendar.calname}
 					onClick={this.handleClick}
-					ref={div => this.container = div}>
+					ref={container => this.container = container}>
 				<span className="event-time">{eventTime}</span>
 				<span className="event-title">{this.props.event.title}</span>
 				<style jsx>
 				{`
-					.event {
+					:global(.event) {
 						font-family: 'Noto Sans', sans-serif;
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.primary});
 						padding: 0.5em;
@@ -60,7 +62,7 @@ export default class CalendarEvent extends Component {
 						white-space: pre-line;
 					}
 					
-					.event.all-day .event-time {
+					:global(.event.all-day) .event-time {
 						display: inline-block;
 						text-align: center;
 						background: #bfbfbf;
@@ -71,13 +73,13 @@ export default class CalendarEvent extends Component {
 					
 					@media print {
 						
-						.event {
+						:global(.event) {
 							font-size: 0.6em;
 						}
 					}
 				`}
 				</style>
-			</div>
+			</ContainerElement>
 		);
 	}
 
@@ -127,5 +129,6 @@ export default class CalendarEvent extends Component {
 CalendarEvent.propTypes = {
 	event: PropTypes.object.isRequired,
 	view: PropTypes.object,
-	setActive: PropTypes.func
+	setActive: PropTypes.func,
+	containerElement: PropTypes.string
 };
