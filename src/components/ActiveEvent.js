@@ -111,6 +111,13 @@ export default class ActiveEvent extends CalendarEvent {
 							{this.props.event.calendar.calname}
 						</span>
 						{this.props.event.title}
+				{
+					this.props.event.location && (
+						<span className="event-location">
+							{this.props.event.location}
+						</span>
+					)
+				}
 					</span>
 					<button type="button" className="close" onClick={this.handleClick}
 							title="Close active event">
@@ -164,6 +171,7 @@ export default class ActiveEvent extends CalendarEvent {
 					.event-date-time {
 						margin: 0;
 						text-align: center;
+						min-width: 200px;
 					}
 					
 					.event-date {
@@ -183,6 +191,11 @@ export default class ActiveEvent extends CalendarEvent {
 					
 					.event-title {
 						word-wrap: break-word;
+						max-width: 80%;
+					}
+					
+					.event-location {
+						display: none;
 					}
 					
 					.event-desc {
@@ -258,6 +271,21 @@ export default class ActiveEvent extends CalendarEvent {
 						display: block;
 					}
 					
+					.expanded .event-location {
+						font-size: 0.6em;
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						text-align: left;
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
+					}
+					
+					.expanded .event-location::before {
+						content: 'Location:';
+						display: block;
+						margin: 0 0 0.5em 0;
+					}
+					
 					.expanded .event-desc {
 						padding: 1em 2em 2em;
 						overflow-y: auto;
@@ -277,6 +305,15 @@ export default class ActiveEvent extends CalendarEvent {
 						
 						.expanded .event-title {
 							margin-right: 1em;
+						}
+						
+						.expanded .event-location {
+							flex-direction: row;
+							align-items: flex-start;
+						}
+						
+						.expanded .event-location::before {
+							margin: 0 0.75em 0 0;
 						}
 						
 						.expanded .event-date-time {

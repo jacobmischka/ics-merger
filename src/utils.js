@@ -42,12 +42,12 @@ export function getEventSources(calendars){
 			let googleCalendarId = calendar.googleCalendarId;
 			if(googleCalendarId){
 				eventSources.push({
-					googleCalendarId: googleCalendarId,
-					color: color,
+					googleCalendarId,
+					color,
 					eventDataTransform(eventData){
 						return Object.assign(eventData, {
-							color: color,
-							calendar: calendar
+							color,
+							calendar
 						});
 					}
 				});
@@ -56,11 +56,11 @@ export function getEventSources(calendars){
 				for(let subCalendar of calendar.subCalendars){
 					eventSources.push({
 						googleCalendarId: subCalendar.googleCalendarId,
-						color: color,
+						color,
 						eventDataTransform(eventData){
 							return Object.assign(eventData, {
-								color: color,
-								calendar: calendar
+								color,
+								calendar: subCalendar
 							});
 						}
 					});

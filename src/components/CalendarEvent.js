@@ -61,10 +61,12 @@ export default class CalendarEvent extends Component {
 					}
 					
 					.event.all-day .event-time {
+						display: inline-block;
 						text-align: center;
 						background: #bfbfbf;
 						border-radius: 2px;
 						padding: 0.15em 0.5em;
+						white-space: nowrap;
 					}
 					
 					@media print {
