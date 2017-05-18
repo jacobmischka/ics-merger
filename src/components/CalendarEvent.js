@@ -7,13 +7,9 @@ import { OPACITIES } from '../constants.js';
 export default class CalendarEvent extends Component {
 	constructor(props){
 		super(props);
-		this.state = {
-			active: false
-		};
 
 		this.getEventTime = this.getEventTime.bind(this);
 		this.getClassName = this.getClassName.bind(this);
-		this.handleClick = this.handleClick.bind(this);
 	}
 
 	render(){
@@ -31,9 +27,7 @@ export default class CalendarEvent extends Component {
 
 		return (
 			<ContainerElement className={className} style={style}
-					title={this.props.event.calendar.calname}
-					onClick={this.handleClick}
-					ref={container => this.container = container}>
+					title={this.props.event.calendar.calname}>
 				<span className="event-time">{eventTime}</span>
 				<span className="event-title">{this.props.event.title}</span>
 				<style jsx>
@@ -113,22 +107,10 @@ export default class CalendarEvent extends Component {
 
 		return className;
 	}
-
-	handleClick(event){
-		event.preventDefault();
-
-		this.props.setActive(this.props.event, this.container);
-		this.setState(state => {
-			return {
-				active: !state.active
-			};
-		});
-	}
 }
 
 CalendarEvent.propTypes = {
 	event: PropTypes.object.isRequired,
 	view: PropTypes.object,
-	setActive: PropTypes.func,
 	containerElement: PropTypes.string
 };

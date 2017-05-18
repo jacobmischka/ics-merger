@@ -2,30 +2,30 @@ import ICAL from 'ical.js';
 
 import { icalMerger } from '../package.json';
 
-export default function merge(inputs, options = {}){
-	if(!Array.isArray(inputs))
+export default function merge(inputs, options = {}) {
+	if (!Array.isArray(inputs))
 		inputs = [...arguments];
 
 	let calendar;
-	for(let input of inputs){
+	for(let input of inputs) {
 		try {
 			let jcal = ICAL.parse(input);
 			let cal = new ICAL.Component(jcal);
 
-			if(!calendar) {
+			if (!calendar) {
 				calendar = cal;
 				calendar.updatePropertyWithValue('prodid', icalMerger.prodid);
 				calendar.updatePropertyWithValue('version', icalMerger.version);
 
-				if(options.calname)
+				if (options.calname)
 					calendar.updatePropertyWithValue('x-wr-calname', options.calname);
-				if(options.timezone)
+				if (options.timezone)
 					calendar.updatePropertyWithValue('x-wr-timezone', options.timezone);
-				if(options.caldesc)
+				if (options.caldesc)
 					calendar.updatePropertyWithValue('x-wr-caldesc', options.caldesc);
 			}
 			else {
-				for(let vevent of cal.getAllSubcomponents('vevent')){
+				for(let vevent of cal.getAllSubcomponents('vevent')) {
 					calendar.addSubcomponent(vevent);
 				}
 			}
@@ -35,7 +35,7 @@ export default function merge(inputs, options = {}){
 		}
 	}
 
-	if(!calendar){
+	if (!calendar) {
 		console.error('No icals parsed successfully');
 		return;
 	}

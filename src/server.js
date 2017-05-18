@@ -22,7 +22,7 @@ app.get('/.env.json', (req, res) => {
 });
 
 app.get('/combine.ics', (req, res) => {
-	if(!req.query.urls){
+	if (!req.query.urls) {
 		res.sendStatus(400);
 		return;
 	}
@@ -32,7 +32,7 @@ app.get('/combine.ics', (req, res) => {
 	setHeaders(res);
 
 	let options = {};
-	if(dotenv && dotenv.combine)
+	if (dotenv && dotenv.combine)
 		options = Object.assign({}, dotenv.combine);
 	options = Object.assign({}, options, req.query);
 
@@ -44,15 +44,15 @@ app.get('/combine.ics', (req, res) => {
 	});
 });
 
-if(dotenv && dotenv.calendars){
-	for(let calendarName in dotenv.calendars){
+if (dotenv && dotenv.calendars) {
+	for(let calendarName in dotenv.calendars) {
 		let calendarConfig = dotenv.calendars[calendarName];
 
 		respondWithCalendar(calendarConfig, calendarName);
 	}
 
-	if(dotenv.calendarGroups){
-		for(let calendarName in dotenv.calendarGroups){
+	if (dotenv.calendarGroups) {
+		for(let calendarName in dotenv.calendarGroups) {
 			let calendarConfig = dotenv.calendarGroups[calendarName];
 
 			respondWithCalendar(calendarConfig, calendarName);
@@ -66,30 +66,30 @@ app.get('/:calendarId', (req, res) => {
 	});
 });
 
-function respondWithCalendar(calendar, calendarName){
+function respondWithCalendar(calendar, calendarName) {
 	app.get(`/${calendarName}.ics`, (req, res) => {
 		const isVisible = calendar =>
 			isCalendarVisible(calendar, req.query.key);
 		
-		if(!calendar || !isVisible(calendar)){
+		if (!calendar || !isVisible(calendar)) {
 			res.sendStatus(501);
 			return;
 		}
 
 		let urls = [];
-		if(calendar.url)
+		if (calendar.url)
 			urls.push(calendar.url);
-		if(calendar.calendars)
-			for(let calId of calendar.calendars){
+		if (calendar.calendars)
+			for(let calId of calendar.calendars) {
 				let calendar = dotenv.calendars[calId];
-				if(isVisible(calendar)){
-					if(calendar.url)
+				if (isVisible(calendar)) {
+					if (calendar.url)
 						urls.push(calendar.url);
-					if(calendar.subCalendars)
+					if (calendar.subCalendars)
 						urls = urls.concat(calendar.subCalendars.filter(isVisible).map(subCal => subCal.url));
 				}
 			}
-		if(calendar.subCalendars)
+		if (calendar.subCalendars)
 			urls = urls.concat(calendar.subCalendars.filter(isVisible).map(subCal => subCal.url));
 
 		let icals = getIcalsFromUrls(urls);
@@ -107,7 +107,7 @@ function respondWithCalendar(calendar, calendarName){
 	});
 }
 
-function setHeaders(res){
+function setHeaders(res) {
 	res.set('Expires', 'Mon, 01 Jan 1990 00:00:00 GMT');
 	res.set('Date', new Date().toGMTString());
 	res.set('Content-Type', 'text/calendar; charset=UTF-8');
@@ -123,9 +123,9 @@ app.listen(port, () => {
 	console.log(`Listening on ${port}`);
 });
 
-function getIcalsFromUrls(urls){
+function getIcalsFromUrls(urls) {
 	let promises = [];
-	for(let url of urls){
+	for(let url of urls) {
 		promises.push(fetch(url).then(response => {
 			return response.text();
 		}).then(text => {

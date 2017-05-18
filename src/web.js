@@ -26,7 +26,8 @@ render((
 			<Route path="/:calendarId" render={({match, location}) => 
 				<App envFile="/.env.json"
 					search={location.search}
-					calendarId={match.params.calendarId} />} />
+					calendarId={match.params.calendarId}
+					eventId={location.hash.substring(1)} />} />
 		</div>
 	</Router>
 ), document.getElementById('app'));

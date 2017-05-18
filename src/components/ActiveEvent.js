@@ -67,7 +67,16 @@ export default class ActiveEvent extends CalendarEvent {
 	render(){
 		let style;
 		if(!this.state.expanded){
-			let rect = this.props.originalElement.getBoundingClientRect();
+			let rect = this.props.originalElement
+				? this.props.originalElement.getBoundingClientRect()
+				: {
+					top: 1,
+					right: 1,
+					bottom: 1,
+					left: 1,
+					width: 0,
+					height: 0
+				};
 
 			let left = rect.left - 1;
 			let top = rect.top - 1;

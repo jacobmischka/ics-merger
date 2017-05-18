@@ -1,29 +1,29 @@
 import colorString from 'color-string';
 
-export function isCalendarVisible(calendar, keys){
-	if(!Array.isArray(keys))
+export function isCalendarVisible(calendar, keys) {
+	if (!Array.isArray(keys))
 		keys = [keys];
 
 	return calendar && (!calendar.private || keys.includes(calendar.key));
 }
 
-export function filterHiddenCalendars(config, keys){
+export function filterHiddenCalendars(config, keys) {
 	
 	const isVisible = calendar => isCalendarVisible(calendar, keys);
 		
-	for(const groupId in config.calendarGroups){
+	for(const groupId in config.calendarGroups) {
 		let group = config.calendarGroups[groupId];
-		if(isVisible(group) && group.calendars)
+		if (isVisible(group) && group.calendars)
 			group.calendars = group.calendars.filter(calendarId =>
 				isVisible(config.calendars[calendarId]));
 		else
 			delete config.calendarGroups[groupId];
 	}
 	
-	for(const calendarId in config.calendars){
+	for(const calendarId in config.calendars) {
 		let calendar = config.calendars[calendarId];
-		if(isVisible(calendar)){
-			if(calendar.subCalendars)
+		if (isVisible(calendar)) {
+			if (calendar.subCalendars)
 				calendar.subCalendars = calendar.subCalendars.filter(isVisible);
 		}
 		else
@@ -33,18 +33,18 @@ export function filterHiddenCalendars(config, keys){
 	return config;
 }
 
-export function getEventSources(calendars){
+export function getEventSources(calendars) {
 	let eventSources = [];
 	
-	for(let calendar of calendars){
-		if(calendar){
+	for(let calendar of calendars) {
+		if (calendar) {
 			let color = calendar.color;
 			let googleCalendarId = calendar.googleCalendarId;
-			if(googleCalendarId){
+			if (googleCalendarId) {
 				eventSources.push({
 					googleCalendarId,
 					color,
-					eventDataTransform(eventData){
+					eventDataTransform(eventData) {
 						return Object.assign(eventData, {
 							color,
 							calendar
@@ -52,12 +52,12 @@ export function getEventSources(calendars){
 					}
 				});
 			}
-			if(calendar.subCalendars){
-				for(let subCalendar of calendar.subCalendars){
+			if (calendar.subCalendars) {
+				for(let subCalendar of calendar.subCalendars) {
 					eventSources.push({
 						googleCalendarId: subCalendar.googleCalendarId,
 						color,
-						eventDataTransform(eventData){
+						eventDataTransform(eventData) {
 							return Object.assign(eventData, {
 								color,
 								calendar: subCalendar
@@ -72,21 +72,21 @@ export function getEventSources(calendars){
 	return eventSources;
 }
 
-export function nl2br(text){
+export function nl2br(text) {
 	return text.replace(/(?:\r\n|\r|\n)/g, '<br />');
 }
 
-export function ucfirst(str){
+export function ucfirst(str) {
 	return str.charAt(0).toUpperCase() + str.substring(1);
 }
 
-export function camelCaseToWords(str){
+export function camelCaseToWords(str) {
 	let result = '';
-	for(let char of str){
-		if(result === ''){
+	for(let char of str) {
+		if (result === '') {
 			result += char.toUpperCase();
 		}
-		else if(char === char.toUpperCase()){
+		else if (char === char.toUpperCase()) {
 			result += ' ' + char.toLowerCase();
 		}
 		else {
@@ -96,26 +96,26 @@ export function camelCaseToWords(str){
 	return result;
 }
 
-export function rgbaOverRgb(rgba, rgb = [255, 255, 255]){
+export function rgbaOverRgb(rgba, rgb = [255, 255, 255]) {
 	rgba = colorToArray(rgba);
 	rgb = colorToArray(rgb);
 
-	if(rgba.length < 4 || rgba[rgba.length - 1] === 1)
+	if (rgba.length < 4 || rgba[rgba.length - 1] === 1)
 		return colorString.to.rgb(rgba);
 
 	const rgbaAlpha = rgba.pop();
 
 	let resultPieces = [];
-	for(let i = 0; i < rgb.length; i++){
+	for(let i = 0; i < rgb.length; i++) {
 		resultPieces.push(rgb[i] + (rgba[i] - rgb[i]) * rgbaAlpha);
 	}
 
 	return colorString.to.rgb(resultPieces);
 }
 
-function colorToArray(color){
-	if(!Array.isArray(color)){
-		switch(typeof color){
+function colorToArray(color) {
+	if (!Array.isArray(color)) {
+		switch(typeof color) {
 			case 'object': return color.array();
 			case 'string': return colorString.get(color).value;
 		}

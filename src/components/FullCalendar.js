@@ -152,9 +152,9 @@ export default class FullCalendar extends Component {
 			</div>
 		);
 	}
-
+	
 	shouldComponentUpdate(nextProps){
-		if(this.props.apiKey !== nextProps.apiKey)
+		if (this.props.apiKey !== nextProps.apiKey)
 			return true;
 
 		let eventSourcesToAdd = nextProps.eventSources.filter(newEventSource =>
@@ -171,10 +171,10 @@ export default class FullCalendar extends Component {
 
 		const calendar = $(`#${this.state.calendarId}`);
 
-		if(eventSourcesToRemove && eventSourcesToRemove.length > 0)
+		if (eventSourcesToRemove && eventSourcesToRemove.length > 0)
 			calendar.fullCalendar('removeEventSources', eventSourcesToRemove);
 
-		if(eventSourcesToAdd && eventSourcesToAdd.length > 0){
+		if (eventSourcesToAdd && eventSourcesToAdd.length > 0){
 			eventSourcesToAdd.map(eventSourceToAdd => {
 				calendar.fullCalendar('addEventSource', eventSourceToAdd);
 			});
@@ -185,6 +185,19 @@ export default class FullCalendar extends Component {
 
 	componentDidMount(){
 		this.createCalendar();
+	}
+	
+	componentWillReceiveProps(nextProps) {
+		const { eventId, setActiveEvent } = this.props;
+		
+		const calendar = $(`#${this.state.calendarId}`);
+		
+		if (nextProps.eventId && nextProps.eventId !== eventId) {
+			let events = calendar.fullCalendar('clientEvents', nextProps.eventId);
+			if (events.length > 0) {
+				setActiveEvent(events[0]);
+			}
+		}
 	}
 
 	componentWillUpdate(){
@@ -204,15 +217,17 @@ export default class FullCalendar extends Component {
 	}
 
 	createCalendar(){
-		const { setActiveEvent } = this.props;
+		const { eventId, setActiveEventId, setActiveEvent } = this.props;
 		let { defaultView } = this.props;
 
-		if(!defaultView)
+		if (!defaultView)
 			defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP
 				? 'month'
 				: 'listWeek';
+		
+		const calendar = $(`#${this.state.calendarId}`);
 
-		$(`#${this.state.calendarId}`).fullCalendar(Object.assign({
+		calendar.fullCalendar(Object.assign({
 			googleCalendarApiKey: this.props.apiKey,
 			eventSources: this.props.eventSources,
 			height: 'auto',
@@ -233,13 +248,30 @@ export default class FullCalendar extends Component {
 					container = document.createElement('div');
 					calEventElement = 'div';
 				}
+				
 				container.className = 'event-container';
+				
 				if (view && view.name && view.name.startsWith('agenda'))
 					container.style.position = 'absolute';
+					
 				render(<CalendarEvent event={calEvent} view={view}
-					setActive={setActiveEvent} containerElement={calEventElement} />,
+					containerElement={calEventElement} />,
 					container);
 				return container;
+			},
+			eventClick(calEvent, event) {
+				setActiveEventId(calEvent.id, event.target);
+				setActiveEvent(calEvent);
+			},
+			loading(isLoading) {
+				if (!isLoading) {
+					if (eventId) {
+						let events = calendar.fullCalendar('clientEvents', eventId);
+						if (events.length > 0) {
+							setActiveEvent(events[0]);
+						}
+					}
+				}
 			}
 		}, this.props.fullcalendarConfig));
 	}
@@ -248,7 +280,9 @@ export default class FullCalendar extends Component {
 FullCalendar.propTypes = {
 	apiKey: PropTypes.string.isRequired,
 	eventSources: PropTypes.array.isRequired,
+	setActiveEventId: PropTypes.func,
 	setActiveEvent: PropTypes.func,
+	eventId: PropTypes.string,
 	fullcalendarConfig: PropTypes.object,
 	defaultView: PropTypes.string
 };

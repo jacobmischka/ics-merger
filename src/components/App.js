@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
 import FullCalendar from './FullCalendar.js';
@@ -11,8 +12,8 @@ import Subscription from './Subscription.js';
 import { BREAKPOINTS } from '../constants.js';
 import { getEventSources, filterHiddenCalendars } from '../utils.js';
 
-export default class App extends Component {
-	constructor(props){
+class App extends Component {
+	constructor(props) {
 		super(props);
 		this.state = {
 			GOOGLE_CALENDAR_API_KEY: '',
@@ -27,12 +28,13 @@ export default class App extends Component {
 			loaded: null
 		};
 
+		this.handleSetActiveEventId = this.handleSetActiveEventId.bind(this);
 		this.handleSetActiveEvent = this.handleSetActiveEvent.bind(this);
 		this.handleUnsetActiveEvent = this.handleUnsetActiveEvent.bind(this);
 		this.handleChangeCustomCalendarIds = this.handleChangeCustomCalendarIds.bind(this);
 	}
 	
-	componentDidMount(){
+	componentDidMount() {
 		fetch(this.props.envFile)
 			.then(response => {
 				return response.json();
@@ -42,7 +44,7 @@ export default class App extends Component {
 
 				filterHiddenCalendars(dotenv, keys);
 				this.setState(Object.assign(dotenv, {loaded: true}));
-				if(dotenv.GOOGLE_ANALYTICS_TRACKING_ID && window.ga){
+				if (dotenv.GOOGLE_ANALYTICS_TRACKING_ID && window.ga) {
 					window.ga('create', dotenv.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
 					window.ga('send', 'pageview');
 				}
@@ -52,13 +54,18 @@ export default class App extends Component {
 			});
 	}
 	
-	getCalendars(calendarId){
+	componentWillReceiveProps(nextProps) {
+		if (!nextProps.eventId && this.state.activeEvent)
+			this.handleUnsetActiveEvent(false);
+	}
+	
+	getCalendars(calendarId) {
 		// FIXME: This doesn't work if a calendar and a group share the same id
 		let calendar = calendarId === 'custom'
 			? this.state.customCalendar
 			: this.state.calendarGroups[calendarId];
 		let calendars;
-		if(calendar){
+		if (calendar) {
 			calendars = calendar.calendars.map(id => this.state.calendars[id]);
 		}
 		else {
@@ -69,13 +76,13 @@ export default class App extends Component {
 		return { calendar, calendars };
 	}
 
-	render(){
-		const { calendarId, search } = this.props;
+	render() {
+		const { calendarId, eventId, search } = this.props;
 		const { calendar, calendars } = this.getCalendars(calendarId);
 		const searchParams = new URLSearchParams(this.props.search.slice(1));
 		const calendarView = searchParams.get('view');
 
-		if(calendar && calendars){
+		if (calendar && calendars) {
 			let eventSources = getEventSources(calendars);
 			
 
@@ -122,7 +129,7 @@ export default class App extends Component {
 			const icsFilename = calendarId === 'custom'
 				? `combine.ics?${this.state.customCalendar.calendars
 					.map(calId => {
-						if(this.state.calendars[calId].url){
+						if (this.state.calendars[calId].url) {
 							return `urls[]=${this.state.calendars[calId].url}`;
 						}
 						else {
@@ -140,7 +147,9 @@ export default class App extends Component {
 					<FullCalendar apiKey={this.state.GOOGLE_CALENDAR_API_KEY}
 						eventSources={eventSources}
 						setActiveEvent={this.handleSetActiveEvent}
-						defaultView={calendarView} />
+						setActiveEventId={this.handleSetActiveEventId}
+						defaultView={calendarView}
+						eventId={eventId} />
 					<Subscription icsFilename={icsFilename} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
 			{
@@ -245,7 +254,7 @@ export default class App extends Component {
 			);
 		}
 		else {
-			switch(this.state.loaded){
+			switch(this.state.loaded) {
 				case null:
 				default:
 					return (
@@ -280,29 +289,46 @@ export default class App extends Component {
 			}
 		}
 	}
+	
+	handleSetActiveEventId(id, container) {
+		let newLocation = Object.assign({}, this.props.location);
+		newLocation.hash = id;
+		
+		this.props.history.push(newLocation);
+		
+		if (container) {
+			this.setState({
+				activeEventOriginalElement: container
+			});
+		}
+	}
 
-	handleSetActiveEvent(calEvent, element){
+	handleSetActiveEvent(calEvent) {
+		
 		this.setState({
-			activeEvent: calEvent,
-			activeEventOriginalElement: element
+			activeEvent: calEvent
 		});
 	}
 
-	handleUnsetActiveEvent(){
+	handleUnsetActiveEvent(shouldPush = true) {
+		if (shouldPush) {
+			this.handleSetActiveEventId('');
+		}
+		
 		this.setState({
 			activeEvent: null,
 			activeEventOriginalPosition: null
 		});
 	}
 
-	handleChangeCustomCalendarIds(event){
+	handleChangeCustomCalendarIds(event) {
 		const checkbox = event.target;
 
 		this.setState(previousState => {
 			let customCalendar = Object.assign({}, previousState.customCalendar);
 			customCalendar.calendars = customCalendar.calendars.slice();
-			if(checkbox.checked){
-				if(!customCalendar.calendars.includes(checkbox.value)){
+			if (checkbox.checked) {
+				if (!customCalendar.calendars.includes(checkbox.value)) {
 					customCalendar.calendars.push(checkbox.value);
 					return {
 						customCalendar
@@ -310,7 +336,7 @@ export default class App extends Component {
 				}
 			}
 			else {
-				if(customCalendar.calendars.includes(checkbox.value)){
+				if (customCalendar.calendars.includes(checkbox.value)) {
 					customCalendar.calendars.splice(customCalendar.calendars.indexOf(checkbox.value), 1);
 					return {
 						customCalendar
@@ -322,7 +348,18 @@ export default class App extends Component {
 }
 
 App.propTypes = {
+	envFile: PropTypes.string.isRequired,
 	calendarId: PropTypes.string,
-	envFile: PropTypes.string,
-	search: PropTypes.string
+	eventId: PropTypes.string,
+	search: PropTypes.string,
+	
+	location: PropTypes.shape({
+		hash: PropTypes.string,
+	}),
+	history: PropTypes.shape({
+		push: PropTypes.func.isRequired,
+		listen: PropTypes.func.isRequired
+	}).isRequired
 };
+
+export default withRouter(App);
