@@ -10,13 +10,14 @@ import 'fullcalendar/dist/fullcalendar.css';
 import uniqueId from 'lodash/uniqueId';
 
 import CalendarEvent from './CalendarEvent.js';
+import EmailGenerator from './EmailGenerator.js';
 
 import { BREAKPOINTS, COLORS, OPACITIES } from '../constants.js';
 
 const fcButtonHoverBackgroundColor = new Color(COLORS.ACCENT).alpha(OPACITIES.SECONDARY);
 
 export default class FullCalendar extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
 			calendarId: uniqueId()
@@ -24,136 +25,144 @@ export default class FullCalendar extends Component {
 
 		this.createCalendar = this.createCalendar.bind(this);
 		this.destroyCalendar = this.destroyCalendar.bind(this);
+		this.fetchCurrentEvents = this.fetchCurrentEvents.bind(this);
 	}
 
-	render(){
+	render() {
 		return (
-			<div id={this.state.calendarId}>
-				<style jsx global>
-				{`
-					h2 {
-						font-size: 2em;
-						font-weight: normal;
-					}
-					
-					.event-container {
-						background-color: ${COLORS.BACKGROUND};
-						overflow: hidden;
-					}
-					
-					.fc .fc-toolbar {
-						display: flex;
-						justify-content: space-between;
-						flex-wrap: wrap;
-					}
-					
-					.fc .fc-toolbar .fc-left {
-						order: 1;
-					}
-					
-					.fc .fc-toolbar .fc-center {
-						order: 2;
-					}
-					
-					.fc .fc-toolbar .fc-right {
-						order: 3;
-					}
-					
-					.fc button {
-						height: auto;
-					}
-					
-					.fc .fc-button {
-						font-size: 1.1em;
-						padding: 0.5em;
-					}
-										
-					.fc .fc-button.fc-state-default {
-						background: transparent;
-						text-shadow: none;
-						box-shadow: none;
-						border: 2px solid ${COLORS.ACCENT};
-						color: ${COLORS.ACCENT};
-					}
-					
-					.fc .fc-button.fc-state-active {
-						color: white;
-						background: ${COLORS.ACCENT};
-					}
-					
-					.fc .fc-button:hover,
-					.fc .fc-button:focus {
-						outline: none;
-						color: white;
-						background: ${fcButtonHoverBackgroundColor}
-					}
-					
-					.fc .fc-button.fc-state-disabled {
-						cursor: not-allowed;
-						background: none;
-						color: ${COLORS.ACCENT};
-					}
-					
-					.fc-clear {
-						display: none;
-					}
-					
-					.fc-list-view .fc-scroller {
-						/* HACK: Workaround for https://github.com/fullcalendar/fullcalendar/issues/3346 */
-						height: auto !important;
-					}
-					
-					.fc .fc-list-table .fc-list-heading,
-					.fc .fc-list-table .fc-list-heading .fc-widget-header {
-						width: 100%;
-					}
-					
-					@media (max-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
+			<div>
+				<div id={this.state.calendarId}>
+					<style jsx global>
+					{`
+						h2 {
+							font-size: 2em;
+							font-weight: normal;
+						}
+						
+						.event-container {
+							background-color: ${COLORS.BACKGROUND};
+							overflow: hidden;
+						}
+						
 						.fc .fc-toolbar {
-							justify-content: space-around;
+							display: flex;
+							justify-content: space-between;
+							flex-wrap: wrap;
 						}
 						
 						.fc .fc-toolbar .fc-left {
-							text-align: center;
-							width: 100%;
-						}
-					}
-					
-					@media print {
-						
-						h2 {
-							font-size: 1.25em;
+							order: 1;
 						}
 						
-						.fc .fc-body .fc-day-number {
-							font-size: 0.75em;
+						.fc .fc-toolbar .fc-center {
+							order: 2;
 						}
 						
-						.fc .fc-head-container.fc-widget-header,
-						.fc .fc-list-table .fc-widget-header {
-							font-size: 0.7em;
-						}
-						
-						.fc .fc-list-table .fc-widget-header {
-							padding: 0.2em 0.75em;
-						}
-
-						.fc .fc-toolbar .fc-center,
 						.fc .fc-toolbar .fc-right {
+							order: 3;
+						}
+						
+						.fc button {
+							height: auto;
+						}
+						
+						.fc .fc-button {
+							font-size: 1.1em;
+							padding: 0.5em;
+						}
+											
+						.fc .fc-button.fc-state-default {
+							background: transparent;
+							text-shadow: none;
+							box-shadow: none;
+							border: 2px solid ${COLORS.ACCENT};
+							color: ${COLORS.ACCENT};
+						}
+						
+						.fc .fc-button.fc-state-active {
+							color: white;
+							background: ${COLORS.ACCENT};
+						}
+						
+						.fc .fc-button:hover,
+						.fc .fc-button:focus {
+							outline: none;
+							color: white;
+							background: ${fcButtonHoverBackgroundColor}
+						}
+						
+						.fc .fc-button.fc-state-disabled {
+							cursor: not-allowed;
+							background: none;
+							color: ${COLORS.ACCENT};
+						}
+						
+						.fc-clear {
 							display: none;
 						}
 						
-						.fc-today {
-							background: none !important;
+						.fc-list-view .fc-scroller {
+							/* HACK: Workaround for https://github.com/fullcalendar/fullcalendar/issues/3346 */
+							height: auto !important;
 						}
-					}
-				`}
-				</style>
+						
+						.fc .fc-list-table .fc-list-heading,
+						.fc .fc-list-table .fc-list-heading .fc-widget-header {
+							width: 100%;
+						}
+						
+						@media (max-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
+							.fc .fc-toolbar {
+								justify-content: space-around;
+							}
+							
+							.fc .fc-toolbar .fc-left {
+								text-align: center;
+								width: 100%;
+							}
+						}
+						
+						@media print {
+							
+							h2 {
+								font-size: 1.25em;
+							}
+							
+							.fc .fc-body .fc-day-number {
+								font-size: 0.75em;
+							}
+							
+							.fc .fc-head-container.fc-widget-header,
+							.fc .fc-list-table .fc-widget-header {
+								font-size: 0.7em;
+							}
+							
+							.fc .fc-list-table .fc-widget-header {
+								padding: 0.2em 0.75em;
+							}
+
+							.fc .fc-toolbar .fc-center,
+							.fc .fc-toolbar .fc-right {
+								display: none;
+							}
+							
+							.fc-today {
+								background: none !important;
+							}
+						}
+					`}
+					</style>
+				</div>
+		{
+			this.props.admin && (
+				<EmailGenerator getEvents={this.fetchCurrentEvents} />
+			)
+		}
 			</div>
 		);
 	}
 	
-	shouldComponentUpdate(nextProps){
+	shouldComponentUpdate(nextProps) {
 		if (this.props.apiKey !== nextProps.apiKey)
 			return true;
 
@@ -174,7 +183,7 @@ export default class FullCalendar extends Component {
 		if (eventSourcesToRemove && eventSourcesToRemove.length > 0)
 			calendar.fullCalendar('removeEventSources', eventSourcesToRemove);
 
-		if (eventSourcesToAdd && eventSourcesToAdd.length > 0){
+		if (eventSourcesToAdd && eventSourcesToAdd.length > 0) {
 			eventSourcesToAdd.map(eventSourceToAdd => {
 				calendar.fullCalendar('addEventSource', eventSourceToAdd);
 			});
@@ -183,7 +192,7 @@ export default class FullCalendar extends Component {
 		return false;
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		this.createCalendar();
 	}
 	
@@ -200,23 +209,23 @@ export default class FullCalendar extends Component {
 		}
 	}
 
-	componentWillUpdate(){
+	componentWillUpdate() {
 		this.destroyCalendar();
 	}
 
-	componentDidUpdate(){
+	componentDidUpdate() {
 		this.createCalendar();
 	}
 
-	componentWillUnmount(){
+	componentWillUnmount() {
 		this.destroyCalendar();
 	}
 
-	destroyCalendar(){
+	destroyCalendar() {
 		$(`#${this.state.calendarId}`).fullCalendar('destroy');
 	}
 
-	createCalendar(){
+	createCalendar() {
 		const { eventId, setActiveEventId, setActiveEvent } = this.props;
 		let { defaultView } = this.props;
 
@@ -239,7 +248,7 @@ export default class FullCalendar extends Component {
 			},
 			defaultView,
 			navLinks: true,
-			eventRender(calEvent, element, view){
+			eventRender(calEvent, element, view) {
 				let container, calEventElement;
 				if (view && view.name && view.name.startsWith('list')) {
 					container = document.createElement('tr');
@@ -273,6 +282,21 @@ export default class FullCalendar extends Component {
 			}
 		}, this.props.fullcalendarConfig));
 	}
+	
+	fetchCurrentEvents() {
+		const calendar = $(`#${this.state.calendarId}`);
+		const events = calendar.fullCalendar('clientEvents');
+		const view = calendar.fullCalendar('getView');
+		
+		const viewEvents = events.filter(event => (
+			event.end >= view.start
+			&& event.start <= view.end
+		));
+		
+		viewEvents.sort((a, b) => a.start.valueOf() - b.start.valueOf());
+		
+		return viewEvents;
+	}
 }
 
 FullCalendar.propTypes = {
@@ -282,5 +306,6 @@ FullCalendar.propTypes = {
 	setActiveEvent: PropTypes.func,
 	eventId: PropTypes.string,
 	fullcalendarConfig: PropTypes.object,
-	defaultView: PropTypes.string
+	defaultView: PropTypes.string,
+	admin: PropTypes.bool
 };

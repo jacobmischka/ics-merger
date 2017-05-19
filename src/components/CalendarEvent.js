@@ -97,7 +97,7 @@ export default class CalendarEvent extends Component {
 				? end.format('h A')
 				: end.format('LT');
 
-			eventTime = `${startTime} – ${endTime}`;
+			eventTime = `${startTime} - ${endTime}`;
 		}
 
 		return eventTime;

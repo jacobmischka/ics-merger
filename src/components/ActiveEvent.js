@@ -11,10 +11,10 @@ import { rgbaOverRgb } from '../utils.js';
 const linkify = new LinkifyIt();
 
 export default class ActiveEvent extends CalendarEvent {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
-			expanded: false
+			expanded: props.expanded || false
 		};
 
 		this.getEventDate = this.getEventDate.bind(this);
@@ -23,16 +23,16 @@ export default class ActiveEvent extends CalendarEvent {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
-	getEventDate(){
+	getEventDate() {
 		const sameDay = this.props.event.start.isSame(this.props.event.end, 'day');
 		const sameDayAllDay = this.props.event.allDay && this.props.event.start
 			.isSame(this.props.event.end.clone().subtract(1, 'day'));
-		if(sameDay || sameDayAllDay){
+		if (sameDay || sameDayAllDay) {
 			return this.props.event.start.format('ll');
 		}
 		else {
 			let startDate, endDate;
-			if(this.props.event.start.isSame(this.props.event.end, 'year')){
+			if (this.props.event.start.isSame(this.props.event.end, 'year')) {
 				startDate = this.props.event.start.format('MMM D');
 				endDate = this.props.event.end.format('ll');
 
@@ -53,8 +53,8 @@ export default class ActiveEvent extends CalendarEvent {
 		}
 	}
 
-	markupDescription(description){
-		if(description && linkify.test(description)){
+	markupDescription(description) {
+		if (description && linkify.test(description)) {
 			linkify.match(description).map(match => {
 				description = description.replace(match.raw,
 					`<a href="${match.url}" target="_blank" rel="noopener noreferrer">${match.text}</a>`);
@@ -64,9 +64,9 @@ export default class ActiveEvent extends CalendarEvent {
 		return {__html: description};
 	}
 
-	render(){
+	render() {
 		let style;
-		if(!this.state.expanded){
+		if (!this.state.expanded) {
 			let rect = this.props.originalElement
 				? this.props.originalElement.getBoundingClientRect()
 				: {
@@ -97,11 +97,13 @@ export default class ActiveEvent extends CalendarEvent {
 		let eventDate = this.getEventDate();
 		let className = this.getClassName();
 		className += ' active-event';
-		if(this.state.expanded)
+		if (this.state.expanded)
 			className += ' expanded';
+		if (this.props.inline)
+			className += ' inline';
 
 		let headerStyle;
-		if(this.state.expanded){
+		if (this.state.expanded) {
 			headerStyle = {
 				borderBottom: `5px solid ${this.props.event.color}`
 			};
@@ -119,7 +121,15 @@ export default class ActiveEvent extends CalendarEvent {
 						<span className="event-calendar">
 							{this.props.event.calendar.calname}
 						</span>
-						{this.props.event.title}
+				{
+					this.props.eventLink
+						? (
+							<a href={this.props.eventLink}>
+								{this.props.event.title}
+							</a>
+						)
+						: this.props.event.title
+				}
 				{
 					this.props.event.location && (
 						<span className="event-location">
@@ -128,10 +138,14 @@ export default class ActiveEvent extends CalendarEvent {
 					)
 				}
 					</span>
+			{
+				!this.props.inline && (
 					<button type="button" className="close" onClick={this.handleClick}
 							title="Close active event">
 						×
 					</button>
+				)
+			}
 				</header>
 		{
 			this.props.event.description && (
@@ -146,7 +160,7 @@ export default class ActiveEvent extends CalendarEvent {
 						display: flex;
 						flex-direction: column;
 						font-family: 'Noto Sans', sans-serif;
-						color: rgba(0, 0, 0, ${OPACITIES.TEXT.primary});
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.PRIMARY});
 						padding: 0.5em;
 						margin: 1px;
 						cursor: pointer;
@@ -250,6 +264,12 @@ export default class ActiveEvent extends CalendarEvent {
 						box-shadow: 0 0 20px 0 ${COLORS.SHADOW};
 					}
 					
+					.active-event.expanded.inline {
+						position: relative;
+						transform: none;
+						box-shadow: none;
+					}
+					
 					.expanded header {
 						display: flex;
 						flex-direction: row;
@@ -339,11 +359,14 @@ export default class ActiveEvent extends CalendarEvent {
 		);
 	}
 
-	componentDidMount(){
+	componentDidMount() {
+		if (this.props.expanded)
+			return;
+		
 		window.requestAnimationFrame(() => {
 			window.requestAnimationFrame(() => {
 				this.setState({expanded: true});
-				if('parentIFrame' in window){
+				if ('parentIFrame' in window) {
 					window.parentIFrame.getPageInfo(parentPage => {
 						let middleOfParentViewport = parentPage.scrollTop +
 							(parentPage.clientHeight / 2) - parentPage.offsetTop;
@@ -363,14 +386,20 @@ export default class ActiveEvent extends CalendarEvent {
 		});
 	}
 
-	componentWillUnmount(){
+	componentWillUnmount() {
+		if (this.props.expanded)
+			return;
+		
 		document.removeEventListener('click', this.handleOutsideClick);
 	}
 
-	handleClick(){
+	handleClick() {
+		if (this.props.expanded)
+			return;
+		
 		window.requestAnimationFrame(() => {
 			this.setState({expanded: false}, () => {
-				if('parentIFrame' in window){
+				if ('parentIFrame' in window) {
 					window.parentIFrame.getPageInfo(false);
 				}
 				window.setTimeout(this.props.onClose, 140);
@@ -378,13 +407,13 @@ export default class ActiveEvent extends CalendarEvent {
 		});
 	}
 
-	handleOutsideClick(event){
-		if(event.defaultPrevented)
+	handleOutsideClick(event) {
+		if (event.defaultPrevented || this.props.expanded)
 			return;
 
 		window.requestAnimationFrame(() => {
 			let rect =  this.container.getBoundingClientRect();
-			if(event.clientX < rect.left || event.clientX > rect.right
+			if (event.clientX < rect.left || event.clientX > rect.right
 					|| event.clientY < rect.top || event.clientY > rect.bottom)
 				this.handleClick();
 		});
@@ -393,6 +422,9 @@ export default class ActiveEvent extends CalendarEvent {
 
 ActiveEvent.propTypes = {
 	event: PropTypes.object.isRequired,
+	eventLink: PropTypes.string,
+	expanded: PropTypes.bool,
+	inline: PropTypes.bool,
 	originalElement: PropTypes.object,
 	onClose: PropTypes.func
 };

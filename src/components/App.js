@@ -149,7 +149,8 @@ class App extends Component {
 						setActiveEvent={this.handleSetActiveEvent}
 						setActiveEventId={this.handleSetActiveEventId}
 						defaultView={calendarView}
-						eventId={eventId} />
+						eventId={eventId}
+						admin={Boolean(searchParams.get('admin'))} />
 					<Subscription icsFilename={icsFilename} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
 			{

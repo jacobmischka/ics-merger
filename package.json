@@ -52,6 +52,7 @@
     "clipboard": "^1.5.15",
     "color": "^1.0.2",
     "color-string": "^1.4.0",
+    "downloadjs": "^1.4.7",
     "express": "^4.14.0",
     "fullcalendar": "^3.0.1",
     "ical.js": "^1.2.2",

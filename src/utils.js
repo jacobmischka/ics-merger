@@ -123,3 +123,11 @@ function colorToArray(color) {
 
 	return color;
 }
+
+export function createEml(body) {
+	return `X-Unsent: 1
+Content-Type: text/html
+
+${body}
+`.replace("\n", "\r\n");
+}
