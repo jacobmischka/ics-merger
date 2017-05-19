@@ -5,14 +5,15 @@ import Color from 'color';
 import { OPACITIES } from '../constants.js';
 
 export default class CalendarEvent extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 
+		this.handleClick = this.handleClick.bind(this);
 		this.getEventTime = this.getEventTime.bind(this);
 		this.getClassName = this.getClassName.bind(this);
 	}
 
-	render(){
+	render() {
 		let eventTime = this.getEventTime();
 		let className = this.getClassName();
 
@@ -27,7 +28,9 @@ export default class CalendarEvent extends Component {
 
 		return (
 			<ContainerElement className={className} style={style}
-					title={this.props.event.calendar.calname}>
+					title={this.props.event.calendar.calname}
+					onClick={this.handleClick}
+					ref={container => this.container = container}>
 				<span className="event-time">{eventTime}</span>
 				<span className="event-title">{this.props.event.title}</span>
 				<style jsx>
@@ -77,18 +80,18 @@ export default class CalendarEvent extends Component {
 		);
 	}
 
-	getEventTime(){
+	getEventTime() {
 		let eventTime;
-		if(this.props.event.allDay){
+		if (this.props.event.allDay){
 			eventTime = 'All day';
 		}
 		else {
 			let start = this.props.event.start;
 			let end = this.props.event.end;
 			let startTime = start.format('h');
-			if(start.get('minute') !== 0)
+			if (start.get('minute') !== 0)
 				startTime += `:${start.format('mm')}`;
-			if(start.format('A') !== end.format('A'))
+			if (start.format('A') !== end.format('A'))
 				startTime += ` ${start.format('A')}`;
 			let endTime = end.get('minute') === 0
 				? end.format('h A')
@@ -100,16 +103,27 @@ export default class CalendarEvent extends Component {
 		return eventTime;
 	}
 
-	getClassName(){
+	getClassName() {
 		let className = 'event';
-		if(this.props.event.allDay)
+		if (this.props.event.allDay)
 			className += ' all-day';
 
 		return className;
 	}
+	
+	handleClick(clickEvent) {
+		clickEvent.preventDefault();
+		
+		const { event, setActiveEvent, setActiveEventId } = this.props;
+		
+		setActiveEventId(event.id, this.container);
+		setActiveEvent(event);
+	}
 }
 
 CalendarEvent.propTypes = {
+	setActiveEvent: PropTypes.func.isRequired,
+	setActiveEventId: PropTypes.func.isRequired,
 	event: PropTypes.object.isRequired,
 	view: PropTypes.object,
 	containerElement: PropTypes.string

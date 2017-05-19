@@ -255,13 +255,11 @@ export default class FullCalendar extends Component {
 					container.style.position = 'absolute';
 					
 				render(<CalendarEvent event={calEvent} view={view}
+					setActiveEventId={setActiveEventId}
+					setActiveEvent={setActiveEvent}
 					containerElement={calEventElement} />,
 					container);
 				return container;
-			},
-			eventClick(calEvent, event) {
-				setActiveEventId(calEvent.id, event.target);
-				setActiveEvent(calEvent);
 			},
 			loading(isLoading) {
 				if (!isLoading) {
