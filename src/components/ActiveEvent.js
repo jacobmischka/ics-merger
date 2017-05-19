@@ -242,7 +242,7 @@ export default class ActiveEvent extends CalendarEvent {
 					}
 					
 					.active-event.expanded {
-						font-size: 2em;
+						font-size: 1.5em;
 						background-color: #fafafa;
 						border: 1px solid grey;
 						padding: 0;
@@ -264,7 +264,6 @@ export default class ActiveEvent extends CalendarEvent {
 					
 					.expanded .event-title {
 						order: 1;
-						font-size: 1.25em;
 					}
 					
 					.expanded .event-calendar {
@@ -302,6 +301,10 @@ export default class ActiveEvent extends CalendarEvent {
 					
 					@media (min-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
 						
+						.active-event.expanded {
+							font-size: 2em;
+						}
+						
 						.event-date-time {
 							text-align: right;
 						}
@@ -314,6 +317,7 @@ export default class ActiveEvent extends CalendarEvent {
 						
 						.expanded .event-title {
 							margin-right: 1em;
+							font-size: 1.25em;
 						}
 						
 						.expanded .event-location {
