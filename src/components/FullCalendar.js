@@ -154,8 +154,9 @@ export default class FullCalendar extends Component {
 					</style>
 				</div>
 		{
-			this.props.admin && (
-				<EmailGenerator getEvents={this.fetchCurrentEvents} />
+			(this.props.admin && this.props.firebaseConfig) && (
+				<EmailGenerator getEvents={this.fetchCurrentEvents}
+					firebaseConfig={this.props.firebaseConfig} />
 			)
 		}
 			</div>
@@ -301,6 +302,14 @@ export default class FullCalendar extends Component {
 
 FullCalendar.propTypes = {
 	apiKey: PropTypes.string.isRequired,
+	firebaseConfig: PropTypes.shape({
+		apiKey: PropTypes.string,
+		authDomain: PropTypes.string,
+		databaseURL: PropTypes.string,
+		projectId: PropTypes.string,
+		storageBucket: PropTypes.string,
+		messagingSenderId: PropTypes.string
+	}),
 	eventSources: PropTypes.array.isRequired,
 	setActiveEventId: PropTypes.func,
 	setActiveEvent: PropTypes.func,

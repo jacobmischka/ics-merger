@@ -10,6 +10,7 @@ export default {
 	],
 	external: [
 		path.resolve('./.env.json'),
+		path.resolve('./service-account-key.json'),
 		'ical.js',
 		'express',
 		'node-fetch',

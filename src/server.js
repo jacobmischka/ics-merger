@@ -1,16 +1,22 @@
 /* eslint-env node */
 import express from 'express';
+import * as bodyParser from 'body-parser';
 import fetch from 'node-fetch';
+import * as firebaseAdmin from 'firebase-admin';
 
 import merge from './index.js';
 
 import { isCalendarVisible } from './utils.js';
 
+import firebaseAccountKey from '../service-account-key.json';
 import dotenv from '../.env.json';
 
 const app = express();
 
 app.use(express.static('public'));
+app.use(bodyParser.json({
+	limit: '50mb'
+}));
 
 app.get('/.env.json', (req, res) => {
 	const options = {
@@ -114,6 +120,33 @@ function setHeaders(res) {
 	res.set('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
 	res.set('Pragma', 'no-cache');
 }
+
+if (firebaseAccountKey) {
+	
+	firebaseAdmin.initializeApp({
+		credential: firebaseAdmin.credential.cert(firebaseAccountKey),
+		databaseURL: 'https://mcw-anesthesiology-calendar.firebaseio.com'
+	});
+	
+	app.post('/send-reminder', (req, res) => {
+		const { idToken } = req.body;
+		if (idToken) {
+			
+			firebaseAdmin.auth().verifyIdToken(idToken).then(decodedToken => {
+				// TODO
+				console.log(decodedToken);
+				res.send('Verified!');
+			}).catch(err => {
+				// TODO
+				console.error(err);
+				res.send('Token could not be verified');
+			});
+		} else {
+			res.send('No token');
+		}
+	});
+}
+
 
 const port = app.get('env') === 'production'
 	? 80

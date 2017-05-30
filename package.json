@@ -28,7 +28,7 @@
     "rollup-watch:server": "rollup -c rollup.config.server.js -w",
     "clean": "rm -rf ./dist ./public ; mkdir -p dist",
     "analyze:bundle": "webpack-bundle-analyzer ./public/js/stats.json",
-    "deploy": "echo '!.env.json' >> .npmignore ; now ; sed -i '$ d' .npmignore",
+    "deploy": "echo '!.env.json' >> .npmignore ; echo '!service-account-key.json' >> .npmignore ; now ; sed -i '$ d' .npmignore ; sed -i '$ d' .npmignore",
     "prepublish": "npm-run-all build"
   },
   "bin": {
@@ -49,11 +49,14 @@
   "author": "Jacob Mischka <jacob@mischka.me>",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "clipboard": "^1.5.15",
     "color": "^1.0.2",
     "color-string": "^1.4.0",
     "downloadjs": "^1.4.7",
     "express": "^4.14.0",
+    "firebase": "^4.0.0",
+    "firebase-admin": "^5.0.0",
     "fullcalendar": "^3.0.1",
     "ical.js": "^1.2.2",
     "iframe-resizer": "^3.5.14",

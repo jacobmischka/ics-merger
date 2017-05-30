@@ -17,6 +17,7 @@ class App extends Component {
 		super(props);
 		this.state = {
 			GOOGLE_CALENDAR_API_KEY: '',
+			firebaseConfig: {},
 			calendars: {},
 			calendarGroups: {},
 			customCalendar: {
@@ -145,6 +146,7 @@ class App extends Component {
 					{activeEventNode}
 					<h1>{calendar.calname}</h1>
 					<FullCalendar apiKey={this.state.GOOGLE_CALENDAR_API_KEY}
+						firebaseConfig={this.state.FIREBASE_CONFIG}
 						eventSources={eventSources}
 						setActiveEvent={this.handleSetActiveEvent}
 						setActiveEventId={this.handleSetActiveEventId}

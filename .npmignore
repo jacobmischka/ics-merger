@@ -1,3 +1,4 @@
 .env.json
+service-account-key.json
 **/*.map
 stats.json
