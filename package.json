@@ -29,7 +29,7 @@
     "clean": "rm -rf ./dist ./public ; mkdir -p dist",
     "analyze:bundle": "webpack-bundle-analyzer ./public/js/stats.json",
     "deploy": "echo '!.env.json' >> .npmignore ; echo '!service-account-key.json' >> .npmignore ; now ; sed -i '$ d' .npmignore ; sed -i '$ d' .npmignore",
-    "prepublish": "npm-run-all build"
+    "prepublish": "# npm-run-all build"
   },
   "bin": {
     "ical-merge": "./cli.js"
@@ -62,6 +62,7 @@
     "iframe-resizer": "^3.5.14",
     "linkify-it": "^2.0.2",
     "lodash": "^4.17.4",
+    "mailgun-js": "^0.11.2",
     "node-fetch": "^1.6.3",
     "prop-types": "^15.5.6",
     "react": "^15.5.3",
@@ -69,6 +70,7 @@
     "react-dom": "^15.5.3",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
+    "repng": "^1.0.0",
     "styled-jsx": "^0.5.5",
     "typeface-noto-sans": "^0.0.22"
   },

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
-import { renderToString, renderToStaticMarkup } from 'react-dom/server';
+import { renderToStaticMarkup } from 'react-dom/server';
 import PropTypes from 'prop-types';
 
 import * as firebase from 'firebase/app';
@@ -8,9 +7,7 @@ import 'firebase/auth';
 
 import download from 'downloadjs';
 
-import ActiveEvent from './ActiveEvent.js';
-
-import { createEml } from '../utils.js';
+import SimpleEvent from './SimpleEvent.js';
 
 export default class EmailGenerator extends Component {
 	constructor(props) {
@@ -81,75 +78,38 @@ export default class EmailGenerator extends Component {
 			
 			if (events.length > 0) {
 				const activeEvents = events.map(event =>
-					<ActiveEvent event={event} eventLink={`${calendarUrl}#${event.id}`} expanded inline />);
-				const html = renderToString(<div>{activeEvents}</div>);
+					<SimpleEvent event={event} eventLink={`${calendarUrl}#${event.id}`} />
+				);
+				
+				const body = renderToStaticMarkup(
+					<html>
+						<body>
+							{activeEvents}
+						</body>
+					</html>
+				);
 					
-				const parser = new DOMParser();
-				const doc = parser.parseFromString(html, 'text/html');
-				const dataJsx = doc.querySelector('.active-event').getAttribute('data-jsx');
+				download(body, 'ok.html', 'text/html');
 				
-				const container = document.createElement('div');
-				container.style.display = 'none';
-				document.body.appendChild(container);
-				
-				render(<ActiveEvent event={events[0]} expanded inline />, container);
-				
-				window.setTimeout(() => {
-					const styles = document.getElementsByTagName('style');
-					console.log({styles, dataJsx});
-					let activeEventStyles = Array.from(styles)
-						.filter(style => style.textContent.includes(`data-jsx="${dataJsx}"`))
-						.map(style => <style dangerouslySetInnerHTML={{__html: style.textContent}}></style>);
-						
-					unmountComponentAtNode(container);
-					document.body.removeChild(container);
-						
-						
-					const body = '<!DOCTYPE html>' + renderToStaticMarkup(
-						<html>
-							<head>
-								{activeEventStyles}
-								<style>
-								{`
-									div[data-reactroot] {
-										display: flex;
-										flex-direction: column;
-										justify-content: center;
-										align-items: stretch;
-										font-size: 0.75em;
-									}
-									
-									.active-event {
-										margin: 0.5em !important;
-									}
-								`}
-								</style>
-							</head>
-							<body dangerouslySetInnerHTML={{__html: html}}>
-							</body>
-						</html>
-					);
+				fetch('send-reminder', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({
+						idToken,
+						body
+					})
+				}).then(response => {
+					if (response.ok)
+						return response.text();
 					
-					fetch('send-reminder', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify({
-							idToken,
-							body
-						})
-					}).then(response => {
-						if (response.ok)
-							return response.text();
-						
-						throw new Error(response.statusText);
-					}).then(responseText => {
-						console.log(responseText);
-					}).catch(err => {
-						console.error(err);
-					});
-				}, 500);
+					throw new Error(response.statusText);
+				}).then(responseText => {
+					console.log(responseText);
+				}).catch(err => {
+					console.error(err);
+				});
 			}
 		}).catch(err => {
 			console.error(err);

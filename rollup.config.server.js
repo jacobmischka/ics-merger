@@ -15,7 +15,9 @@ export default {
 		'express',
 		'node-fetch',
 		'body-parser',
-		'color-string'
+		'color-string',
+		'firebase-admin',
+		'mailgun-js'
 	],
 	preferConst: true
 };
