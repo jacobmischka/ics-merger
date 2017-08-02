@@ -132,31 +132,35 @@ if (firebaseAccountKey && dotenv.MAILGUN_CONFIG) {
 	const mailgun = Mailgun(dotenv.MAILGUN_CONFIG);
 	
 	app.post('/send-reminder', (req, res) => {
-		const { idToken, body } = req.body;
+		const { idToken, events, calendarUrl } = req.body;
+		
 		if (idToken) {
-			
 			firebaseAdmin.auth().verifyIdToken(idToken).then(decodedToken => {
 				if (decodedToken && decodedToken.email) {
 					
-						const email = {
-							from: 'MCW Anesthesiology Calendar <calendar@mcw-anesthesiology.tech>',
-							'h:Reply-To': decodedToken.email,
-							to: 'jacobmischka@gmail.com',
-							bcc: decodedToken.email,
-							subject: 'Subject',
-							html: body
-						};
-							
-						mailgun.messages().send(email, (err, body) => {
-							console.log(body);
-							
-							if (err) {
-								console.error(err);
-								res.send(err);
-							} else {
-								res.send('Message sent!');
-							}
-						});
+					events.sort((a, b) => {
+						
+					});
+					
+					const email = {
+						from: 'MCW Anesthesiology Calendar <calendar@mcw-anesthesiology.tech>',
+						'h:Reply-To': decodedToken.email,
+						to: 'jacobmischka@gmail.com',
+						bcc: decodedToken.email,
+						subject: 'Subject',
+						html: 
+					};
+						
+					mailgun.messages().send(email, (err, body) => {
+						console.log(body);
+						
+						if (err) {
+							console.error(err);
+							res.send(err);
+						} else {
+							res.send('Message sent!');
+						}
+					});
 				}
 			}).catch(err => {
 				// TODO

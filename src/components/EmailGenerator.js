@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
 import PropTypes from 'prop-types';
 
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
-
-import download from 'downloadjs';
-
-import SimpleEvent from './SimpleEvent.js';
 
 export default class EmailGenerator extends Component {
 	constructor(props) {
@@ -73,24 +68,9 @@ export default class EmailGenerator extends Component {
 		firebase.auth().currentUser.getToken(true).then(idToken => {
 			
 			const calendarUrl = window.location.href.replace(window.location.hash, '');
-			
 			const events = this.props.getEvents();
 			
-			if (events.length > 0) {
-				const activeEvents = events.map(event =>
-					<SimpleEvent event={event} eventLink={`${calendarUrl}#${event.id}`} />
-				);
-				
-				const body = renderToStaticMarkup(
-					<html>
-						<body>
-							{activeEvents}
-						</body>
-					</html>
-				);
-					
-				download(body, 'ok.html', 'text/html');
-				
+			if (events.length > 0) {				
 				fetch('send-reminder', {
 					method: 'POST',
 					headers: {
@@ -98,7 +78,8 @@ export default class EmailGenerator extends Component {
 					},
 					body: JSON.stringify({
 						idToken,
-						body
+						events,
+						calendarUrl
 					})
 				}).then(response => {
 					if (response.ok)
