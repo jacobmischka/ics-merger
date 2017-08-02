@@ -281,6 +281,7 @@ export default class ActiveEvent extends CalendarEvent {
 					
 					.expanded .event-location {
 						font-size: 0.6em;
+						display: block;
 						display: flex;
 						flex-direction: column;
 						align-items: center;
@@ -290,7 +291,7 @@ export default class ActiveEvent extends CalendarEvent {
 					
 					.expanded .event-location::before {
 						content: 'Location:';
-						display: block;
+						display: inline-block;
 						margin: 0 0 0.5em 0;
 					}
 					
