@@ -38,38 +38,42 @@ export function getEventSources(calendars) {
 	
 	for(let calendar of calendars) {
 		if (calendar) {
-			let color = calendar.color;
-			let googleCalendarId = calendar.googleCalendarId;
-			if (googleCalendarId) {
-				eventSources.push({
-					googleCalendarId,
-					color,
-					eventDataTransform(eventData) {
-						return Object.assign(eventData, {
-							color,
-							calendar
-						});
-					}
-				});
-			}
+			let calendarSource = getSource(calendar);
+			if (calendarSource)
+				eventSources.push(calendarSource);
+
 			if (calendar.subCalendars) {
 				for(let subCalendar of calendar.subCalendars) {
-					eventSources.push({
-						googleCalendarId: subCalendar.googleCalendarId,
-						color,
-						eventDataTransform(eventData) {
-							return Object.assign(eventData, {
-								color,
-								calendar: subCalendar
-							});
-						}
-					});
+					eventSources.push(getSource(subCalendar, calendar.color));
 				}
 			}
 		}
 	}
 	
 	return eventSources;
+}
+
+export function getSource(calendar, color = calendar.color) {
+	if (!calendar || (!calendar.googleCalendarId && !calendar.source))
+		return;
+	
+	let source = {
+		color,
+		eventDataTransform(eventData) {
+			return Object.assign(eventData, {
+				color,
+				calendar
+			});
+		}
+	};
+	
+	if (calendar.googleCalendarId) {
+		source.googleCalendarId = calendar.googleCalendarId;
+	} else if (calendar.source) {
+		source.url = calendar.source;
+	}
+	
+	return source;
 }
 
 export function nl2br(text) {
