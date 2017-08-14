@@ -32,14 +32,11 @@ export default class Subscription extends Component {
 	}
 
 	render(){
-		const calendarIcalUrl =
-			`${window.location.origin}/${this.props.icsFilename}${window.location.search}`;
-
-		const webcalUrl = calendarIcalUrl
-			.replace(window.location.protocol, 'webcal:');
-
-
-
+		const { url } = this.props;
+		
+		let dirs = url.split('?')[0].split('/');
+		const filename = dirs[dirs.length - 1];
+		const webcalUrl = `webcal://${url.substring(url.indexOf('://') + 3)}`;
 
 		return (
 			<div className="subscription-component">
@@ -57,7 +54,7 @@ export default class Subscription extends Component {
 					? (
 						<section className="copy-with-url">
 							<input type="text" id="sub-url"
-								value={calendarIcalUrl} readOnly />
+								value={url} readOnly />
 							<button id="copy-button" className="button"
 									data-clipboard-target="#sub-url"
 									title="Long press to hide url"
@@ -69,7 +66,7 @@ export default class Subscription extends Component {
 					)
 					: (
 						<button id="copy-button" className="button outline"
-								data-clipboard-text={calendarIcalUrl}
+								data-clipboard-text={url}
 								title="Long press to show url"
 								onMouseDown={this.handleCopyButtonMouseDown}
 								onMouseUp={this.handleCopyButtonMouseUp}>
@@ -78,8 +75,8 @@ export default class Subscription extends Component {
 					)
 				}
 						<a id="download-button" className="button outline"
-								href={calendarIcalUrl} target="_blank"
-								download={this.props.icsFilename}>
+								href={url} target="_blank"
+								download={filename}>
 							Download ICal/.ics file
 						</a>
 					</div>
@@ -226,5 +223,5 @@ export default class Subscription extends Component {
 }
 
 Subscription.propTypes = {
-	icsFilename: PropTypes.string
+	url: PropTypes.string
 };

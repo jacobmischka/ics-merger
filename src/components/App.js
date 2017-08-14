@@ -125,20 +125,38 @@ class App extends Component {
 				</li>
 			));
 
+			// `${window.location.origin}/${this.props.icsFilename}${window.location.search}`
 
-			const icsFilename = calendarId === 'custom'
-				? `combine.ics?${this.state.customCalendar.calendars
-					.map(calId => {
-						if (this.state.calendars[calId].url) {
-							return `urls[]=${this.state.calendars[calId].url}`;
-						}
-						else {
-							return this.state.calendars[calId].subCalendars.map(subCal => {
-								return `urls[]=${subCal.url}`;
-							}).join('&');
-						}
-					}).join('&')}`
-				: `${calendarId}.ics`;
+			let icsUrl;
+			if (calendar.url && !calendar.calendars) {
+				icsUrl = calendar.url;
+			} else {
+				let search = window.location.search;
+				let filename;
+				
+				if (calendarId === 'custom') {
+					filename = 'combine.ics';
+					
+					if (!search)
+						search = '?';
+						
+					search += this.state.customCalendar.calendars
+						.map(calId => {
+							if (this.state.calendars[calId].url) {
+								return `urls[]=${this.state.calendars[calId].url}`;
+							}
+							else {
+								return this.state.calendars[calId].subCalendars.map(subCal => {
+									return `urls[]=${subCal.url}`;
+								}).join('&');
+							}
+						}).join('&');
+				} else {
+					filename = `${calendarId}.ics`;
+				}
+				
+				icsUrl = `${window.location.origin}/${filename}${search}`;
+			}
 
 			return (
 				<div data-iframe-height>
@@ -150,7 +168,7 @@ class App extends Component {
 						setActiveEventId={this.handleSetActiveEventId}
 						defaultView={calendarView}
 						eventId={eventId} />
-					<Subscription icsFilename={icsFilename} />
+					<Subscription url={icsUrl} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
 			{
 				(groupedCalendarListItems || calendarListItems) && (
