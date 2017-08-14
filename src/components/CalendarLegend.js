@@ -24,7 +24,7 @@ const CalendarLegend = (props) => {
 					display: flex;
 					align-items: center;
 				}
-				
+
 				.calendar-legend-color {
 					display: inline-block;
 					width: 1em;
@@ -53,7 +53,7 @@ const CalendarLegend = (props) => {
 					display: flex;
 					justify-content: center;
 				}
-				
+
 				.calendar-legend {
 					display: flex;
 					flex-direction: column;
@@ -63,18 +63,18 @@ const CalendarLegend = (props) => {
 					padding: 1em;
 					border: 1px solid ${legendBorderColor};
 				}
-				
+
 				.legend-title {
 					text-align: center;
 					font-size: 1.1em;
 				}
-				
+
 				.legend-list {
 					padding: 0 1em;
 				}
-				
+
 				@media print {
-					
+
 					.calendar-legend-container {
 						font-size: 0.65em;
 					}

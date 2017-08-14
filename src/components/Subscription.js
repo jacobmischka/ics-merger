@@ -33,7 +33,7 @@ export default class Subscription extends Component {
 
 	render(){
 		const { url } = this.props;
-		
+
 		let dirs = url.split('?')[0].split('/');
 		const filename = dirs[dirs.length - 1];
 		const webcalUrl = `webcal://${url.substring(url.indexOf('://') + 3)}`;
@@ -75,7 +75,7 @@ export default class Subscription extends Component {
 					)
 				}
 						<a id="download-button" className="button outline"
-								href={url} target="_blank"
+								href={url} target="_blank" rel="noopener noreferrer"
 								download={filename}>
 							Download ICal/.ics file
 						</a>
@@ -95,13 +95,13 @@ export default class Subscription extends Component {
 				</div>
 			)
 	}
-	
+
 				<style jsx>
 				{`
 					.subscription-component {
 						margin: 2em;
 					}
-					
+
 					.sub-controls {
 						display: flex;
 						flex-wrap: wrap;
@@ -110,35 +110,35 @@ export default class Subscription extends Component {
 						align-items: flex-end;
 						font-size: 1.25em;
 					}
-					
+
 					.copy-with-url {
 						display: flex;
 						flex-direction: column;
 						align-items: stretch;
 					}
-					
+
 					#sub-url {
 						display: block;
 						user-select: all;
 						color: ${secondaryText};
 					}
-					
+
 					#hide-sub {
 						font-size: 0.85em;
 						text-decoration: none;
 						color: ${secondaryText};
 					}
-					
+
 					#hide-sub:hover {
 						text-decoration: underline;
 					}
-					
+
 					input {
 						font-size: 1.5em;
 						padding: 0.5em;
 						border: 1px solid rgba($grey-color, 0.45);
 					}
-					
+
 					.button {
 						margin: 0.5em;
 						border-radius: 5px;
@@ -151,25 +151,25 @@ export default class Subscription extends Component {
 						border: 2px solid ${COLORS.PRIMARY};
 						background: ${COLORS.PRIMARY};
 					}
-					
+
 					.button:hover {
 						background: ${buttonHoverBackgroundColor};
 					}
-					
+
 					.button.outline {
 						background: transparent;
 						color: ${COLORS.PRIMARY};
 					}
-					
+
 					.button.outline:hover {
 						color: white;
 						background: ${buttonHoverBackgroundColor};
 					}
-					
+
 					.text-center {
 						text-align: center;
 					}
-					
+
 					@media print {
 						.subscription-component {
 							display: none;

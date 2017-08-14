@@ -163,50 +163,50 @@ export default class ActiveEvent extends CalendarEvent {
 						z-index: 100;
 						cursor: auto;
 					}
-					
+
 					header {
 						flex: 0 0;
 						background-color: transparent;
 						transition-duration: 0.15s;
 						transition-property: background-color, border;
 					}
-					
+
 					.event-calendar {
 						display: none;
 						font-size: 0.7em;
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
 					}
-					
+
 					.event-date-time {
 						margin: 0;
 						text-align: center;
 						min-width: 200px;
 					}
-					
+
 					.event-date {
 						display: none;
 						text-transform: none;
 					}
-					
+
 					.start-date,
 					.end-date {
 						white-space: nowrap;
 					}
-					
+
 					.event-time {
 						margin: 0;
 						text-transform: uppercase;
 					}
-					
+
 					.event-title {
 						word-wrap: break-word;
 						max-width: 80%;
 					}
-					
+
 					.event-location {
 						display: none;
 					}
-					
+
 					.event-desc {
 						flex: 1 1;
 						margin: 0;
@@ -214,14 +214,14 @@ export default class ActiveEvent extends CalendarEvent {
 						word-wrap: break-word;
 						white-space: pre-line;
 					}
-					
+
 					.event.all-day .event-time {
 						text-align: center;
 						background: #bfbfbf;
 						border-radius: 2px;
 						padding: 0.15em 0.5em;
 					}
-					
+
 					header .close {
 						position: absolute;
 						right: 0;
@@ -236,11 +236,11 @@ export default class ActiveEvent extends CalendarEvent {
 						margin: 0.1em;
 						line-height: 0.8;
 					}
-					
+
 					header .close:hover {
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
 					}
-					
+
 					.active-event.expanded {
 						font-size: 1.5em;
 						background-color: #fafafa;
@@ -249,7 +249,7 @@ export default class ActiveEvent extends CalendarEvent {
 						transform: translate(50vw, 50vh) translate(-50%, -50%);
 						box-shadow: 0 0 20px 0 ${COLORS.SHADOW};
 					}
-					
+
 					.expanded header {
 						display: flex;
 						flex-direction: row;
@@ -261,24 +261,24 @@ export default class ActiveEvent extends CalendarEvent {
 						box-shadow: 0 0 5px 0 ${COLORS.SHADOW};
 						background-color: ${COLORS.BACKGROUND};
 					}
-					
+
 					.expanded .event-title {
 						order: 1;
 					}
-					
+
 					.expanded .event-calendar {
 						display: block;
 					}
-					
+
 					.expanded .event-date-time {
 						order: 2;
 					}
-					
+
 					.expanded .event-date,
 					.expanded .event-time {
 						display: block;
 					}
-					
+
 					.expanded .event-location {
 						font-size: 0.6em;
 						display: block;
@@ -288,48 +288,48 @@ export default class ActiveEvent extends CalendarEvent {
 						text-align: left;
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
 					}
-					
+
 					.expanded .event-location::before {
 						content: 'Location:';
 						display: inline-block;
 						margin: 0 0 0.5em 0;
 					}
-					
+
 					.expanded .event-desc {
 						padding: 1em 2em 2em;
 						overflow-y: auto;
 					}
-					
+
 					@media (min-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
-						
+
 						.active-event.expanded {
 							font-size: 2em;
 						}
-						
+
 						.event-date-time {
 							text-align: right;
 						}
-						
+
 						.expanded header {
 							justify-content: space-between;
 							flex-wrap: nowrap;
 							text-align: left;
 						}
-						
+
 						.expanded .event-title {
 							margin-right: 1em;
 							font-size: 1.25em;
 						}
-						
+
 						.expanded .event-location {
 							flex-direction: row;
 							align-items: flex-start;
 						}
-						
+
 						.expanded .event-location::before {
 							margin: 0 0.75em 0 0;
 						}
-						
+
 						.expanded .event-date-time {
 							margin-left: 1em;
 						}

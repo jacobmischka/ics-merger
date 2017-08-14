@@ -35,39 +35,39 @@ export default class FullCalendar extends Component {
 						font-size: 2em;
 						font-weight: normal;
 					}
-					
+
 					.event-container {
 						background-color: ${COLORS.BACKGROUND};
 						overflow: hidden;
 					}
-					
+
 					.fc .fc-toolbar {
 						display: flex;
 						justify-content: space-between;
 						flex-wrap: wrap;
 					}
-					
+
 					.fc .fc-toolbar .fc-left {
 						order: 1;
 					}
-					
+
 					.fc .fc-toolbar .fc-center {
 						order: 2;
 					}
-					
+
 					.fc .fc-toolbar .fc-right {
 						order: 3;
 					}
-					
+
 					.fc button {
 						height: auto;
 					}
-					
+
 					.fc .fc-button {
 						font-size: 1.1em;
 						padding: 0.5em;
 					}
-										
+
 					.fc .fc-button.fc-state-default {
 						background: transparent;
 						text-shadow: none;
@@ -75,65 +75,65 @@ export default class FullCalendar extends Component {
 						border: 2px solid ${COLORS.ACCENT};
 						color: ${COLORS.ACCENT};
 					}
-					
+
 					.fc .fc-button.fc-state-active {
 						color: white;
 						background: ${COLORS.ACCENT};
 					}
-					
+
 					.fc .fc-button:hover,
 					.fc .fc-button:focus {
 						outline: none;
 						color: white;
 						background: ${fcButtonHoverBackgroundColor}
 					}
-					
+
 					.fc .fc-button.fc-state-disabled {
 						cursor: not-allowed;
 						background: none;
 						color: ${COLORS.ACCENT};
 					}
-					
+
 					.fc-clear {
 						display: none;
 					}
-					
+
 					.fc-list-view .fc-scroller {
 						/* HACK: Workaround for https://github.com/fullcalendar/fullcalendar/issues/3346 */
 						height: auto !important;
 					}
-					
+
 					.fc .fc-list-table .fc-list-heading,
 					.fc .fc-list-table .fc-list-heading .fc-widget-header {
 						width: 100%;
 					}
-					
+
 					@media (max-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
 						.fc .fc-toolbar {
 							justify-content: space-around;
 						}
-						
+
 						.fc .fc-toolbar .fc-left {
 							text-align: center;
 							width: 100%;
 						}
 					}
-					
+
 					@media print {
-						
+
 						h2 {
 							font-size: 1.25em;
 						}
-						
+
 						.fc .fc-body .fc-day-number {
 							font-size: 0.75em;
 						}
-						
+
 						.fc .fc-head-container.fc-widget-header,
 						.fc .fc-list-table .fc-widget-header {
 							font-size: 0.7em;
 						}
-						
+
 						.fc .fc-list-table .fc-widget-header {
 							padding: 0.2em 0.75em;
 						}
@@ -142,7 +142,7 @@ export default class FullCalendar extends Component {
 						.fc .fc-toolbar .fc-right {
 							display: none;
 						}
-						
+
 						.fc-today {
 							background: none !important;
 						}
@@ -152,7 +152,7 @@ export default class FullCalendar extends Component {
 			</div>
 		);
 	}
-	
+
 	shouldComponentUpdate(nextProps){
 		if (this.props.apiKey !== nextProps.apiKey)
 			return true;
@@ -186,12 +186,12 @@ export default class FullCalendar extends Component {
 	componentDidMount(){
 		this.createCalendar();
 	}
-	
+
 	componentWillReceiveProps(nextProps) {
 		const { eventId, setActiveEvent } = this.props;
-		
+
 		const calendar = $(`#${this.state.calendarId}`);
-		
+
 		if (nextProps.eventId && nextProps.eventId !== eventId) {
 			let events = calendar.fullCalendar('clientEvents', nextProps.eventId);
 			if (events.length > 0) {
@@ -224,7 +224,7 @@ export default class FullCalendar extends Component {
 			defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP
 				? 'month'
 				: 'listWeek';
-		
+
 		const calendar = $(`#${this.state.calendarId}`);
 
 		calendar.fullCalendar(Object.assign({
@@ -248,12 +248,12 @@ export default class FullCalendar extends Component {
 					container = document.createElement('div');
 					calEventElement = 'div';
 				}
-				
+
 				container.className = 'event-container';
-				
+
 				if (view && view.name && view.name.startsWith('agenda'))
 					container.style.position = 'absolute';
-					
+
 				render(<CalendarEvent event={calEvent} view={view}
 					setActiveEventId={setActiveEventId}
 					setActiveEvent={setActiveEvent}

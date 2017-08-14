@@ -23,7 +23,7 @@ export default class CalendarEvent extends Component {
 			border: `1px solid ${color.rgb().string()}`,
 			backgroundColor: color.alpha(0.3).rgb().string()
 		};
-		
+
 		const ContainerElement = this.props.containerElement || 'div';
 
 		return (
@@ -43,22 +43,22 @@ export default class CalendarEvent extends Component {
 						cursor: pointer;
 						font-size: 0.75em;
 					}
-					
+
 					.event-time {
 						margin: 0 0.5em 0 0;
 						text-transform: uppercase;
 					}
-					
+
 					.event-title {
 						word-wrap: break-word;
 					}
-					
+
 					.event-desc {
 						font-size: 0.75em;
 						word-wrap: break-word;
 						white-space: pre-line;
 					}
-					
+
 					:global(.event.all-day) .event-time {
 						display: inline-block;
 						text-align: center;
@@ -67,9 +67,9 @@ export default class CalendarEvent extends Component {
 						padding: 0.15em 0.5em;
 						white-space: nowrap;
 					}
-					
+
 					@media print {
-						
+
 						:global(.event) {
 							font-size: 0.6em;
 						}
@@ -110,12 +110,12 @@ export default class CalendarEvent extends Component {
 
 		return className;
 	}
-	
+
 	handleClick(clickEvent) {
 		clickEvent.preventDefault();
-		
+
 		const { event, setActiveEvent, setActiveEventId } = this.props;
-		
+
 		setActiveEventId(event.id, this.container);
 		setActiveEvent(event);
 	}

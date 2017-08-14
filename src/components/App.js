@@ -33,7 +33,7 @@ class App extends Component {
 		this.handleUnsetActiveEvent = this.handleUnsetActiveEvent.bind(this);
 		this.handleChangeCustomCalendarIds = this.handleChangeCustomCalendarIds.bind(this);
 	}
-	
+
 	componentDidMount() {
 		fetch(this.props.envFile)
 			.then(response => {
@@ -53,12 +53,12 @@ class App extends Component {
 				this.setState({loaded: false});
 			});
 	}
-	
+
 	componentWillReceiveProps(nextProps) {
 		if (!nextProps.eventId && this.state.activeEvent)
 			this.handleUnsetActiveEvent(false);
 	}
-	
+
 	getCalendars(calendarId) {
 		// FIXME: This doesn't work if a calendar and a group share the same id
 		let calendar = calendarId === 'custom'
@@ -72,7 +72,7 @@ class App extends Component {
 			calendar = this.state.calendars[calendarId];
 			calendars = calendar ? calendar.subCalendars || [calendar] : [];
 		}
-		
+
 		return { calendar, calendars };
 	}
 
@@ -84,7 +84,7 @@ class App extends Component {
 
 		if (calendar && calendars) {
 			let eventSources = getEventSources(calendars);
-			
+
 
 			let activeEventNode = this.state.activeEvent
 				? (
@@ -133,13 +133,13 @@ class App extends Component {
 			} else {
 				let search = window.location.search;
 				let filename;
-				
+
 				if (calendarId === 'custom') {
 					filename = 'combine.ics';
-					
+
 					if (!search)
 						search = '?';
-						
+
 					search += this.state.customCalendar.calendars
 						.map(calId => {
 							if (this.state.calendars[calId].url) {
@@ -154,7 +154,7 @@ class App extends Component {
 				} else {
 					filename = `${calendarId}.ics`;
 				}
-				
+
 				icsUrl = `${window.location.origin}/${filename}${search}`;
 			}
 
@@ -206,68 +206,68 @@ class App extends Component {
 							font-weight: 500;
 							text-align: center;
 						}
-						
+
 						h2 {
 							font-size: 2em;
 							font-weight: normal;
 						}
-						
+
 						ul :global(a.active) {
 							pointer-events: none;
 							text-decoration: none;
 							cursor: auto;
 							color: black;
 						}
-						
+
 						.calendar-nav-container {
 							padding: 0 2em;
 						}
-						
+
 						@media (min-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
-							
+
 							.calendar-nav-container {
 								padding: 0 3em;
 							}
 						}
-						
+
 						@media (min-width: ${BREAKPOINTS.LARGE_DESKTOP}px) {
-							
+
 							.calendar-nav-container {
 								padding: 0 4em;
 							}
 						}
-						
+
 						.calendar-nav {
 							display: flex;
 							flex-direction: row;
 							flex-wrap: wrap;
 							justify-content: space-around;
 						}
-						
+
 						.calendar-nav section {
 							flex-grow: 0;
 							flex-shrink: 1;
 							min-width: 15em;
 						}
-						
+
 						@media print {
-							
+
 							h1 {
 								margin: 0;
 								font-size: 2em;
 							}
-							
+
 							h2 {
 								font-size: 1.5em;
 							}
-							
+
 							.calendar-nav-container {
 								display: none;
 							}
 						}
 					`}
 					</style>
-					
+
 				</div>
 			);
 		}
@@ -307,13 +307,13 @@ class App extends Component {
 			}
 		}
 	}
-	
+
 	handleSetActiveEventId(id, container) {
 		let newLocation = Object.assign({}, this.props.location);
 		newLocation.hash = id;
-		
+
 		this.props.history.push(newLocation);
-		
+
 		if (container) {
 			this.setState({
 				activeEventOriginalElement: container
@@ -322,7 +322,7 @@ class App extends Component {
 	}
 
 	handleSetActiveEvent(calEvent) {
-		
+
 		this.setState({
 			activeEvent: calEvent
 		});
@@ -332,7 +332,7 @@ class App extends Component {
 		if (shouldPush) {
 			this.handleSetActiveEventId('');
 		}
-		
+
 		this.setState({
 			activeEvent: null,
 			activeEventOriginalPosition: null
@@ -370,7 +370,7 @@ App.propTypes = {
 	calendarId: PropTypes.string,
 	eventId: PropTypes.string,
 	search: PropTypes.string,
-	
+
 	location: PropTypes.shape({
 		hash: PropTypes.string,
 	}),

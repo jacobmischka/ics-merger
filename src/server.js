@@ -70,7 +70,7 @@ function respondWithCalendar(calendar, calendarName) {
 	app.get(`/${calendarName}.ics`, (req, res) => {
 		const isVisible = calendar =>
 			isCalendarVisible(calendar, req.query.key);
-		
+
 		if (!calendar || !isVisible(calendar)) {
 			res.sendStatus(501);
 			return;

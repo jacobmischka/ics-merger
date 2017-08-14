@@ -8,9 +8,9 @@ export function isCalendarVisible(calendar, keys) {
 }
 
 export function filterHiddenCalendars(config, keys) {
-	
+
 	const isVisible = calendar => isCalendarVisible(calendar, keys);
-		
+
 	for(const groupId in config.calendarGroups) {
 		let group = config.calendarGroups[groupId];
 		if (isVisible(group) && group.calendars)
@@ -19,7 +19,7 @@ export function filterHiddenCalendars(config, keys) {
 		else
 			delete config.calendarGroups[groupId];
 	}
-	
+
 	for(const calendarId in config.calendars) {
 		let calendar = config.calendars[calendarId];
 		if (isVisible(calendar)) {
@@ -29,13 +29,13 @@ export function filterHiddenCalendars(config, keys) {
 		else
 			delete config.calendars[calendarId];
 	}
-	
+
 	return config;
 }
 
 export function getEventSources(calendars) {
 	let eventSources = [];
-	
+
 	for(let calendar of calendars) {
 		if (calendar) {
 			let calendarSource = getSource(calendar);
@@ -49,14 +49,14 @@ export function getEventSources(calendars) {
 			}
 		}
 	}
-	
+
 	return eventSources;
 }
 
 export function getSource(calendar, color = calendar.color) {
 	if (!calendar || (!calendar.googleCalendarId && !calendar.source))
 		return;
-	
+
 	let source = {
 		color,
 		eventDataTransform(eventData) {
@@ -66,13 +66,13 @@ export function getSource(calendar, color = calendar.color) {
 			});
 		}
 	};
-	
+
 	if (calendar.googleCalendarId) {
 		source.googleCalendarId = calendar.googleCalendarId;
 	} else if (calendar.source) {
 		source.url = calendar.source;
 	}
-	
+
 	return source;
 }
 
