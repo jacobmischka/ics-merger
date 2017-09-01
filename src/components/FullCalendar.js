@@ -245,13 +245,17 @@ export default class FullCalendar extends Component {
 		// Allow extracting calendar state by posting message from trusted origin,
 		// useful when calendar is embedded in iframe.
 
-		if (this.props.trustedOrigins && (
-			this.props.trustedOrigins.includes('*')
-			|| this.props.trustedOrigins.includes(event.origin)
-		)) {
+		if (
+			this.props.trustedOrigins
+			&& (
+				this.props.trustedOrigins.includes('*')
+				|| this.props.trustedOrigins.includes(event.origin)
+			)
+			&& event.data === 'getCalendarState'
+		) {
 			event.source.postMessage({
-				view: this.viewName,
-				date: this.viewDate
+				action: 'calendarStateResponse',
+				location: this.props.location
 			}, event.origin);
 		}
 	}
