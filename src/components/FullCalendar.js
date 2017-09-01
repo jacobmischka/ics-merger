@@ -255,7 +255,10 @@ export default class FullCalendar extends Component {
 		) {
 			event.source.postMessage({
 				action: 'calendarStateResponse',
-				location: this.props.location
+				calendarName: this.props.location.pathname.slice(1),
+				calendarEvent: this.props.location.hash.slice(1),
+				calendarView: this.getGenericViewName(this.viewName),
+				calendarDate: this.viewDate
 			}, event.origin);
 		}
 	}
@@ -387,6 +390,8 @@ FullCalendar.propTypes = {
 	defaultDate: PropTypes.string,
 
 	location: PropTypes.shape({
+		pathname: PropTypes.string,
+		hash: PropTypes.string,
 		search: PropTypes.string
 	}),
 	history: PropTypes.shape({
