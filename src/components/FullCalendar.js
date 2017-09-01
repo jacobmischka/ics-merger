@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
+import { withRouter } from 'react-router';
 import Color from 'color';
 
 import $ from 'jquery';
@@ -15,7 +16,7 @@ import { BREAKPOINTS, COLORS, OPACITIES } from '../constants.js';
 
 const fcButtonHoverBackgroundColor = new Color(COLORS.ACCENT).alpha(OPACITIES.SECONDARY);
 
-export default class FullCalendar extends Component {
+class FullCalendar extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -24,11 +25,13 @@ export default class FullCalendar extends Component {
 
 		this.createCalendar = this.createCalendar.bind(this);
 		this.destroyCalendar = this.destroyCalendar.bind(this);
+		this.getCalendarState = this.getCalendarState.bind(this);
 	}
 
-	render(){
+	render() {
 		return (
-			<div id={this.state.calendarId}>
+			<div className="fullcalendar-container">
+				<div id={this.state.calendarId}></div>
 				<style jsx global>
 				{`
 					h2 {
@@ -180,10 +183,24 @@ export default class FullCalendar extends Component {
 			});
 		}
 
+		if (nextProps.location && nextProps.location.search) {
+			let params = new URLSearchParams(nextProps.location.search.slice(1));
+
+			let viewName = params.get('view');
+			let viewDate = params.get('date');
+
+			if (viewName !== this.viewName || viewDate !== this.viewDate) {
+				this.viewName = viewName;
+				this.viewDate = viewDate;
+				$(`#${this.state.calendarId}`)
+					.fullCalendar('changeView', viewName, viewDate);
+			}
+		}
+
 		return false;
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		this.createCalendar();
 	}
 
@@ -200,32 +217,58 @@ export default class FullCalendar extends Component {
 		}
 	}
 
-	componentWillUpdate(){
+	componentWillUpdate() {
 		this.destroyCalendar();
 	}
 
-	componentDidUpdate(){
+	componentDidUpdate() {
 		this.createCalendar();
 	}
 
-	componentWillUnmount(){
+	componentWillUnmount() {
 		this.destroyCalendar();
 	}
 
-	destroyCalendar(){
+	getCalendarState(view) {
+		let viewDate = view.intervalStart.toString();
+
+		if (this.viewName !== view.name || this.viewDate !== viewDate) {
+			let newLocation = Object.assign({}, this.props.location);
+			let params = new URLSearchParams(newLocation.search.slice(1));
+			params.set('view', view.name);
+			params.set('date', viewDate);
+
+			newLocation.search = params.toString();
+
+			this.viewName = view.name;
+			this.viewDate = view.intervalStart.toString();
+			this.props.history.push(newLocation);
+		}
+	}
+
+	destroyCalendar() {
 		$(`#${this.state.calendarId}`).fullCalendar('destroy');
 	}
 
-	createCalendar(){
-		const { eventId, setActiveEventId, setActiveEvent } = this.props;
+	createCalendar() {
+		const { eventId, setActiveEventId, setActiveEvent, defaultDate } = this.props;
 		let { defaultView } = this.props;
 
-		if (!defaultView)
+		if (!defaultView) {
 			defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP
 				? 'month'
 				: 'listWeek';
 
+		} else {
+			if (defaultView === 'week') {
+				defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP
+					? 'basicWeek'
+					: 'listWeek';
+			}
+		}
+
 		const calendar = $(`#${this.state.calendarId}`);
+		const getCalendarState = this.getCalendarState;
 
 		calendar.fullCalendar(Object.assign({
 			googleCalendarApiKey: this.props.apiKey,
@@ -238,6 +281,7 @@ export default class FullCalendar extends Component {
 				right: 'today prev,next'
 			},
 			defaultView,
+			defaultDate,
 			navLinks: true,
 			eventRender(calEvent, element, view){
 				let container, calEventElement;
@@ -270,7 +314,8 @@ export default class FullCalendar extends Component {
 						}
 					}
 				}
-			}
+			},
+			viewRender: getCalendarState
 		}, this.props.fullcalendarConfig));
 	}
 }
@@ -282,5 +327,16 @@ FullCalendar.propTypes = {
 	setActiveEvent: PropTypes.func,
 	eventId: PropTypes.string,
 	fullcalendarConfig: PropTypes.object,
-	defaultView: PropTypes.string
+	defaultView: PropTypes.string,
+	defaultDate: PropTypes.string,
+
+	location: PropTypes.shape({
+		search: PropTypes.string
+	}),
+	history: PropTypes.shape({
+		push: PropTypes.func.isRequired,
+		listen: PropTypes.func.isRequired
+	}).isRequired
 };
+
+export default withRouter(FullCalendar);

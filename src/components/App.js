@@ -81,6 +81,7 @@ class App extends Component {
 		const { calendar, calendars } = this.getCalendars(calendarId);
 		const searchParams = new URLSearchParams(this.props.search.slice(1));
 		const calendarView = searchParams.get('view');
+		const defaultDate = searchParams.get('date');
 
 		if (calendar && calendars) {
 			let eventSources = getEventSources(calendars);
@@ -167,6 +168,7 @@ class App extends Component {
 						setActiveEvent={this.handleSetActiveEvent}
 						setActiveEventId={this.handleSetActiveEventId}
 						defaultView={calendarView}
+						defaultDate={defaultDate}
 						eventId={eventId} />
 					<Subscription url={icsUrl} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
