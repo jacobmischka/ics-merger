@@ -288,7 +288,7 @@ export default class FullCalendar extends Component {
 		if (!this.props.history)
 			return;
 
-		let viewDate = view.intervalStart.toString();
+		let viewDate = view.intervalStart.toISOString();
 
 		if (
 			this.getSpecificViewName(this.viewName) !== view.name
