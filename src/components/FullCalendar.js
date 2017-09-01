@@ -26,6 +26,7 @@ class FullCalendar extends Component {
 		this.createCalendar = this.createCalendar.bind(this);
 		this.destroyCalendar = this.destroyCalendar.bind(this);
 		this.getCalendarState = this.getCalendarState.bind(this);
+		this.receiveMessage = this.receiveMessage.bind(this);
 	}
 
 	render() {
@@ -189,11 +190,18 @@ class FullCalendar extends Component {
 			let viewName = params.get('view');
 			let viewDate = params.get('date');
 
-			if (viewName !== this.viewName || viewDate !== this.viewDate) {
+			if (
+				this.getGenericViewName(viewName) !== this.getGenericViewName(this.viewName)
+				|| viewDate !== this.viewDate
+			) {
 				this.viewName = viewName;
 				this.viewDate = viewDate;
 				$(`#${this.state.calendarId}`)
-					.fullCalendar('changeView', viewName, viewDate);
+					.fullCalendar(
+						'changeView',
+						this.getSpecificViewName(viewName),
+						viewDate
+					);
 			}
 		}
 
@@ -202,6 +210,10 @@ class FullCalendar extends Component {
 
 	componentDidMount() {
 		this.createCalendar();
+
+		if (this.props.trustedOrigins || this.props.trustedOrigins.includes('*')) {
+			window.addEventListener('message', this.receiveMessage, false);
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -227,12 +239,52 @@ class FullCalendar extends Component {
 
 	componentWillUnmount() {
 		this.destroyCalendar();
+		window.removeEventListener('message', this.receiveMessage);
+	}
+
+	receiveMessage(event) {
+		// Allow extracting calendar state by posting message from trusted origin,
+		// useful when calendar is embedded in iframe.
+
+		if (this.props.trustedOrigins && (
+			this.props.trustedOrigins.includes('*')
+			|| this.props.trustedOrigins.includes(event.origin)
+		)) {
+			event.source.postMessage({
+				view: this.getGenericViewName(this.viewName),
+				date: this.viewDate
+			}, event.origin);
+		}
+	}
+
+	getGenericViewName(viewName) {
+		switch (viewName) {
+			case 'listWeek':
+			case 'basicWeek':
+				return 'week';
+			default:
+				return viewName;
+		}
+	}
+
+	getSpecificViewName(viewName) {
+		switch (viewName) {
+			case 'week':
+				return window.innerWidth > BREAKPOINTS.SMALL_DESKTOP
+					? 'basicWeek'
+					: 'listWeek';
+			default:
+				return viewName;
+		}
 	}
 
 	getCalendarState(view) {
 		let viewDate = view.intervalStart.toString();
 
-		if (this.viewName !== view.name || this.viewDate !== viewDate) {
+		if (
+			this.getSpecificViewName(this.viewName) !== view.name
+			|| this.viewDate !== viewDate
+		) {
 			let newLocation = Object.assign({}, this.props.location);
 			let params = new URLSearchParams(newLocation.search.slice(1));
 			params.set('view', view.name);
@@ -254,18 +306,15 @@ class FullCalendar extends Component {
 		const { eventId, setActiveEventId, setActiveEvent, defaultDate } = this.props;
 		let { defaultView } = this.props;
 
-		if (!defaultView) {
+		if (defaultView)
+			defaultView = this.getSpecificViewName(defaultView);
+		else
 			defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP
 				? 'month'
 				: 'listWeek';
 
-		} else {
-			if (defaultView === 'week') {
-				defaultView = window.innerWidth > BREAKPOINTS.SMALL_DESKTOP
-					? 'basicWeek'
-					: 'listWeek';
-			}
-		}
+		this.viewName = defaultView;
+		this.viewDate = defaultDate;
 
 		const calendar = $(`#${this.state.calendarId}`);
 		const getCalendarState = this.getCalendarState;
@@ -321,6 +370,7 @@ class FullCalendar extends Component {
 }
 
 FullCalendar.propTypes = {
+	trustedOrigins: PropTypes.array,
 	apiKey: PropTypes.string.isRequired,
 	eventSources: PropTypes.array.isRequired,
 	setActiveEventId: PropTypes.func,

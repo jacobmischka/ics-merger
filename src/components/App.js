@@ -16,6 +16,7 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			TRUSTED_ORIGINS: [],
 			GOOGLE_CALENDAR_API_KEY: '',
 			calendars: {},
 			calendarGroups: {},
@@ -163,7 +164,8 @@ class App extends Component {
 				<div data-iframe-height>
 					{activeEventNode}
 					<h1>{calendar.calname}</h1>
-					<FullCalendar apiKey={this.state.GOOGLE_CALENDAR_API_KEY}
+					<FullCalendar trustedOrigins={this.state.TRUSTED_ORIGINS}
+						apiKey={this.state.GOOGLE_CALENDAR_API_KEY}
 						eventSources={eventSources}
 						setActiveEvent={this.handleSetActiveEvent}
 						setActiveEventId={this.handleSetActiveEventId}
