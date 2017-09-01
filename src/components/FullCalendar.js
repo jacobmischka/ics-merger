@@ -210,7 +210,7 @@ export default class FullCalendar extends Component {
 	componentDidMount() {
 		this.createCalendar();
 
-		if (this.props.trustedOrigins || this.props.trustedOrigins.includes('*')) {
+		if (this.props.trustedOrigins && this.props.trustedOrigins.includes('*')) {
 			window.addEventListener('message', this.receiveMessage, false);
 		}
 	}
