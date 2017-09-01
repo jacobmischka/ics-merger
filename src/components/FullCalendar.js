@@ -278,6 +278,9 @@ export default class FullCalendar extends Component {
 	}
 
 	getCalendarState(view) {
+		if (!this.props.history)
+			return;
+
 		let viewDate = view.intervalStart.toString();
 
 		if (
@@ -385,5 +388,5 @@ FullCalendar.propTypes = {
 	history: PropTypes.shape({
 		push: PropTypes.func.isRequired,
 		listen: PropTypes.func.isRequired
-	}).isRequired
+	})
 };
