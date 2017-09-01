@@ -171,7 +171,9 @@ class App extends Component {
 						setActiveEventId={this.handleSetActiveEventId}
 						defaultView={calendarView}
 						defaultDate={defaultDate}
-						eventId={eventId} />
+						eventId={eventId}
+						location={this.props.location}
+						history={this.props.history} />
 					<Subscription url={icsUrl} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
 			{

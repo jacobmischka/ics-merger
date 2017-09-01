@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
-import { withRouter } from 'react-router';
 import Color from 'color';
 
 import $ from 'jquery';
@@ -16,7 +15,7 @@ import { BREAKPOINTS, COLORS, OPACITIES } from '../constants.js';
 
 const fcButtonHoverBackgroundColor = new Color(COLORS.ACCENT).alpha(OPACITIES.SECONDARY);
 
-class FullCalendar extends Component {
+export default class FullCalendar extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -251,7 +250,7 @@ class FullCalendar extends Component {
 			|| this.props.trustedOrigins.includes(event.origin)
 		)) {
 			event.source.postMessage({
-				view: this.getGenericViewName(this.viewName),
+				view: this.viewName,
 				date: this.viewDate
 			}, event.origin);
 		}
@@ -388,5 +387,3 @@ FullCalendar.propTypes = {
 		listen: PropTypes.func.isRequired
 	}).isRequired
 };
-
-export default withRouter(FullCalendar);
