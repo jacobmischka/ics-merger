@@ -215,6 +215,9 @@ export default class ActiveEvent extends CalendarEvent {
 
 					.event-location {
 						display: none;
+						font-size: 0.6em;
+						text-align: left;
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
 					}
 
 					.event-desc {
@@ -291,13 +294,10 @@ export default class ActiveEvent extends CalendarEvent {
 					}
 
 					.expanded .event-location {
-						font-size: 0.6em;
 						display: block;
 						display: flex;
 						flex-direction: column;
 						align-items: center;
-						text-align: left;
-						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
 					}
 
 					.expanded .event-location::before {

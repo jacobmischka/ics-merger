@@ -8,6 +8,7 @@ import ActiveEvent from './ActiveEvent.js';
 import CalendarLegend from './CalendarLegend.js';
 import CustomGroupSelector from './CustomGroupSelector.js';
 import Subscription from './Subscription.js';
+import Options from './Options.js';
 
 import { BREAKPOINTS } from '../constants.js';
 import { getEventSources, filterHiddenCalendars } from '../utils.js';
@@ -78,7 +79,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { calendarId, eventId, search } = this.props;
+		const { calendarId, eventId, search, location, history } = this.props;
 		const { calendar, calendars } = this.getCalendars(calendarId);
 		const searchParams = new URLSearchParams(this.props.search.slice(1));
 		const calendarView = searchParams.get('view');
@@ -160,6 +161,9 @@ class App extends Component {
 				icsUrl = `${window.location.origin}/${filename}${search}`;
 			}
 
+			const showCalendarNames = searchParams.has('showCalendarNames');
+			const showLocations = searchParams.has('showLocations');
+
 			return (
 				<div data-iframe-height>
 					{activeEventNode}
@@ -172,8 +176,10 @@ class App extends Component {
 						defaultView={calendarView}
 						defaultDate={defaultDate}
 						eventId={eventId}
-						location={this.props.location}
-						history={this.props.history} />
+						location={location}
+						history={history}
+						showCalendarNames={showCalendarNames}
+						showLocations={showLocations} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
 					<Subscription url={icsUrl} />
 			{
@@ -205,6 +211,8 @@ class App extends Component {
 					</div>
 				)
 			}
+					<Options location={location} history={history} />
+
 					<style jsx>
 					{`
 						h1 {

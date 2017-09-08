@@ -49,6 +49,7 @@
   "author": "Jacob Mischka <jacob@mischka.me>",
   "license": "MIT",
   "dependencies": {
+    "@jacobmischka/to-words": "^1.0.0",
     "clipboard": "^1.5.15",
     "color": "^2.0.0",
     "color-string": "^1.4.0",

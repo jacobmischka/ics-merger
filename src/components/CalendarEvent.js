@@ -14,10 +14,12 @@ export default class CalendarEvent extends Component {
 	}
 
 	render() {
+		const { event, showLocation, showCalendarName } = this.props;
+
 		let eventTime = this.getEventTime();
 		let className = this.getClassName();
 
-		let color = Color(this.props.event.color);
+		let color = Color(event.color);
 
 		let style = {
 			border: `1px solid ${color.rgb().string()}`,
@@ -28,20 +30,44 @@ export default class CalendarEvent extends Component {
 
 		return (
 			<ContainerElement className={className} style={style}
-					title={this.props.event.calendar.calname}
+					title={event.calendar.calname}
 					onClick={this.handleClick}
 					ref={container => this.container = container}>
+
 				<span className="event-time">{eventTime}</span>
-				<span className="event-title">{this.props.event.title}</span>
+				<span className="event-title">
+			{
+				showCalendarName && (
+					<span className="event-calendar">{event.calendar.calname}</span>
+				)
+			}
+					{event.title}
+				</span>
+		{
+			showLocation && event.location && (
+				<span className="event-location">{event.location}</span>
+			)
+		}
 				<style jsx>
 				{`
 					:global(.event) {
 						font-family: 'Noto Sans', sans-serif;
-						color: rgba(0, 0, 0, ${OPACITIES.TEXT.primary});
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.PRIMARY});
 						padding: 0.5em;
 						margin: 1px;
 						cursor: pointer;
 						font-size: 0.75em;
+					}
+
+					.event-calendar {
+						margin: 0 0.5em 0 0;
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
+					}
+
+					.event-location {
+						display: block;
+						margin: 0.5em 0 0;
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
 					}
 
 					.event-time {
@@ -81,13 +107,15 @@ export default class CalendarEvent extends Component {
 	}
 
 	getEventTime() {
+		const { event } = this.props;
+
 		let eventTime;
-		if (this.props.event.allDay){
+		if (event.allDay){
 			eventTime = 'All day';
 		}
 		else {
-			let start = this.props.event.start;
-			let end = this.props.event.end;
+			let start = event.start;
+			let end = event.end;
 			let startTime = start.format('h');
 			if (start.get('minute') !== 0)
 				startTime += `:${start.format('mm')}`;
@@ -126,5 +154,12 @@ CalendarEvent.propTypes = {
 	setActiveEventId: PropTypes.func.isRequired,
 	event: PropTypes.object.isRequired,
 	view: PropTypes.object,
-	containerElement: PropTypes.string
+	containerElement: PropTypes.string,
+	showLocation: PropTypes.bool,
+	showCalendarName: PropTypes.bool
+};
+
+CalendarEvent.defaultProps = {
+	showLocation: false,
+	showCalendarName: false
 };

@@ -157,8 +157,15 @@ export default class FullCalendar extends Component {
 	}
 
 	shouldComponentUpdate(nextProps){
-		if (this.props.apiKey !== nextProps.apiKey)
-			return true;
+		const propsToChange = [
+			'apiKey',
+			'showCalendarNames',
+			'showLocations'
+		];
+		for (let prop of propsToChange) {
+			if (this.props[prop] !== nextProps[prop])
+				return true;
+		}
 
 		let eventSourcesToAdd = nextProps.eventSources.filter(newEventSource =>
 			!this.props.eventSources.some(oldEventSource =>
@@ -253,12 +260,17 @@ export default class FullCalendar extends Component {
 			)
 			&& event.data === 'getCalendarState'
 		) {
+			const { showCalendarNames, showLocations } = this.props;
+
+
 			event.source.postMessage({
 				action: 'calendarStateResponse',
 				calendarName: this.props.location.pathname.slice(1),
 				calendarEvent: this.props.location.hash.slice(1),
 				calendarView: this.getGenericViewName(this.viewName),
-				calendarDate: this.viewDate
+				calendarDate: this.viewDate,
+				showCalendarNames,
+				showLocations
 			}, event.origin);
 		}
 	}
@@ -312,7 +324,15 @@ export default class FullCalendar extends Component {
 	}
 
 	createCalendar() {
-		const { eventId, setActiveEventId, setActiveEvent, defaultDate } = this.props;
+		const {
+			eventId,
+			setActiveEventId,
+			setActiveEvent,
+			defaultDate,
+			showCalendarNames,
+			showLocations
+		} = this.props;
+
 		let { defaultView } = this.props;
 
 		if (defaultView)
@@ -359,7 +379,9 @@ export default class FullCalendar extends Component {
 				render(<CalendarEvent event={calEvent} view={view}
 					setActiveEventId={setActiveEventId}
 					setActiveEvent={setActiveEvent}
-					containerElement={calEventElement} />,
+					containerElement={calEventElement}
+					showCalendarName={showCalendarNames}
+					showLocation={showLocations} />,
 					container);
 				return container;
 			},
@@ -388,6 +410,9 @@ FullCalendar.propTypes = {
 	fullcalendarConfig: PropTypes.object,
 	defaultView: PropTypes.string,
 	defaultDate: PropTypes.string,
+
+	showCalendarNames: PropTypes.bool,
+	showLocations: PropTypes.bool,
 
 	location: PropTypes.shape({
 		pathname: PropTypes.string,
