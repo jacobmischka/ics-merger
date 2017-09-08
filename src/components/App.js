@@ -174,8 +174,8 @@ class App extends Component {
 						eventId={eventId}
 						location={this.props.location}
 						history={this.props.history} />
-					<Subscription url={icsUrl} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
+					<Subscription url={icsUrl} />
 			{
 				(groupedCalendarListItems || calendarListItems) && (
 					<div className="calendar-nav-container">
