@@ -1,3 +1,4 @@
+import moment from 'moment';
 import colorString from 'color-string';
 
 export function isCalendarVisible(calendar, keys) {
@@ -126,4 +127,40 @@ function colorToArray(color) {
 	}
 
 	return color;
+}
+
+export function fullCalendarToGoogleUrl(event) {
+	// TODO
+	const url = 'https://calendar.google.com/calendar/render';
+	const params = new URLSearchParams();
+	params.set('action', 'TEMPLATE');
+	params.set('dates', `${formatCalendarDate(event.start)}/${formatCalendarDate(event.end)}`);
+	params.set('location', event.location);
+	params.set('text', event.title);
+	params.set('details', event.description);
+
+	return `${url}?${params.toString()}`;
+}
+
+export function fullCalendarToIcs(event) {
+	return `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+URL:${event.url}
+DTSTART:${formatCalendarDate(event.start)}
+DTEND:${formatCalendarDate(event.end)}
+SUMMARY:${event.title}
+DESCRIPTION:${event.description}
+LOCATION:${event.location}
+END:VEVENT
+END:VCALENDAR`;
+
+}
+
+export function fullCalendarToIcsUrl(event) {
+	return encodeURI(`data:text/calendar;charset=utf8,${fullCalendarToIcs(event)}`);
+}
+
+function formatCalendarDate(date) {
+	return moment(date).toISOString().replace(/-|:|\.\d+/g, '');
 }

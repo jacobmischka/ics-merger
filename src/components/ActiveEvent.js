@@ -4,6 +4,7 @@ import Color from 'color';
 import LinkifyIt from 'linkify-it';
 
 import CalendarEvent from './CalendarEvent.js';
+import AddToCalendar from './AddToCalendar.js';
 
 import { BREAKPOINTS, OPACITIES, COLORS } from '../constants.js';
 import { rgbaOverRgb } from '../utils.js';
@@ -65,6 +66,8 @@ export default class ActiveEvent extends CalendarEvent {
 	}
 
 	render(){
+		const { event, showFooter } = this.props;
+
 		let style;
 		if(!this.state.expanded){
 			let rect = this.props.originalElement
@@ -81,8 +84,8 @@ export default class ActiveEvent extends CalendarEvent {
 			let left = rect.left - 1;
 			let top = rect.top - 1;
 
-			let backgroundColor = rgbaOverRgb(Color(this.props.event.color).alpha(0.3).array());
-			let borderColor = this.props.event.color;
+			let backgroundColor = rgbaOverRgb(Color(event.color).alpha(0.3).array());
+			let borderColor = event.color;
 
 			style = {
 				width: rect.width * 2,
@@ -103,7 +106,7 @@ export default class ActiveEvent extends CalendarEvent {
 		let headerStyle;
 		if(this.state.expanded){
 			headerStyle = {
-				borderBottom: `5px solid ${this.props.event.color}`
+				borderBottom: `5px solid ${event.color}`
 			};
 		}
 
@@ -117,13 +120,13 @@ export default class ActiveEvent extends CalendarEvent {
 					</span>
 					<span className="event-title">
 						<span className="event-calendar">
-							{this.props.event.calendar.calname}
+							{event.calendar.calname}
 						</span>
-						{this.props.event.title}
+						{event.title}
 				{
-					this.props.event.location && (
+					event.location && (
 						<span className="event-location">
-							{this.props.event.location}
+							{event.location}
 						</span>
 					)
 				}
@@ -134,10 +137,17 @@ export default class ActiveEvent extends CalendarEvent {
 					</button>
 				</header>
 		{
-			this.props.event.description && (
+			event.description && (
 				<p className="event-desc"
-					dangerouslySetInnerHTML={this.markupDescription(this.props.event.description)}>
+					dangerouslySetInnerHTML={this.markupDescription(event.description)}>
 				</p>
+			)
+		}
+		{
+			showFooter && (
+				<footer>
+					<AddToCalendar event={event} />
+				</footer>
 			)
 		}
 				<style jsx>
@@ -164,7 +174,7 @@ export default class ActiveEvent extends CalendarEvent {
 						cursor: auto;
 					}
 
-					header {
+					header, footer {
 						flex: 0 0;
 						background-color: transparent;
 						transition-duration: 0.15s;
@@ -250,7 +260,8 @@ export default class ActiveEvent extends CalendarEvent {
 						box-shadow: 0 0 20px 0 ${COLORS.SHADOW};
 					}
 
-					.expanded header {
+					.expanded header,
+					.expanded footer {
 						display: flex;
 						flex-direction: row;
 						flex-wrap: wrap;
@@ -395,5 +406,10 @@ export default class ActiveEvent extends CalendarEvent {
 ActiveEvent.propTypes = {
 	event: PropTypes.object.isRequired,
 	originalElement: PropTypes.object,
-	onClose: PropTypes.func
+	onClose: PropTypes.func,
+	showFooter: PropTypes.bool
+};
+
+ActiveEvent.defaultProps = {
+	showFooter: false
 };
