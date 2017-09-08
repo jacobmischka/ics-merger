@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { camelCaseToWords } from '@jacobmischka/to-words';
+import { camelCaseToWords } from '../utils.js';
 
 export default class Options extends Component {
 	constructor() {
