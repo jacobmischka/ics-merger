@@ -5,10 +5,12 @@ import nodeResolve from 'rollup-plugin-node-resolve';
 import json from 'rollup-plugin-json';
 
 export default {
-	entry: './src/index.js',
-	dest: './dist/ical-merger.bundle.js',
-	format: 'umd',
-	moduleName: 'icalMerger',
+	input: './src/index.js',
+	output: {
+		file: './dist/ical-merger.bundle.js',
+		format: 'umd',
+		name: 'icalMerger',
+	},
 	plugins: [
 		json(),
 		commonjs(),

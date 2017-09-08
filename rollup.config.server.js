@@ -2,9 +2,11 @@ import * as path from 'path';
 import json from 'rollup-plugin-json';
 
 export default {
-	entry: './src/server.js',
-	dest: './dist/server.js',
-	format: 'cjs',
+	input: './src/server.js',
+	output: {
+		file: './dist/server.js',
+		format: 'cjs'
+	},
 	plugins: [
 		json()
 	],
@@ -14,7 +16,8 @@ export default {
 		'express',
 		'node-fetch',
 		'body-parser',
-		'color-string'
+		'color-string',
+		'moment'
 	],
 	preferConst: true
 };
