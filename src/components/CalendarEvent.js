@@ -111,7 +111,9 @@ export default class CalendarEvent extends Component {
 
 		let eventTime;
 		if (event.allDay){
-			eventTime = 'All day';
+			eventTime = (
+				<span>All day</span>
+			);
 		}
 		else {
 			let start = event.start;
@@ -125,7 +127,13 @@ export default class CalendarEvent extends Component {
 				? end.format('h A')
 				: end.format('LT');
 
-			eventTime = `${startTime} – ${endTime}`;
+			eventTime = (
+				<span>
+					<span className="event-time-start">{startTime}</span>
+					{` – `}
+					<span className="event-time-end">{endTime}</span>
+				</span>
+			);
 		}
 
 		return eventTime;

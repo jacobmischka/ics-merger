@@ -213,8 +213,7 @@ class App extends Component {
 			}
 					<Options location={location} history={history} />
 
-					<style jsx>
-					{`
+					<style jsx>{`
 						h1 {
 							font-size: 2.75em;
 							font-weight: 500;
@@ -279,8 +278,7 @@ class App extends Component {
 								display: none;
 							}
 						}
-					`}
-					</style>
+					`}</style>
 
 				</div>
 			);
@@ -292,8 +290,7 @@ class App extends Component {
 					return (
 						<div className="loading-container">
 							<img src="/assets/spinner.gif" alt="Loading" />
-							<style jsx>
-							{`
+							<style jsx>{`
 								.loading-container {
 									display: flex;
 									justify-content: center;
@@ -302,8 +299,7 @@ class App extends Component {
 									width: 100%;
 									height: 100%;
 								}
-							`}
-							</style>
+							`}</style>
 						</div>
 					);
 				case true:

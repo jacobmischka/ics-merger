@@ -12,7 +12,7 @@ import { rgbaOverRgb } from '../utils.js';
 const linkify = new LinkifyIt();
 
 export default class ActiveEvent extends CalendarEvent {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
 			expanded: false
@@ -24,16 +24,16 @@ export default class ActiveEvent extends CalendarEvent {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
-	getEventDate(){
+	getEventDate() {
 		const sameDay = this.props.event.start.isSame(this.props.event.end, 'day');
 		const sameDayAllDay = this.props.event.allDay && this.props.event.start
 			.isSame(this.props.event.end.clone().subtract(1, 'day'));
-		if(sameDay || sameDayAllDay){
+		if (sameDay || sameDayAllDay) {
 			return this.props.event.start.format('ll');
 		}
 		else {
 			let startDate, endDate;
-			if(this.props.event.start.isSame(this.props.event.end, 'year')){
+			if (this.props.event.start.isSame(this.props.event.end, 'year')) {
 				startDate = this.props.event.start.format('MMM D');
 				endDate = this.props.event.end.format('ll');
 
@@ -54,8 +54,8 @@ export default class ActiveEvent extends CalendarEvent {
 		}
 	}
 
-	markupDescription(description){
-		if(description && linkify.test(description)){
+	markupDescription(description) {
+		if (description && linkify.test(description)) {
 			linkify.match(description).map(match => {
 				description = description.replace(match.raw,
 					`<a href="${match.url}" target="_blank" rel="noopener noreferrer">${match.text}</a>`);
@@ -65,11 +65,11 @@ export default class ActiveEvent extends CalendarEvent {
 		return {__html: description};
 	}
 
-	render(){
+	render() {
 		const { event, showFooter } = this.props;
 
 		let style;
-		if(!this.state.expanded){
+		if (!this.state.expanded) {
 			let rect = this.props.originalElement
 				? this.props.originalElement.getBoundingClientRect()
 				: {
@@ -100,11 +100,11 @@ export default class ActiveEvent extends CalendarEvent {
 		let eventDate = this.getEventDate();
 		let className = this.getClassName();
 		className += ' active-event';
-		if(this.state.expanded)
+		if (this.state.expanded)
 			className += ' expanded';
 
 		let headerStyle;
-		if(this.state.expanded){
+		if (this.state.expanded) {
 			headerStyle = {
 				borderBottom: `5px solid ${event.color}`
 			};
@@ -123,24 +123,31 @@ export default class ActiveEvent extends CalendarEvent {
 							{event.calendar.calname}
 						</span>
 						{event.title}
-				{
-					event.location && (
-						<span className="event-location">
-							{event.location}
-						</span>
-					)
-				}
 					</span>
 					<button type="button" className="close" onClick={this.handleClick}
 							title="Close active event">
 						×
 					</button>
 				</header>
+
 		{
-			event.description && (
-				<p className="event-desc"
-					dangerouslySetInnerHTML={this.markupDescription(event.description)}>
-				</p>
+			(event.description || event.location) && (
+				<div className="event-desc">
+			{
+				event.location && (
+					<span className="event-location">
+						{event.location}
+					</span>
+				)
+			}
+			{
+				event.description && (
+					<p dangerouslySetInnerHTML={
+						this.markupDescription(event.description)
+					}></p>
+				)
+			}
+				</div>
 			)
 		}
 		{
@@ -150,13 +157,12 @@ export default class ActiveEvent extends CalendarEvent {
 				</footer>
 			)
 		}
-				<style jsx>
-				{`
+				<style jsx>{`
 					.active-event {
 						display: flex;
 						flex-direction: column;
 						font-family: 'Noto Sans', sans-serif;
-						color: rgba(0, 0, 0, ${OPACITIES.TEXT.primary});
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.PRIMARY});
 						padding: 0.5em;
 						margin: 1px;
 						cursor: pointer;
@@ -164,21 +170,18 @@ export default class ActiveEvent extends CalendarEvent {
 						position: fixed;
 						left: 0;
 						top: 0;
-						max-width: 90vw;
-						max-height: 90vh;
+						width: 90vw;
+						height: 90vh;
 						font-size: 1.5em;
 						overflow: hidden;
-						transition-duration: 0.15s;
-						transition-property: left, top, width, height, transform, background-color, border;
 						z-index: 100;
 						cursor: auto;
+						visibility: hidden;
 					}
 
 					header, footer {
-						flex: 0 0;
+						flex-grow: 0;
 						background-color: transparent;
-						transition-duration: 0.15s;
-						transition-property: background-color, border;
 					}
 
 					.event-calendar {
@@ -190,7 +193,6 @@ export default class ActiveEvent extends CalendarEvent {
 					.event-date-time {
 						margin: 0;
 						text-align: center;
-						min-width: 200px;
 					}
 
 					.event-date {
@@ -215,7 +217,6 @@ export default class ActiveEvent extends CalendarEvent {
 
 					.event-location {
 						display: none;
-						font-size: 0.6em;
 						text-align: left;
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
 					}
@@ -247,7 +248,7 @@ export default class ActiveEvent extends CalendarEvent {
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.DISABLED});
 						padding: 0.1em;
 						margin: 0.1em;
-						line-height: 0.8;
+						line-height: 0.65;
 					}
 
 					header .close:hover {
@@ -261,6 +262,7 @@ export default class ActiveEvent extends CalendarEvent {
 						padding: 0;
 						transform: translate(50vw, 50vh) translate(-50%, -50%);
 						box-shadow: 0 0 20px 0 ${COLORS.SHADOW};
+						visibility: visible;
 					}
 
 					.expanded header,
@@ -269,15 +271,30 @@ export default class ActiveEvent extends CalendarEvent {
 						flex-direction: row;
 						flex-wrap: wrap;
 						justify-content: space-around;
-						align-items: center;
-						padding: 0.5em 1em;
-						text-align: center;
 						box-shadow: 0 0 5px 0 ${COLORS.SHADOW};
 						background-color: ${COLORS.BACKGROUND};
+						overflow: auto;
+					}
+
+					.expanded header {
+						align-items: center;
+						padding: 0.5em;
+					}
+
+					.expanded footer {
+						align-items: center;
+						text-align: center;
+					}
+
+					.expanded .event-title,
+					.expanded .event-date-time {
+						margin: 0.25em;
 					}
 
 					.expanded .event-title {
 						order: 1;
+						flex-grow: 1;
+						max-width: 100%;
 					}
 
 					.expanded .event-calendar {
@@ -286,24 +303,31 @@ export default class ActiveEvent extends CalendarEvent {
 
 					.expanded .event-date-time {
 						order: 2;
+						flex-grow: 1;
+						display: flex;
+						flex-direction: row;
+						flex-wrap: wrap;
+						justify-content: space-around;
 					}
 
 					.expanded .event-date,
 					.expanded .event-time {
 						display: block;
+						margin: 0.1 0.5em;
+						display: inline-block;
+						white-space: nowrap;
+
 					}
 
 					.expanded .event-location {
+						padding: 0.5em 0;
 						display: block;
-						display: flex;
-						flex-direction: column;
-						align-items: center;
 					}
 
 					.expanded .event-location::before {
 						content: 'Location:';
 						display: inline-block;
-						margin: 0 0 0.5em 0;
+						margin-right: 0.5em;
 					}
 
 					.expanded .event-desc {
@@ -312,6 +336,21 @@ export default class ActiveEvent extends CalendarEvent {
 					}
 
 					@media (min-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
+
+						.active-event {
+							transition-duration: 0.15s;
+							transition-property: left, top, width, height, transform, background-color, border;
+							max-width: 90vw;
+							max-height: 90vh;
+							width: auto;
+							height: auto;
+							visibility: visible;
+						}
+
+						header, footer {
+							transition-duration: 0.15s;
+							transition-property: background-color, border;
+						}
 
 						.active-event.expanded {
 							font-size: 2em;
@@ -332,6 +371,11 @@ export default class ActiveEvent extends CalendarEvent {
 							font-size: 1.25em;
 						}
 
+						.expanded .event-date-time {
+							flex-direction: column;
+							justify-content: flex-end;
+						}
+
 						.expanded .event-location {
 							flex-direction: row;
 							align-items: flex-start;
@@ -345,17 +389,17 @@ export default class ActiveEvent extends CalendarEvent {
 							margin-left: 1em;
 						}
 					}
-				`}
-				</style>
+				`}</style>
 			</div>
 		);
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		window.requestAnimationFrame(() => {
 			window.requestAnimationFrame(() => {
 				this.setState({expanded: true});
-				if('parentIFrame' in window){
+
+				if ('parentIFrame' in window) {
 					window.parentIFrame.getPageInfo(parentPage => {
 						let middleOfParentViewport = parentPage.scrollTop +
 							(parentPage.clientHeight / 2) - parentPage.offsetTop;
@@ -375,28 +419,33 @@ export default class ActiveEvent extends CalendarEvent {
 		});
 	}
 
-	componentWillUnmount(){
+	componentWillUnmount() {
 		document.removeEventListener('click', this.handleOutsideClick);
 	}
 
-	handleClick(){
+	handleClick() {
 		window.requestAnimationFrame(() => {
 			this.setState({expanded: false}, () => {
-				if('parentIFrame' in window){
+				if ('parentIFrame' in window) {
 					window.parentIFrame.getPageInfo(false);
 				}
-				window.setTimeout(this.props.onClose, 140);
+
+				let timeout = window.innerWidth >= BREAKPOINTS.SMALL_DESKTOP
+					? 140
+					: 10;
+
+				window.setTimeout(this.props.onClose, timeout);
 			});
 		});
 	}
 
-	handleOutsideClick(event){
-		if(event.defaultPrevented)
+	handleOutsideClick(event) {
+		if (event.defaultPrevented)
 			return;
 
 		window.requestAnimationFrame(() => {
 			let rect =  this.container.getBoundingClientRect();
-			if(event.clientX < rect.left || event.clientX > rect.right
+			if (event.clientX < rect.left || event.clientX > rect.right
 					|| event.clientY < rect.top || event.clientY > rect.bottom)
 				this.handleClick();
 		});
