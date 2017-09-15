@@ -403,11 +403,13 @@ export default class ActiveEvent extends CalendarEvent {
 					window.parentIFrame.getPageInfo(parentPage => {
 						let middleOfParentViewport = parentPage.scrollTop +
 							(parentPage.clientHeight / 2) - parentPage.offsetTop;
-						let y = middleOfParentViewport > this.container.clientHeight / 2
-							? middleOfParentViewport < window.innerHeight - this.container.clientHeight / 2
+
+						let y = middleOfParentViewport > parentPage.clientHeight / 2
+							? middleOfParentViewport < window.innerHeight - parentPage.clientHeight / 2
 								? `${middleOfParentViewport}px`
 								: '100vh - 50% - 10px'
 							: '50% + 10px';
+
 						let containerMaxHeight = parentPage.clientHeight * 0.9 - 50;
 						this.container.style.maxHeight = `${containerMaxHeight}px`;
 						this.container.style.transform =
