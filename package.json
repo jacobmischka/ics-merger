@@ -53,7 +53,7 @@
     "color": "^2.0.0",
     "color-string": "^1.4.0",
     "express": "^4.14.0",
-    "fullcalendar": "^3.5.1",
+    "fullcalendar": "3.4.0",
     "ical.js": "^1.2.2",
     "iframe-resizer": "^3.5.14",
     "linkify-it": "^2.0.2",
