@@ -24,6 +24,7 @@ type Calendar = {
 	source?: string,
 	url: string,
 	subCalendars?: Array<Calendar>,
+	aliases?: Array<string>,
 
 	private?: boolean,
 	key?: string
@@ -55,6 +56,30 @@ export function isCalendarVisible(
 			&& typeof calendar.key === 'string'
 			&& keys.includes(calendar.key)
 		));
+}
+
+export function getAliases(config: CalendarConfig): Map<string, string> {
+	let aliasMap: Map<string, string> = new Map();
+
+	// $FlowFixMe: https://github.com/facebook/flow/issues/2221
+	for (let [calendarId, calendar]: [string, Calendar] of Object.entries(config.calendars)) {
+		if (calendar.aliases) {
+			for (let alias of calendar.aliases) {
+				aliasMap.set(alias, calendarId);
+			}
+		}
+	}
+
+	// $FlowFixMe: https://github.com/facebook/flow/issues/2221
+	for (let [calendarGroupId, calendarGroup]: [string, Calendar] of Object.entries(config.calendarGroups)) {
+		if (calendarGroup.aliases) {
+			for (let alias of calendarGroup.aliases) {
+				aliasMap.set(alias, calendarGroupId);
+			}
+		}
+	}
+
+	return aliasMap;
 }
 
 export function filterHiddenCalendars(config: CalendarConfig, keys: Array<string>) {

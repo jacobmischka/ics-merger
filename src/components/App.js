@@ -14,7 +14,8 @@ import { BREAKPOINTS } from '../constants.js';
 import {
 	getEventSources,
 	filterHiddenCalendars,
-	replaceCalendarMacros
+	replaceCalendarMacros,
+	getAliases
 } from '../utils.js';
 
 class App extends Component {
@@ -29,11 +30,13 @@ class App extends Component {
 				calname: 'Custom Calendar',
 				calendars: []
 			},
+			aliases: null,
 			activeEvent: null,
 			activeEventOriginalElement: null,
 			loaded: null
 		};
 
+		this.redirectAlias = this.redirectAlias.bind(this);
 		this.handleSetActiveEventId = this.handleSetActiveEventId.bind(this);
 		this.handleSetActiveEvent = this.handleSetActiveEvent.bind(this);
 		this.handleUnsetActiveEvent = this.handleUnsetActiveEvent.bind(this);
@@ -50,7 +53,11 @@ class App extends Component {
 
 				dotenv = replaceCalendarMacros(dotenv);
 				dotenv = filterHiddenCalendars(dotenv, keys);
-				this.setState(Object.assign(dotenv, {loaded: true}));
+				const aliases = getAliases(dotenv);
+				this.setState(Object.assign(dotenv, {loaded: true, aliases}), () => {
+					this.redirectAlias();
+				});
+
 				if (dotenv.GOOGLE_ANALYTICS_TRACKING_ID && window.ga) {
 					window.ga('create', dotenv.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
 					window.ga('send', 'pageview');
@@ -64,6 +71,7 @@ class App extends Component {
 	componentWillReceiveProps(nextProps) {
 		if (!nextProps.eventId && this.state.activeEvent)
 			this.handleUnsetActiveEvent(false);
+		this.redirectAlias();
 	}
 
 	getCalendars(calendarId) {
@@ -321,6 +329,19 @@ class App extends Component {
 						</p>
 					);
 			}
+		}
+	}
+
+	redirectAlias() {
+		const { aliases } = this.state;
+		const { calendarId, history, location } = this.props;
+
+		if (aliases && aliases.has(calendarId)) {
+			let newLocation = Object.assign({}, location, {
+				pathname: `/${aliases.get(calendarId)}`
+			});
+
+			history.push(newLocation);
 		}
 	}
 
