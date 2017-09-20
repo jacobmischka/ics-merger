@@ -11,7 +11,11 @@ import Subscription from './Subscription.js';
 import Options from './Options.js';
 
 import { BREAKPOINTS } from '../constants.js';
-import { getEventSources, filterHiddenCalendars } from '../utils.js';
+import {
+	getEventSources,
+	filterHiddenCalendars,
+	replaceCalendarMacros
+} from '../utils.js';
 
 class App extends Component {
 	constructor(props) {
@@ -44,7 +48,8 @@ class App extends Component {
 				const searchParams = new URLSearchParams(this.props.search.slice(1));
 				const keys = searchParams.getAll('key');
 
-				filterHiddenCalendars(dotenv, keys);
+				dotenv = replaceCalendarMacros(dotenv);
+				dotenv = filterHiddenCalendars(dotenv, keys);
 				this.setState(Object.assign(dotenv, {loaded: true}));
 				if (dotenv.GOOGLE_ANALYTICS_TRACKING_ID && window.ga) {
 					window.ga('create', dotenv.GOOGLE_ANALYTICS_TRACKING_ID, 'auto');
@@ -63,14 +68,15 @@ class App extends Component {
 
 	getCalendars(calendarId) {
 		// FIXME: This doesn't work if a calendar and a group share the same id
+
 		let calendar = calendarId === 'custom'
 			? this.state.customCalendar
 			: this.state.calendarGroups[calendarId];
 		let calendars;
+
 		if (calendar) {
 			calendars = calendar.calendars.map(id => this.state.calendars[id]);
-		}
-		else {
+		} else {
 			calendar = this.state.calendars[calendarId];
 			calendars = calendar ? calendar.subCalendars || [calendar] : [];
 		}

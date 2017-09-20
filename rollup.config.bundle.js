@@ -1,8 +1,8 @@
 import * as path from 'path';
-import buble from 'rollup-plugin-buble';
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import json from 'rollup-plugin-json';
+import babel from 'rollup-plugin-babel';
 
 export default {
 	input: './src/index.js',
@@ -14,10 +14,8 @@ export default {
 	plugins: [
 		json(),
 		commonjs(),
-		buble({
-			transforms: {
-				dangerousForOf: true
-			}
+		babel({
+			exclude: 'node_modules/**'
 		}),
 		nodeResolve({
 			jsnext: true

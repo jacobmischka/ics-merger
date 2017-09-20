@@ -1,5 +1,6 @@
 import * as path from 'path';
 import json from 'rollup-plugin-json';
+import babel from 'rollup-plugin-babel';
 
 export default {
 	input: './src/server.js',
@@ -8,7 +9,10 @@ export default {
 		format: 'cjs'
 	},
 	plugins: [
-		json()
+		json(),
+		babel({
+			exclude: 'node_modules/**'
+		})
 	],
 	external: [
 		path.resolve('./.env.json'),

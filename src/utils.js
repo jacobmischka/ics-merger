@@ -1,16 +1,66 @@
+/* @flow */
+
 import moment from 'moment';
 import colorString from 'color-string';
 
-export function isCalendarVisible(calendar, keys) {
+import type { ColorLike } from 'color';
+import type { FullCalendarEvent } from 'fullcalendar';
+
+type DateLike = String | Date;
+
+type CalendarConfig = {
+	TRUSTED_ORIGINS: Array<string>,
+	GOOGLE_CALENDAR_API_KEY: Array<string>,
+	calendars: {[string]: Calendar},
+	calendarGroups: {[string]: CalendarGroup}
+};
+
+type Calendar = {
+	calname: string,
+	caldesc: string,
+	timezone: string,
+	color: string,
+	googleCalendarId?: string,
+	source?: string,
+	url: string,
+	subCalendars?: Array<Calendar>,
+
+	private?: boolean,
+	key?: string
+};
+
+type CalendarGroup = {
+	calname: string,
+	caldesc: string,
+	timezone: string,
+	color: string,
+	calendars: Array<string>,
+	aliases?: Array<string>,
+
+	private?: boolean,
+	key?: string
+};
+
+export function isCalendarVisible(
+	calendar: Calendar | CalendarGroup,
+	keys: Array<string> | string
+): boolean {
 	if (!Array.isArray(keys))
 		keys = [keys];
 
-	return calendar && (!calendar.private || keys.includes(calendar.key));
+	return calendar && (
+		!calendar.private
+		|| (
+			Boolean(calendar.key)
+			&& typeof calendar.key === 'string'
+			&& keys.includes(calendar.key)
+		));
 }
 
-export function filterHiddenCalendars(config, keys) {
+export function filterHiddenCalendars(config: CalendarConfig, keys: Array<string>) {
 
-	const isVisible = calendar => isCalendarVisible(calendar, keys);
+	const isVisible: (Calendar | CalendarGroup) => boolean
+		= calendar => isCalendarVisible(calendar, keys);
 
 	for(const groupId in config.calendarGroups) {
 		let group = config.calendarGroups[groupId];
@@ -34,7 +84,23 @@ export function filterHiddenCalendars(config, keys) {
 	return config;
 }
 
-export function getEventSources(calendars) {
+export function replaceCalendarMacros(config: CalendarConfig): CalendarConfig {
+
+	// $FlowFixMe: https://github.com/facebook/flow/issues/2221
+	for (let calendarGroup: CalendarGroup of Object.values(config.calendarGroups)) {
+		if (
+			calendarGroup.calendars
+			&& Array.isArray(calendarGroup.calendars)
+			&& calendarGroup.calendars.length === 1
+			&& calendarGroup.calendars[0] === '<all>'
+		)
+			calendarGroup.calendars = Object.keys(config.calendars);
+	}
+
+	return config;
+}
+
+export function getEventSources(calendars: Array<Calendar>): Array<EventSource> {
 	let eventSources = [];
 
 	for(let calendar of calendars) {
@@ -43,7 +109,7 @@ export function getEventSources(calendars) {
 			if (calendarSource)
 				eventSources.push(calendarSource);
 
-			if (calendar.subCalendars) {
+			if (calendar.subCalendars && Array.isArray(calendar.subCalendars)) {
 				for(let subCalendar of calendar.subCalendars) {
 					eventSources.push(getSource(subCalendar, calendar.color));
 				}
@@ -54,14 +120,29 @@ export function getEventSources(calendars) {
 	return eventSources;
 }
 
-export function getSource(calendar, color = calendar.color) {
-	if (!calendar || (!calendar.googleCalendarId && !calendar.source))
-		return;
+type EventSource = {
+	color?: ?string,
+	eventDataTransform?: FullCalendarEvent => EnhancedFullCalendarEvent,
+	googleCalendarId?: string,
+	url?: string
+};
 
-	let source = {
+type EnhancedFullCalendarEvent = FullCalendarEvent & {
+	color: string,
+	calendar: Calendar
+};
+
+export function getSource(
+	calendar: Calendar,
+	color: string = calendar.color
+): EventSource {
+	if (!calendar || (!calendar.googleCalendarId && !calendar.source))
+		return {};
+
+	let source: EventSource = {
 		color,
-		eventDataTransform(eventData) {
-			return Object.assign(eventData, {
+		eventDataTransform(eventData: FullCalendarEvent) {
+			return Object.assign({}, eventData, {
 				color,
 				calendar
 			});
@@ -77,15 +158,15 @@ export function getSource(calendar, color = calendar.color) {
 	return source;
 }
 
-export function nl2br(text) {
+export function nl2br(text: string): string {
 	return text.replace(/(?:\r\n|\r|\n)/g, '<br />');
 }
 
-export function ucfirst(str) {
+export function ucfirst(str: string): string {
 	return str.charAt(0).toUpperCase() + str.substring(1);
 }
 
-export function camelCaseToWords(str) {
+export function camelCaseToWords(str: string): string {
 	let result = '';
 	for(let char of str) {
 		if (result === '') {
@@ -101,7 +182,7 @@ export function camelCaseToWords(str) {
 	return result;
 }
 
-export function rgbaOverRgb(rgba, rgb = [255, 255, 255]) {
+export function rgbaOverRgb(rgba: ColorLike, rgb: ColorLike = [255, 255, 255]) {
 	rgba = colorToArray(rgba);
 	rgb = colorToArray(rgb);
 
@@ -118,18 +199,20 @@ export function rgbaOverRgb(rgba, rgb = [255, 255, 255]) {
 	return colorString.to.rgb(resultPieces);
 }
 
-function colorToArray(color) {
-	if (!Array.isArray(color)) {
+function colorToArray(color: Array<number> | string | Object): Array<number> {
+	if (Array.isArray(color)) {
+		return color;
+	} else {
 		switch(typeof color) {
 			case 'object': return color.array();
 			case 'string': return colorString.get(color).value;
 		}
 	}
 
-	return color;
+	return [];
 }
 
-export function fullCalendarToGoogleUrl(event) {
+export function fullCalendarToGoogleUrl(event: FullCalendarEvent): string {
 	// TODO
 	const url = 'https://calendar.google.com/calendar/render';
 	const params = new URLSearchParams();
@@ -142,7 +225,7 @@ export function fullCalendarToGoogleUrl(event) {
 	return `${url}?${params.toString()}`;
 }
 
-export function fullCalendarToIcs(event) {
+export function fullCalendarToIcs(event: FullCalendarEvent): string {
 	return `BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
@@ -157,10 +240,10 @@ END:VCALENDAR`;
 
 }
 
-export function fullCalendarToIcsUrl(event) {
+export function fullCalendarToIcsUrl(event: FullCalendarEvent): string {
 	return encodeURI(`data:text/calendar;charset=utf8,${fullCalendarToIcs(event)}`);
 }
 
-function formatCalendarDate(date) {
+function formatCalendarDate(date: DateLike): string {
 	return moment(date).toISOString().replace(/-|:|\.\d+/g, '');
 }
