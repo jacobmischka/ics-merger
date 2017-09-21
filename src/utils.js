@@ -35,11 +35,26 @@ type CalendarGroup = {
 	caldesc: string,
 	timezone: string,
 	color: string,
-	calendars: Array<string>,
+	calendars?: Array<string>,
+	subGroups?: Array<string>,
 	aliases?: Array<string>,
 
 	private?: boolean,
 	key?: string
+};
+
+type CalendarLike = Calendar | CalendarGroup;
+
+type EventSource = {
+	color?: ?string,
+	eventDataTransform?: FullCalendarEvent => EnhancedFullCalendarEvent,
+	googleCalendarId?: string,
+	url?: string
+};
+
+type EnhancedFullCalendarEvent = FullCalendarEvent & {
+	color: string,
+	calendar: Calendar
 };
 
 export function isCalendarVisible(
@@ -125,37 +140,107 @@ export function replaceCalendarMacros(config: CalendarConfig): CalendarConfig {
 	return config;
 }
 
-export function getEventSources(calendars: Array<Calendar>): Array<EventSource> {
-	let eventSources = [];
+export function getCalendars(
+	calendarId: string,
+	allCalendars: {[string]: Calendar},
+	allCalendarGroups: {[string]: CalendarGroup},
+	customCalendar: CalendarGroup
+): {
+	calendar: ?CalendarLike,
+	calendars: Array<CalendarLike>,
+	eventSources: Array<EventSource>
+} {
 
-	for(let calendar of calendars) {
-		if (calendar) {
-			let calendarSource = getSource(calendar);
-			if (calendarSource)
-				eventSources.push(calendarSource);
+	let calendar: Calendar | CalendarGroup,
+		calendars: Array<CalendarLike> = [],
+		eventSources: Array<EventSource> = [];
 
-			if (calendar.subCalendars && Array.isArray(calendar.subCalendars)) {
-				for(let subCalendar of calendar.subCalendars) {
-					eventSources.push(getSource(subCalendar, calendar.color));
-				}
+	if (calendarId === 'custom') {
+
+		calendar = customCalendar;
+
+		if (customCalendar.calendars) {
+			let actualCalendars = customCalendar.calendars.map(id => allCalendars[id]);
+			calendars.push(...actualCalendars);
+			eventSources.push(...actualCalendars.map(cal => getSource(cal)));
+		}
+
+	} else if (calendarId in allCalendars) {
+
+		calendar = allCalendars[calendarId];
+
+		if (
+			calendar.subCalendars
+			&& Array.isArray(calendar.subCalendars)
+			&& calendar.subCalendars.length > 0
+		) {
+			let subCals = calendar.subCalendars;
+			calendars.push(...subCals);
+			eventSources.push(...subCals.map(subCal => getSource(subCal)));
+		}
+
+		if (calendar.googleCalendarId || calendar.source) {
+			calendars.push(calendar);
+			eventSources.push(getSource(calendar));
+		}
+
+	} else if (calendarId in allCalendarGroups) {
+
+		calendar = allCalendarGroups[calendarId];
+		if (calendar.subGroups) {
+			let subGroups = calendar.subGroups.filter(id =>
+				id in allCalendarGroups && allCalendarGroups[id] !== calendar
+			).map(id => allCalendarGroups[id]);
+
+			calendars.push(...subGroups);
+
+			for (let subGroup of subGroups) {
+				let deepCalendarIds = getDeepCalendarIdsFromSubGroups(
+					subGroup,
+					allCalendars,
+					allCalendarGroups
+				);
+				deepCalendarIds = Array.from(new Set(deepCalendarIds));
+				let deepCalendars = deepCalendarIds.map(id => allCalendars[id]);
+
+				eventSources.push(...deepCalendars
+					.map(cal => getSource(cal, subGroup.color))
+				);
 			}
+		}
+
+		if (calendar.calendars) {
+			let cals = calendar.calendars.map(id => allCalendars[id]);
+			calendars.push(...cals);
+			eventSources.push(...cals.map(cal => getSource(cal)));
 		}
 	}
 
-	return eventSources;
+	eventSources = dedupeSources(eventSources);
+
+	return { calendar, calendars, eventSources };
 }
 
-type EventSource = {
-	color?: ?string,
-	eventDataTransform?: FullCalendarEvent => EnhancedFullCalendarEvent,
-	googleCalendarId?: string,
-	url?: string
-};
+function getDeepCalendarIdsFromSubGroups(
+	calendarGroup: CalendarGroup,
+	allCalendars: {[string]: Calendar},
+	allCalendarGroups: {[string]: CalendarGroup}
+): Array<string> {
+	let calendarIds: Array<string> = [];
 
-type EnhancedFullCalendarEvent = FullCalendarEvent & {
-	color: string,
-	calendar: Calendar
-};
+	if (calendarGroup.subGroups && calendarGroup.subGroups.length > 0) {
+		let subGroups = calendarGroup.subGroups.map(id => allCalendarGroups[id]);
+		for (let subGroup of subGroups) {
+			calendarIds.push(...getDeepCalendarIdsFromSubGroups(subGroup, allCalendars, allCalendarGroups));
+		}
+	}
+
+	if (calendarGroup.calendars && calendarGroup.calendars.length > 0) {
+		calendarIds.push(...calendarGroup.calendars);
+	}
+
+	return calendarIds;
+}
 
 export function getSource(
 	calendar: Calendar,
@@ -174,13 +259,28 @@ export function getSource(
 		}
 	};
 
-	if (calendar.googleCalendarId) {
+	if (calendar.googleCalendarId && typeof calendar.googleCalendarId === 'string') {
 		source.googleCalendarId = calendar.googleCalendarId;
-	} else if (calendar.source) {
+	} else if (calendar.source && typeof calendar.source === 'string') {
 		source.url = calendar.source;
 	}
 
 	return source;
+}
+
+function dedupeSources(sources: Array<EventSource>): Array<EventSource> {
+	// TODO: merge duplicates instead of just using the first one
+
+	let sourceMap: Map<string, EventSource> = new Map();
+
+	for (let source of sources) {
+		if (source.googleCalendarId && !sourceMap.has(source.googleCalendarId))
+			sourceMap.set(source.googleCalendarId, source);
+		else if (source.url && !sourceMap.has(source.url))
+			sourceMap.set(source.url, source);
+	}
+
+	return Array.from(sourceMap.values());
 }
 
 export function nl2br(text: string): string {

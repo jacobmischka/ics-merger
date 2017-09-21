@@ -12,7 +12,7 @@ import Options from './Options.js';
 
 import { BREAKPOINTS } from '../constants.js';
 import {
-	getEventSources,
+	getCalendars,
 	filterHiddenCalendars,
 	replaceCalendarMacros,
 	getAliases
@@ -74,35 +74,21 @@ class App extends Component {
 		this.redirectAlias();
 	}
 
-	getCalendars(calendarId) {
-		// FIXME: This doesn't work if a calendar and a group share the same id
-
-		let calendar = calendarId === 'custom'
-			? this.state.customCalendar
-			: this.state.calendarGroups[calendarId];
-		let calendars;
-
-		if (calendar) {
-			calendars = calendar.calendars.map(id => this.state.calendars[id]);
-		} else {
-			calendar = this.state.calendars[calendarId];
-			calendars = calendar ? calendar.subCalendars || [calendar] : [];
-		}
-
-		return { calendar, calendars };
-	}
-
 	render() {
 		const { calendarId, eventId, search, location, history } = this.props;
-		const { calendar, calendars } = this.getCalendars(calendarId);
+		const { calendar, calendars, eventSources } = getCalendars(
+			calendarId,
+			this.state.calendars,
+			this.state.calendarGroups,
+			this.state.customCalendar
+		);
 		const searchParams = new URLSearchParams(this.props.search.slice(1));
 		const calendarView = searchParams.get('view');
 		const defaultDate = searchParams.get('date');
 
-		if (calendar && calendars) {
-			let eventSources = getEventSources(calendars);
+		// console.log({ calendar, calendars, eventSources });
 
-
+		if (calendar && calendars && eventSources) {
 			let activeEventNode = this.state.activeEvent
 				? (
 					<ActiveEvent event={this.state.activeEvent}
