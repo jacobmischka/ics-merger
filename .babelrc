@@ -1,9 +1,11 @@
 {
 	"presets": [
+		"flow",
 		"react",
 		["es2015", { "modules": false }]
 	],
 	"plugins": [
-		"styled-jsx-postcss/babel"
+		"styled-jsx-postcss/babel",
+		"transform-class-properties"
 	]
 }

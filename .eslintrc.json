@@ -20,7 +20,8 @@
 		"no-spaced-func": "warn",
 		"comma-style": "warn",
 		"comma-spacing": "warn",
-		"key-spacing": "warn"
+		"key-spacing": "warn",
+		"react/prop-types": [0]
 	},
 	"plugins": ["react"]
 }

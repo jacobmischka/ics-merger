@@ -9,6 +9,7 @@ import CalendarLegend from './CalendarLegend.js';
 import CustomGroupSelector from './CustomGroupSelector.js';
 import Subscription from './Subscription.js';
 import Options from './Options.js';
+import CalendarTree from './CalendarTree.js';
 
 import { BREAKPOINTS } from '../constants.js';
 import {
@@ -30,6 +31,7 @@ class App extends Component {
 				calname: 'Custom Calendar',
 				calendars: []
 			},
+			calendarTree: null,
 			aliases: null,
 			activeEvent: null,
 			activeEventOriginalElement: null,
@@ -113,6 +115,7 @@ class App extends Component {
 			{
 				calendarId === 'custom' && (
 					<CustomGroupSelector calendars={this.state.calendars}
+						calendarTree={this.state.calendarTree}
 						customCalendarIds={this.state.customCalendar.calendars}
 						handleChangeCustomCalendarIds={this.handleChangeCustomCalendarIds} />
 				)
@@ -120,13 +123,20 @@ class App extends Component {
 				</li>
 			);
 
-			let calendarListItems = Object.keys(this.state.calendars).map(id => (
-				<li key={`calendar-list-items-${id}`}>
-					<NavLink to={{pathname: `/${id}`, search}}>
-						{this.state.calendars[id].calname}
-					</NavLink>
-				</li>
-			));
+			let calendarListTree = (
+				<CalendarTree calendars={this.state.calendars}
+					calendarTree={this.state.calendarTree}
+					container="section"
+					label={<h3>Calendars</h3>}
+					keyPrefix="calendar-list-tree"
+					render={(id, cal) => (
+						<li key={`calendar-list-items-${id}`}>
+							<NavLink to={{pathname: `/${id}`, search}}>
+								{cal.calname}
+							</NavLink>
+						</li>
+					)} />
+			);
 
 			// `${window.location.origin}/${this.props.icsFilename}${window.location.search}`
 
@@ -183,7 +193,7 @@ class App extends Component {
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
 					<Subscription url={icsUrl} />
 			{
-				(groupedCalendarListItems || calendarListItems) && (
+				(groupedCalendarListItems || calendarListTree) && (
 					<div className="calendar-nav-container">
 						<h2>Other calendars</h2>
 						<nav className="calendar-nav">
@@ -197,16 +207,7 @@ class App extends Component {
 						</section>
 					)
 				}
-				{
-					calendarListItems && (
-						<section>
-							<h3>Calendars</h3>
-							<ul>
-								{calendarListItems}
-							</ul>
-						</section>
-					)
-				}
+				{ calendarListTree }
 						</nav>
 					</div>
 				)

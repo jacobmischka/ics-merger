@@ -1,27 +1,35 @@
+/* @flow */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CustomGroupSelector = props => {
+import CalendarTree from './CalendarTree.js';
 
-	const options = Object.keys(props.calendars).map(calendarId => {
-		return (
-			<li key={`custom-${calendarId}`}>
-				<label>
-					<input type="checkbox" value={calendarId}
-						checked={props.customCalendarIds.includes(calendarId)}
-						onChange={props.handleChangeCustomCalendarIds} />
-					{props.calendars[calendarId].calname}
-				</label>
-			</li>
-		);
-	});
+import type { Calendar, CalendarTreeDef } from '../utils.js';
 
+type Props = {
+	calendars: {[string]: Calendar},
+	calendarTree?: CalendarTreeDef,
+	customCalendarIds: Array<string>,
+	handleChangeCustomCalendarIds: Function
+};
+
+const CustomGroupSelector = (props: Props) => {
 	return (
-		<div className="custom-group-selector">
-			<ul>
-				{options}
-			</ul>
-		</div>
+		<CalendarTree calendars={props.calendars}
+			calendarTree={props.calendarTree}
+			keyPrefix="custom-group-selector"
+			container="div"
+			render={calendarId => (
+				<li key={`custom-${calendarId}`}>
+					<label>
+						<input type="checkbox" value={calendarId}
+							checked={props.customCalendarIds.includes(calendarId)}
+							onChange={props.handleChangeCustomCalendarIds} />
+						{props.calendars[calendarId].calname}
+					</label>
+				</li>
+			)} />
 	);
 };
 

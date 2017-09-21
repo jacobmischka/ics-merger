@@ -6,16 +6,17 @@ import colorString from 'color-string';
 import type { ColorLike } from 'color';
 import type { FullCalendarEvent } from 'fullcalendar';
 
-type DateLike = String | Date;
+export type DateLike = String | Date;
 
-type CalendarConfig = {
+export type CalendarConfig = {
 	TRUSTED_ORIGINS: Array<string>,
 	GOOGLE_CALENDAR_API_KEY: Array<string>,
 	calendars: {[string]: Calendar},
-	calendarGroups: {[string]: CalendarGroup}
+	calendarGroups: {[string]: CalendarGroup},
+	calendarTree?: CalendarTreeDef
 };
 
-type Calendar = {
+export type Calendar = {
 	calname: string,
 	caldesc: string,
 	timezone: string,
@@ -30,7 +31,7 @@ type Calendar = {
 	key?: string
 };
 
-type CalendarGroup = {
+export type CalendarGroup = {
 	calname: string,
 	caldesc: string,
 	timezone: string,
@@ -43,16 +44,21 @@ type CalendarGroup = {
 	key?: string
 };
 
-type CalendarLike = Calendar | CalendarGroup;
+export type CalendarLike = Calendar | CalendarGroup;
 
-type EventSource = {
+export type CalendarTreeDef = {
+	label?: string,
+	items: Array<string | CalendarTreeDef>
+};
+
+export type EventSource = {
 	color?: ?string,
 	eventDataTransform?: FullCalendarEvent => EnhancedFullCalendarEvent,
 	googleCalendarId?: string,
 	url?: string
 };
 
-type EnhancedFullCalendarEvent = FullCalendarEvent & {
+export type EnhancedFullCalendarEvent = FullCalendarEvent & {
 	color: string,
 	calendar: Calendar
 };
