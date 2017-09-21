@@ -4,10 +4,10 @@ import React from 'react';
 
 import CalendarTree from './CalendarTree.js';
 
-import type { Calendar, CalendarTreeDef } from '../utils.js';
+import type { CalendarLike, CalendarTreeDef } from '../utils.js';
 
 type Props = {
-	calendars: {[string]: Calendar},
+	calendars: {[string]: CalendarLike},
 	calendarTree?: CalendarTreeDef,
 	customCalendarIds: Array<string>,
 	handleChangeCustomCalendarIds: Function
@@ -19,6 +19,7 @@ const CustomGroupSelector = (props: Props) => {
 			calendarTree={props.calendarTree}
 			keyPrefix="custom-group-selector"
 			container="div"
+			label={<h3>Calendars in Custom Group</h3>}
 			render={calendarId => (
 				<li key={`custom-${calendarId}`}>
 					<label>

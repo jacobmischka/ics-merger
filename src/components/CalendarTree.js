@@ -2,15 +2,17 @@
 
 import React, { Component } from 'react';
 import type { Node, ElementType } from 'react';
-import type { Calendar, CalendarTreeDef } from '../utils.js';
+
+import type { CalendarLike, CalendarTreeDef } from '../utils.js';
 
 type Props = {
-	calendars: {[string]: Calendar},
+	calendars: {[string]: CalendarLike},
 	label?: Node,
 	calendarTree?: CalendarTreeDef,
-	render: (string, Calendar) => Node,
+	render: (string, CalendarLike) => Node,
 	keyPrefix: string,
-	container: ElementType
+	container: ElementType,
+	children?: Node
 };
 
 export default class CalendarTree extends Component<Props, {}> {
@@ -19,7 +21,7 @@ export default class CalendarTree extends Component<Props, {}> {
 	};
 
 	render() {
-		const { calendars, calendarTree, render, keyPrefix } = this.props;
+		const { calendars, calendarTree, render, keyPrefix, children } = this.props;
 		const Container = this.props.container;
 
 		const label = this.props.label
@@ -34,7 +36,7 @@ export default class CalendarTree extends Component<Props, {}> {
 					typeof item !== 'string' || calendars[item]
 				).map((item, i) => {
 					if (typeof item === 'string') {
-						const calendar: Calendar = calendars[item];
+						const calendar: CalendarLike = calendars[item];
 						return render(item, calendar);
 					} else {
 						let key = `${keyPrefix}-${i}`;
@@ -50,7 +52,7 @@ export default class CalendarTree extends Component<Props, {}> {
 			)
 			: (
 				// $FlowFixMe: https://github.com/facebook/flow/issues/2221
-				(Object.entries(calendars): Array<[string, Calendar]>)
+				(Object.entries(calendars): Array<[string, CalendarLike]>)
 					.map(([calId, cal]) => render(calId, cal))
 			);
 
@@ -59,6 +61,7 @@ export default class CalendarTree extends Component<Props, {}> {
 				{label}
 				<ul>
 					{items}
+					{children}
 				</ul>
 			</Container>
 		);

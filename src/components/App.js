@@ -32,6 +32,7 @@ class App extends Component {
 				calendars: []
 			},
 			calendarTree: null,
+			calendarGroupTree: null,
 			aliases: null,
 			activeEvent: null,
 			activeEventOriginalElement: null,
@@ -78,11 +79,16 @@ class App extends Component {
 
 	render() {
 		const { calendarId, eventId, search, location, history } = this.props;
-		const { calendar, calendars, eventSources } = getCalendars(
+		const { calendar, calendars, calendarMap, eventSources } = getCalendars(
 			calendarId,
 			this.state.calendars,
 			this.state.calendarGroups,
 			this.state.customCalendar
+		);
+		const allCalendarLikes = Object.assign(
+			{},
+			this.state.calendars,
+			this.state.calendarGroups
 		);
 		const searchParams = new URLSearchParams(this.props.search.slice(1));
 		const calendarView = searchParams.get('view');
@@ -99,44 +105,47 @@ class App extends Component {
 				)
 				: null;
 
-			let groupedCalendarListItems = Object.keys(this.state.calendarGroups).map(id => (
-				<li key={`grouped-calendar-list-items-${id}`}>
-					<NavLink to={{pathname: `/${id}`, search}}>
-						{this.state.calendarGroups[id].calname}
-					</NavLink>
-				</li>
-			));
+			const groupedCalendarListItems = (
+				<CalendarTree calendars={allCalendarLikes}
+						calendarTree={this.state.calendarGroupTree}
+						container="section"
+						label={<h3>Calendar groups</h3>}
+						keyPrefix="calendar-group-list-tree"
+						render={(id, cal) => (
+							<li key={`grouped-calendar-list-items-${id}`}>
+								<NavLink to={{pathname: `/${id}`, search}}>
+									{cal.calname}
+								</NavLink>
+							</li>
+						)}>
+					<li key="custom">
+						<NavLink to={{pathname: '/custom', search}}>
+							Custom Group
+						</NavLink>
+					</li>
+				</CalendarTree>
+			);
 
-			groupedCalendarListItems.push(
-				<li key="custom">
-					<NavLink to={{pathname: '/custom', search}}>
-						Custom Group
-					</NavLink>
-			{
-				calendarId === 'custom' && (
+			const calendarListTree = calendarId === 'custom'
+				? (
 					<CustomGroupSelector calendars={this.state.calendars}
 						calendarTree={this.state.calendarTree}
 						customCalendarIds={this.state.customCalendar.calendars}
 						handleChangeCustomCalendarIds={this.handleChangeCustomCalendarIds} />
 				)
-			}
-				</li>
-			);
-
-			let calendarListTree = (
-				<CalendarTree calendars={this.state.calendars}
-					calendarTree={this.state.calendarTree}
-					container="section"
-					label={<h3>Calendars</h3>}
-					keyPrefix="calendar-list-tree"
-					render={(id, cal) => (
-						<li key={`calendar-list-items-${id}`}>
-							<NavLink to={{pathname: `/${id}`, search}}>
-								{cal.calname}
-							</NavLink>
-						</li>
-					)} />
-			);
+				: (
+					<CalendarTree calendars={calendarMap}
+						container="section"
+						label={<h3>Calendars in {calendar.calname}</h3>}
+						keyPrefix="calendar-list-tree"
+						render={(id, cal) => (
+							<li key={`calendar-list-items-${id}`}>
+								<NavLink to={{pathname: `/${id}`, search}}>
+									{cal.calname}
+								</NavLink>
+							</li>
+						)} />
+				);
 
 			// `${window.location.origin}/${this.props.icsFilename}${window.location.search}`
 
@@ -197,17 +206,8 @@ class App extends Component {
 					<div className="calendar-nav-container">
 						<h2>Other calendars</h2>
 						<nav className="calendar-nav">
-				{
-					groupedCalendarListItems && (
-						<section>
-							<h3>Calendar sets</h3>
-							<ul>
-								{groupedCalendarListItems}
-							</ul>
-						</section>
-					)
-				}
-				{ calendarListTree }
+							{ groupedCalendarListItems }
+							{ calendarListTree }
 						</nav>
 					</div>
 				)
@@ -226,7 +226,7 @@ class App extends Component {
 							font-weight: normal;
 						}
 
-						ul :global(a.active) {
+						:global(a.active) {
 							pointer-events: none;
 							text-decoration: none;
 							cursor: auto;

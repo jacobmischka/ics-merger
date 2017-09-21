@@ -13,7 +13,8 @@ export type CalendarConfig = {
 	GOOGLE_CALENDAR_API_KEY: Array<string>,
 	calendars: {[string]: Calendar},
 	calendarGroups: {[string]: CalendarGroup},
-	calendarTree?: CalendarTreeDef
+	calendarTree?: CalendarTreeDef,
+	calendarGroupTree?: CalendarTreeDef
 };
 
 export type Calendar = {
@@ -159,14 +160,22 @@ export function getCalendars(
 
 	let calendar: Calendar | CalendarGroup,
 		calendars: Array<CalendarLike> = [],
-		eventSources: Array<EventSource> = [];
+		eventSources: Array<EventSource> = [],
+		calendarMap: {[string]: CalendarLike} = {};
 
 	if (calendarId === 'custom') {
 
 		calendar = customCalendar;
 
 		if (customCalendar.calendars) {
-			let actualCalendars = customCalendar.calendars.map(id => allCalendars[id]);
+			let customCalendars = customCalendar.calendars;
+			let actualCalendars = customCalendars.map(id => allCalendars[id]);
+
+			for (let calendarId of customCalendars) {
+				if (!(calendarId in calendarMap))
+					calendarMap[calendarId] = allCalendars[calendarId];
+			}
+
 			calendars.push(...actualCalendars);
 			eventSources.push(...actualCalendars.map(cal => getSource(cal)));
 		}
@@ -174,6 +183,12 @@ export function getCalendars(
 	} else if (calendarId in allCalendars) {
 
 		calendar = allCalendars[calendarId];
+
+		if (calendar.googleCalendarId || calendar.source) {
+			calendars.push(calendar);
+			calendarMap[calendarId] = calendar;
+			eventSources.push(getSource(calendar));
+		}
 
 		if (
 			calendar.subCalendars
@@ -185,20 +200,34 @@ export function getCalendars(
 			eventSources.push(...subCals.map(subCal => getSource(subCal)));
 		}
 
-		if (calendar.googleCalendarId || calendar.source) {
-			calendars.push(calendar);
-			eventSources.push(getSource(calendar));
-		}
-
 	} else if (calendarId in allCalendarGroups) {
 
 		calendar = allCalendarGroups[calendarId];
+
+		if (calendar.calendars) {
+			let calIds = calendar.calendars;
+			let cals = calIds.map(id => allCalendars[id]);
+			calendars.push(...cals);
+			eventSources.push(...cals.map(cal => getSource(cal)));
+			for (let calId of calIds) {
+				if (!(calId in calendarMap))
+					calendarMap[calId] = allCalendars[calId];
+			}
+		}
+
 		if (calendar.subGroups) {
-			let subGroups = calendar.subGroups.filter(id =>
+			let subGroupIds = calendar.subGroups.filter(id =>
 				id in allCalendarGroups && allCalendarGroups[id] !== calendar
-			).map(id => allCalendarGroups[id]);
+			);
+			let subGroups = subGroupIds.map(id => allCalendarGroups[id]);
+
+			for (let subGroupId of subGroupIds) {
+				if (!(subGroupId in calendarMap))
+					calendarMap[subGroupId] = allCalendarGroups[subGroupId];
+			}
 
 			calendars.push(...subGroups);
+
 
 			for (let subGroup of subGroups) {
 				let deepCalendarIds = getDeepCalendarIdsFromSubGroups(
@@ -214,17 +243,11 @@ export function getCalendars(
 				);
 			}
 		}
-
-		if (calendar.calendars) {
-			let cals = calendar.calendars.map(id => allCalendars[id]);
-			calendars.push(...cals);
-			eventSources.push(...cals.map(cal => getSource(cal)));
-		}
 	}
 
 	eventSources = dedupeSources(eventSources);
 
-	return { calendar, calendars, eventSources };
+	return { calendar, calendarMap, calendars, eventSources };
 }
 
 function getDeepCalendarIdsFromSubGroups(
