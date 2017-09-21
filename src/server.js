@@ -1,10 +1,14 @@
 /* eslint-env node */
+
 import express from 'express';
 import fetch from 'node-fetch';
 
 import merge from './index.js';
 
-import { isCalendarVisible } from './utils.js';
+import {
+	isCalendarVisible,
+	getDeepCalendarIdsFromSubGroups
+} from './utils.js';
 
 import dotenv from '../.env.json';
 
@@ -79,8 +83,15 @@ function respondWithCalendar(calendar, calendarName) {
 		let urls = [];
 		if (calendar.url)
 			urls.push(calendar.url);
-		if (calendar.calendars)
-			for(let calId of calendar.calendars) {
+
+		if (calendar.calendars || calendar.subGroups) {
+			let calIds = getDeepCalendarIdsFromSubGroups(
+				calendar,
+				dotenv.calendars,
+				dotenv.calendarGroups
+			);
+
+			for(let calId of calIds) {
 				let calendar = dotenv.calendars[calId];
 				if (isVisible(calendar)) {
 					if (calendar.url)
@@ -89,8 +100,12 @@ function respondWithCalendar(calendar, calendarName) {
 						urls = urls.concat(calendar.subCalendars.filter(isVisible).map(subCal => subCal.url));
 				}
 			}
+		}
+
 		if (calendar.subCalendars)
 			urls = urls.concat(calendar.subCalendars.filter(isVisible).map(subCal => subCal.url));
+
+		urls = Array.from(new Set(urls));
 
 		let icals = getIcalsFromUrls(urls);
 
@@ -120,7 +135,7 @@ const port = app.get('env') === 'production'
 	: process.env.PORT || 3000;
 
 app.listen(port, () => {
-	console.log(`Listening on ${port}`);
+	console.log(`Listening on ${port}`); // eslint-disable-line no-console
 });
 
 function getIcalsFromUrls(urls) {

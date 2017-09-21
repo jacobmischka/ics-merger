@@ -250,7 +250,7 @@ export function getCalendars(
 	return { calendar, calendarMap, calendars, eventSources };
 }
 
-function getDeepCalendarIdsFromSubGroups(
+export function getDeepCalendarIdsFromSubGroups(
 	calendarGroup: CalendarGroup,
 	allCalendars: {[string]: Calendar},
 	allCalendarGroups: {[string]: CalendarGroup}
@@ -367,7 +367,6 @@ function colorToArray(color: Array<number> | string | Object): Array<number> {
 }
 
 export function fullCalendarToGoogleUrl(event: FullCalendarEvent): string {
-	// TODO
 	const url = 'https://calendar.google.com/calendar/render';
 	const params = new URLSearchParams();
 	params.set('action', 'TEMPLATE');
