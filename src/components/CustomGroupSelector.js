@@ -1,7 +1,6 @@
 /* @flow */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import CalendarTree from './CalendarTree.js';
 
@@ -34,9 +33,3 @@ const CustomGroupSelector = (props: Props) => {
 };
 
 export default CustomGroupSelector;
-
-CustomGroupSelector.propTypes = {
-	calendars: PropTypes.object,
-	customCalendarIds: PropTypes.array,
-	handleChangeCustomCalendarIds: PropTypes.func
-};

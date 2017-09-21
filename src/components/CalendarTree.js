@@ -30,7 +30,9 @@ export default class CalendarTree extends Component<Props, {}> {
 
 		const items = calendarTree
 			? (
-				calendarTree.items.map((item, i) => {
+				calendarTree.items.filter(item =>
+					typeof item !== 'string' || calendars[item]
+				).map((item, i) => {
 					if (typeof item === 'string') {
 						const calendar: Calendar = calendars[item];
 						return render(item, calendar);
