@@ -222,7 +222,8 @@ export default class ActiveEvent extends CalendarEvent {
 					}
 
 					.event-desc {
-						flex: 1 1;
+						flex-grow: 1;
+						flex-shrink: 1;
 						margin: 0;
 						font-size: 0.75em;
 						word-wrap: break-word;
