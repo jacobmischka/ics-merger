@@ -11,7 +11,8 @@ export default {
 	plugins: [
 		json(),
 		babel({
-			exclude: 'node_modules/**'
+			exclude: 'node_modules/**',
+			plugins: ['external-helpers']
 		})
 	],
 	external: [
