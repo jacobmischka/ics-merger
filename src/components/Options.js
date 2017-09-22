@@ -32,16 +32,14 @@ export default class Options extends Component {
 		return (
 			<div>
 				{inputs}
-				<style jsx>
-				{`
+				<style jsx>{`
 					div {
 						display: flex;
 						flex-direction: row;
 						flex-wrap: wrap;
 						justify-content: space-around;
 					}
-				`}
-				</style>
+				`}</style>
 			</div>
 		);
 	}

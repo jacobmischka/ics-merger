@@ -32,8 +32,7 @@ export default class FullCalendar extends Component {
 		return (
 			<div className="fullcalendar-container">
 				<div id={this.state.calendarId}></div>
-				<style jsx global>
-				{`
+				<style jsx global>{`
 					h2 {
 						font-size: 2em;
 						font-weight: normal;
@@ -150,8 +149,7 @@ export default class FullCalendar extends Component {
 							background: none !important;
 						}
 					}
-				`}
-				</style>
+				`}</style>
 			</div>
 		);
 	}

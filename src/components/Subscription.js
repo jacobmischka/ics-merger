@@ -96,8 +96,7 @@ export default class Subscription extends Component {
 			)
 	}
 
-				<style jsx>
-				{`
+				<style jsx>{`
 					.subscription-component {
 						margin: 2em;
 					}
@@ -175,8 +174,7 @@ export default class Subscription extends Component {
 							display: none;
 						}
 					}
-				`}
-				</style>
+				`}</style>
 			</div>
 		);
 	}

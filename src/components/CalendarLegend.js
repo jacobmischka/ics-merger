@@ -18,8 +18,7 @@ const CalendarLegend = (props) => {
 				}}>
 			</span>
 			{calendar.calname}
-			<style jsx>
-			{`
+			<style jsx>{`
 				.legend-list-item {
 					display: flex;
 					align-items: center;
@@ -31,8 +30,7 @@ const CalendarLegend = (props) => {
 					height: 1em;
 					margin: 0 0.5em 0 0;
 				}
-			`}
-			</style>
+			`}</style>
 		</li>
 	));
 
@@ -46,8 +44,7 @@ const CalendarLegend = (props) => {
 					{calendarsInGroup}
 				</ul>
 			</div>
-			<style jsx>
-			{`
+			<style jsx>{`
 				.calendar-legend-container {
 					margin: 2em;
 					display: flex;
@@ -79,8 +76,7 @@ const CalendarLegend = (props) => {
 						font-size: 0.65em;
 					}
 				}
-			`}
-			</style>
+			`}</style>
 		</div>
 	);
 };

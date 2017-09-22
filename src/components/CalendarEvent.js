@@ -48,8 +48,7 @@ export default class CalendarEvent extends Component {
 				<span className="event-location">{event.location}</span>
 			)
 		}
-				<style jsx>
-				{`
+				<style jsx>{`
 					:global(.event) {
 						font-family: 'Noto Sans', sans-serif;
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.PRIMARY});
@@ -100,8 +99,7 @@ export default class CalendarEvent extends Component {
 							font-size: 0.6em;
 						}
 					}
-				`}
-				</style>
+				`}</style>
 			</ContainerElement>
 		);
 	}

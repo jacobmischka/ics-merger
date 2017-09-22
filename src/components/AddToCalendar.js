@@ -19,8 +19,7 @@ const AddToCalendar = ({event}) => (
 				Outlook / Other
 			</a>
 		</div>
-		<style jsx>
-		{`
+		<style jsx>{`
 			.add-to-calendar {
 				flex-grow: 1;
 				font-size: 0.75em;
@@ -45,8 +44,7 @@ const AddToCalendar = ({event}) => (
 				color: white;
 				background-color: ${buttonHoverBackgroundColor};
 			}
-		`}
-		</style>
+		`}</style>
 	</div>
 );
 
