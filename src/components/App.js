@@ -96,8 +96,6 @@ class App extends Component {
 		const calendarView = searchParams.get('view');
 		const defaultDate = searchParams.get('date');
 
-		// console.log({ calendar, calendars, eventSources });
-
 		if (calendar && calendars && eventSources) {
 			let activeEventNode = this.state.activeEvent
 				? (
