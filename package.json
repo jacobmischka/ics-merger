@@ -6,7 +6,7 @@
   "bundle": "dist/ical-merger.bundle.js",
   "module": "dist/ical-merger.js",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "NODE_ENV=production node dist/server.js",
     "serve": "nodemon dist/server.js",
     "build": "npm-run-all clean --parallel build:*",
     "now-build": "npm-run-all clean --parallel build:webpack build:rollup",
