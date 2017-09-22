@@ -27,10 +27,6 @@ class App extends Component {
 			GOOGLE_CALENDAR_API_KEY: '',
 			calendars: {},
 			calendarGroups: {},
-			customCalendar: {
-				calname: 'Custom Calendar',
-				calendars: []
-			},
 			calendarTree: null,
 			calendarGroupTree: null,
 			aliases: null,
@@ -79,11 +75,17 @@ class App extends Component {
 
 	render() {
 		const { calendarId, eventId, search, location, history } = this.props;
+		const params = new URLSearchParams(search);
+		const customCalendar = {
+			calname: 'Custom Group',
+			calendars: params.getAll('customCalendar')
+		};
+
 		const { calendar, calendars, calendarMap, eventSources } = getCalendars(
 			calendarId,
 			this.state.calendars,
 			this.state.calendarGroups,
-			this.state.customCalendar
+			customCalendar
 		);
 		const allCalendarLikes = Object.assign(
 			{},
@@ -130,7 +132,7 @@ class App extends Component {
 				? (
 					<CustomGroupSelector calendars={this.state.calendars}
 						calendarTree={this.state.calendarTree}
-						customCalendarIds={this.state.customCalendar.calendars}
+						customCalendarIds={customCalendar.calendars}
 						handleChangeCustomCalendarIds={this.handleChangeCustomCalendarIds} />
 				)
 				: (
@@ -164,7 +166,8 @@ class App extends Component {
 					else
 						search = '?';
 
-					search += this.state.customCalendar.calendars
+					search += customCalendar.calendars
+						.filter(id => id in this.state.calendars)
 						.map(calId => {
 							if (this.state.calendars[calId].url) {
 								return `urls[]=${this.state.calendars[calId].url}`;
@@ -192,6 +195,7 @@ class App extends Component {
 					<FullCalendar trustedOrigins={this.state.TRUSTED_ORIGINS}
 						apiKey={this.state.GOOGLE_CALENDAR_API_KEY}
 						eventSources={eventSources}
+						customCalendars={customCalendar.calendars}
 						setActiveEvent={this.handleSetActiveEvent}
 						setActiveEventId={this.handleSetActiveEventId}
 						defaultView={calendarView}
@@ -368,26 +372,24 @@ class App extends Component {
 	handleChangeCustomCalendarIds(event) {
 		const checkbox = event.target;
 
-		this.setState(previousState => {
-			let customCalendar = Object.assign({}, previousState.customCalendar);
-			customCalendar.calendars = customCalendar.calendars.slice();
-			if (checkbox.checked) {
-				if (!customCalendar.calendars.includes(checkbox.value)) {
-					customCalendar.calendars.push(checkbox.value);
-					return {
-						customCalendar
-					};
-				}
-			}
-			else {
-				if (customCalendar.calendars.includes(checkbox.value)) {
-					customCalendar.calendars.splice(customCalendar.calendars.indexOf(checkbox.value), 1);
-					return {
-						customCalendar
-					};
-				}
-			}
-		});
+		let params = new URLSearchParams(this.props.location.search);
+		let customCalendars = params.getAll('customCalendar');
+
+		if (checkbox.checked)
+			customCalendars.push(checkbox.value);
+		else
+			customCalendars.splice(customCalendars.indexOf(checkbox.value), 1);
+
+		params.delete('customCalendar');
+		for (let cal of customCalendars) {
+			params.append('customCalendar', cal);
+		}
+
+		this.props.history.push(Object.assign(
+			{},
+			this.props.location,
+			{search: params.toString()}
+		));
 	}
 }
 

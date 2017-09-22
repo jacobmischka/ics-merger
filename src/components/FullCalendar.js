@@ -258,7 +258,7 @@ export default class FullCalendar extends Component {
 			)
 			&& event.data === 'getCalendarState'
 		) {
-			const { showCalendarNames, showLocations } = this.props;
+			const { showCalendarNames, showLocations, customCalendars } = this.props;
 
 
 			event.source.postMessage({
@@ -267,6 +267,7 @@ export default class FullCalendar extends Component {
 				calendarEvent: this.props.location.hash.slice(1),
 				calendarView: this.getGenericViewName(this.viewName),
 				calendarDate: this.viewDate,
+				customCalendars,
 				showCalendarNames,
 				showLocations
 			}, event.origin);
@@ -402,6 +403,7 @@ FullCalendar.propTypes = {
 	trustedOrigins: PropTypes.array,
 	apiKey: PropTypes.string.isRequired,
 	eventSources: PropTypes.array.isRequired,
+	customCalendars: PropTypes.array,
 	setActiveEventId: PropTypes.func,
 	setActiveEvent: PropTypes.func,
 	eventId: PropTypes.string,

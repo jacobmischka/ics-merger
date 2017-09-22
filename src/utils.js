@@ -169,7 +169,9 @@ export function getCalendars(
 
 		if (customCalendar.calendars) {
 			let customCalendars = customCalendar.calendars;
-			let actualCalendars = customCalendars.map(id => allCalendars[id]);
+			let actualCalendars = customCalendars
+				.filter(id => id in allCalendars)
+				.map(id => allCalendars[id]);
 
 			for (let calendarId of customCalendars) {
 				if (!(calendarId in calendarMap))
