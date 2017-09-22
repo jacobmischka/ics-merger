@@ -159,7 +159,9 @@ class App extends Component {
 				if (calendarId === 'custom') {
 					filename = 'combine.ics';
 
-					if (!search)
+					if (search)
+						search += '&';
+					else
 						search = '?';
 
 					search += this.state.customCalendar.calendars
