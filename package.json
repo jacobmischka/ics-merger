@@ -29,7 +29,7 @@
     "clean": "rm -rf ./dist ./public ; mkdir -p dist",
     "lint": "eslint src && flow",
     "analyze:bundle": "webpack-bundle-analyzer ./public/js/stats.json",
-    "deploy": "echo '!.env.json' >> .npmignore ; now -e NODE_ENV=production ; sed -i '$ d' .npmignore",
+    "deploy": "echo '!.env.json' >> .npmignore ; now ; sed -i '$ d' .npmignore",
     "prepublish": "in-publish && npm-run-all lint && npm-run-all build || not-in-publish"
   },
   "bin": {
