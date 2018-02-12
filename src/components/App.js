@@ -183,8 +183,14 @@ class App extends Component {
 				icsUrl = `${window.location.origin}/${filename}${search}`;
 			}
 
-			const showCalendarNames = searchParams.has('showCalendarNames');
-			const showLocations = searchParams.has('showLocations');
+			const showCalendarNames = (
+				searchParams.has('showCalendarNames')
+				&& searchParams.get('showCalendarNames') !== 'false'
+			);
+			const showLocations = (
+				searchParams.has('showLocations')
+				&& searchParams.get('showLocations') !== 'false'
+			);
 
 			return (
 				<div data-iframe-height>

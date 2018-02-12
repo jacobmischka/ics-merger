@@ -15,7 +15,7 @@
 	"rules": {
 		"no-console": ["warn", { "allow": ["warn", "error"]}],
 		"no-var": "warn",
-		"eqeqeq": "warn",
+		"eqeqeq": ["warn", "smart"],
 		"semi": ["warn", "always"],
 		"no-spaced-func": "warn",
 		"comma-style": "warn",
