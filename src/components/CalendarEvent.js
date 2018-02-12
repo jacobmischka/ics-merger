@@ -55,7 +55,9 @@ export default class CalendarEvent extends Component {
 		}
 		{
 			showDescription && event.description && (
-				<p className="event-desc">{event.description}</p>
+				<div className="event-desc"
+					dangerouslySetInnerHTML={{__html: event.description}}>
+				</div>
 			)
 		}
 				<style jsx>{`
@@ -93,6 +95,12 @@ export default class CalendarEvent extends Component {
 						word-wrap: break-word;
 						white-space: pre-line;
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
+					}
+
+					.event-desc,
+					.event-desc p {
+						margin-top: 1em;
+						margin-bottom: 1em;
 					}
 
 					:global(.event.all-day) .event-time {
