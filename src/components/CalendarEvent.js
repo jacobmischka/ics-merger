@@ -14,7 +14,12 @@ export default class CalendarEvent extends Component {
 	}
 
 	render() {
-		const { event, showLocation, showCalendarName } = this.props;
+		const {
+			event,
+			showLocation,
+			showCalendarName,
+			showDescription
+		} = this.props;
 
 		let eventTime = this.getEventTime();
 		let className = this.getClassName();
@@ -48,6 +53,11 @@ export default class CalendarEvent extends Component {
 				<span className="event-location">{event.location}</span>
 			)
 		}
+		{
+			showDescription && event.description && (
+				<p className="event-desc">{event.description}</p>
+			)
+		}
 				<style jsx>{`
 					:global(.event) {
 						font-family: 'Noto Sans', sans-serif;
@@ -79,9 +89,10 @@ export default class CalendarEvent extends Component {
 					}
 
 					.event-desc {
-						font-size: 0.75em;
+						font-size: 0.9em;
 						word-wrap: break-word;
 						white-space: pre-line;
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
 					}
 
 					:global(.event.all-day) .event-time {
@@ -162,10 +173,12 @@ CalendarEvent.propTypes = {
 	view: PropTypes.object,
 	containerElement: PropTypes.string,
 	showLocation: PropTypes.bool,
-	showCalendarName: PropTypes.bool
+	showCalendarName: PropTypes.bool,
+	showDescription: PropTypes.bool
 };
 
 CalendarEvent.defaultProps = {
 	showLocation: false,
-	showCalendarName: false
+	showCalendarName: false,
+	showDescription: false
 };

@@ -191,6 +191,10 @@ class App extends Component {
 				searchParams.has('showLocations')
 				&& searchParams.get('showLocations') !== 'false'
 			);
+			const showDescriptions = (
+				searchParams.has('showDescriptions')
+				&& searchParams.get('showDescriptions') !== 'false'
+			);
 
 			return (
 				<div data-iframe-height>
@@ -208,7 +212,8 @@ class App extends Component {
 						location={location}
 						history={history}
 						showCalendarNames={showCalendarNames}
-						showLocations={showLocations} />
+						showLocations={showLocations}
+						showDescriptions={showDescriptions} />
 					<CalendarLegend calendars={calendars} calname={calendar.calname} />
 					<Subscription url={icsUrl} />
 			{

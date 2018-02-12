@@ -158,7 +158,8 @@ export default class FullCalendar extends Component {
 		const propsToChange = [
 			'apiKey',
 			'showCalendarNames',
-			'showLocations'
+			'showLocations',
+			'showDescriptions'
 		];
 		for (let prop of propsToChange) {
 			if (this.props[prop] !== nextProps[prop])
@@ -258,7 +259,12 @@ export default class FullCalendar extends Component {
 			)
 			&& event.data === 'getCalendarState'
 		) {
-			const { showCalendarNames, showLocations, customCalendars } = this.props;
+			const {
+				customCalendars,
+				showCalendarNames,
+				showLocations,
+				showDescriptions
+			} = this.props;
 
 
 			event.source.postMessage({
@@ -269,7 +275,8 @@ export default class FullCalendar extends Component {
 				calendarDate: this.viewDate,
 				customCalendars,
 				showCalendarNames,
-				showLocations
+				showLocations,
+				showDescriptions
 			}, event.origin);
 		}
 	}
@@ -329,7 +336,8 @@ export default class FullCalendar extends Component {
 			setActiveEvent,
 			defaultDate,
 			showCalendarNames,
-			showLocations
+			showLocations,
+			showDescriptions
 		} = this.props;
 
 		let { defaultView } = this.props;
@@ -380,7 +388,8 @@ export default class FullCalendar extends Component {
 					setActiveEvent={setActiveEvent}
 					containerElement={calEventElement}
 					showCalendarName={showCalendarNames}
-					showLocation={showLocations} />,
+					showLocation={showLocations}
+					showDescription={showDescriptions} />,
 					container);
 				return container;
 			},
@@ -413,6 +422,7 @@ FullCalendar.propTypes = {
 
 	showCalendarNames: PropTypes.bool,
 	showLocations: PropTypes.bool,
+	showDescriptions: PropTypes.bool,
 
 	location: PropTypes.shape({
 		pathname: PropTypes.string,

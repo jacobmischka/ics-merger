@@ -25,23 +25,25 @@ export default class ActiveEvent extends CalendarEvent {
 	}
 
 	getEventDate() {
-		const sameDay = this.props.event.start.isSame(this.props.event.end, 'day');
-		const sameDayAllDay = this.props.event.allDay && this.props.event.start
-			.isSame(this.props.event.end.clone().subtract(1, 'day'));
+		const { event } = this.props;
+
+		const sameDay = event.start.isSame(event.end, 'day');
+		const sameDayAllDay = event.allDay && event.start
+			.isSame(event.end.clone().subtract(1, 'day'));
 		if (sameDay || sameDayAllDay) {
-			return this.props.event.start.format('ll');
+			return event.start.format('ll');
 		}
 		else {
 			let startDate, endDate;
-			if (this.props.event.start.isSame(this.props.event.end, 'year')) {
-				startDate = this.props.event.start.format('MMM D');
-				endDate = this.props.event.end.format('ll');
+			if (event.start.isSame(event.end, 'year')) {
+				startDate = event.start.format('MMM D');
+				endDate = event.end.format('ll');
 
 			}
 			else {
 				const dateFormat = 'll';
-				startDate = this.props.event.start.format(dateFormat);
-				endDate = this.props.event.end.format(dateFormat);
+				startDate = event.start.format(dateFormat);
+				endDate = event.end.format(dateFormat);
 			}
 
 			return (
