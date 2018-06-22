@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
 
+import MapPin from 'react-feather/dist/icons/map-pin.js';
+import User from 'react-feather/dist/icons/user.js';
+import Users from 'react-feather/dist/icons/users.js';
+
 import { OPACITIES } from '../constants.js';
 
 export default class CalendarEvent extends Component {
@@ -18,7 +22,8 @@ export default class CalendarEvent extends Component {
 			event,
 			showLocation,
 			showCalendarName,
-			showDescription
+			showDescription,
+			showPresenters
 		} = this.props;
 
 		let eventTime = this.getEventTime();
@@ -41,25 +46,31 @@ export default class CalendarEvent extends Component {
 
 				<span className="event-time">{eventTime}</span>
 				<span className="event-title">
-			{
-				showCalendarName && (
-					<span className="event-calendar">{event.calendar.calname}</span>
-				)
-			}
+					{showCalendarName && (
+						<span className="event-calendar">{event.calendar.calname}</span>
+					)}
 					{event.title}
 				</span>
-		{
-			showLocation && event.location && (
-				<span className="event-location">{event.location}</span>
-			)
-		}
-		{
-			showDescription && event.description && (
-				<div className="event-desc"
-					dangerouslySetInnerHTML={{__html: event.description}}>
-				</div>
-			)
-		}
+				{showLocation && event.location && (
+					<span className="event-location">
+						<MapPin />
+						{event.location}
+					</span>
+				)}
+				{showPresenters && event.presenters && (
+					<span className="event-presenters">
+						{event.presenters.length === 1
+							? (<User />)
+							: ( <Users />)
+						}
+						{event.presenters.map(presenter => presenter.name).join(', ')}
+					</span>
+				)}
+				{showDescription && event.description && (
+					<div className="event-desc"
+						dangerouslySetInnerHTML={{__html: event.description}}>
+					</div>
+				)}
 				<style jsx>{`
 					:global(.event) {
 						font-family: 'Noto Sans', sans-serif;
@@ -79,6 +90,19 @@ export default class CalendarEvent extends Component {
 						display: block;
 						margin: 0.5em 0 0;
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
+					}
+
+					.event-presenters {
+						display: block;
+						margin: 0.5em 0 0;
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
+					}
+
+					:global(.event) :global(svg) {
+						width: 1em;
+						height: 1em;
+						overflow: visible;
+						margin-right: 0.25em;
 					}
 
 					.event-time {
@@ -146,9 +170,17 @@ export default class CalendarEvent extends Component {
 
 			eventTime = (
 				<span>
-					<span className="event-time-start">{startTime}</span>
+					<time className="event-time-start"
+						dateTime={start.toISOString()}
+					>
+						{startTime}
+					</time>
 					{` – `}
-					<span className="event-time-end">{endTime}</span>
+					<time className="event-time-end"
+						dateTime={end.toISOString()}
+					>
+						{endTime}
+					</time>
 				</span>
 			);
 		}
@@ -182,11 +214,13 @@ CalendarEvent.propTypes = {
 	containerElement: PropTypes.string,
 	showLocation: PropTypes.bool,
 	showCalendarName: PropTypes.bool,
-	showDescription: PropTypes.bool
+	showDescription: PropTypes.bool,
+	showPresenters: PropTypes.bool
 };
 
 CalendarEvent.defaultProps = {
 	showLocation: false,
 	showCalendarName: false,
-	showDescription: false
+	showDescription: false,
+	showPresenters: false
 };

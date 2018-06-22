@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
 import LinkifyIt from 'linkify-it';
+
+import Calendar from 'react-feather/dist/icons/calendar.js';
+import Clock from 'react-feather/dist/icons/clock.js';
+import MapPin from 'react-feather/dist/icons/map-pin.js';
+import User from 'react-feather/dist/icons/user.js';
+import Users from 'react-feather/dist/icons/users.js';
 
 import CalendarEvent from './CalendarEvent.js';
 import AddToCalendar from './AddToCalendar.js';
@@ -38,7 +44,6 @@ export default class ActiveEvent extends CalendarEvent {
 			if (event.start.isSame(event.end, 'year')) {
 				startDate = event.start.format('MMM D');
 				endDate = event.end.format('ll');
-
 			}
 			else {
 				const dateFormat = 'll';
@@ -48,9 +53,17 @@ export default class ActiveEvent extends CalendarEvent {
 
 			return (
 				<span>
-					<span className="start-date">{startDate}</span>
+					<time className="start-date"
+						dateTime={event.start.toISOString()}
+					>
+						{startDate}
+					</time>
 					<span> – </span>
-					<span className="end-date">{endDate}</span>
+					<time className="end-date"
+						dateTime={event.end.toISOString()}
+					>
+						{endDate}
+					</time>
 				</span>
 			);
 		}
@@ -117,8 +130,14 @@ export default class ActiveEvent extends CalendarEvent {
 					ref={div => this.container = div}>
 				<header style={headerStyle} ref={header => this.header = header}>
 					<span className="event-date-time">
-						<span className="event-date">{eventDate}</span>
-						<span className="event-time">{eventTime}</span>
+						<span className="event-date">
+							<Calendar />
+							{eventDate}
+						</span>
+						<span className="event-time">
+							<Clock />
+							{eventTime}
+						</span>
 					</span>
 					<span className="event-title">
 						<span className="event-calendar">
@@ -132,33 +151,61 @@ export default class ActiveEvent extends CalendarEvent {
 					</button>
 				</header>
 
-		{
-			(event.description || event.location) && (
-				<div className="event-desc">
-			{
-				event.location && (
-					<span className="event-location">
-						{event.location}
-					</span>
+				{(event.location || event.presenters) && (
+					<div className="event-meta">
+						{event.location && (
+							<div className="event-meta-pair">
+								<span className="event-meta-label">
+									<MapPin />
+									Location
+								</span>
+								<span className="event-meta-value event-location">
+									{event.location}
+								</span>
+							</div>
+						)}
+						{event.presenters && (
+							<div className="event-meta-pair">
+								<span className="event-meta-label">
+									{event.presenters.length === 1
+										? (
+											<Fragment>
+												<User />
+												Presenter
+											</Fragment>
+										)
+										: (
+											<Fragment>
+												<Users />
+												Presenters
+											</Fragment>
+										)
+									}
+								</span>
+								<ul className="event-meta-value event-presenters">
+									{event.presenters.map(presenter => (
+										<li key={presenter.email}>{presenter.name}</li>
+									))}
+								</ul>
+							</div>
+						)}
+					</div>
+				)}
+
+				{event.description && (
+					<div className="event-desc"
+						dangerouslySetInnerHTML={
+							this.markupDescription(event.description)
+						}
+					>
+					</div>
 				)
-			}
-			{
-				event.description && (
-					<p dangerouslySetInnerHTML={
-						this.markupDescription(event.description)
-					}></p>
-				)
-			}
-				</div>
-			)
-		}
-		{
-			showFooter && (
-				<footer>
-					<AddToCalendar event={event} />
-				</footer>
-			)
-		}
+				}
+				{showFooter && (
+					<footer>
+						<AddToCalendar event={event} />
+					</footer>
+				)}
 				<style jsx>{`
 					.active-event {
 						display: flex;
@@ -217,8 +264,11 @@ export default class ActiveEvent extends CalendarEvent {
 						max-width: 80%;
 					}
 
-					.event-location {
+					.event-meta {
 						display: none;
+					}
+
+					.event-location {
 						text-align: left;
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
 					}
@@ -260,7 +310,7 @@ export default class ActiveEvent extends CalendarEvent {
 
 					.active-event.expanded {
 						font-size: 1.5em;
-						background-color: #fafafa;
+						background-color: #fdfdfd;
 						border: 1px solid grey;
 						padding: 0;
 						transform: translate(50vw, 50vh) translate(-50%, -50%);
@@ -273,20 +323,29 @@ export default class ActiveEvent extends CalendarEvent {
 						display: flex;
 						flex-direction: row;
 						flex-wrap: wrap;
-						justify-content: space-around;
 						box-shadow: 0 0 5px 0 ${COLORS.SHADOW};
 						background-color: ${COLORS.BACKGROUND};
 						overflow: auto;
 					}
 
 					.expanded header {
-						align-items: center;
 						padding: 0.5em;
 					}
 
 					.expanded footer {
+						justify-content: space-around;
 						align-items: center;
 						text-align: center;
+					}
+
+					.expanded header :global(svg),
+					.expanded .event-meta :global(svg) {
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
+						height: 1em;
+						width: 1em;
+						vertical-align: baseline;
+						margin-right: 0.25em;
+						overflow: visible;
 					}
 
 					.expanded .event-title,
@@ -306,36 +365,78 @@ export default class ActiveEvent extends CalendarEvent {
 
 					.expanded .event-date-time {
 						order: 2;
-						flex-grow: 1;
+						font-size: 0.9em;
+					}
+
+					.expanded .event-date-time :global(svg) {
+						vertical-align: middle;
+					}
+
+					.expanded .event-date-time :global(svg) {
+						margin-right: 0.5em;
+					}
+
+					.expanded .event-date-time .event-date,
+					.expanded .event-date-time .event-time {
 						display: flex;
 						flex-direction: row;
-						flex-wrap: wrap;
-						justify-content: space-around;
+						align-items: center;
 					}
 
 					.expanded .event-date,
 					.expanded .event-time {
 						display: block;
-						margin: 0.1 0.5em;
-						display: inline-block;
+						margin: 0.1em 0.25em;
 						white-space: nowrap;
-
 					}
 
-					.expanded .event-location {
-						padding: 0.5em 0;
+					.expanded .event-meta {
 						display: block;
+						display: flex;
+						flex-direction: row;
+						flex-wrap: wrap;
+						align-items: space-around;
+						background-color: #fafafa;
+						border-bottom: 1px solid #ccc;
+						font-size: 0.75em;
 					}
 
-					.expanded .event-location::before {
-						content: 'Location:';
-						display: inline-block;
-						margin-right: 0.5em;
+					.expanded .event-meta-pair {
+						flex: 1 1;
+						padding: 0.75em;
+						border: 1px solid #ccc;
+					}
+
+					.expanded .event-meta-pair .event-meta-label {
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.SECONDARY});
+						white-space: nowrap;
+					}
+
+					.expanded .event-meta-pair .event-meta-value {
+						color: rgba(0, 0, 0, ${OPACITIES.TEXT.PRIMARY});
 					}
 
 					.expanded .event-desc {
 						padding: 1em 2em 2em;
 						overflow-y: auto;
+					}
+
+					.expanded .event-location {
+						display: block;
+					}
+
+					.expanded .event-presenters {
+						display: block;
+						padding: 0;
+						margin: 0;
+					}
+
+					.expanded .event-presenters li {
+						display: inline;
+					}
+
+					.expanded .event-presenters li:not(:last-child)::after {
+						content: ', ';
 					}
 
 					@media (min-width: ${BREAKPOINTS.SMALL_DESKTOP}px) {
@@ -374,18 +475,17 @@ export default class ActiveEvent extends CalendarEvent {
 							font-size: 1.25em;
 						}
 
+						.expanded .event-meta {
+							font-size: 0.6em;
+						}
+
+						.expanded .event-meta-pair {
+							padding: 0.75em 1em;
+						}
+
 						.expanded .event-date-time {
 							flex-direction: column;
 							justify-content: flex-end;
-						}
-
-						.expanded .event-location {
-							flex-direction: row;
-							align-items: flex-start;
-						}
-
-						.expanded .event-location::before {
-							margin: 0 0.75em 0 0;
 						}
 
 						.expanded .event-date-time {

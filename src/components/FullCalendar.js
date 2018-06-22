@@ -159,7 +159,8 @@ export default class FullCalendar extends Component {
 			'apiKey',
 			'showCalendarNames',
 			'showLocations',
-			'showDescriptions'
+			'showDescriptions',
+			'showPresenters'
 		];
 		for (let prop of propsToChange) {
 			if (this.props[prop] !== nextProps[prop])
@@ -263,7 +264,8 @@ export default class FullCalendar extends Component {
 				customCalendars,
 				showCalendarNames,
 				showLocations,
-				showDescriptions
+				showDescriptions,
+				showPresenters
 			} = this.props;
 
 
@@ -276,7 +278,8 @@ export default class FullCalendar extends Component {
 				customCalendars,
 				showCalendarNames,
 				showLocations,
-				showDescriptions
+				showDescriptions,
+				showPresenters
 			}, event.origin);
 		}
 	}
@@ -337,7 +340,8 @@ export default class FullCalendar extends Component {
 			defaultDate,
 			showCalendarNames,
 			showLocations,
-			showDescriptions
+			showDescriptions,
+			showPresenters
 		} = this.props;
 
 		let { defaultView } = this.props;
@@ -383,13 +387,16 @@ export default class FullCalendar extends Component {
 				if (view && view.name && view.name.startsWith('agenda'))
 					container.style.position = 'absolute';
 
-				render(<CalendarEvent event={calEvent} view={view}
-					setActiveEventId={setActiveEventId}
-					setActiveEvent={setActiveEvent}
-					containerElement={calEventElement}
-					showCalendarName={showCalendarNames}
-					showLocation={showLocations}
-					showDescription={showDescriptions} />,
+				render(
+					<CalendarEvent event={calEvent} view={view}
+						setActiveEventId={setActiveEventId}
+						setActiveEvent={setActiveEvent}
+						containerElement={calEventElement}
+						showCalendarName={showCalendarNames}
+						showLocation={showLocations}
+						showDescription={showDescriptions}
+						showPresenters={showPresenters}
+					/>,
 					container);
 				return container;
 			},
@@ -423,6 +430,7 @@ FullCalendar.propTypes = {
 	showCalendarNames: PropTypes.bool,
 	showLocations: PropTypes.bool,
 	showDescriptions: PropTypes.bool,
+	showPresenters: PropTypes.bool,
 
 	location: PropTypes.shape({
 		pathname: PropTypes.string,

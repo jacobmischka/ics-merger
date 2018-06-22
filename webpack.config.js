@@ -1,25 +1,24 @@
 /* eslint-env node */
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = {
+module.exports = (env, argv) => ({
 	entry: {
-		bundle: process.env.NODE_ENV === 'production'
-			? [
-				'./src/web.js',
-				'./src/google-analytics.js'
-			]
-			: './src/web.js'
+		bundle: argv.mode === 'production'
+		? [
+			'./src/web.js',
+			'./src/google-analytics.js'
+		]
+		: './src/web.js'
 	},
 	output: {
-		path: path.resolve(__dirname, './public/js/'),
-		publicPath: '/js/',
-		filename: process.env.NODE_ENV === 'production'
-			? '[name].[chunkhash].js'
-			: '[name].js'
+		path: path.resolve(__dirname, './public/'),
+		filename: argv.mode === 'production'
+		? 'js/[name].[chunkhash].js'
+		: 'js/[name].js'
 	},
 	target: 'web',
 	module: {
@@ -35,15 +34,10 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: {
-						loader: 'css-loader',
-						query: {
-							sourceMap: true
-						}
-					}
-				})
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader'
+				]
 			},
 			{
 				test: /\.(eot|svg|ttf|woff|woff2|gif)$/,
@@ -51,7 +45,7 @@ module.exports = {
 				use: {
 					loader: 'file-loader',
 					options: {
-						name: '../assets/[path][name].[ext]',
+						name: '/assets/[path][name].[ext]',
 						context: './node_modules'
 					}
 				}
@@ -62,7 +56,7 @@ module.exports = {
 				use: {
 					loader: 'file-loader',
 					options: {
-						name: '../assets/[path][name].[ext]',
+						name: '/assets/[path][name].[ext]',
 						context: './assets'
 					}
 				}
@@ -71,25 +65,29 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-		new webpack.optimize.CommonsChunkPlugin({
-			name: ['main', 'manifest']
-		}),
 		new BundleAnalyzerPlugin({
 			analyzerMode: 'disabled',
 			generateStatsFile: true,
 			statsFilename: 'stats.json'
 		}),
-		new ExtractTextPlugin({
-			filename: process.env.NODE_ENV === 'production'
-				? '../css/style.[contenthash].css'
-				: '../css/style.css'
+		new MiniCssExtractPlugin({
+			filename: argv.mode === 'production'
+			? 'css/style.[contenthash].css'
+			: 'css/style.css'
 		}),
 		new HtmlWebpackPlugin({
-			filename: '../index.html',
+			filename: 'index.html',
 			title: 'Calendar',
 			template: './src/index.ejs',
 			xhtml: true
 		})
 	],
-	devtool: 'source-map'
-};
+	devtool: 'source-map',
+	devServer: {
+		index: '',
+		proxy: {
+			context: () => true,
+			target: 'http://localhost:4444',
+		}
+	}
+});
