@@ -51,10 +51,10 @@ export default class CalendarEvent extends Component {
 					)}
 					{event.title}
 				</span>
-				{showLocation && event.location && (
+				{showLocation && event.location && event.location.name && (
 					<span className="event-location">
 						<MapPin />
-						{event.location}
+						{event.location.name}
 					</span>
 				)}
 				{showPresenters && event.presenters && (

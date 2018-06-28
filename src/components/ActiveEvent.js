@@ -11,6 +11,7 @@ import Users from 'react-feather/dist/icons/users.js';
 
 import CalendarEvent from './CalendarEvent.js';
 import AddToCalendar from './AddToCalendar.js';
+import EventLocation from './EventLocation.js';
 
 import { BREAKPOINTS, OPACITIES, COLORS } from '../constants.js';
 import { rgbaOverRgb } from '../utils.js';
@@ -160,7 +161,7 @@ export default class ActiveEvent extends CalendarEvent {
 									Location
 								</span>
 								<span className="event-meta-value event-location">
-									{event.location}
+									<EventLocation {...event.location} />
 								</span>
 							</div>
 						)}
