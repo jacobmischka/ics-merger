@@ -68,6 +68,7 @@
     "react-feather": "^1.1.0",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
+    "striptags": "^3.1.1",
     "styled-jsx": "^2.2.6",
     "typeface-noto-sans": "^0.0.54"
   },

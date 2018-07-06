@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
+import striptags from 'striptags';
+import LinkifyIt from 'linkify-it';
 
 import MapPin from 'react-feather/dist/icons/map-pin.js';
 import User from 'react-feather/dist/icons/user.js';
 import Users from 'react-feather/dist/icons/users.js';
 
 import { OPACITIES } from '../constants.js';
+
+const linkify = new LinkifyIt();
 
 export default class CalendarEvent extends Component {
 	constructor(props) {
@@ -15,6 +19,35 @@ export default class CalendarEvent extends Component {
 		this.handleClick = this.handleClick.bind(this);
 		this.getEventTime = this.getEventTime.bind(this);
 		this.getClassName = this.getClassName.bind(this);
+	}
+
+	markupDescription(description) {
+		description = striptags(description, [
+				'a',
+				'i',
+				'b',
+				'br',
+				'p'
+			]);
+
+		if (description && linkify.test(description)) {
+			linkify.match(description).map(match => {
+				description = description.replace(match.raw,
+					`<a href="${match.url}" target="_blank" rel="noopener noreferrer">${match.text}</a>`);
+			});
+		}
+
+		return {__html: description};
+	}
+
+	renderEventLocation(location) {
+		if (!location)
+			return;
+
+		if (typeof location === 'string')
+			return location;
+		if (location.name)
+			return location.name;
 	}
 
 	render() {
@@ -51,10 +84,10 @@ export default class CalendarEvent extends Component {
 					)}
 					{event.title}
 				</span>
-				{showLocation && event.location && event.location.name && (
+				{showLocation && event.location && (
 					<span className="event-location">
 						<MapPin />
-						{event.location.name}
+						{this.renderEventLocation(event.location)}
 					</span>
 				)}
 				{showPresenters && event.presenters && (
@@ -68,7 +101,7 @@ export default class CalendarEvent extends Component {
 				)}
 				{showDescription && event.description && (
 					<div className="event-desc"
-						dangerouslySetInnerHTML={{__html: event.description}}>
+						dangerouslySetInnerHTML={this.markupDescription(event.description)}>
 					</div>
 				)}
 				<style jsx>{`

@@ -12,8 +12,8 @@ export default class Options extends Component {
 		this.options = [
 			'showCalendarNames',
 			'showLocations',
-			'showDescriptions',
-			'showPresenters'
+			'showPresenters',
+			'showDescriptions'
 		];
 
 		this.handleOptionChange = this.handleOptionChange.bind(this);

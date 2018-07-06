@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
-import LinkifyIt from 'linkify-it';
 
 import Calendar from 'react-feather/dist/icons/calendar.js';
 import Clock from 'react-feather/dist/icons/clock.js';
@@ -16,7 +15,6 @@ import EventLocation from './EventLocation.js';
 import { BREAKPOINTS, OPACITIES, COLORS } from '../constants.js';
 import { rgbaOverRgb } from '../utils.js';
 
-const linkify = new LinkifyIt();
 
 export default class ActiveEvent extends CalendarEvent {
 	constructor(props) {
@@ -26,7 +24,6 @@ export default class ActiveEvent extends CalendarEvent {
 		};
 
 		this.getEventDate = this.getEventDate.bind(this);
-		this.markupDescription = this.markupDescription.bind(this);
 		this.handleOutsideClick = this.handleOutsideClick.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -68,17 +65,6 @@ export default class ActiveEvent extends CalendarEvent {
 				</span>
 			);
 		}
-	}
-
-	markupDescription(description) {
-		if (description && linkify.test(description)) {
-			linkify.match(description).map(match => {
-				description = description.replace(match.raw,
-					`<a href="${match.url}" target="_blank" rel="noopener noreferrer">${match.text}</a>`);
-			});
-		}
-
-		return {__html: description};
 	}
 
 	render() {
@@ -161,7 +147,7 @@ export default class ActiveEvent extends CalendarEvent {
 									Location
 								</span>
 								<span className="event-meta-value event-location">
-									<EventLocation {...event.location} />
+									<EventLocation location={event.location} />
 								</span>
 							</div>
 						)}
@@ -330,6 +316,7 @@ export default class ActiveEvent extends CalendarEvent {
 					}
 
 					.expanded header {
+						flex-shrink: 0;
 						padding: 0.5em;
 					}
 
