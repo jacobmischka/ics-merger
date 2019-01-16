@@ -135,7 +135,7 @@ Webapp uses `googleCalendarId`s, web service uses `url`s.
 
 ## Docker
 ### Build
-To build the Docker-container run:
+To build the Docker-container run in `./Docker`:
 
 `docker build . -t ics-merger`
 
