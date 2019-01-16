@@ -142,7 +142,7 @@ To build the Docker-container run:
 ### Run
 To run the tool in a Docker-container build it first then run:
 
-`docker run -p 80:3000 isc-merger`
+`docker run -p 80:3000 -d -v ./.env.json: /ics-merger/.env.json:ro isc-merger`
 
 [env]: #envjson
 [fullcalendar]: https://fullcalendar.io
