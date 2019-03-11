@@ -90,7 +90,7 @@ export default class CalendarEvent extends Component {
 						{this.renderEventLocation(event.location)}
 					</span>
 				)}
-				{showPresenters && event.presenters && (
+				{showPresenters && event.presenters && event.presenters.length > 0 && (
 					<span className="event-presenters">
 						{event.presenters.length === 1
 							? (<User />)

@@ -112,6 +112,8 @@ export default class ActiveEvent extends CalendarEvent {
 			};
 		}
 
+		const hasPresenters = event.presenters && event.presenters.length > 0;
+
 		return (
 			<div key="active-event" className={className} style={style}
 					ref={div => this.container = div}>
@@ -138,7 +140,7 @@ export default class ActiveEvent extends CalendarEvent {
 					</button>
 				</header>
 
-				{(event.location || event.presenters) && (
+				{(event.location || hasPresenters) && (
 					<div className="event-meta">
 						{event.location && (
 							<div className="event-meta-pair">
@@ -151,7 +153,7 @@ export default class ActiveEvent extends CalendarEvent {
 								</span>
 							</div>
 						)}
-						{event.presenters && (
+						{hasPresenters && (
 							<div className="event-meta-pair">
 								<span className="event-meta-label">
 									{event.presenters.length === 1

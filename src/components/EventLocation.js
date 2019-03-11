@@ -18,29 +18,25 @@ const EventLocation = ({ location }) => {
 			</div>
 		);
 
-	try {
-		const { name, location, address, description } = location;
+	const { name, location: subLocation, address, description } = location;
 
-		return (
-			<div>
-				<style jsx>{`
-					address {
-						font-style: normal;
-					}
-				`}</style>
-				<address>
-					{name}	<br />
-					{location} <br />
-					{address}
-				</address>
-				{description && (
-					<p>{description}</p>
-				)}
-			</div>
-		);
-	} catch (err) {
-		console.error(err);
-	}
+	return (
+		<div>
+			<style jsx>{`
+				address {
+					font-style: normal;
+				}
+			`}</style>
+			<address>
+				{name}	<br />
+				{subLocation} <br />
+				{address}
+			</address>
+			{description && (
+				<p>{description}</p>
+			)}
+		</div>
+	);
 
 };
 
