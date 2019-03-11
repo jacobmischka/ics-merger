@@ -133,6 +133,19 @@ Webapp uses `googleCalendarId`s, web service uses `url`s.
 
 [FullCalendar instructions for Google Calendar API key and calendar IDs][fullcalendar-gcal]
 
+## Docker
+### Build
+To build the Docker-container run the following command in `./Docker`:
+
+`docker build . -t ics-merger`
+
+### Run
+To run the tool in a Docker-container build it first then run:
+
+`docker run -p 80:3000 -d -v $PWD/.env.json:/ics-merger/.env.json:ro ics-merger`
+
+Where `.env.json` is your configured file.
+
 [env]: #envjson
 [fullcalendar]: https://fullcalendar.io
 [fullcalendar-gcal]: https://fullcalendar.io/docs/google_calendar/
