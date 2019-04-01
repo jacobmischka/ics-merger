@@ -1,6 +1,36 @@
 {
+	"name": "ics-merger",
+	"version": 2,
 	"alias": [
 		"calendar.mcw-anesthesiology.tech",
 		"mcw-anesth-calendar.now.sh"
+	],
+	"builds": [
+		{
+			"src": "package.json",
+			"use": "@now/static-build",
+			"config": {
+				"distDir": "public"
+			}
+		},
+		{
+			"src": ".env.json",
+			"use": "@now/static"
+		},
+		{
+			"src": "src/calendar-handler.js",
+			"use": "@now/node"
+		},
+		{
+			"src": "src/combine-handler.js",
+			"use": "@now/node"
+		}
+	],
+	"routes": [
+		{ "src": "/.env.json", "dest": ".env.json" },
+		{ "src": "/combine\\.ics(.*)", "dest": "/src/combine-handler.js" },
+		{ "src": "/(.+)\\.ics(.*)", "dest": "/src/calendar-handler.js" },
+		{ "src": "/(.+)\\.(.+)", "dest": "/$1.$2" },
+		{ "src": "/(.*)", "dest": "/index.html" }
 	]
 }

@@ -3,6 +3,8 @@
 import moment from 'moment';
 import colorString from 'color-string';
 
+import { isCalendarVisible, getDeepCalendarIdsFromSubGroups } from './server-utils.js';
+
 import type { ColorLike } from 'color';
 import type { FullCalendarEvent } from 'fullcalendar';
 
@@ -63,22 +65,6 @@ export type EnhancedFullCalendarEvent = FullCalendarEvent & {
 	color: string,
 	calendar: Calendar
 };
-
-export function isCalendarVisible(
-	calendar: Calendar | CalendarGroup,
-	keys: Array<string> | string
-): boolean {
-	if (!Array.isArray(keys))
-		keys = [keys];
-
-	return calendar && (
-		!calendar.private
-		|| (
-			Boolean(calendar.key)
-			&& typeof calendar.key === 'string'
-			&& keys.includes(calendar.key)
-		));
-}
 
 export function getAliases(config: CalendarConfig): Map<string, string> {
 	let aliasMap: Map<string, string> = new Map();
@@ -251,27 +237,6 @@ export function getCalendars(
 	eventSources = dedupeSources(eventSources);
 
 	return { calendar, calendarMap, calendars, eventSources };
-}
-
-export function getDeepCalendarIdsFromSubGroups(
-	calendarGroup: CalendarGroup,
-	allCalendars: {[string]: Calendar},
-	allCalendarGroups: {[string]: CalendarGroup}
-): Array<string> {
-	let calendarIds: Array<string> = [];
-
-	if (calendarGroup.subGroups && calendarGroup.subGroups.length > 0) {
-		let subGroups = calendarGroup.subGroups.map(id => allCalendarGroups[id]);
-		for (let subGroup of subGroups) {
-			calendarIds.push(...getDeepCalendarIdsFromSubGroups(subGroup, allCalendars, allCalendarGroups));
-		}
-	}
-
-	if (calendarGroup.calendars && calendarGroup.calendars.length > 0) {
-		calendarIds.push(...calendarGroup.calendars);
-	}
-
-	return calendarIds;
 }
 
 export function getSource(

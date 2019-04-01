@@ -1,4 +1,4 @@
-import * as path from 'path';
+import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import babel from 'rollup-plugin-babel';
 
@@ -10,13 +10,13 @@ export default {
 	},
 	plugins: [
 		json(),
+		commonjs(),
 		babel({
 			exclude: 'node_modules/**',
 			plugins: ['external-helpers']
 		})
 	],
 	external: [
-		path.resolve('./.env.json'),
 		'ical.js',
 		'express',
 		'node-fetch',

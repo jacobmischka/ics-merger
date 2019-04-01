@@ -1,16 +1,11 @@
 /* eslint-env node */
 
-import express from 'express';
-import fetch from 'node-fetch';
+const express = require('express');
 
-import merge from './index.js';
+const handleCalendar = require('./calendar-handler.js');
+const combineCalendars = require('./combine-handler.js');
 
-import {
-	isCalendarVisible,
-	getDeepCalendarIdsFromSubGroups
-} from './utils.js';
-
-import dotenv from '../.env.json';
+const dotenv = require('../.env.json');
 
 const app = express();
 
@@ -25,41 +20,16 @@ app.get('/.env.json', (req, res) => {
 	res.sendFile('.env.json', options);
 });
 
-app.get('/combine.ics', (req, res) => {
-	if (!req.query.urls) {
-		res.sendStatus(400);
-		return;
-	}
-
-	let icals = getIcalsFromUrls(req.query.urls);
-
-	setHeaders(res);
-
-	let options = {};
-	if (dotenv && dotenv.combine)
-		options = Object.assign({}, dotenv.combine);
-	options = Object.assign({}, options, req.query);
-
-	icals.then(icals => {
-		res.send(merge(icals, options));
-	})
-	.catch(err => {
-		console.error(`Error merging: ${err}`);
-	});
-});
+app.get('/combine.ics', combineCalendars);
 
 if (dotenv && dotenv.calendars) {
 	for(let calendarName in dotenv.calendars) {
-		let calendarConfig = dotenv.calendars[calendarName];
-
-		respondWithCalendar(calendarConfig, calendarName);
+		app.get(`/${calendarName}.ics`, handleCalendar);
 	}
 
 	if (dotenv.calendarGroups) {
 		for(let calendarName in dotenv.calendarGroups) {
-			let calendarConfig = dotenv.calendarGroups[calendarName];
-
-			respondWithCalendar(calendarConfig, calendarName);
+			app.get(`/${calendarName}.ics`, handleCalendar);
 		}
 	}
 }
@@ -70,86 +40,12 @@ app.get('/:calendarId', (req, res) => {
 	});
 });
 
-function respondWithCalendar(calendar, calendarName) {
-	app.get(`/${calendarName}.ics`, (req, res) => {
-		const isVisible = calendar =>
-			isCalendarVisible(calendar, req.query.key);
+let port = process.env.PORT;
 
-		if (!calendar || !isVisible(calendar)) {
-			res.sendStatus(501);
-			return;
-		}
-
-		let urls = [];
-		if (calendar.url)
-			urls.push(calendar.url);
-
-		if (calendar.calendars || calendar.subGroups) {
-			let calIds = getDeepCalendarIdsFromSubGroups(
-				calendar,
-				dotenv.calendars,
-				dotenv.calendarGroups
-			);
-
-			for(let calId of calIds) {
-				let calendar = dotenv.calendars[calId];
-				if (isVisible(calendar)) {
-					if (calendar.url)
-						urls.push(calendar.url);
-					if (calendar.subCalendars)
-						urls = urls.concat(calendar.subCalendars.filter(isVisible).map(subCal => subCal.url));
-				}
-			}
-		}
-
-		if (calendar.subCalendars)
-			urls = urls.concat(calendar.subCalendars.filter(isVisible).map(subCal => subCal.url));
-
-		urls = Array.from(new Set(urls));
-
-		let icals = getIcalsFromUrls(urls);
-
-		setHeaders(res);
-
-		let options = Object.assign({}, calendar);
-
-		icals.then(icals => {
-			res.send(merge(icals, options));
-		})
-		.catch(err => {
-			console.error(`Error merging: ${err}`);
-		});
-	});
+if (!port && app.get('env') !== 'production') {
+	port = 3000;
 }
-
-function setHeaders(res) {
-	res.set('Expires', 'Mon, 01 Jan 1990 00:00:00 GMT');
-	res.set('Date', new Date().toGMTString());
-	res.set('Content-Type', 'text/calendar; charset=UTF-8');
-	res.set('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate');
-	res.set('Pragma', 'no-cache');
-}
-
-const port = app.get('env') === 'production'
-	? 80
-	: process.env.PORT || 3000;
 
 app.listen(port, () => {
 	console.log(`Listening on ${port}`); // eslint-disable-line no-console
 });
-
-function getIcalsFromUrls(urls) {
-	let promises = [];
-	for(let url of urls) {
-		promises.push(fetch(url).then(response => {
-			return response.text();
-		}).then(text => {
-			return text;
-		}).catch(err => {
-			console.error(`Error reading ${url}: ${err}`);
-			return err;
-		}));
-	}
-
-	return Promise.all(promises);
-}
