@@ -3,7 +3,7 @@
 	"version": 2,
 	"alias": [
 		"calendar.mcw-anesthesiology.tech",
-		"mcw-anesth-calendar.now.sh"
+		"calendar.mcw-anesth.tech"
 	],
 	"builds": [
 		{
