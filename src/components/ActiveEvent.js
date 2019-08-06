@@ -30,6 +30,9 @@ export default class ActiveEvent extends CalendarEvent {
 
 	getEventDate() {
 		const { event } = this.props;
+		if (!event.end) {
+			event.end = event.start;
+		}
 
 		const sameDay = event.start.isSame(event.end, 'day');
 		const sameDayAllDay = event.allDay && event.start

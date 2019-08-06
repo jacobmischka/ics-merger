@@ -192,7 +192,18 @@ export function getCalendars(
 
 		calendar = allCalendarGroups[calendarId];
 
-		// Add subGroups first
+		if (calendar.calendars) {
+			let calIds = calendar.calendars;
+			let cals = calIds.map(id => allCalendars[id]);
+			calendars.push(...cals);
+			eventSources.push(...cals.map(cal => getSource(cal)));
+			for (let calId of calIds) {
+				if (!(calId in calendarMap))
+					calendarMap[calId] = allCalendars[calId];
+			}
+		}
+
+		// Add subGroups last
 		if (calendar.subGroups) {
 			let subGroupIds = calendar.subGroups.filter(id =>
 				id in allCalendarGroups && allCalendarGroups[id] !== calendar
@@ -219,17 +230,6 @@ export function getCalendars(
 				eventSources.push(...deepCalendars
 					.map(cal => getSource(cal, subGroup.color))
 				);
-			}
-		}
-
-		if (calendar.calendars) {
-			let calIds = calendar.calendars;
-			let cals = calIds.map(id => allCalendars[id]);
-			calendars.push(...cals);
-			eventSources.push(...cals.map(cal => getSource(cal)));
-			for (let calId of calIds) {
-				if (!(calId in calendarMap))
-					calendarMap[calId] = allCalendars[calId];
 			}
 		}
 	}

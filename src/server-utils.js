@@ -49,15 +49,15 @@ function getDeepCalendarIdsFromSubGroups(
 ) {
 	let calendarIds = [];
 
+	if (calendarGroup.calendars && calendarGroup.calendars.length > 0) {
+		calendarIds.push(...calendarGroup.calendars);
+	}
+
 	if (calendarGroup.subGroups && calendarGroup.subGroups.length > 0) {
 		let subGroups = calendarGroup.subGroups.map(id => allCalendarGroups[id]);
 		for (let subGroup of subGroups) {
 			calendarIds.push(...getDeepCalendarIdsFromSubGroups(subGroup, allCalendars, allCalendarGroups));
 		}
-	}
-
-	if (calendarGroup.calendars && calendarGroup.calendars.length > 0) {
-		calendarIds.push(...calendarGroup.calendars);
 	}
 
 	return calendarIds;

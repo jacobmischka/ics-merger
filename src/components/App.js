@@ -167,11 +167,12 @@ class App extends Component {
 					search += customCalendar.calendars
 						.filter(id => id in this.state.calendars)
 						.map(calId => {
-							if (this.state.calendars[calId].url) {
-								return `urls[]=${this.state.calendars[calId].url}`;
-							}
-							else {
-								return this.state.calendars[calId].subCalendars.map(subCal => {
+							const cal = this.state.calendars[calId];
+							if (cal.url) {
+								return `urls[]=${cal.url}`;
+
+							} else if (cal.subCalendars) {
+								return cal.subCalendars.map(subCal => {
 									return `urls[]=${subCal.url}`;
 								}).join('&');
 							}

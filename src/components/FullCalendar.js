@@ -170,12 +170,14 @@ export default class FullCalendar extends Component {
 		let eventSourcesToAdd = nextProps.eventSources.filter(newEventSource =>
 			!this.props.eventSources.some(oldEventSource =>
 				oldEventSource.googleCalendarId === newEventSource.googleCalendarId
+					&& oldEventSource.source === newEventSource.source
 					&& oldEventSource.color === newEventSource.color)
 		);
 
 		let eventSourcesToRemove = this.props.eventSources.filter(oldEventSource =>
 			!nextProps.eventSources.some(newEventSource =>
 				newEventSource.googleCalendarId === oldEventSource.googleCalendarId
+					&& oldEventSource.source === newEventSource.source
 					&& newEventSource.color === oldEventSource.color)
 		);
 
@@ -387,12 +389,15 @@ export default class FullCalendar extends Component {
 				if (view && view.name && view.name.startsWith('agenda'))
 					container.style.position = 'absolute';
 
+				const showCalendarName = showCalendarNames
+					|| (calEvent.calendar && calEvent.calendar.showCalendarName);
+
 				render(
 					<CalendarEvent event={calEvent} view={view}
 						setActiveEventId={setActiveEventId}
 						setActiveEvent={setActiveEvent}
 						containerElement={calEventElement}
-						showCalendarName={showCalendarNames}
+						showCalendarName={showCalendarName}
 						showLocation={showLocations}
 						showDescription={showDescriptions}
 						showPresenters={showPresenters}

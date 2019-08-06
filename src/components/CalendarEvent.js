@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Color from 'color';
 import striptags from 'striptags';
 import LinkifyIt from 'linkify-it';
+import moment from 'moment-timezone';
 
 import MapPin from 'react-feather/dist/icons/map-pin.js';
 import User from 'react-feather/dist/icons/user.js';
@@ -181,41 +182,44 @@ export default class CalendarEvent extends Component {
 	}
 
 	getEventTime() {
-		const { event } = this.props;
-
 		let eventTime;
-		if (event.allDay){
-			eventTime = (
-				<span>All day</span>
-			);
-		}
-		else {
-			let start = event.start;
-			let end = event.end;
-			let startTime = start.format('h');
-			if (start.get('minute') !== 0)
-				startTime += `:${start.format('mm')}`;
-			if (start.format('A') !== end.format('A'))
-				startTime += ` ${start.format('A')}`;
-			let endTime = end.get('minute') === 0
-				? end.format('h A')
-				: end.format('LT');
 
-			eventTime = (
-				<span>
-					<time className="event-time-start"
-						dateTime={start.toISOString()}
-					>
-						{startTime}
-					</time>
-					{` – `}
-					<time className="event-time-end"
-						dateTime={end.toISOString()}
-					>
-						{endTime}
-					</time>
-				</span>
-			);
+		try {
+			const { event } = this.props;
+			if (event.allDay) {
+				eventTime = (
+					<span>All day</span>
+				);
+			} else {
+				let start = moment(event.start).tz(moment.tz.guess());
+				let end = moment(event.end).tz(moment.tz.guess());
+				let startTime = start.format('h');
+				if (start.get('minute') !== 0)
+					startTime += `:${start.format('mm')}`;
+				if (start.format('A') !== end.format('A'))
+					startTime += ` ${start.format('A')}`;
+				let endTime = end.get('minute') === 0
+					? end.format('h A')
+					: end.format('LT');
+
+				eventTime = (
+					<span>
+						<time className="event-time-start"
+							dateTime={start.toISOString()}
+						>
+							{startTime}
+						</time>
+						{` – `}
+						<time className="event-time-end"
+							dateTime={end.toISOString()}
+						>
+							{endTime}
+						</time>
+					</span>
+				);
+			}
+		} catch (err) {
+			console.error(err);
 		}
 
 		return eventTime;

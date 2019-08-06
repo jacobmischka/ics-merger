@@ -51,10 +51,11 @@ module.exports = (req, res) => {
 		}
 	}
 
-	if (calendar.subCalendars)
+	if (calendar.subCalendars) {
 		urls = urls.concat(
 			calendar.subCalendars.filter(isVisible).map(subCal => subCal.url)
 		);
+	}
 
 	urls = Array.from(new Set(urls));
 
