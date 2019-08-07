@@ -25,7 +25,7 @@ export default class Subscription extends Component {
 		this.handleCopyButtonMouseUp = this.handleCopyButtonMouseUp.bind(this);
 	}
 
-	componentWillUpdate(nextProps, nextState){
+	UNSAFE_componentWillUpdate(nextProps, nextState){
 		if((this.state.showSub && !nextState.showSub)
 				|| (this.state.showUrl && !nextState.showUrl))
 			this.clipboard.destroy();

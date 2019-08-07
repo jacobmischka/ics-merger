@@ -67,7 +67,7 @@ class App extends Component {
 			});
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		if (!nextProps.eventId && this.state.activeEvent)
 			this.handleUnsetActiveEvent(false);
 		this.redirectAlias();

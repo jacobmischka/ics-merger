@@ -224,7 +224,7 @@ export default class FullCalendar extends Component {
 		}
 	}
 
-	componentWillReceiveProps(nextProps) {
+	UNSAFE_componentWillReceiveProps(nextProps) {
 		const { eventId, setActiveEvent } = this.props;
 
 		const calendar = $(`#${this.state.calendarId}`);
@@ -237,7 +237,7 @@ export default class FullCalendar extends Component {
 		}
 	}
 
-	componentWillUpdate() {
+	UNSAFE_componentWillUpdate() {
 		this.destroyCalendar();
 	}
 
