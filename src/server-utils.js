@@ -1,6 +1,7 @@
 /* eslint-env node */
 
 const fetch = require('node-fetch');
+const fullCalendarEventsToIcs = require('./fullcalendar-to-ics.js');
 
 function setHeaders(res) {
 	res.setHeader('Expires', 'Mon, 01 Jan 1990 00:00:00 GMT');
@@ -11,14 +12,28 @@ function setHeaders(res) {
 }
 
 function getIcalsFromUrls(urls) {
-	let promises = [];
-	for(let url of urls) {
+	const promises = [];
+	for (let url of urls) {
 		promises.push(fetch(url).then(response => {
 			return response.text();
-		}).then(text => {
-			return text;
 		}).catch(err => {
 			console.error(`Error reading ${url}: ${err}`);
+			return err;
+		}));
+	}
+
+	return Promise.all(promises);
+}
+
+function getIcalsFromFullCalendarEventSourceCalendars(calendars) {
+	const promises = [];
+	for (let calendar of calendars) {
+		promises.push(fetch(calendar.source).then(response => {
+			return response.json();
+		}).then(events => {
+			return fullCalendarEventsToIcs(events, calendar);
+		}).catch(err => {
+			console.error('Error parsing calendar', err, calendar);
 			return err;
 		}));
 	}
@@ -67,6 +82,7 @@ function getDeepCalendarIdsFromSubGroups(
 module.exports = {
 	setHeaders,
 	getIcalsFromUrls,
+	getIcalsFromFullCalendarEventSourceCalendars,
 	isCalendarVisible,
 	getDeepCalendarIdsFromSubGroups
 };
