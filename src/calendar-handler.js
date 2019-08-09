@@ -80,7 +80,7 @@ module.exports = (req, res) => {
 	urls = Array.from(new Set(urls));
 	sourceCalendars = Array.from(new Set(sourceCalendars));
 
-	let icals = Promise.all([getIcalsFromUrls(urls), getIcalsFromFullCalendarEventSourceCalendars(sourceCalendars)]).then(icalArrs => icalArrs.flat());
+	let icals = Promise.all([getIcalsFromUrls(urls), getIcalsFromFullCalendarEventSourceCalendars(sourceCalendars)]).then(([urlIcals, fcIcals]) => urlIcals.concat(fcIcals));
 
 	setHeaders(res);
 
