@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Color from 'color';
 import striptags from 'striptags';
 import LinkifyIt from 'linkify-it';
-import moment from 'moment-timezone';
 
 import MapPin from 'react-feather/dist/icons/map-pin.js';
 import User from 'react-feather/dist/icons/user.js';
@@ -191,8 +190,7 @@ export default class CalendarEvent extends Component {
 					<span>All day</span>
 				);
 			} else {
-				let start = moment(event.start).tz(moment.tz.guess());
-				let end = moment(event.end).tz(moment.tz.guess());
+				const { start, end } = event;
 				let startTime = start.format('h');
 				if (start.get('minute') !== 0)
 					startTime += `:${start.format('mm')}`;

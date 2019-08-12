@@ -8,6 +8,7 @@ import 'fullcalendar';
 import 'fullcalendar/dist/gcal.js';
 import 'fullcalendar/dist/fullcalendar.css';
 import uniqueId from 'lodash/uniqueId';
+import moment from 'moment-timezone';
 
 import CalendarEvent from './CalendarEvent.js';
 
@@ -336,6 +337,7 @@ export default class FullCalendar extends Component {
 
 	createCalendar() {
 		const {
+			timezone = 'local',
 			eventId,
 			setActiveEventId,
 			setActiveEvent,
@@ -362,6 +364,7 @@ export default class FullCalendar extends Component {
 		const getCalendarState = this.getCalendarState;
 
 		calendar.fullCalendar(Object.assign({
+			timezone,
 			googleCalendarApiKey: this.props.apiKey,
 			eventSources: this.props.eventSources,
 			height: 'auto',
