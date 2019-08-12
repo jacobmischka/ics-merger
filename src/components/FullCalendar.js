@@ -8,7 +8,6 @@ import 'fullcalendar';
 import 'fullcalendar/dist/gcal.js';
 import 'fullcalendar/dist/fullcalendar.css';
 import uniqueId from 'lodash/uniqueId';
-import moment from 'moment-timezone';
 
 import CalendarEvent from './CalendarEvent.js';
 

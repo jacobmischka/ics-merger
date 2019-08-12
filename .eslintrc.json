@@ -23,5 +23,10 @@
 		"key-spacing": "warn",
 		"react/prop-types": [0]
 	},
-	"plugins": ["react"]
+	"plugins": ["react"],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
 }
