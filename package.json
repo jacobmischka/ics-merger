@@ -1,6 +1,6 @@
 {
   "name": "@jacobmischka/ical-merger",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "Merges multiple ical .ics files into one for importing elsewhere",
   "main": "dist/ical-merger.cjs.js",
   "bundle": "dist/ical-merger.bundle.js",
