@@ -13,7 +13,7 @@
     "build:webpack": "NODE_ENV=production webpack --mode production",
     "build:rollup": "run-p rollup:*",
     "build:components": "NODE_ENV=production babel ./src/components --out-dir ./dist/components",
-    "build:helpers": "NODE_ENV=production babel ./src/constants.js -o ./dist/constants.js && NODE_ENV=production babel ./src/utils.js -o ./dist/utils.js && NODE_ENV=production babel ./src/server-utils.js -o ./dist/server-utils.js",
+    "build:helpers": "NODE_ENV=production babel ./src/constants.js -o ./dist/constants.js && NODE_ENV=production babel ./src/utils.js -o ./dist/utils.js && NODE_ENV=production babel ./src/server-utils.js -o ./dist/server-utils.js && NODE_ENV=production babel ./src/fullcalendar-to-ics.js -o ./dist/fullcalendar-to-ics.js",
     "rollup:node": "rollup -c",
     "rollup:bundle": "rollup -c rollup.config.bundle.js",
     "rollup:server": "rollup -c rollup.config.server.js",
