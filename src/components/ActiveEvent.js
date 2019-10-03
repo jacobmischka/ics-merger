@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, createRef } from 'react';
 import PropTypes from 'prop-types';
 import Color from 'color';
 
@@ -26,6 +26,9 @@ export default class ActiveEvent extends CalendarEvent {
 		this.getEventDate = this.getEventDate.bind(this);
 		this.handleOutsideClick = this.handleOutsideClick.bind(this);
 		this.handleClick = this.handleClick.bind(this);
+		this.addLinkTargets = this.addLinkTargets.bind(this);
+
+		this.descriptionRef = createRef();
 	}
 
 	getEventDate() {
@@ -186,6 +189,7 @@ export default class ActiveEvent extends CalendarEvent {
 
 				{event.description && (
 					<div className="event-desc"
+						ref={this.descriptionRef}
 						dangerouslySetInnerHTML={
 							this.markupDescription(event.description)
 						}
@@ -515,6 +519,11 @@ export default class ActiveEvent extends CalendarEvent {
 				document.addEventListener('click', this.handleOutsideClick);
 			});
 		});
+		this.addLinkTargets();
+	}
+
+	componentDidUpdate() {
+		this.addLinkTargets();
 	}
 
 	componentWillUnmount() {
@@ -547,6 +556,23 @@ export default class ActiveEvent extends CalendarEvent {
 					|| event.clientY < rect.top || event.clientY > rect.bottom)
 				this.handleClick();
 		});
+	}
+
+	addLinkTargets() {
+		const container = this.descriptionRef.current;
+
+		if (container) {
+			const anchors = container.querySelectorAll('a');
+			for (const anchor of anchors) {
+				if (!anchor.target) {
+					anchor.target = '_blank';
+				}
+
+				if (!anchor.rel) {
+					anchor.rel = 'noopener noreferrer';
+				}
+			}
+		}
 	}
 }
 
