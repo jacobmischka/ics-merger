@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Color from 'color';
-import striptags from 'striptags';
-import LinkifyIt from 'linkify-it';
+/** @format */
 
-import MapPin from 'react-feather/dist/icons/map-pin.js';
-import User from 'react-feather/dist/icons/user.js';
-import Users from 'react-feather/dist/icons/users.js';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Color from "color";
+import striptags from "striptags";
 
-import { OPACITIES } from '../constants.js';
+import MapPin from "react-feather/dist/icons/map-pin.js";
+import User from "react-feather/dist/icons/user.js";
+import Users from "react-feather/dist/icons/users.js";
 
-const linkify = new LinkifyIt();
+import { OPACITIES } from "../constants.js";
 
 export default class CalendarEvent extends Component {
 	constructor(props) {
@@ -22,32 +21,16 @@ export default class CalendarEvent extends Component {
 	}
 
 	markupDescription(description) {
-		description = striptags(description, [
-				'a',
-				'i',
-				'b',
-				'br',
-				'p'
-			]);
+		description = striptags(description, ["a", "i", "b", "br", "p"]);
 
-		if (description && linkify.test(description)) {
-			linkify.match(description).map(match => {
-				description = description.replace(match.raw,
-					`<a href="${match.url}" target="_blank" rel="noopener noreferrer">${match.text}</a>`);
-			});
-		}
-
-		return {__html: description};
+		return { __html: description };
 	}
 
 	renderEventLocation(location) {
-		if (!location)
-			return;
+		if (!location) return;
 
-		if (typeof location === 'string')
-			return location;
-		if (location.name)
-			return location.name;
+		if (typeof location === "string") return location;
+		if (location.name) return location.name;
 	}
 
 	render() {
@@ -66,17 +49,22 @@ export default class CalendarEvent extends Component {
 
 		let style = {
 			border: `1px solid ${color.rgb().string()}`,
-			backgroundColor: color.alpha(0.3).rgb().string()
+			backgroundColor: color
+				.alpha(0.3)
+				.rgb()
+				.string()
 		};
 
-		const ContainerElement = this.props.containerElement || 'div';
+		const ContainerElement = this.props.containerElement || "div";
 
 		return (
-			<ContainerElement className={className} style={style}
-					title={event.calendar.calname}
-					onClick={this.handleClick}
-					ref={container => this.container = container}>
-
+			<ContainerElement
+				className={className}
+				style={style}
+				title={event.calendar.calname}
+				onClick={this.handleClick}
+				ref={container => (this.container = container)}
+			>
 				<span className="event-time">{eventTime}</span>
 				<span className="event-title">
 					{showCalendarName && (
@@ -92,21 +80,19 @@ export default class CalendarEvent extends Component {
 				)}
 				{showPresenters && event.presenters && event.presenters.length > 0 && (
 					<span className="event-presenters">
-						{event.presenters.length === 1
-							? (<User />)
-							: ( <Users />)
-						}
-						{event.presenters.map(presenter => presenter.name).join(', ')}
+						{event.presenters.length === 1 ? <User /> : <Users />}
+						{event.presenters.map(presenter => presenter.name).join(", ")}
 					</span>
 				)}
 				{showDescription && event.description && (
-					<div className="event-desc"
-						dangerouslySetInnerHTML={this.markupDescription(event.description)}>
-					</div>
+					<div
+						className="event-desc"
+						dangerouslySetInnerHTML={this.markupDescription(event.description)}
+					/>
 				)}
 				<style jsx>{`
 					:global(.event) {
-						font-family: 'Noto Sans', sans-serif;
+						font-family: "Noto Sans", sans-serif;
 						color: rgba(0, 0, 0, ${OPACITIES.TEXT.PRIMARY});
 						padding: 0.5em;
 						margin: 1px;
@@ -170,7 +156,6 @@ export default class CalendarEvent extends Component {
 					}
 
 					@media print {
-
 						:global(.event) {
 							font-size: 0.6em;
 						}
@@ -186,31 +171,23 @@ export default class CalendarEvent extends Component {
 		try {
 			const { event } = this.props;
 			if (event.allDay) {
-				eventTime = (
-					<span>All day</span>
-				);
+				eventTime = <span>All day</span>;
 			} else {
 				const { start, end } = event;
-				let startTime = start.format('h');
-				if (start.get('minute') !== 0)
-					startTime += `:${start.format('mm')}`;
-				if (start.format('A') !== end.format('A'))
-					startTime += ` ${start.format('A')}`;
-				let endTime = end.get('minute') === 0
-					? end.format('h A')
-					: end.format('LT');
+				let startTime = start.format("h");
+				if (start.get("minute") !== 0) startTime += `:${start.format("mm")}`;
+				if (start.format("A") !== end.format("A"))
+					startTime += ` ${start.format("A")}`;
+				let endTime =
+					end.get("minute") === 0 ? end.format("h A") : end.format("LT");
 
 				eventTime = (
 					<span>
-						<time className="event-time-start"
-							dateTime={start.toISOString()}
-						>
+						<time className="event-time-start" dateTime={start.toISOString()}>
 							{startTime}
 						</time>
 						{` – `}
-						<time className="event-time-end"
-							dateTime={end.toISOString()}
-						>
+						<time className="event-time-end" dateTime={end.toISOString()}>
 							{endTime}
 						</time>
 					</span>
@@ -224,9 +201,8 @@ export default class CalendarEvent extends Component {
 	}
 
 	getClassName() {
-		let className = 'event';
-		if (this.props.event.allDay)
-			className += ' all-day';
+		let className = "event";
+		if (this.props.event.allDay) className += " all-day";
 
 		return className;
 	}
