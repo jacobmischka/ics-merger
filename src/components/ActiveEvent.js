@@ -179,7 +179,7 @@ export default class ActiveEvent extends CalendarEvent {
 								</span>
 								<ul className="event-meta-value event-presenters">
 									{event.presenters.map(presenter => (
-										<li key={presenter.email}>{presenter.name}</li>
+										<li key={presenter.name}>{presenter.name}</li>
 									))}
 								</ul>
 							</div>

@@ -377,6 +377,22 @@ export default class FullCalendar extends Component {
 			defaultDate,
 			navLinks: true,
 			eventRender(calEvent, element, view){
+				if (calEvent.id) {
+					const clientEvents = calendar.fullCalendar('clientEvents', otherEvent => {
+						return otherEvent.id === calEvent.id
+							&& otherEvent.start.valueOf() === calEvent.start.valueOf()
+							&& otherEvent.end.valueOf() === calEvent.end.valueOf();
+					});
+
+					if (clientEvents.length > 1) {
+						const firstEvent = clientEvents[0];
+
+						if (firstEvent._id !== calEvent._id) {
+							return false;
+						}
+					}
+				}
+
 				let container, calEventElement;
 				if (view && view.name && view.name.startsWith('list')) {
 					container = document.createElement('tr');
