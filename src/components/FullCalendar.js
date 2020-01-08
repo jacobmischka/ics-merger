@@ -380,8 +380,11 @@ export default class FullCalendar extends Component {
 				if (calEvent.id) {
 					const clientEvents = calendar.fullCalendar('clientEvents', otherEvent => {
 						return otherEvent.id === calEvent.id
-							&& otherEvent.start.valueOf() === calEvent.start.valueOf()
-							&& otherEvent.end.valueOf() === calEvent.end.valueOf();
+							&& momentsEqual(otherEvent.start, calEvent.start)
+							&& (
+								otherEvent.allDay && calEvent.allDay
+								|| momentsEqual(otherEvent.end, calEvent.end)
+							);
 					});
 
 					if (clientEvents.length > 1) {
@@ -436,6 +439,10 @@ export default class FullCalendar extends Component {
 			viewRender: getCalendarState
 		}, this.props.fullcalendarConfig));
 	}
+}
+
+function momentsEqual(d1, d2) {
+	return d1 && d2 && d1.valueOf() === d2.valueOf();
 }
 
 FullCalendar.propTypes = {
