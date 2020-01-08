@@ -1,4 +1,5 @@
 {
+	"scope": "mcw-anesth",
 	"name": "ics-merger",
 	"version": 2,
 	"alias": [
