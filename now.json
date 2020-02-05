@@ -2,10 +2,6 @@
 	"scope": "mcw-anesth",
 	"name": "ics-merger",
 	"version": 2,
-	"alias": [
-		"calendar.mcw-anesthesiology.tech",
-		"calendar.mcw-anesth.tech"
-	],
 	"builds": [
 		{
 			"src": "package.json",
