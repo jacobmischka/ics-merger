@@ -1,17 +1,13 @@
 /** @format */
 /* eslint-env node */
 
-const { parse } = require('url');
+const { parse } = require("url");
 
 const merge = require("./index.js");
 const { getIcalsFromUrls, setHeaders } = require("./server-utils.js");
-const dotenv = require("../.env.json");
+const dotenv = require("../env.json");
 
-const URL_PROPS = [
-	'url',
-	'urls',
-	'urls[]'
-];
+const URL_PROPS = ["url", "urls", "urls[]"];
 
 module.exports = (req, res) => {
 	const { query } = parse(req.url, true);

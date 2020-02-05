@@ -24,7 +24,7 @@ render((
 					search: location.search
 				}} />} />
 			<Route path="/:calendarId" render={({match, location}) =>
-				<App envFile="/.env.json"
+				<App envFile="/env.json"
 					search={location.search}
 					calendarId={match.params.calendarId}
 					eventId={location.hash.substring(1)} />} />

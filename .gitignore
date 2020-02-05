@@ -1,5 +1,5 @@
 /node_modules/
-.env.json
+env.json
 service-account-key.json
 dist/
 public/

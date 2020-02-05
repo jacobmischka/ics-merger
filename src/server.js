@@ -11,13 +11,13 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.get('/.env.json', (req, res) => {
+app.get('/env.json', (req, res) => {
 	const options = {
 		root: './',
 		dotfiles: 'allow'
 	};
 
-	res.sendFile('.env.json', options);
+	res.sendFile('env.json', options);
 });
 
 app.get('/combine.ics', combineCalendars);

@@ -13,7 +13,7 @@ const {
 } = require("./server-utils.js");
 const merge = require("./index.js");
 
-const dotenv = require("../.env.json");
+const dotenv = require("../env.json");
 
 module.exports = (req, res) => {
 	const { query, pathname } = parse(req.url, true);
@@ -56,9 +56,7 @@ module.exports = (req, res) => {
 
 				if (calendar.subCalendars) {
 					const visible = calendar.subCalendars.filter(isVisible);
-					urls = urls.concat(
-						visible.map(subCal => subCal.url).filter(Boolean)
-					);
+					urls = urls.concat(visible.map(subCal => subCal.url).filter(Boolean));
 					sourceCalendars = sourceCalendars.concat(
 						visible.filter(subCal => subCal.source)
 					);
@@ -69,9 +67,7 @@ module.exports = (req, res) => {
 
 	if (calendar.subCalendars) {
 		const visible = calendar.subCalendars.filter(isVisible);
-		urls = urls.concat(
-			visible.map(subCal => subCal.url)
-		);
+		urls = urls.concat(visible.map(subCal => subCal.url));
 		sourceCalendars = sourceCalendars.concat(
 			visible.filter(subCal => subCal.source)
 		);
@@ -80,7 +76,10 @@ module.exports = (req, res) => {
 	urls = Array.from(new Set(urls));
 	sourceCalendars = Array.from(new Set(sourceCalendars));
 
-	let icals = Promise.all([getIcalsFromUrls(urls), getIcalsFromFullCalendarEventSourceCalendars(sourceCalendars)]).then(([urlIcals, fcIcals]) => urlIcals.concat(fcIcals));
+	let icals = Promise.all([
+		getIcalsFromUrls(urls),
+		getIcalsFromFullCalendarEventSourceCalendars(sourceCalendars)
+	]).then(([urlIcals, fcIcals]) => urlIcals.concat(fcIcals));
 
 	setHeaders(res);
 

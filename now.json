@@ -15,7 +15,7 @@
 			}
 		},
 		{
-			"src": ".env.json",
+			"src": "env.json",
 			"use": "@now/static"
 		},
 		{
@@ -28,7 +28,7 @@
 		}
 	],
 	"routes": [
-		{ "src": "/.env.json", "dest": ".env.json" },
+		{ "src": "/env.json", "dest": "env.json" },
 		{ "src": "/combine\\.ics(.*)", "dest": "/src/combine-handler.js" },
 		{ "src": "/(.+)\\.ics(.*)", "dest": "/src/calendar-handler.js" },
 		{ "src": "/(.+)\\.(.+)", "dest": "/$1.$2" },
