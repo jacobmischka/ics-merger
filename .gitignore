@@ -3,3 +3,5 @@ env.json
 service-account-key.json
 dist/
 public/
+
+.now

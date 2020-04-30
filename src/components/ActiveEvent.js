@@ -274,8 +274,8 @@ export default class ActiveEvent extends CalendarEvent {
 						flex-shrink: 1;
 						margin: 0;
 						font-size: 0.75em;
-						word-wrap: break-word;
-						white-space: pre-line;
+						white-space: pre-wrap;
+						word-break: break-word;
 					}
 
 					.event.all-day .event-time {

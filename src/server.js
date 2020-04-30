@@ -5,7 +5,7 @@ const express = require('express');
 const handleCalendar = require('./calendar-handler.js');
 const combineCalendars = require('./combine-handler.js');
 
-const dotenv = require('../.env.json');
+const dotenv = require('../env.json');
 
 const app = express();
 
