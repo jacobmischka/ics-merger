@@ -356,7 +356,7 @@ class App extends Component {
 
 	handleSetActiveEventId(id, container) {
 		let newLocation = Object.assign({}, this.props.location);
-		newLocation.hash = id;
+		newLocation.hash = `${id}`;
 
 		this.props.history.push(newLocation);
 
