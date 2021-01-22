@@ -1,4 +1,5 @@
-import 'babel-polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import 'es6-promise';
 import 'whatwg-fetch';
 import 'classlist-polyfill';
