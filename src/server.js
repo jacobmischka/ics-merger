@@ -40,11 +40,7 @@ app.get('/:calendarId', (req, res) => {
 	});
 });
 
-let port = process.env.PORT;
-
-if (!port && app.get('env') !== 'production') {
-	port = 3000;
-}
+let port = process.env.PORT || 3000;
 
 app.listen(port, () => {
 	console.log(`Listening on ${port}`); // eslint-disable-line no-console

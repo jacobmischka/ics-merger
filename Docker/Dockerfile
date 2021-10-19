@@ -1,10 +1,13 @@
 FROM node
 
 RUN git clone https://github.com/jacobmischka/ics-merger.git
-RUN cd /ics-merger && npm install && npm run-script build
+WORKDIR /ics-merger
+RUN yarn install
 
-COPY ./.env.json /ics-merger/.env.json
+COPY ./env.json /ics-merger/env.json
 COPY ./run.sh /run.sh
+
+RUN yarn build
 
 EXPOSE 3000/tcp
 
